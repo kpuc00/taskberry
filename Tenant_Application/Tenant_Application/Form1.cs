@@ -25,6 +25,13 @@ namespace Tenant_Application
 
         int CenterLocationPanel3X;
         int CenterLocationPanel3Y;
+
+        int CenterLogoX;
+        int CenterLogoY;
+
+        int CenterBtnX;
+        int CenterBtnY;
+
         private void LoginForm_Load(object sender, EventArgs e)
         {
             //Init the values of the LoginForm
@@ -34,24 +41,47 @@ namespace Tenant_Application
             CenterLocationFormX = this.Width / 2;
             CenterLocationFormY = this.Height / 2;
 
+
+
+
+
+
+
+            //Panel3
+            panel3.Width = 300;
+            panel3.Height = 300;
+
+
+
+            CenterLocationPanel3X = panel3.Width / 2;
+            CenterLocationPanel3Y = panel3.Height / 2;
+
+            panel3.BackColor = Color.Transparent;
+
+            panel3.Location = new Point(CenterLocationFormX - CenterLocationPanel3X, (CenterLocationFormY - CenterLocationPanel3Y) + 75);
+
+            //UserName TextBox
+            tbxUserName.Width = 200;
+
             //General Values of TextBox
             CenterLocationTextBoxX = tbxUserName.Width / 2;
             CenterLocationTextBoxY = tbxUserName.Height / 2;
 
-            //UserName TextBox
-            tbxUserName.Width = 200;
+
 
             tbxUserName.Font = new Font("Calibri", 12);
 
             tbxUserName.BringToFront();
 
             tbxUserName.Text = "UserName";
+            tbxUserName.ForeColor = Color.White;
 
             tbxUserName.BorderStyle = BorderStyle.None;
 
             tbxUserName.Location = new Point(CenterLocationFormX - CenterLocationTextBoxX, (CenterLocationFormY - CenterLocationTextBoxY) - 25);
 
-            tbxUserName.BackColor = Color.FromArgb(83, 83, 83);
+            tbxUserName.BackColor = Color.FromArgb(37, 33, 37);
+            //tbxUserName.BackColor = Color.Transparent;
 
             //PassWord TextBox
             tbxPassWord.Width = 200;
@@ -64,11 +94,13 @@ namespace Tenant_Application
 
             tbxPassWord.Text = "PassWord";
 
+            tbxPassWord.ForeColor = Color.White;
+
             tbxPassWord.BorderStyle = BorderStyle.None;
 
             tbxPassWord.Location = new Point(CenterLocationFormX - CenterLocationTextBoxX, (CenterLocationFormY - CenterLocationTextBoxY) + 25);
 
-            tbxPassWord.BackColor = this.BackColor;
+            tbxPassWord.BackColor = Color.FromArgb(37, 33, 37);
 
             //Panel1
             panel1.Width = 200;
@@ -90,18 +122,37 @@ namespace Tenant_Application
 
             panel2.Location = new Point(CenterLocationFormX - CenterLocationTextBoxX, ((CenterLocationFormY - CenterLocationTextBoxY) + 25) + tbxUserName.Height + 5);
 
-            //Panel3
-            panel3.Width = 400;
-            panel3.Height = 400;
+            //Login button
+            btnLogIn.Width = 200;
+            btnLogIn.Height = 75;
+
+            btnLogIn.Text = "LogIn";
+            btnLogIn.Font = new Font("Calibri", 15);
+            btnLogIn.ForeColor = Color.White;
+            btnLogIn.BackColor = Color.FromArgb(37, 33, 37);
+
+            CenterBtnX = btnLogIn.Width / 2;
+            CenterBtnY = btnLogIn.Height / 2;
+
+            btnLogIn.BringToFront();
+
+            btnLogIn.Location = new Point(CenterLocationFormX - CenterBtnX, 450);
 
 
+            //Logo picture box
+            pbxLogo.Width = 800;
+            pbxLogo.Height = 300;
 
-            CenterLocationPanel3X = panel3.Width / 2;
-            CenterLocationPanel3Y = panel3.Height / 2;
+            pbxLogo.BackColor = Color.Transparent;
 
-            panel3.BackColor = Color.Transparent;
 
-            panel3.Location = new Point(CenterLocationFormX - CenterLocationPanel3X, CenterLocationFormY - CenterLocationPanel3Y);
+            pbxLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbxLogo.SendToBack();
+
+            CenterLogoX = pbxLogo.Width / 2;
+            CenterLogoY = pbxLogo.Height / 2;
+
+            pbxLogo.Location = new Point(CenterLocationFormX - CenterLogoX, 0);
 
         }
 
@@ -116,6 +167,14 @@ namespace Tenant_Application
             tbxPassWord.PasswordChar = '*';
         }
 
+        private void BtnLogIn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
 
+            UserInterfaceForm uif = new UserInterfaceForm();
+            uif.Show();
+
+            
+        }
     }
 }

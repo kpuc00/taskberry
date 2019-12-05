@@ -34,6 +34,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tbxUserName = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnLogIn = new Client_GUI.Round_Button();
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // tbxPassWord
@@ -61,7 +64,6 @@
             // 
             // tbxUserName
             // 
-            this.tbxUserName.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tbxUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxUserName.Location = new System.Drawing.Point(44, 515);
@@ -75,10 +77,30 @@
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(149, 54);
+            this.panel3.Location = new System.Drawing.Point(357, 264);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(940, 374);
+            this.panel3.Size = new System.Drawing.Size(472, 170);
             this.panel3.TabIndex = 0;
+            // 
+            // btnLogIn
+            // 
+            this.btnLogIn.Location = new System.Drawing.Point(593, 486);
+            this.btnLogIn.Name = "btnLogIn";
+            this.btnLogIn.Size = new System.Drawing.Size(75, 23);
+            this.btnLogIn.TabIndex = 3;
+            this.btnLogIn.Text = "round_Button1";
+            this.btnLogIn.UseVisualStyleBackColor = true;
+            this.btnLogIn.Click += new System.EventHandler(this.BtnLogIn_Click);
+            // 
+            // pbxLogo
+            // 
+            this.pbxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbxLogo.Image")));
+            this.pbxLogo.Location = new System.Drawing.Point(312, -62);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(697, 242);
+            this.pbxLogo.TabIndex = 0;
+            this.pbxLogo.TabStop = false;
             // 
             // LoginForm
             // 
@@ -87,6 +109,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1174, 649);
+            this.Controls.Add(this.pbxLogo);
+            this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tbxUserName);
             this.Controls.Add(this.panel3);
@@ -95,6 +119,7 @@
             this.Name = "LoginForm";
             this.Text = "LoginForm";
             this.Load += new System.EventHandler(this.LoginForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,6 +132,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox tbxUserName;
         private System.Windows.Forms.Panel panel3;
+        private Client_GUI.Round_Button btnLogIn;
+        private System.Windows.Forms.PictureBox pbxLogo;
     }
 }
-
