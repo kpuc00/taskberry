@@ -73,7 +73,7 @@ namespace Tenant_Application
 
             tbxUserName.BringToFront();
 
-            tbxUserName.Text = "UserName";
+            tbxUserName.Text = "Username";
             tbxUserName.ForeColor = Color.White;
 
             tbxUserName.BorderStyle = BorderStyle.None;
@@ -92,7 +92,7 @@ namespace Tenant_Application
 
 
 
-            tbxPassWord.Text = "PassWord";
+            tbxPassWord.Text = "Password";
 
             tbxPassWord.ForeColor = Color.White;
 
@@ -126,7 +126,7 @@ namespace Tenant_Application
             btnLogIn.Width = 200;
             btnLogIn.Height = 75;
 
-            btnLogIn.Text = "LogIn";
+            btnLogIn.Text = "Login";
             btnLogIn.Font = new Font("Calibri", 15);
             btnLogIn.ForeColor = Color.White;
             btnLogIn.BackColor = Color.FromArgb(37, 33, 37);

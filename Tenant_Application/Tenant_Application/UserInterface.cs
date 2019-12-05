@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
+using System.Net;
+
+
 namespace Tenant_Application
 {
     public partial class UserInterfaceForm : Form
@@ -20,6 +23,8 @@ namespace Tenant_Application
         private void UserInterfaceForm_Load(object sender, EventArgs e)
         {
             btnSendMail.BackColor = Color.FromArgb(33, 37, 33);
+            this.Width = 1200;
+            this.Height = 720;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -37,24 +42,43 @@ namespace Tenant_Application
 
             tbxComplaint.Clear();
 
+
+            // ONLY Gmail accounts that have "Use LESS secure apps" ENABLED will work!!!!!
             try
             {
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                var fromAddress = new MailAddress("Your email", "Your email name");
+                var toAddress = new MailAddress("tenantcomplaints69@gmail.com", "Joseph Stalin");
+                const string fromPassword = "Your email password";
+                const string subject = "Complaint";
+                string body = tbxComplaint.Text;
 
-                mail.From = new MailAddress("email-address from");
-                mail.To.Add("email-address to ");
-                mail.Subject = "Tenant Complaint";
-                mail.Body = complaint;
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                };
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = subject,
+                    Body = body
+                })
+                {
+                    smtp.Send(message);
+                }
 
-                SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("email-address from", "password");
-                SmtpServer.Send(mail);
 
-                MessageBox.Show("Mail Sent");
             } catch (Exception ex){
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void TabPage2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
