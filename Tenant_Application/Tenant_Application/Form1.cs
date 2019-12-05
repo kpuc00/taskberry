@@ -34,8 +34,6 @@ namespace Tenant_Application
             CenterLocationFormX = this.Width / 2;
             CenterLocationFormY = this.Height / 2;
 
-            this.BackgroundImage = 
-
             //General Values of TextBox
             CenterLocationTextBoxX = tbxUserName.Width / 2;
             CenterLocationTextBoxY = tbxUserName.Height / 2;
@@ -45,18 +43,24 @@ namespace Tenant_Application
 
             tbxUserName.Font = new Font("Calibri", 12);
 
+            tbxUserName.BringToFront();
+
             tbxUserName.Text = "UserName";
 
             tbxUserName.BorderStyle = BorderStyle.None;
 
             tbxUserName.Location = new Point(CenterLocationFormX - CenterLocationTextBoxX, (CenterLocationFormY - CenterLocationTextBoxY) - 25);
 
-            tbxUserName.BackColor = this.BackColor;
+            tbxUserName.BackColor = Color.FromArgb(83, 83, 83);
 
             //PassWord TextBox
             tbxPassWord.Width = 200;
 
             tbxPassWord.Font = new Font("Calibri", 12);
+
+            tbxPassWord.BringToFront();
+
+
 
             tbxPassWord.Text = "PassWord";
 
@@ -70,6 +74,8 @@ namespace Tenant_Application
             panel1.Width = 200;
             panel1.Height = 1;
 
+            panel1.BringToFront();
+
             panel1.BackColor = Color.White;
 
             panel1.Location = new Point(CenterLocationFormX - CenterLocationTextBoxX, ((CenterLocationFormY - CenterLocationTextBoxY) - 25) + tbxUserName.Height + 5);
@@ -77,6 +83,8 @@ namespace Tenant_Application
             //Panel2
             panel2.Width = 200;
             panel2.Height = 1;
+
+            panel2.BringToFront();
 
             panel2.BackColor = Color.White;
 
@@ -86,10 +94,12 @@ namespace Tenant_Application
             panel3.Width = 400;
             panel3.Height = 400;
 
+
+
             CenterLocationPanel3X = panel3.Width / 2;
             CenterLocationPanel3Y = panel3.Height / 2;
 
-            panel3.BackColor = Color.FromArgb(83, 83 , 83);
+            panel3.BackColor = Color.Transparent;
 
             panel3.Location = new Point(CenterLocationFormX - CenterLocationPanel3X, CenterLocationFormY - CenterLocationPanel3Y);
 
