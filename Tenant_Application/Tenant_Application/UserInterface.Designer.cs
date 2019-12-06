@@ -36,6 +36,7 @@
             this.tbxAnnCalendar = new System.Windows.Forms.TextBox();
             this.btnAnnCalendar = new System.Windows.Forms.Button();
             this.tabChatRoom = new System.Windows.Forms.TabPage();
+            this.tbxChat = new System.Windows.Forms.TextBox();
             this.tbxChatMsg = new System.Windows.Forms.TextBox();
             this.lblAnnChat = new System.Windows.Forms.Label();
             this.btnChatSend = new System.Windows.Forms.Button();
@@ -60,7 +61,12 @@
             this.tbxComplaint = new System.Windows.Forms.RichTextBox();
             this.lblAnnComplaints = new System.Windows.Forms.Label();
             this.timerAnnouncement = new System.Windows.Forms.Timer(this.components);
-            this.tbxChat = new System.Windows.Forms.TextBox();
+            this.lbxCalendarDays = new System.Windows.Forms.ListBox();
+            this.lbxCalendarChores = new System.Windows.Forms.ListBox();
+            this.btnCalendarSelect = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbxScoreboard = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabSwitch.SuspendLayout();
             this.tabCalendar.SuspendLayout();
             this.panelAnnCalendar.SuspendLayout();
@@ -91,6 +97,10 @@
             // 
             this.tabCalendar.BackgroundImage = global::Tenant_Application.Properties.Resources.background;
             this.tabCalendar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabCalendar.Controls.Add(this.label3);
+            this.tabCalendar.Controls.Add(this.btnCalendarSelect);
+            this.tabCalendar.Controls.Add(this.lbxCalendarChores);
+            this.tabCalendar.Controls.Add(this.lbxCalendarDays);
             this.tabCalendar.Controls.Add(this.lblAnnCalendar);
             this.tabCalendar.Controls.Add(this.panelAnnCalendar);
             this.tabCalendar.Controls.Add(this.btnAnnCalendar);
@@ -128,7 +138,7 @@
             this.tbxAnnCalendar.Multiline = true;
             this.tbxAnnCalendar.Name = "tbxAnnCalendar";
             this.tbxAnnCalendar.ReadOnly = true;
-            this.tbxAnnCalendar.Size = new System.Drawing.Size(334, 529);
+            this.tbxAnnCalendar.Size = new System.Drawing.Size(339, 529);
             this.tbxAnnCalendar.TabIndex = 2;
             // 
             // btnAnnCalendar
@@ -168,6 +178,16 @@
             this.tabChatRoom.TabIndex = 0;
             this.tabChatRoom.Text = "Chat Room";
             this.tabChatRoom.UseVisualStyleBackColor = true;
+            // 
+            // tbxChat
+            // 
+            this.tbxChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbxChat.Location = new System.Drawing.Point(59, 151);
+            this.tbxChat.Multiline = true;
+            this.tbxChat.Name = "tbxChat";
+            this.tbxChat.ReadOnly = true;
+            this.tbxChat.Size = new System.Drawing.Size(569, 313);
+            this.tbxChat.TabIndex = 3;
             // 
             // tbxChatMsg
             // 
@@ -221,7 +241,7 @@
             this.tbxAnnChat.Multiline = true;
             this.tbxAnnChat.Name = "tbxAnnChat";
             this.tbxAnnChat.ReadOnly = true;
-            this.tbxAnnChat.Size = new System.Drawing.Size(334, 529);
+            this.tbxAnnChat.Size = new System.Drawing.Size(336, 527);
             this.tbxAnnChat.TabIndex = 2;
             // 
             // btn
@@ -265,6 +285,8 @@
             // 
             this.tabGrading.BackgroundImage = global::Tenant_Application.Properties.Resources.background;
             this.tabGrading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabGrading.Controls.Add(this.label4);
+            this.tabGrading.Controls.Add(this.lbxScoreboard);
             this.tabGrading.Controls.Add(this.lblAnnScore);
             this.tabGrading.Controls.Add(this.panelAnnScore);
             this.tabGrading.Controls.Add(this.btnAnnScore);
@@ -302,7 +324,7 @@
             this.tbxAnnScore.Multiline = true;
             this.tbxAnnScore.Name = "tbxAnnScore";
             this.tbxAnnScore.ReadOnly = true;
-            this.tbxAnnScore.Size = new System.Drawing.Size(334, 529);
+            this.tbxAnnScore.Size = new System.Drawing.Size(337, 527);
             this.tbxAnnScore.TabIndex = 2;
             // 
             // btnAnnScore
@@ -361,7 +383,7 @@
             this.tbxAnnComplaints.Multiline = true;
             this.tbxAnnComplaints.Name = "tbxAnnComplaints";
             this.tbxAnnComplaints.ReadOnly = true;
-            this.tbxAnnComplaints.Size = new System.Drawing.Size(334, 529);
+            this.tbxAnnComplaints.Size = new System.Drawing.Size(335, 529);
             this.tbxAnnComplaints.TabIndex = 1;
             // 
             // textBox1
@@ -462,15 +484,72 @@
             this.timerAnnouncement.Interval = 10000;
             this.timerAnnouncement.Tick += new System.EventHandler(this.TimerAnnouncement_Tick);
             // 
-            // tbxChat
+            // lbxCalendarDays
             // 
-            this.tbxChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxChat.Location = new System.Drawing.Point(59, 151);
-            this.tbxChat.Multiline = true;
-            this.tbxChat.Name = "tbxChat";
-            this.tbxChat.ReadOnly = true;
-            this.tbxChat.Size = new System.Drawing.Size(569, 313);
-            this.tbxChat.TabIndex = 3;
+            this.lbxCalendarDays.FormattingEnabled = true;
+            this.lbxCalendarDays.ItemHeight = 15;
+            this.lbxCalendarDays.Location = new System.Drawing.Point(63, 201);
+            this.lbxCalendarDays.Name = "lbxCalendarDays";
+            this.lbxCalendarDays.Size = new System.Drawing.Size(181, 199);
+            this.lbxCalendarDays.TabIndex = 11;
+            this.lbxCalendarDays.Click += new System.EventHandler(this.LbxCalendarDays_Click);
+            // 
+            // lbxCalendarChores
+            // 
+            this.lbxCalendarChores.FormattingEnabled = true;
+            this.lbxCalendarChores.ItemHeight = 15;
+            this.lbxCalendarChores.Location = new System.Drawing.Point(273, 201);
+            this.lbxCalendarChores.Name = "lbxCalendarChores";
+            this.lbxCalendarChores.Size = new System.Drawing.Size(212, 199);
+            this.lbxCalendarChores.TabIndex = 12;
+            // 
+            // btnCalendarSelect
+            // 
+            this.btnCalendarSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
+            this.btnCalendarSelect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
+            this.btnCalendarSelect.FlatAppearance.BorderSize = 0;
+            this.btnCalendarSelect.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCalendarSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalendarSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCalendarSelect.ForeColor = System.Drawing.Color.White;
+            this.btnCalendarSelect.Location = new System.Drawing.Point(508, 267);
+            this.btnCalendarSelect.Name = "btnCalendarSelect";
+            this.btnCalendarSelect.Size = new System.Drawing.Size(136, 55);
+            this.btnCalendarSelect.TabIndex = 13;
+            this.btnCalendarSelect.Text = "Choose chore";
+            this.btnCalendarSelect.UseVisualStyleBackColor = false;
+            this.btnCalendarSelect.Click += new System.EventHandler(this.BtnCalendarSelect_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(56, 142);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(490, 38);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Choose a day and a chore to do.\r\n";
+            // 
+            // lbxScoreboard
+            // 
+            this.lbxScoreboard.FormattingEnabled = true;
+            this.lbxScoreboard.ItemHeight = 15;
+            this.lbxScoreboard.Location = new System.Drawing.Point(250, 140);
+            this.lbxScoreboard.Name = "lbxScoreboard";
+            this.lbxScoreboard.Size = new System.Drawing.Size(221, 259);
+            this.lbxScoreboard.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(266, 79);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(186, 38);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Scoreboard";
             // 
             // UserInterfaceForm
             // 
@@ -481,12 +560,14 @@
             this.Controls.Add(this.tabSwitch);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "UserInterfaceForm";
             this.Text = "UserInterfaceForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserInterfaceForm_FormClosing);
             this.Load += new System.EventHandler(this.UserInterfaceForm_Load);
             this.tabSwitch.ResumeLayout(false);
             this.tabCalendar.ResumeLayout(false);
+            this.tabCalendar.PerformLayout();
             this.panelAnnCalendar.ResumeLayout(false);
             this.panelAnnCalendar.PerformLayout();
             this.tabChatRoom.ResumeLayout(false);
@@ -494,6 +575,7 @@
             this.panelAnnChat.ResumeLayout(false);
             this.panelAnnChat.PerformLayout();
             this.tabGrading.ResumeLayout(false);
+            this.tabGrading.PerformLayout();
             this.panelAnnScore.ResumeLayout(false);
             this.panelAnnScore.PerformLayout();
             this.tabComplaints.ResumeLayout(false);
@@ -537,5 +619,11 @@
         private System.Windows.Forms.Label lblAnnScore;
         private System.Windows.Forms.TextBox tbxChatMsg;
         private System.Windows.Forms.TextBox tbxChat;
+        private System.Windows.Forms.Button btnCalendarSelect;
+        private System.Windows.Forms.ListBox lbxCalendarChores;
+        private System.Windows.Forms.ListBox lbxCalendarDays;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListBox lbxScoreboard;
     }
 }

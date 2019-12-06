@@ -143,6 +143,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pbxLogo);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
             this.Load += new System.EventHandler(this.LoginForm_Load);
