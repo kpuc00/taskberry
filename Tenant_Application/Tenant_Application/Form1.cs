@@ -34,7 +34,8 @@ namespace Tenant_Application
         {
             if(string.IsNullOrWhiteSpace(tbxUserName.Text) || tbxPassWord.Text == "Password" || tbxUserName.Text == "Username" || string.IsNullOrWhiteSpace(tbxPassWord.Text))
             {
-                MessageBox.Show("Please, enter your credentials");
+                UserInterfaceForm newForm = new UserInterfaceForm();
+                newForm.MsgBoxWarning("Please, enter your credentials");
             }
             else
             {

@@ -11,6 +11,7 @@ namespace connection
 {
     public class DeviceConnection
     {
+        private string stringToReceive;
         private string stringToSend;
         private void serverThread()
         {
@@ -20,16 +21,7 @@ namespace connection
                 IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
                 Byte[] receiveBytes = udpClient.Receive(ref RemoteIpEndPoint);
                 string returndata = Encoding.ASCII.GetString(receiveBytes);
-
-                //orderNum = returndata.Split('#').First();
-                //returndata = returndata.Replace(orderNum + "#", "");
-
-                //pizzaNum = returndata.Split('%').First();
-                //returndata = returndata.Replace(pizzaNum + "%", "");
-                //message = returndata.Split('&').First();
-
-                //lbxOrders.Items.Add($"{orderNum} \t {pizzaNum} \t {message}");
-                //data.Add($"{orderNum}#{pizzaNum}%{message}&*");
+                stringToReceive = returndata;
             }
         }
         private void sendData()
@@ -40,5 +32,23 @@ namespace connection
             Byte[] sendData = Encoding.ASCII.GetBytes(stringToSend);
             udpClient.Send(sendData, sendData.Length);
         }
+        public string ReceiveData()
+        {
+            return this.stringToReceive;
+        }
+        public string SendData()
+        {
+            return this.stringToSend;
+        }
+
+        //orderNum = returndata.Split('#').First();
+        //returndata = returndata.Replace(orderNum + "#", "");
+
+        //pizzaNum = returndata.Split('%').First();
+        //returndata = returndata.Replace(pizzaNum + "%", "");
+        //message = returndata.Split('&').First();
+
+        //lbxOrders.Items.Add($"{orderNum} \t {pizzaNum} \t {message}");
+        //data.Add($"{orderNum}#{pizzaNum}%{message}&*");
     }
 }
