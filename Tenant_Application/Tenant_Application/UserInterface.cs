@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+
 using System.Net.Mail;
 using System.Net;
 
@@ -57,6 +59,7 @@ namespace Tenant_Application
                 const string subject = "Complaint";
                 string body = complaint;
 
+
                 var smtp = new SmtpClient
                 {
                     //Don't change these settings
@@ -76,6 +79,35 @@ namespace Tenant_Application
                     smtp.Send(message);
                 }
 
+
+                /*mail.From = new MailAddress("tenantcomplaints69@gmail.com");
+                mail.To.Add("michael@fragrant-chios.com");
+                mail.Subject = "Tenant Complaint";
+                mail.Body = complaint;
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("tenantcomplaints69@gmail.com", "RealCommunism69");
+                SmtpServer.Send(mail);
+
+                MessageBox.Show("Mail Sent");*/
+
+                /*MailMessage msg = new MailMessage();
+                msg.From = new MailAddress("tenantcomplaints69@gmail.com");
+                msg.To.Add("michael@fragrant-chios.com");
+                msg.Subject = "Tenant Complaint";
+                msg.Body = complaint;
+
+                SmtpClient smt = new SmtpClient();
+                smt.Host = "smtp.gmail.com";
+                System.Net.NetworkCredential ntcd = new NetworkCredential();
+                ntcd.UserName = "tenantcomplaints@gmail.com";
+                ntcd.Password = "RealCommunism69";
+                smt.Credentials = ntcd;
+                smt.EnableSsl = true;
+                smt.Port = 587;
+                smt.Send(msg);
+
+                MessageBox.Show("Your Mail is sended");*/
 
             } catch (Exception ex){
                 MessageBox.Show(ex.ToString());
