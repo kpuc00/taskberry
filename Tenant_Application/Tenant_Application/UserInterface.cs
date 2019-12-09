@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
 using System.Net;
-
+using System.Data.Common;
+using System.Configuration;
 
 namespace Tenant_Application
 {
@@ -281,6 +282,55 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Add("Fix toilet");
                         lbxCalendarChores.Items.Add("Vacuum");
                         break;
+                }
+            }
+        }
+
+        private void btnTempDB_Click(object sender, EventArgs e)
+        {
+            //Allows us to connect to our SQL server database
+            string provider = ConfigurationManager.AppSettings["provider"];
+            //Allows us to use the connection string for executing queries
+            string connectionString = ConfigurationManager.AppSettings["connectionString"];
+            //Allows us to pass queries into the database
+            DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
+            //Representing our db connection
+            using (DbConnection connection = factory.CreateConnection())
+            {
+                //checking if the connection is okay
+                if (connection == null)
+                {
+                    MessageBox.Show("CONNECTION ERROR");
+                    return;
+                }
+                //data needed to open the correct database
+                connection.ConnectionString = connectionString;
+                //opening database connection
+                connection.Open();
+                //allows us to pass queries into the database
+                DbCommand command = factory.CreateCommand();
+
+                if (command == null)
+                {
+                    MessageBox.Show("COMMAND ERROR");
+                    return;
+                }
+
+                //setting the database connection for commands
+
+                command.Connection = connection;
+
+                //creating the query we want to issue
+                command.CommandText = "SELECT * FROM Chores";
+
+                //reading the results from our query
+                using (DbDataReader dataReader = command.ExecuteReader())
+                {
+                    while (dataReader.Read())
+                    {
+                        lbxCalendarChores.Items.Add(dataReader["Chores"]);
+                    }
+
                 }
             }
         }

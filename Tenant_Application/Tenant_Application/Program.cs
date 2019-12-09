@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Data.Common;
+using System.Configuration;
+
 namespace Tenant_Application
 {
     static class Program
