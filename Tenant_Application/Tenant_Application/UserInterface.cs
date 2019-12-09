@@ -18,6 +18,9 @@ namespace Tenant_Application
     {
         List<int> temporaryScoreboard = new List<int>();
 
+        //creating a list to store account TEMP
+        List<Account> accounts = new List<Account>();
+
         string msg = "";
         protected override CreateParams CreateParams
         {
@@ -34,6 +37,14 @@ namespace Tenant_Application
         public UserInterfaceForm()
         {
             InitializeComponent();
+
+            UpdateBinding();
+        }
+
+        private void UpdateBinding()
+        {
+            lbxCalendarChores.DataSource = accounts;
+            lbxCalendarChores.DisplayMember = "FullInfo";
         }
 
         private void UserInterfaceForm_Load(object sender, EventArgs e)
@@ -288,51 +299,12 @@ namespace Tenant_Application
 
         private void btnTempDB_Click(object sender, EventArgs e)
         {
-            //Allows us to connect to our SQL server database
-            string provider = ConfigurationManager.AppSettings["provider"];
-            //Allows us to use the connection string for executing queries
-            string connectionString = ConfigurationManager.AppSettings["connectionString"];
-            //Allows us to pass queries into the database
-            DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
-            //Representing our db connection
-            using (DbConnection connection = factory.CreateConnection())
-            {
-                //checking if the connection is okay
-                if (connection == null)
-                {
-                    MessageBox.Show("CONNECTION ERROR");
-                    return;
-                }
-                //data needed to open the correct database
-                connection.ConnectionString = connectionString;
-                //opening database connection
-                connection.Open();
-                //allows us to pass queries into the database
-                DbCommand command = factory.CreateCommand();
+            //getting access to the database
+            DataAccess db = new DataAccess();
+            //getting the account through the textbox TEMP
+            accounts =  db.GetCredentials(tbAccount.Text);
 
-                if (command == null)
-                {
-                    MessageBox.Show("COMMAND ERROR");
-                    return;
-                }
-
-                //setting the database connection for commands
-
-                command.Connection = connection;
-
-                //creating the query we want to issue
-                command.CommandText = "SELECT * FROM Chores";
-
-                //reading the results from our query
-                using (DbDataReader dataReader = command.ExecuteReader())
-                {
-                    while (dataReader.Read())
-                    {
-                        lbxCalendarChores.Items.Add(dataReader["Chores"]);
-                    }
-
-                }
-            }
+            UpdateBinding();
         }
     }
 }
