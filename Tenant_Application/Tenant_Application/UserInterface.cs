@@ -7,16 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-<<<<<<< HEAD
-<<<<<<< HEAD
-using System.Net;
-
-=======
->>>>>>> Michael-B
-=======
-using System.Net;
-
->>>>>>> production
 using System.Net.Mail;
 using System.Net;
 
@@ -77,14 +67,6 @@ namespace Tenant_Application
                 const string subject = "Complaint";
                 string body = complaint;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> Michael-B
-=======
-
->>>>>>> production
                 var smtp = new SmtpClient
                 {
                     //Don't change these settings
@@ -103,12 +85,6 @@ namespace Tenant_Application
                 {
                     smtp.Send(message);
                 }
-
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> production
                 /*mail.From = new MailAddress("tenantcomplaints69@gmail.com");
                 mail.To.Add("michael@fragrant-chios.com");
                 mail.Subject = "Tenant Complaint";
@@ -138,11 +114,6 @@ namespace Tenant_Application
 
                 MessageBox.Show("Your Mail is sended");*/
 
-<<<<<<< HEAD
-=======
->>>>>>> Michael-B
-=======
->>>>>>> production
             } catch (Exception ex){
                 //MessageBox.Show(ex.ToString());
                 MsgBoxWarning(ex.ToString());
