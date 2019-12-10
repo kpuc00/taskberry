@@ -24,6 +24,29 @@ namespace Tenant_Application
                 return $"{ Username } { Password } ({ EmailAddress })"; 
             }
         }
-
+        public string UsernameInfo
+        {
+            get
+            {
+                // "pesho123 gosho gosho@patka.com"
+                return $"{ Username }";
+            }
+        }
+        public string PasswordInfo
+        {
+            get
+            {
+                // "pesho123 gosho gosho@patka.com"
+                return $"{ Password }";
+            }
+        }
+        public string NameInfo
+        {
+            get
+            {
+                // "pesho123 gosho gosho@patka.com"
+                return $"{ Name }";
+            }
+        }
     }
 }

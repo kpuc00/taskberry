@@ -32,7 +32,7 @@ namespace Tenant_Application
         public void SendUDP(string stringToSend)
         {
             //enter remote ip adress here
-            string ip = "";
+            string ip = "25.22.198.173";
             UdpClient udpClient = new UdpClient();
             udpClient.Connect(ip, 8888);
             Byte[] sendData = Encoding.ASCII.GetBytes(stringToSend);
