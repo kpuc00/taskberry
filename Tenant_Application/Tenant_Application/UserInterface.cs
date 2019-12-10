@@ -21,7 +21,7 @@ namespace Tenant_Application
         List<int> temporaryScoreboard = new List<int>();
 
         //creating a list to store account TEMP
-        List<Account> accounts = new List<Account>();
+        BindingList<Account> accounts = new BindingList<Account>();
 
         string msg = "";
         protected override CreateParams CreateParams
@@ -45,12 +45,6 @@ namespace Tenant_Application
             thdUDPServer.Start();
             ListBox.CheckForIllegalCrossThreadCalls = false;
             TextBox.CheckForIllegalCrossThreadCalls = false;
-
-            UpdateBinding();
-        }
-
-        private void UpdateBinding()
-        {
             lbxCalendarChores.DataSource = accounts;
             lbxCalendarChores.DisplayMember = "FullInfo";
         }
@@ -336,12 +330,14 @@ namespace Tenant_Application
 
         private void btnTempDB_Click(object sender, EventArgs e)
         {
+            accounts.Clear();
             //getting access to the database
             DataAccess db = new DataAccess();
             //getting the account through the textbox TEMP
-            accounts =  db.GetCredentials(tbAccount.Text);
-
-            UpdateBinding();
+            foreach (var account in db.GetUsername(tbAccount.Text))
+            {
+                accounts.Add(account);
+            }
         }
 
         private void UserInterfaceForm_FormClosed(object sender, FormClosedEventArgs e)
