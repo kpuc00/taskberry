@@ -82,6 +82,7 @@
     <Compile Include="Round Button.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UDPConnection.cs" />
     <Compile Include="UserInterface.cs">
       <SubType>Form</SubType>
     </Compile>

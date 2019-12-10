@@ -49,5 +49,15 @@ namespace Tenant_Application
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
         }
+
+        private void PbxLogo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(-1);
+        }
     }
 }

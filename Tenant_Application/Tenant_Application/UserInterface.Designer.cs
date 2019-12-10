@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabSwitch = new System.Windows.Forms.TabControl();
             this.tabCalendar = new System.Windows.Forms.TabPage();
+            this.tbAccount = new System.Windows.Forms.TextBox();
             this.btnTempDB = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btnCalendarSelect = new System.Windows.Forms.Button();
@@ -68,7 +69,7 @@
             this.tbxComplaint = new System.Windows.Forms.RichTextBox();
             this.lblAnnComplaints = new System.Windows.Forms.Label();
             this.timerAnnouncement = new System.Windows.Forms.Timer(this.components);
-            this.tbAccount = new System.Windows.Forms.TextBox();
+            this.timerRefreshUDP = new System.Windows.Forms.Timer(this.components);
             this.tabSwitch.SuspendLayout();
             this.tabCalendar.SuspendLayout();
             this.panelAnnCalendar.SuspendLayout();
@@ -115,6 +116,13 @@
             this.tabCalendar.TabIndex = 2;
             this.tabCalendar.Text = "Calendar";
             this.tabCalendar.UseVisualStyleBackColor = true;
+            // 
+            // tbAccount
+            // 
+            this.tbAccount.Location = new System.Drawing.Point(865, 471);
+            this.tbAccount.Name = "tbAccount";
+            this.tbAccount.Size = new System.Drawing.Size(100, 24);
+            this.tbAccount.TabIndex = 16;
             // 
             // btnTempDB
             // 
@@ -604,12 +612,10 @@
             this.timerAnnouncement.Interval = 10000;
             this.timerAnnouncement.Tick += new System.EventHandler(this.TimerAnnouncement_Tick);
             // 
-            // tbAccount
+            // timerRefreshUDP
             // 
-            this.tbAccount.Location = new System.Drawing.Point(865, 471);
-            this.tbAccount.Name = "tbAccount";
-            this.tbAccount.Size = new System.Drawing.Size(100, 24);
-            this.tbAccount.TabIndex = 16;
+            this.timerRefreshUDP.Enabled = true;
+            this.timerRefreshUDP.Tick += new System.EventHandler(this.TimerRefreshUDP_Tick);
             // 
             // UserInterfaceForm
             // 
@@ -622,8 +628,10 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "UserInterfaceForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserInterfaceForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserInterfaceForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserInterfaceForm_FormClosed);
             this.Load += new System.EventHandler(this.UserInterfaceForm_Load);
             this.tabSwitch.ResumeLayout(false);
             this.tabCalendar.ResumeLayout(false);
@@ -687,5 +695,6 @@
         private System.Windows.Forms.ListBox lbxScoreboard;
         private System.Windows.Forms.Button btnTempDB;
         private System.Windows.Forms.TextBox tbAccount;
+        private System.Windows.Forms.Timer timerRefreshUDP;
     }
 }

@@ -11,6 +11,8 @@ using System.Net.Mail;
 using System.Net;
 using System.Data.Common;
 using System.Configuration;
+using System.Net.Sockets;
+using System.Threading;
 
 namespace Tenant_Application
 {
@@ -37,6 +39,12 @@ namespace Tenant_Application
         public UserInterfaceForm()
         {
             InitializeComponent();
+
+            UDPConnection data = new UDPConnection();
+            Thread thdUDPServer = new Thread(new ThreadStart(data.ReceiveUDP));
+            thdUDPServer.Start();
+            ListBox.CheckForIllegalCrossThreadCalls = false;
+            TextBox.CheckForIllegalCrossThreadCalls = false;
 
             UpdateBinding();
         }
@@ -239,13 +247,42 @@ namespace Tenant_Application
         }
 
         string lblMsgs = "";
-        private void BtnChatSend_Click(object sender, EventArgs e)
+        string current = "";
+
+        private void TimerRefreshUDP_Tick(object sender, EventArgs e)
+        {
+            UDPConnection data = new UDPConnection();
+            if (data.isReceived)
+            {
+                current = data.ReturnUDP();
+                RefreshChat();
+                data.isReceived = false;
+            }
+        }
+
+        private void RefreshChat()
         {
             DateTime dt = DateTime.Today;
             string hour = dt.ToShortDateString();
-            string current = tbxChatMsg.Text;
-            tbxChat.Text =  $"{lblMsgs}[{hour}] Gosho:    {current} {Environment.NewLine}";
+
+            tbxChat.Text = $"{lblMsgs}[{hour}] Gosho:    {current} {Environment.NewLine}";
             lblMsgs = tbxChat.Text;
+            tbxChatMsg.Clear();
+        }
+
+        private void BtnChatSend_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tbxChatMsg.Text))
+            {
+                //do nothing
+            }
+            else
+            {
+                current = tbxChatMsg.Text;
+                UDPConnection data = new UDPConnection();
+                data.SendUDP(current);
+                RefreshChat();
+            }
         }
 
         private void BtnCalendarSelect_Click(object sender, EventArgs e)
@@ -305,6 +342,11 @@ namespace Tenant_Application
             accounts =  db.GetCredentials(tbAccount.Text);
 
             UpdateBinding();
+        }
+
+        private void UserInterfaceForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(-1);
         }
     }
 }
