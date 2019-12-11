@@ -12,7 +12,6 @@ namespace Tenant_Application
 {
     public partial class LoginForm : Form
     {
-        UserInterfaceForm uif = new UserInterfaceForm();
         public LoginForm()
         {
             InitializeComponent();
@@ -34,13 +33,24 @@ namespace Tenant_Application
         {
             if(string.IsNullOrWhiteSpace(tbxUserName.Text) || tbxPassWord.Text == "Password" || tbxUserName.Text == "Username" || string.IsNullOrWhiteSpace(tbxPassWord.Text))
             {
-                UserInterfaceForm newForm = new UserInterfaceForm();
-                newForm.MsgBoxWarning("Please, enter your credentials");
+                MessageBox.Show("Please, enter your credentials");
             }
             else
             {
-                this.Hide();
-                uif.Show();
+                DataAccess db = new DataAccess();
+                if (db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text).Count > 0)
+                {
+                    int id = db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text)[0].id;
+                    string email = db.GetEmailById(id)[0].EmailAddress.ToString();
+                    string password = db.GetPasswordById(id)[0].Password.ToString();
+                    UserInterfaceForm userInterface = new UserInterfaceForm(id, email, password);
+                    this.Hide();
+                    userInterface.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Nope");
+                }
             }
         }
 

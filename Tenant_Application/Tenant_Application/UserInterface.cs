@@ -20,6 +20,12 @@ namespace Tenant_Application
     {
         List<int> temporaryScoreboard = new List<int>();
 
+
+        int personId;
+        string personEmail;
+        string personPassword;
+
+
         //creating a list to store account TEMP
         BindingList<Account> accounts = new BindingList<Account>();
         BindingList<Chore> chores = new BindingList<Chore>();
@@ -38,9 +44,14 @@ namespace Tenant_Application
 
 
 
-        public UserInterfaceForm()
+        public UserInterfaceForm(int personId, string personEmail, string personPassword)
         {
             InitializeComponent();
+            this.personId = personId;
+            this.personEmail = personEmail;
+            this.personPassword = personPassword;
+
+
 
             UDPConnection data = new UDPConnection();
             Thread thdUDPServer = new Thread(new ThreadStart(data.ReceiveUDP));
@@ -77,9 +88,9 @@ namespace Tenant_Application
             // ONLY Gmail accounts that have "Use LESS secure apps" ENABLED will work!!!!!
             try
             {
-                var fromAddress = new MailAddress("Your email", "Your email name");
+                var fromAddress = new MailAddress(personEmail);
                 var toAddress = new MailAddress("tenantcomplaints69@gmail.com", "Joseph Stalin");
-                const string fromPassword = "Your password";
+                string fromPassword = personPassword;
                 const string subject = "Complaint";
                 string body = complaint;
 
@@ -101,34 +112,7 @@ namespace Tenant_Application
                 {
                     smtp.Send(message);
                 }
-                /*mail.From = new MailAddress("tenantcomplaints69@gmail.com");
-                mail.To.Add("michael@fragrant-chios.com");
-                mail.Subject = "Tenant Complaint";
-                mail.Body = complaint;
 
-                SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("tenantcomplaints69@gmail.com", "RealCommunism69");
-                SmtpServer.Send(mail);
-
-                MessageBox.Show("Mail Sent");*/
-
-                /*MailMessage msg = new MailMessage();
-                msg.From = new MailAddress("tenantcomplaints69@gmail.com");
-                msg.To.Add("michael@fragrant-chios.com");
-                msg.Subject = "Tenant Complaint";
-                msg.Body = complaint;
-
-                SmtpClient smt = new SmtpClient();
-                smt.Host = "smtp.gmail.com";
-                System.Net.NetworkCredential ntcd = new NetworkCredential();
-                ntcd.UserName = "tenantcomplaints@gmail.com";
-                ntcd.Password = "RealCommunism69";
-                smt.Credentials = ntcd;
-                smt.EnableSsl = true;
-                smt.Port = 587;
-                smt.Send(msg);
-
-                MessageBox.Show("Your Mail is sended");*/
 
             } catch (Exception ex){
                 //MessageBox.Show(ex.ToString());
