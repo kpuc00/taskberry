@@ -8,9 +8,13 @@ using System.Threading.Tasks;
 
 namespace Tenant_Application.Classes.Database
 {
-    public static class AccessAnnoucement
+    public class AccessAnnoucement
     {
-        public static string AddAnnouncement(string annoucement, int date) 
+        public string Annoucement { get; set; }
+        public string Date { get; set; }
+
+
+        public string AddAnnouncement(string annoucement, string date) 
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
