@@ -37,6 +37,22 @@ namespace Tenant_Application
                 return output;
             }
         }
+        public List<Account> GetEmailById(int id)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
+            {
+                var output = connection.Query<Account>("dbo.Account_GetEmailById @Id", new { Id = id }).ToList();
+                return output;
+            }
+        }
+        public List<Account> GetPasswordById(int id)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
+            {
+                var output = connection.Query<Account>("dbo.Account_GetPasswordById @Id", new { Id = id }).ToList();
+                return output;
+            }
+        }
 
         public List<Account> GetName(string name)
         {
