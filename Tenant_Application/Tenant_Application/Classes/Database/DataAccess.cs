@@ -20,6 +20,7 @@ namespace Tenant_Application
                 return output;
             }
         }
+
         public List<Account> GetPassword(string password)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
@@ -28,11 +29,11 @@ namespace Tenant_Application
                 return output;
             }
         }
-        public List<Account> GetIdByPassword(string user, string pass)
+        public List<Account> GetIdByCredentials(string user, string pass)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
-                var output = connection.Query<Account>("dbo.Account_GetIdByPassword @Pass, @User", new { User = user, Pass = pass }).ToList();
+                var output = connection.Query<Account>("dbo.Account_GetIdByCredentials @Pass, @User", new { User = user, Pass = pass }).ToList();
                 return output;
             }
         }
