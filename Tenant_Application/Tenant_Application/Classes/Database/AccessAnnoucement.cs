@@ -18,7 +18,7 @@ namespace Tenant_Application.Classes.Database
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
-                var output = connection.Query<Account>("dbo.Annoucements_AddAnnoucement @Annoucement, @Date", new { Annoucement = annoucement, Date = date }).ToList();
+                var output = connection.Query<Account>("dbo.Annoucements_AddAnnoucement @Annoucement, @Date", new { Annoucement = annoucement, Date = date });
                 return output.ToString();
             }
         }

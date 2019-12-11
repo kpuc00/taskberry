@@ -76,6 +76,23 @@ namespace Tenant_Application
             {
                 var output = connection.Query<Chore>("dbo.Chores_GetByName @Text", new { Text = chore }).ToList();
                 return output;
+            }   
+        }
+
+        public string AddAnnouncement(string annoucement, string date)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
+            {
+                var output = connection.Query<Account>("dbo.Annoucements_AddAnnoucement @Annoucement, @Date", new { Annoucement = annoucement, Date = date }).ToList();
+                return output.ToString();
+            }
+        }
+        public string GetAnnouncement(string annoucement, string date)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
+            {
+                var output = connection.Query<Account>("dbo.Annoucements_GetAnnouncement @Annoucement, @Date", new { Annoucement = annoucement, Date = date });
+                return output.ToString();
             }
         }
     }
