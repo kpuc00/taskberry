@@ -18,6 +18,10 @@ namespace Tenant_Application
 {
     public partial class UserInterfaceForm : Form
     {
+
+
+        DataAccess db = new DataAccess();
+
         List<int> temporaryScoreboard = new List<int>();
 
 
@@ -37,7 +41,7 @@ namespace Tenant_Application
             get
             {
                 CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED //cause that makes sense ~ by Michael_gvdw
                 return cp;
             }
         }
@@ -47,9 +51,13 @@ namespace Tenant_Application
         public UserInterfaceForm(int personId, string personEmail, string personPassword)
         {
             InitializeComponent();
+
+            //Get data passed from login screen
             this.personId = personId;
             this.personEmail = personEmail;
             this.personPassword = personPassword;
+
+            timerAnnDisp.Start();
 
 
 
@@ -69,7 +77,20 @@ namespace Tenant_Application
             Scoreboard();
         }
 
-        void Days()
+        //Closes entire app
+        private void UserInterfaceForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.ExitThread();
+            Application.Exit();
+        }
+
+        //Closes entire app
+        private void UserInterfaceForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(-1);
+        }
+
+        private void Days()
         {
             lbxCalendarDays.Items.Add("Monday");
             lbxCalendarDays.Items.Add("Tuesday");
@@ -81,9 +102,7 @@ namespace Tenant_Application
         }
 
         private void SendMail(string complaint) {
-
             tbxComplaint.Clear();
-
 
             // ONLY Gmail accounts that have "Use LESS secure apps" ENABLED will work!!!!!
             try
@@ -120,17 +139,6 @@ namespace Tenant_Application
             }
         }
 
-        private void TabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UserInterfaceForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.ExitThread();
-            Application.Exit();
-        }
-
         private void BtnSendMail_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(tbxComplaint.Text))
@@ -145,14 +153,8 @@ namespace Tenant_Application
 
         }
 
-        private void TimerAnnouncement_Tick(object sender, EventArgs e)
-        {
-            lblAnnComplaints.Text = "";
-            lblAnnChat.Text = "";
-            lblAnnCalendar.Text = "";
-            lblAnnScore.Text = "";
-            timerAnnouncement.Enabled = false;
-        }
+   
+
 
         private void BtnAnnComplaints_Click(object sender, EventArgs e)
         {
@@ -205,26 +207,12 @@ namespace Tenant_Application
                 addmsg += " ...";
             }
 
-            lblAnnComplaints.Text = addmsg;
-            lblAnnChat.Text = addmsg;
-            lblAnnCalendar.Text = addmsg;
-            lblAnnScore.Text = addmsg;
         }
 
-        private void Btn_Click(object sender, EventArgs e)
-        {
-            panelAnnChat.Visible = HidePanel(panelAnnChat.Visible);
-        }
 
-        private void BtnAnnCalendar_Click(object sender, EventArgs e)
-        {
-            panelAnnCalendar.Visible = HidePanel(panelAnnCalendar.Visible);
-        }
 
-        private void BtnAnnScore_Click(object sender, EventArgs e)
-        {
-            panelAnnScore.Visible = HidePanel(panelAnnScore.Visible);
-        }
+
+
 
         string lblMsgs = "";
         string current = "";
@@ -284,7 +272,7 @@ namespace Tenant_Application
             MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
-        void Scoreboard()
+        private void Scoreboard()
         {
             temporaryScoreboard.Add(5);
             temporaryScoreboard.Add(3);
@@ -326,9 +314,77 @@ namespace Tenant_Application
             }
         }
 
-        private void UserInterfaceForm_FormClosed(object sender, FormClosedEventArgs e)
+
+                        /*Handle Announcement*/
+
+        int lastLength = 0; //Keeps track if new announcemment is added
+        //Disp new announcement as pop-up
+        private void TimerAnnDisp_Tick(object sender, EventArgs e)
         {
-            Environment.Exit(-1);
+            if (db.GetAnnouncement().Count != lastLength)
+            {
+                lastLength = db.GetAnnouncement().Count;
+
+                string ann = db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Date + db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Annoucement;
+
+                if (ann.Length > 20)
+                {
+                    //at 20th character - ...
+                    msg = ann.Substring(0, 20);
+                    msg += " ...";
+                }
+
+                lblAnnComplaints.Text = msg;
+                lblAnnChat.Text = msg;
+                lblAnnCalendar.Text = msg;
+                lblAnnScore.Text = msg;
+
+                timerAnnouncement.Start();
+            }
+        }
+
+        //Rmv new announcement as pop-up
+        private void TimerAnnouncement_Tick(object sender, EventArgs e)
+        {
+            lblAnnComplaints.Text = "";
+            lblAnnChat.Text = "";
+            lblAnnCalendar.Text = "";
+            lblAnnScore.Text = "";
+            timerAnnouncement.Stop();
+        }
+
+        //Open/Close the announcememnt panel
+        private void BtnAnnCalendar_Click(object sender, EventArgs e)
+        {
+            panelAnnCalendar.Visible = HidePanel(panelAnnCalendar.Visible);
+
+            try
+            {
+                List<Announcement> listAnn = db.GetAnnouncement();
+
+                RstAnnPanel(); //Clear the panel
+
+                //Add the announcements to the announcement panel
+                foreach (Announcement a in listAnn)
+                {
+                    tbxAnnChat.Text = a.Date + a.Annoucement + "\n";
+                    tbxAnnComplaints.Text = a.Date + a.Annoucement + "\n";
+                    tbxAnnCalendar.Text = a.Date + a.Annoucement + "\n";
+                    tbxAnnScore.Text = a.Date + a.Annoucement + "\n";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        /*End Handle Announcement*/
+
+        private void RstAnnPanel() {
+            tbxAnnChat.Text = "";
+            tbxAnnComplaints.Text = "";
+            tbxAnnCalendar.Text = "";
+            tbxAnnScore.Text = "";
         }
     }
 }

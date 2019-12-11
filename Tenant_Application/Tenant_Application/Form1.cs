@@ -17,6 +17,11 @@ namespace Tenant_Application
             InitializeComponent();
         }
 
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+        }
+
         private void TbxUserName_Click(object sender, EventArgs e)
         {
             tbxUserName.Clear();
@@ -38,27 +43,50 @@ namespace Tenant_Application
             else
             {
                 DataAccess db = new DataAccess();
-                if (db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text).Count > 0)
+
+                try
                 {
-                    int id = db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text)[0].id;
-                    string email = db.GetEmailById(id)[0].EmailAddress.ToString();
-                    string password = db.GetPasswordById(id)[0].Password.ToString();
-                    UserInterfaceForm userInterface = new UserInterfaceForm(id, email, password);
-                    this.Hide();
-                    userInterface.Show();
-                }
-                else
+
+                    if (db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text).Count > 0)
+                    {
+                        int id = db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text)[0].id;
+
+                        switch (id)
+                        {
+                            //Log in LandLord
+                            case 1:
+                                LandLordForm landLordInterface = new LandLordForm(id);
+
+                                landLordInterface.Show();
+                                break;
+                            //Log in Tenant
+                            default:
+
+                                string email = db.GetEmailById(id)[0].EmailAddress.ToString();
+                                string password = db.GetPasswordById(id)[0].Password.ToString();
+
+                                UserInterfaceForm userInterface = new UserInterfaceForm(id, email, password);
+
+
+                                userInterface.Show();
+                                break;
+                        }
+
+                        this.Hide();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("User-name or Password is incorect!");
+                    }
+                } catch (Exception ex)
                 {
-                    MessageBox.Show("Nope");
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
-        }
 
         private void PbxLogo_Click(object sender, EventArgs e)
         {
