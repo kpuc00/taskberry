@@ -41,7 +41,7 @@ namespace Tenant_Application
             get
             {
                 CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED //cause that makes sense ~ by Michael_gvdw
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED //cause that makes sense ~ by Michael_gvdw //it actually helps a bit - this + doublebuffering
                 return cp;
             }
         }
@@ -90,6 +90,7 @@ namespace Tenant_Application
             Environment.Exit(-1);
         }
 
+        //Temporary populating the calendar
         private void Days()
         {
             lbxCalendarDays.Items.Add("Monday");
@@ -132,9 +133,8 @@ namespace Tenant_Application
                     smtp.Send(message);
                 }
 
-
+                MsgBoxInformation("Thank you for your contacting us. We will review your complain, and get back to you as soon as possible!");
             } catch (Exception ex){
-                //MessageBox.Show(ex.ToString());
                 MsgBoxWarning(ex.ToString());
             }
         }
@@ -258,7 +258,7 @@ namespace Tenant_Application
             if(lbxCalendarChores.SelectedIndex != -1)
             {
                 //You need to send the chore you chose to the database - it's already taken
-                MessageBox.Show($"You chose to: {lbxCalendarChores.SelectedItem}");
+                MsgBoxInformation($"You chose to: {lbxCalendarChores.SelectedItem}");
                 lbxCalendarChores.Items.Remove(lbxCalendarChores.SelectedItem);
             }
             else
@@ -267,10 +267,7 @@ namespace Tenant_Application
             }
         }
 
-        public void MsgBoxWarning (string message)
-        { 
-            MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
+
 
         private void Scoreboard()
         {
@@ -321,26 +318,26 @@ namespace Tenant_Application
         //Disp new announcement as pop-up
         private void TimerAnnDisp_Tick(object sender, EventArgs e)
         {
-            if (db.GetAnnouncement().Count != lastLength)
-            {
-                lastLength = db.GetAnnouncement().Count;
+            //if (db.GetAnnouncement().Count != lastLength)
+            //{
+            //    lastLength = db.GetAnnouncement().Count;
 
-                string ann = db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Date + db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Annoucement;
+            //    string ann = db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Date + db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Annoucement;
 
-                if (ann.Length > 20)
-                {
-                    //at 20th character - ...
-                    msg = ann.Substring(0, 20);
-                    msg += " ...";
-                }
+            //    if (ann.Length > 20)
+            //    {
+            //        //at 20th character - ...
+            //        msg = ann.Substring(0, 20);
+            //        msg += " ...";
+            //    }
 
-                lblAnnComplaints.Text = msg;
-                lblAnnChat.Text = msg;
-                lblAnnCalendar.Text = msg;
-                lblAnnScore.Text = msg;
+            //    lblAnnComplaints.Text = msg;
+            //    lblAnnChat.Text = msg;
+            //    lblAnnCalendar.Text = msg;
+            //    lblAnnScore.Text = msg;
 
-                timerAnnouncement.Start();
-            }
+            //    timerAnnouncement.Start();
+            //}
         }
 
         //Rmv new announcement as pop-up
@@ -375,7 +372,7 @@ namespace Tenant_Application
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MsgBoxWarning(ex.ToString());
             }
         }
         /*End Handle Announcement*/
@@ -385,6 +382,16 @@ namespace Tenant_Application
             tbxAnnComplaints.Text = "";
             tbxAnnCalendar.Text = "";
             tbxAnnScore.Text = "";
+        }
+
+        public void MsgBoxWarning(string message)
+        {
+            MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        public void MsgBoxInformation(string message)
+        {
+            MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

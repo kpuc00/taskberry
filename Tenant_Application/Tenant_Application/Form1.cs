@@ -38,7 +38,7 @@ namespace Tenant_Application
         {
             if(string.IsNullOrWhiteSpace(tbxUserName.Text) || tbxPassWord.Text == "Password" || tbxUserName.Text == "Username" || string.IsNullOrWhiteSpace(tbxPassWord.Text))
             {
-                MessageBox.Show("Please, enter your credentials");
+                MsgBoxWarning("Please, enter your credentials");
             }
             else
             {
@@ -54,7 +54,7 @@ namespace Tenant_Application
                         switch (id)
                         {
                             //Log in LandLord
-                            case 1:
+                            case 5:
                                 LandLordForm landLordInterface = new LandLordForm(id);
 
                                 landLordInterface.Show();
@@ -77,7 +77,7 @@ namespace Tenant_Application
                     }
                     else
                     {
-                        MessageBox.Show("User-name or Password is incorect!");
+                        MsgBoxWarning("User - name or Password is incorect!");
                     }
                 } catch (Exception ex)
                 {
@@ -96,6 +96,16 @@ namespace Tenant_Application
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Environment.Exit(-1);
+        }
+
+        public void MsgBoxWarning(string message)
+        {
+            MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        public void MsgBoxInformation(string message)
+        {
+            MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
