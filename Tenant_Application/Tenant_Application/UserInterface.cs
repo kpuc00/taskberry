@@ -13,7 +13,6 @@ using System.Data.Common;
 using System.Configuration;
 using System.Net.Sockets;
 using System.Threading;
-using Tenant_Application.Classes.Database;
 
 namespace Tenant_Application
 {
@@ -24,7 +23,7 @@ namespace Tenant_Application
         //creating a list to store account TEMP
         BindingList<Account> accounts = new BindingList<Account>();
         BindingList<Chore> chores = new BindingList<Chore>();
-        BindingList<AccessAnnoucement> annoucements = new BindingList<AccessAnnoucement>();
+        BindingList<Announcement> annoucements = new BindingList<Announcement>();
 
         string msg = "";
         protected override CreateParams CreateParams
