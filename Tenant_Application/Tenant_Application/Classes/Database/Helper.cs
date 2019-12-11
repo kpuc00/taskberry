@@ -10,7 +10,7 @@ namespace Tenant_Application
     public static class Helper
     {
         //creating a helper with the connectin string
-        public static string CnnVal(string name)
+        public static string ConnectionValue(string name)
         {
             //accessing the connection string from the config manager
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;

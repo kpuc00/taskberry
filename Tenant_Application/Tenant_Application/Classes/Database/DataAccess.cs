@@ -13,7 +13,7 @@ namespace Tenant_Application
         public List<Account> GetUsername(string username)
         {
             //creating a new connection to our sql database
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbi428024")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
                 //get the open connection and ask for the type account data and command issue
                 var output = connection.Query<Account>("dbo.Account_GetAccountByUsername @Text", new { Text = username }).ToList();
@@ -22,7 +22,7 @@ namespace Tenant_Application
         }
         public List<Account> GetPassword(string password)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbi428024")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
                 var output = connection.Query<Account>("dbo.Account_GetAccountByPassword @Text", new { Text = password }).ToList();
                 return output;
@@ -30,7 +30,7 @@ namespace Tenant_Application
         }
         public List<Account> GetName(string name)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbi428024")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
                 var output = connection.Query<Account>("dbo.Account_GetAccountByName @Text", new { Text = name }).ToList();
                 return output;
@@ -38,7 +38,7 @@ namespace Tenant_Application
         }
         public List<Account> GetId(int id)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbi428024")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
                 var output = connection.Query<Account>("dbo.Account_GetAccountById @Id", new { Id = id }).ToList();
                 return output;
@@ -46,7 +46,7 @@ namespace Tenant_Application
         }
         public List<Chore> GetChore(string chore)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("dbi428024")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
                 var output = connection.Query<Chore>("dbo.Chores_GetByName @Text", new { Text = chore }).ToList();
                 return output;

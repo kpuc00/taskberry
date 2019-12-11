@@ -21,7 +21,7 @@ namespace Tenant_Application
             get 
             { 
                 // "pesho123 gosho gosho@patka.com"
-                return $"{ Username } { Password } ({ EmailAddress })";
+                return $"{ Username } { Password } { EmailAddress }";
             }
         }
     }

@@ -22,6 +22,8 @@ namespace Tenant_Application
 
         //creating a list to store account TEMP
         BindingList<Account> accounts = new BindingList<Account>();
+        BindingList<Chore> chores = new BindingList<Chore>();
+        BindingList<Annoucement> annoucements = new BindingList<Annoucement>();
 
         string msg = "";
         protected override CreateParams CreateParams

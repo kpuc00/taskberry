@@ -65,19 +65,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Account.cs" />
+    <Compile Include="Classes\Database\Account.cs" />
     <Compile Include="Button_WOC.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Classes\Chore.cs" />
-    <Compile Include="Classes\DataAccess.cs" />
+    <Compile Include="Classes\Database\AccessAnnoucement.cs" />
+    <Compile Include="Classes\Database\Chore.cs" />
+    <Compile Include="Classes\Database\DataAccess.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Helper.cs" />
+    <Compile Include="Classes\Database\Helper.cs" />
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Round Button.cs">
