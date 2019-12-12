@@ -62,8 +62,9 @@ namespace Tenant_Application
             
         }
 
+        private void tabAnnouncement_Click(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }
