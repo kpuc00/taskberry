@@ -91,7 +91,7 @@ namespace Tenant_Application
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
-                var output = connection.Query<Announcement>("dbo.Account_GetAnnouncement").ToList();
+                var output = connection.Query<Announcement>("dbo.Announcement_GetAnnouncement").ToList();
                 return output;
             }
         }
