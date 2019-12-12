@@ -134,20 +134,6 @@ namespace Tenant_Application
                 return true;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
                         /*Handle Announcement*/
 
         int lastLength = 0; //Keeps track if new announcemment is added
