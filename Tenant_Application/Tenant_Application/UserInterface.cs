@@ -364,10 +364,10 @@ namespace Tenant_Application
                 //Add the announcements to the announcement panel
                 foreach (Announcement a in listAnn)
                 {
-                    tbxAnnChat.Text = a.Date + a.Annoucement + "\n";
-                    tbxAnnComplaints.Text = a.Date + a.Annoucement + "\n";
-                    tbxAnnCalendar.Text = a.Date + a.Annoucement + "\n";
-                    tbxAnnScore.Text = a.Date + a.Annoucement + "\n";
+                    tbxAnnChat.Text += a.Date + a.Annoucement + "\n";
+                    tbxAnnComplaints.Text += a.Date + a.Annoucement + "\n";
+                    tbxAnnCalendar.Text += a.Date + a.Annoucement + "\n";
+                    tbxAnnScore.Text += a.Date + a.Annoucement + "\n";
                 }
             }
             catch (Exception ex)
