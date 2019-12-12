@@ -22,6 +22,12 @@ namespace Tenant_Application
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
 
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Closes the whole application and it's thread
+            Environment.Exit(-1);
+        }
+
         //Only deletes text on first click on form load
         bool firstTimeUsername = true;
         bool firstTimePassword = true;
@@ -53,8 +59,10 @@ namespace Tenant_Application
             }
             else
             {
+                
                 DataAccess db = new DataAccess();
 
+                //Checks for errors
                 try
                 {
 
@@ -83,6 +91,7 @@ namespace Tenant_Application
                                 break;
                         }
 
+                        //Hides the login screen
                         this.Hide();
 
                     }
@@ -101,15 +110,7 @@ namespace Tenant_Application
 
 
 
-        private void PbxLogo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Environment.Exit(-1);
-        }
+        //Custom Messageboxes
 
         public void MsgBoxWarning(string message)
         {

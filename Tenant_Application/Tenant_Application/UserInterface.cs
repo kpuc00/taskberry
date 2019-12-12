@@ -22,20 +22,13 @@ namespace Tenant_Application
 
         DataAccess db = new DataAccess();
 
-        List<int> temporaryScoreboard = new List<int>();
 
-
+        //Holding personal information
         int personId;
         string personEmail;
         string personPassword;
 
-
-        //creating a list to store account TEMP
-        BindingList<Account> accounts = new BindingList<Account>();
-        BindingList<Chore> chores = new BindingList<Chore>();
-        BindingList<Announcement> annoucements = new BindingList<Announcement>();
-
-        string msg = "";
+        //Overried some painter settings - makes form load faster
         protected override CreateParams CreateParams
         {
             get
@@ -46,8 +39,6 @@ namespace Tenant_Application
             }
         }
 
-
-
         public UserInterfaceForm(int personId, string personEmail, string personPassword)
         {
             InitializeComponent();
@@ -57,24 +48,13 @@ namespace Tenant_Application
             this.personEmail = personEmail;
             this.personPassword = personPassword;
 
-            timerAnnDisp.Start();
-
-
-
-            UDPConnection data = new UDPConnection();
-            Thread thdUDPServer = new Thread(new ThreadStart(data.ReceiveUDP));
-            thdUDPServer.Start();
-            ListBox.CheckForIllegalCrossThreadCalls = false;
-            TextBox.CheckForIllegalCrossThreadCalls = false;
-            lbxCalendarChores.DataSource = accounts;
-            lbxCalendarChores.DisplayMember = "FullInfo";
+            
+            timerAnnDisp.Start(); //Displays new announcements
         }
 
         private void UserInterfaceForm_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            Days();
-            Scoreboard();
         }
 
         //Closes entire app
@@ -90,17 +70,6 @@ namespace Tenant_Application
             Environment.Exit(-1);
         }
 
-        //Temporary populating the calendar
-        private void Days()
-        {
-            lbxCalendarDays.Items.Add("Monday");
-            lbxCalendarDays.Items.Add("Tuesday");
-            lbxCalendarDays.Items.Add("Wednesday");
-            lbxCalendarDays.Items.Add("Thursday");
-            lbxCalendarDays.Items.Add("Friday");
-            lbxCalendarDays.Items.Add("Saturday");
-            lbxCalendarDays.Items.Add("Sunday");
-        }
 
         private void SendMail(string complaint) {
             tbxComplaint.Clear();
@@ -153,14 +122,7 @@ namespace Tenant_Application
 
         }
 
-   
-
-
-        private void BtnAnnComplaints_Click(object sender, EventArgs e)
-        {
-            panelAnnComplaints.Visible = HidePanel(panelAnnComplaints.Visible);
-        }
-
+        //Hides or shows announcement panel
         bool HidePanel(bool panelInfo)
         {
             if (panelInfo)
@@ -174,170 +136,45 @@ namespace Tenant_Application
         }
 
 
-        //Will be changed to a method after we do the connection
-        string announceDisplay = "";
-        private void Button1_Click_1(object sender, EventArgs e)
-        {
-            tbxAnnComplaints.Text = "";
-
-            //Resets the timer in case a new announcement comes in
-            timerAnnouncement.Enabled = false;
-            timerAnnouncement.Enabled = true;
-
-
-            DateTime dt = DateTime.Today;
-            string hour = dt.ToShortDateString();
-
-            //Change the text in msg with the announcement coming from wherever 
-            msg = textBox1.Text;
-
-            string addmsg = msg;
-            string current = ($"[{hour}]  {msg}" + Environment.NewLine);
-            tbxAnnChat.Text = announceDisplay + current;
-            tbxAnnComplaints.Text = announceDisplay + current;
-            tbxAnnCalendar.Text = announceDisplay + current;
-            tbxAnnScore.Text = announceDisplay + current;
-
-            announceDisplay = tbxAnnComplaints.Text;
-
-            if (msg.Length > 20)
-            {
-                //at 20th character - ...
-                addmsg = msg.Substring(0, 20);
-                addmsg += " ...";
-            }
-
-        }
 
 
 
 
 
 
-        string lblMsgs = "";
-        string current = "";
-
-        private void TimerRefreshUDP_Tick(object sender, EventArgs e)
-        {
-            UDPConnection data = new UDPConnection();
-            if (data.isReceived)
-            {
-                current = data.ReturnUDP();
-                RefreshChat();
-                data.isReceived = false;
-            }
-        }
-
-        private void RefreshChat()
-        {
-            DateTime dt = DateTime.Today;
-            string hour = dt.ToShortDateString();
-
-            tbxChat.Text = $"{lblMsgs}[{hour}] Gosho:    {current} {Environment.NewLine}";
-            lblMsgs = tbxChat.Text;
-            tbxChatMsg.Clear();
-        }
-
-        private void BtnChatSend_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(tbxChatMsg.Text))
-            {
-                //do nothing
-            }
-            else
-            {
-                current = tbxChatMsg.Text;
-                UDPConnection data = new UDPConnection();
-                data.SendUDP(current);
-                RefreshChat();
-            }
-        }
-
-        private void BtnCalendarSelect_Click(object sender, EventArgs e)
-        {
-            if(lbxCalendarChores.SelectedIndex != -1)
-            {
-                //You need to send the chore you chose to the database - it's already taken
-                MsgBoxInformation($"You chose to: {lbxCalendarChores.SelectedItem}");
-                lbxCalendarChores.Items.Remove(lbxCalendarChores.SelectedItem);
-            }
-            else
-            {
-                MsgBoxWarning("Choose a chore first");
-            }
-        }
 
 
 
-        private void Scoreboard()
-        {
-            temporaryScoreboard.Add(5);
-            temporaryScoreboard.Add(3);
-            temporaryScoreboard.Add(4);
-            lbxScoreboard.Items.Add($"Joe - {temporaryScoreboard[0]}");
-            lbxScoreboard.Items.Add($"Sam - {temporaryScoreboard[1]}");
-            lbxScoreboard.Items.Add($"Bob - {temporaryScoreboard[2]}");
-        }
-
-        private void LbxCalendarDays_Click(object sender, EventArgs e)
-        {
-            if(lbxCalendarDays.SelectedIndex != -1)
-            {
-                switch (lbxCalendarDays.SelectedIndex)
-                {
-                    case 0:
-                        lbxCalendarChores.Items.Clear();
-                        lbxCalendarChores.Items.Add("Clean sink and shit");
-                        lbxCalendarChores.Items.Add("Dishes");
-                        break;
-                    case 1:
-                        lbxCalendarChores.Items.Clear();
-                        lbxCalendarChores.Items.Add("Fix toilet");
-                        lbxCalendarChores.Items.Add("Vacuum");
-                        break;
-                }
-            }
-        }
-
-        private void btnTempDB_Click(object sender, EventArgs e)
-        {
-            accounts.Clear();
-            //getting access to the database
-            DataAccess db = new DataAccess();
-            //getting the account through the textbox TEMP
-            foreach (var account in db.GetUsername(tbAccount.Text))
-            {
-                accounts.Add(account);
-            }
-        }
+        
 
 
                         /*Handle Announcement*/
 
         int lastLength = 0; //Keeps track if new announcemment is added
+        string msg = "";
         //Disp new announcement as pop-up
         private void TimerAnnDisp_Tick(object sender, EventArgs e)
         {
-            //if (db.GetAnnouncement().Count != lastLength)
-            //{
-            //    lastLength = db.GetAnnouncement().Count;
+            if (db.GetAnnouncement().Count != lastLength)
+            {
+                lastLength = db.GetAnnouncement().Count;
 
-            //    string ann = db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Date + db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Annoucement;
+                string ann = db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Date + db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Annoucement;
 
-            //    if (ann.Length > 20)
-            //    {
-            //        //at 20th character - ...
-            //        msg = ann.Substring(0, 20);
-            //        msg += " ...";
-            //    }
+                if (ann.Length > 20)
+                {
+                    //at 20th character - ...
+                    msg = ann.Substring(0, 20);
+                    msg += " ...";
+                }
 
-            //    lblAnnComplaints.Text = msg;
-            //    lblAnnChat.Text = msg;
-            //    lblAnnCalendar.Text = msg;
-            //    lblAnnScore.Text = msg;
+                lblAnnComplaints.Text = msg;
+                lblAnnChat.Text = msg;
+                lblAnnCalendar.Text = msg;
+                lblAnnScore.Text = msg;
 
-            //    timerAnnouncement.Start();
-            //}
+                timerAnnouncement.Start();
+            }
         }
 
         //Rmv new announcement as pop-up
@@ -362,13 +199,15 @@ namespace Tenant_Application
                 RstAnnPanel(); //Clear the panel
 
                 //Add the announcements to the announcement panel
+                string storeText = "";
                 foreach (Announcement a in listAnn)
                 {
-                    tbxAnnChat.Text += a.Date + a.Annoucement + "\n";
-                    tbxAnnComplaints.Text += a.Date + a.Annoucement + "\n";
-                    tbxAnnCalendar.Text += a.Date + a.Annoucement + "\n";
-                    tbxAnnScore.Text += a.Date + a.Annoucement + "\n";
+                    storeText += a.Date + a.Annoucement + Environment.NewLine;
                 }
+                tbxAnnChat.Text = storeText;
+                tbxAnnComplaints.Text = storeText;
+                tbxAnnCalendar.Text = storeText;
+                tbxAnnScore.Text = storeText;
             }
             catch (Exception ex)
             {
@@ -384,6 +223,8 @@ namespace Tenant_Application
             tbxAnnScore.Text = "";
         }
 
+
+        //Custom messagebox
         public void MsgBoxWarning(string message)
         {
             MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
