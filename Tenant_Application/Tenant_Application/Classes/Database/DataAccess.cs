@@ -114,11 +114,11 @@ namespace Tenant_Application
                 return output;
             }
         }
-        public List<Points> GetPoints()
+        public List<Points> GetPointsAndName()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
-                var output = connection.Query<Points>("dbo.Points_GetPoints @Point, @Id").ToList();
+                var output = connection.Query<Points>("dbo.Points_GetPoints").ToList();
                 return output;
             }
         }
