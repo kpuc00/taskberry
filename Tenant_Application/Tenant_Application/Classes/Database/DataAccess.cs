@@ -91,7 +91,11 @@ namespace Tenant_Application
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
+<<<<<<< HEAD
                 var output = connection.Query<Announcement>("dbo.Annoucements_GetAnnouncement @Announcement, @Date").ToList();
+=======
+                var output = connection.Query<Announcement>("dbo.Annoucements_GetAnnouncement").ToList();
+>>>>>>> production
                 return output;
             }
         }
