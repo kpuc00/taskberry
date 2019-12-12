@@ -10,5 +10,6 @@ namespace Tenant_Application
     {
         public int Id { get; set; }
         public int Point { get; set; }
+        public  string Name { get; set; }
     }
 }
