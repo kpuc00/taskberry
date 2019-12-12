@@ -114,7 +114,6 @@
             // timerRefreshUDP
             // 
             this.timerRefreshUDP.Enabled = true;
-            this.timerRefreshUDP.Tick += new System.EventHandler(this.TimerRefreshUDP_Tick);
             // 
             // timerAnnDisp
             // 
@@ -176,7 +175,6 @@
             this.btnTempDB.TabIndex = 15;
             this.btnTempDB.Text = "List items from DB";
             this.btnTempDB.UseVisualStyleBackColor = false;
-            this.btnTempDB.Click += new System.EventHandler(this.btnTempDB_Click);
             // 
             // lblCalendarMain
             // 
@@ -204,7 +202,6 @@
             this.btnCalendarSelect.TabIndex = 13;
             this.btnCalendarSelect.Text = "Choose chore";
             this.btnCalendarSelect.UseVisualStyleBackColor = false;
-            this.btnCalendarSelect.Click += new System.EventHandler(this.BtnCalendarSelect_Click);
             // 
             // lbxCalendarChores
             // 
@@ -223,7 +220,6 @@
             this.lbxCalendarDays.Name = "lbxCalendarDays";
             this.lbxCalendarDays.Size = new System.Drawing.Size(181, 184);
             this.lbxCalendarDays.TabIndex = 11;
-            this.lbxCalendarDays.Click += new System.EventHandler(this.LbxCalendarDays_Click);
             // 
             // lblAnnCalendar
             // 
@@ -337,7 +333,7 @@
             this.btnChatSend.TabIndex = 8;
             this.btnChatSend.Text = "Send";
             this.btnChatSend.UseVisualStyleBackColor = false;
-            this.btnChatSend.Click += new System.EventHandler(this.BtnChatSend_Click);
+
             // 
             // panelAnnChat
             // 
@@ -546,7 +542,6 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Temp Button";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click_1);
             // 
             // btnAnnComplaints
             // 
