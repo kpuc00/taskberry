@@ -87,6 +87,7 @@ namespace Tenant_Application
                 return output;
             }
         }
+
         public List<Announcement> GetAnnouncement()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
@@ -104,6 +105,23 @@ namespace Tenant_Application
 =======
                 var output = connection.Query<Announcement>("dbo.Announcement_GetAnnouncement").ToList();
 >>>>>>> production
+                return output;
+            }
+        }
+
+        public List<Points> ChangePoints(int point, int id)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
+            {
+                var output = connection.Query<Points>("dbo.Points_ChangePoints @Point, @Id", new { Point = point, Id = id }).ToList();
+                return output;
+            }
+        }
+        public List<Points> GetPoints()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
+            {
+                var output = connection.Query<Points>("dbo.Points_GetPoints @Point, @Id").ToList();
                 return output;
             }
         }

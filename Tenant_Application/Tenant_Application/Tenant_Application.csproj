@@ -87,6 +87,7 @@
     <Compile Include="LandLordForm.Designer.cs">
       <DependentUpon>LandLordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Database\Points.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\UDPConnection.cs" />
     <Compile Include="UserInterface.cs">
