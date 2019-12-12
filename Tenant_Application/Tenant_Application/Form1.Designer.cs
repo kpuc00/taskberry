@@ -132,7 +132,6 @@
             this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxLogo.TabIndex = 0;
             this.pbxLogo.TabStop = false;
-            this.pbxLogo.Click += new System.EventHandler(this.PbxLogo_Click);
             // 
             // LoginForm
             // 
