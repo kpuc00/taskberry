@@ -22,15 +22,26 @@ namespace Tenant_Application
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
 
+        //Only deletes text on first click on form load
+        bool firstTimeUsername = true;
+        bool firstTimePassword = true;
         private void TbxUserName_Click(object sender, EventArgs e)
         {
-            tbxUserName.Clear();
-        }
+            if(firstTimeUsername)
+            {
+                firstTimeUsername = false;
+                tbxUserName.Clear();
+            }
 
+        }
 
         private void TbxPassWord_Click_1(object sender, EventArgs e)
         {
-            tbxPassWord.Clear();
+            if(firstTimePassword)
+            {
+                firstTimePassword = false;
+                tbxPassWord.Clear();
+            }
             tbxPassWord.PasswordChar = '*';
         }
 
@@ -78,6 +89,8 @@ namespace Tenant_Application
                     else
                     {
                         MsgBoxWarning("User - name or Password is incorect!");
+                        firstTimePassword = true;
+                        firstTimeUsername = true;
                     }
                 } catch (Exception ex)
                 {
