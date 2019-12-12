@@ -93,12 +93,16 @@ namespace Tenant_Application
             {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 var output = connection.Query<Announcement>("dbo.Annoucements_GetAnnouncement @Announcement, @Date").ToList();
 =======
                 var output = connection.Query<Announcement>("dbo.Annoucements_GetAnnouncement").ToList();
 >>>>>>> production
 =======
                 var output = connection.Query<Announcement>("dbo.Account_GetAnnouncement").ToList();
+>>>>>>> production
+=======
+                var output = connection.Query<Announcement>("dbo.Announcement_GetAnnouncement").ToList();
 >>>>>>> production
                 return output;
             }
