@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LandLordForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabScoreBoard = new System.Windows.Forms.TabPage();
@@ -39,6 +40,7 @@
             this.tabAnnouncement = new System.Windows.Forms.TabPage();
             this.btnSend = new System.Windows.Forms.Button();
             this.tbxAnnouncement = new System.Windows.Forms.RichTextBox();
+            this.timerRefreshScoreBoard = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabScoreBoard.SuspendLayout();
             this.tabAnnouncement.SuspendLayout();
@@ -66,7 +68,7 @@
             this.tabScoreBoard.Controls.Add(this.lbxScoreBoard);
             this.tabScoreBoard.Location = new System.Drawing.Point(8, 39);
             this.tabScoreBoard.Name = "tabScoreBoard";
-            this.tabScoreBoard.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabScoreBoard.Padding = new System.Windows.Forms.Padding(3);
             this.tabScoreBoard.Size = new System.Drawing.Size(2328, 1237);
             this.tabScoreBoard.TabIndex = 0;
             this.tabScoreBoard.Text = "Scoreboard";
@@ -100,6 +102,7 @@
             this.btnRmvPoint.TabIndex = 2;
             this.btnRmvPoint.Text = "Remove Points";
             this.btnRmvPoint.UseVisualStyleBackColor = true;
+            this.btnRmvPoint.Click += new System.EventHandler(this.BtnRmvPoint_Click);
             // 
             // btnAddPoint
             // 
@@ -110,6 +113,7 @@
             this.btnAddPoint.TabIndex = 1;
             this.btnAddPoint.Text = "Add Points";
             this.btnAddPoint.UseVisualStyleBackColor = true;
+            this.btnAddPoint.Click += new System.EventHandler(this.BtnAddPoint_Click);
             // 
             // lbxScoreBoard
             // 
@@ -130,12 +134,11 @@
             this.tabAnnouncement.Controls.Add(this.tbxAnnouncement);
             this.tabAnnouncement.Location = new System.Drawing.Point(8, 39);
             this.tabAnnouncement.Name = "tabAnnouncement";
-            this.tabAnnouncement.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabAnnouncement.Padding = new System.Windows.Forms.Padding(3);
             this.tabAnnouncement.Size = new System.Drawing.Size(2328, 1237);
             this.tabAnnouncement.TabIndex = 1;
             this.tabAnnouncement.Text = "Announcement";
             this.tabAnnouncement.UseVisualStyleBackColor = true;
-            this.tabAnnouncement.Click += new System.EventHandler(this.tabAnnouncement_Click);
             // 
             // btnSend
             // 
@@ -157,6 +160,11 @@
             this.tbxAnnouncement.Size = new System.Drawing.Size(1240, 498);
             this.tbxAnnouncement.TabIndex = 0;
             this.tbxAnnouncement.Text = "";
+            // 
+            // timerRefreshScoreBoard
+            // 
+            this.timerRefreshScoreBoard.Interval = 1000;
+            this.timerRefreshScoreBoard.Tick += new System.EventHandler(this.TimerRefreshScoreBoard_Tick);
             // 
             // LandLordForm
             // 
@@ -189,5 +197,6 @@
         private System.Windows.Forms.TextBox tbxPoint;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.RichTextBox tbxAnnouncement;
+        private System.Windows.Forms.Timer timerRefreshScoreBoard;
     }
 }

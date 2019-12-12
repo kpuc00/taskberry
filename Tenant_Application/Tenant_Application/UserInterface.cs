@@ -55,6 +55,7 @@ namespace Tenant_Application
         private void UserInterfaceForm_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            timerRefreshScoreBoard.Start();
         }
 
         //Closes entire app
@@ -145,7 +146,7 @@ namespace Tenant_Application
             {
                 lastLength = db.GetAnnouncement().Count;
 
-                string ann = db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Date + db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Annoucement;
+                string ann = db.GetDate()[db.GetDate().Count - 1].Date + ": " +db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Annoucement;
 
                 if (ann.Length > 20)
                 {
@@ -177,19 +178,23 @@ namespace Tenant_Application
         private void BtnAnnCalendar_Click(object sender, EventArgs e)
         {
             panelAnnCalendar.Visible = HidePanel(panelAnnCalendar.Visible);
+            panelAnnChat.Visible = HidePanel(panelAnnChat.Visible);
+            panelAnnComplaints.Visible = HidePanel(panelAnnComplaints.Visible);
+            panelAnnScore.Visible = HidePanel(panelAnnScore.Visible);
 
             try
             {
                 List<Announcement> listAnn = db.GetAnnouncement();
+                List<Announcement> listDate = db.GetDate();
 
                 RstAnnPanel(); //Clear the panel
 
                 //Add the announcements to the announcement panel
                 string storeText = "";
-                foreach (Announcement a in listAnn)
-                {
-                    storeText += a.Date + a.Annoucement + Environment.NewLine;
+                for (int i = 0; i < listAnn.Count; i++) {
+                    storeText += listDate[i].Date + listAnn[i].Annoucement + Environment.NewLine;
                 }
+
                 tbxAnnChat.Text = storeText;
                 tbxAnnComplaints.Text = storeText;
                 tbxAnnCalendar.Text = storeText;
@@ -209,6 +214,18 @@ namespace Tenant_Application
             tbxAnnScore.Text = "";
         }
 
+        private void TimerRefreshScoreBoard_Tick(object sender, EventArgs e)
+        {
+            lbxScoreboard.Items.Clear();
+
+            List<Points> nameList = db.GetNames();
+            List<Points> pointList = db.GetPoints();
+
+            for (int j = 0; j < pointList.Count; j++)
+            {
+                lbxScoreboard.Items.Add(nameList[j].Name + ": " +pointList[j].Point);
+            }
+        }
 
         //Custom messagebox
         public void MsgBoxWarning(string message)
@@ -220,5 +237,7 @@ namespace Tenant_Application
         {
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+         
+
     }
 }

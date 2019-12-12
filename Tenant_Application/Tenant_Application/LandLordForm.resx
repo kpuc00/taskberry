@@ -5602,4 +5602,7 @@
         AAAAAAAAAAAAAAAAAAAARIAOAAAAAAAAAAAAAAAAAADAOp3/A7WaN15zM7KVAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="timerRefreshScoreBoard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
