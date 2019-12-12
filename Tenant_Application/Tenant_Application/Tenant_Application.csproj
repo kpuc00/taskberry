@@ -73,6 +73,7 @@
     <Compile Include="Classes\Database\Announcement.cs" />
     <Compile Include="Classes\Database\Chore.cs" />
     <Compile Include="Classes\Database\DataAccess.cs" />
+    <Compile Include="Classes\Database\Points.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -92,7 +92,6 @@ namespace Tenant_Application
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
-<<<<<<< Updated upstream
                 var output = connection.Query<Announcement>("dbo.Announcement_GetAnnouncement").ToList();
                 return output;
             }
@@ -111,10 +110,6 @@ namespace Tenant_Application
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
                 var output = connection.Query<Points>("dbo.Points_GetPoints @Point, @Id").ToList();
-=======
-
-                var output = connection.Query<Announcement>("dbo.Annoucements_GetAnnouncement @Announcement, @Date").ToList();
->>>>>>> Stashed changes
                 return output;
             }
         }
