@@ -63,14 +63,6 @@ namespace Tenant_Application
             }
         }
 
-        public List<Account> GetName(string name)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
-            {
-                var output = connection.Query<Account>("dbo.Account_GetAccountByName @Text", new { Text = name }).ToList();
-                return output;
-            }
-        }
         public List<Account> GetId(int id)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
@@ -105,6 +97,14 @@ namespace Tenant_Application
                 return output;
             }
         }
+        public List<Announcement> GetDate()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
+            {
+                var output = connection.Query<Announcement>("dbo.Announcement_GetDate").ToList();
+                return output;
+            }
+        }
 
         public List<Points> ChangePoints(int point, int id)
         {
@@ -114,11 +114,19 @@ namespace Tenant_Application
                 return output;
             }
         }
-        public List<Points> GetPointsAndName()
+        public List<Points> GetPoints()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
                 var output = connection.Query<Points>("dbo.Points_GetPoints").ToList();
+                return output;
+            }
+        }
+        public List<Points> GetNames()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
+            {
+                var output = connection.Query<Points>("dbo.Account_GetAccountByName").ToList();
                 return output;
             }
         }
