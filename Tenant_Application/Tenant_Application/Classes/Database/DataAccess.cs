@@ -83,7 +83,7 @@ namespace Tenant_Application
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
-                var output = connection.Query<Announcement>("dbo.Annoucements_AddAnnoucement @Annoucement, @Date", new { Annoucement = annoucement, Date = date }).ToList();
+                var output = connection.Query<Announcement>("dbo.Annoucements_AddAnnouncement @Annoucement, @Date", new { Annoucement = annoucement, Date = date }).ToList();
                 return output;
             }
         }
@@ -92,9 +92,13 @@ namespace Tenant_Application
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 var output = connection.Query<Announcement>("dbo.Annoucements_GetAnnouncement @Announcement, @Date").ToList();
 =======
                 var output = connection.Query<Announcement>("dbo.Annoucements_GetAnnouncement").ToList();
+>>>>>>> production
+=======
+                var output = connection.Query<Announcement>("dbo.Account_GetAnnouncement").ToList();
 >>>>>>> production
                 return output;
             }
