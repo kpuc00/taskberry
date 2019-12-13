@@ -82,9 +82,10 @@ namespace Tenant_Application
                             default:
 
                                 string email = db.GetEmailById(id)[0].EmailAddress.ToString();
+                                string username = tbxUserName.Text;
                                 string password = db.GetPasswordById(id)[0].Password.ToString();
 
-                                UserInterfaceForm userInterface = new UserInterfaceForm(id, email, password);
+                                UserInterfaceForm userInterface = new UserInterfaceForm(id, email, username, password);
 
 
                                 userInterface.Show();

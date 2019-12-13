@@ -26,6 +26,7 @@ namespace Tenant_Application
         //Holding personal information
         int personId;
         string personEmail;
+        string personUsername;
         string personPassword;
 
         //Overried some painter settings - makes form load faster
@@ -39,16 +40,21 @@ namespace Tenant_Application
             }
         }
 
-        public UserInterfaceForm(int personId, string personEmail, string personPassword)
+        //Create an object of the class WebSocket
+        WebSocket ws;
+
+        public UserInterfaceForm(int personId, string personEmail, string personUsername, string personPassword)
         {
             InitializeComponent();
 
             //Get data passed from login screen
             this.personId = personId;
             this.personEmail = personEmail;
+            this.personUsername = personUsername;
             this.personPassword = personPassword;
 
-            
+            ws = new WebSocket();
+
             timerAnnDisp.Start(); //Displays new announcements
         }
 
@@ -56,6 +62,12 @@ namespace Tenant_Application
         {
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             timerRefreshScoreBoard.Start();
+
+            //get user ip
+            //string localIp = ws.GetLocalIP();
+            InitializeChatConnection();
+            lbxOnlineUsers.Items.Add(this.personUsername);
+            timerChatListBox.Start();
         }
 
         //Closes entire app
@@ -237,7 +249,48 @@ namespace Tenant_Application
         {
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-         
 
+        //Code for the chat
+        string localip = "192.168.43.59";
+        string localport = "55555";
+
+        string user2ip = "192.168.43.111";
+        string user2port = "55555";
+
+        private void InitializeChatConnection()
+        {
+            try
+            {
+                ws.connect(localip, localport, user2ip, user2port);
+                lblChatConnection.Text = "Connection status: Connected";
+            }
+            catch
+            {
+                lblChatConnection.Text = "Connection status: Not connected";
+            }
+        }
+
+        private void BtnChatSend_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tbxChatMsg.Text))
+            {
+                //do nothing 
+            }
+            else
+            {
+                //send the msg
+                ws.sendMsg(this.personUsername + ":" + " " + tbxChatMsg.Text);
+                tbxChatMsg.Text = "";
+            }
+        }
+
+        private void TimerChatListBox_Tick(object sender, EventArgs e)
+        {
+            lbxChat.Items.Clear();
+            foreach (var item in ws.messages)
+            {
+                lbxChat.Items.Add(item);
+            }
+        }
     }
 }
