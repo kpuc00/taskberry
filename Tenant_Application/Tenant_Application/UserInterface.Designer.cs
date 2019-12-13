@@ -40,6 +40,7 @@
             this.tbxAnnCalendar = new System.Windows.Forms.TextBox();
             this.btnAnnCalendar = new System.Windows.Forms.Button();
             this.tabChatRoom = new System.Windows.Forms.TabPage();
+            this.lblOnlineUsers = new System.Windows.Forms.Label();
             this.lblChatConnection = new System.Windows.Forms.Label();
             this.lbxChat = new System.Windows.Forms.ListBox();
             this.panelAnnChat = new System.Windows.Forms.Panel();
@@ -67,7 +68,6 @@
             this.timerAnnDisp = new System.Windows.Forms.Timer(this.components);
             this.timerRefreshScoreBoard = new System.Windows.Forms.Timer(this.components);
             this.timerChatListBox = new System.Windows.Forms.Timer(this.components);
-            this.lblOnlineUsers = new System.Windows.Forms.Label();
             this.tabSwitch.SuspendLayout();
             this.tabCalendar.SuspendLayout();
             this.panelAnnCalendar.SuspendLayout();
@@ -92,7 +92,6 @@
             this.tabSwitch.SelectedIndex = 0;
             this.tabSwitch.Size = new System.Drawing.Size(1572, 828);
             this.tabSwitch.TabIndex = 0;
-            this.tabSwitch.Click += new System.EventHandler(this.BtnAnnCalendar_Click);
             // 
             // tabCalendar
             // 
@@ -222,6 +221,17 @@
             this.tabChatRoom.TabIndex = 0;
             this.tabChatRoom.Text = "Chat Room";
             this.tabChatRoom.UseVisualStyleBackColor = true;
+            // 
+            // lblOnlineUsers
+            // 
+            this.lblOnlineUsers.AutoSize = true;
+            this.lblOnlineUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblOnlineUsers.Location = new System.Drawing.Point(833, 257);
+            this.lblOnlineUsers.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblOnlineUsers.Name = "lblOnlineUsers";
+            this.lblOnlineUsers.Size = new System.Drawing.Size(109, 20);
+            this.lblOnlineUsers.TabIndex = 13;
+            this.lblOnlineUsers.Text = "Online users:";
             // 
             // lblChatConnection
             // 
@@ -537,17 +547,6 @@
             // 
             this.timerChatListBox.Interval = 1000;
             this.timerChatListBox.Tick += new System.EventHandler(this.TimerChatListBox_Tick);
-            // 
-            // lblOnlineUsers
-            // 
-            this.lblOnlineUsers.AutoSize = true;
-            this.lblOnlineUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblOnlineUsers.Location = new System.Drawing.Point(833, 257);
-            this.lblOnlineUsers.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblOnlineUsers.Name = "lblOnlineUsers";
-            this.lblOnlineUsers.Size = new System.Drawing.Size(109, 20);
-            this.lblOnlineUsers.TabIndex = 13;
-            this.lblOnlineUsers.Text = "Online users:";
             // 
             // UserInterfaceForm
             // 

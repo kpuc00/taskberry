@@ -40,10 +40,10 @@
             this.tbxUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxUserName.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxUserName.ForeColor = System.Drawing.Color.White;
-            this.tbxUserName.Location = new System.Drawing.Point(810, 685);
-            this.tbxUserName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.tbxUserName.Location = new System.Drawing.Point(435, 401);
+            this.tbxUserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxUserName.Name = "tbxUserName";
-            this.tbxUserName.Size = new System.Drawing.Size(916, 40);
+            this.tbxUserName.Size = new System.Drawing.Size(504, 25);
             this.tbxUserName.TabIndex = 0;
             this.tbxUserName.Text = "Username";
             this.tbxUserName.Click += new System.EventHandler(this.TbxUserName_Click);
@@ -54,10 +54,10 @@
             this.tbxPassWord.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxPassWord.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxPassWord.ForeColor = System.Drawing.Color.White;
-            this.tbxPassWord.Location = new System.Drawing.Point(810, 941);
-            this.tbxPassWord.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.tbxPassWord.Location = new System.Drawing.Point(435, 556);
+            this.tbxPassWord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxPassWord.Name = "tbxPassWord";
-            this.tbxPassWord.Size = new System.Drawing.Size(916, 40);
+            this.tbxPassWord.Size = new System.Drawing.Size(504, 25);
             this.tbxPassWord.TabIndex = 1;
             this.tbxPassWord.Text = "Password";
             this.tbxPassWord.Click += new System.EventHandler(this.TbxPassWord_Click_1);
@@ -71,10 +71,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(634, 1063);
-            this.button1.Margin = new System.Windows.Forms.Padding(6);
+            this.button1.Location = new System.Drawing.Point(581, 614);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(1106, 88);
+            this.button1.Size = new System.Drawing.Size(195, 56);
             this.button1.TabIndex = 1;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = false;
@@ -82,16 +82,17 @@
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(2368, 1309);
+            this.ClientSize = new System.Drawing.Size(1283, 775);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbxPassWord);
             this.Controls.Add(this.tbxUserName);
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
