@@ -163,7 +163,7 @@
             // 
             // timerRefreshScoreBoard
             // 
-            this.timerRefreshScoreBoard.Interval = 1000;
+            this.timerRefreshScoreBoard.Interval = 60000;
             this.timerRefreshScoreBoard.Tick += new System.EventHandler(this.TimerRefreshScoreBoard_Tick);
             // 
             // LandLordForm
