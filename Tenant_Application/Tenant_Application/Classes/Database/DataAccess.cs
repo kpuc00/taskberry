@@ -81,11 +81,11 @@ namespace Tenant_Application
             }   
         }
 
-        public List<Announcement> AddAnnouncement(string annoucement, string date)
+        public List<Announcement> AddAnnouncement(string announcement, string date)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
-                var output = connection.Query<Announcement>("dbo.Annoucements_AddAnnouncement @Annoucement, @Date", new { Annoucement = annoucement, Date = date }).ToList();
+                var output = connection.Query<Announcement>("dbo.Annoucements_AddAnnouncement @Announcement, @Date", new { Announcement = announcement, Date = date }).ToList();
                 return output;
             }
         }
