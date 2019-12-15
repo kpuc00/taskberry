@@ -59,6 +59,10 @@ namespace Tenant_Application
             }
             else
             {
+<<<<<<< Updated upstream
+                this.Hide();
+                uif.Show();
+=======
                 
                 DataAccess db = new DataAccess();
 
@@ -66,9 +70,9 @@ namespace Tenant_Application
                 try
                 {
 
-                    if (db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text).Count > 0)
+                    if (db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text) > 0)
                     {
-                        int id = db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text)[0].id;
+                        int id = db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text);
 
                         switch (id)
                         {
@@ -81,9 +85,9 @@ namespace Tenant_Application
                             //Log in Tenant
                             default:
 
-                                string email = db.GetEmailById(id)[0].EmailAddress.ToString();
+                                string email = db.GetEmailById(id);
                                 string username = tbxUserName.Text;
-                                string password = db.GetPasswordById(id)[0].Password.ToString();
+                                string password = db.GetPasswordById(id);
 
                                 UserInterfaceForm userInterface = new UserInterfaceForm(id, email, username, password);
 
@@ -106,6 +110,7 @@ namespace Tenant_Application
                 {
                     MessageBox.Show(ex.ToString());
                 }
+>>>>>>> Stashed changes
             }
         }
 

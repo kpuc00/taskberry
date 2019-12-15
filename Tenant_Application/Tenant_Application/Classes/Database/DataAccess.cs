@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,126 +11,113 @@ namespace Tenant_Application
 {
     public class DataAccess
     {
-        public List<Account> GetUsername(string username)
+        private static DataType ExecuteQueryWithArgs<DataType>(string query, object arguments)
+
         {
-            //creating a new connection to our sql database
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
+            using (IDbConnection connection = new SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
                 //get the open connection and ask for the type account data and command issue
-                var output = connection.Query<Account>("dbo.Account_GetAccountByUsername @Text", new { Text = username }).ToList();
+                var output = connection.Query<DataType>(query, arguments).FirstOrDefault();
                 return output;
             }
         }
+        private static List<DataType> ExecuteQueryWithArgsInList<DataType>(string query, object arguments)
 
-        public List<Account> GetPassword(string password)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
+            using (IDbConnection connection = new SqlConnection(Helper.ConnectionValue("dbi428024")))
             {
-                var output = connection.Query<Account>("dbo.Account_GetAccountByPassword @Text", new { Text = password }).ToList();
+                //get the open connection and ask for the type account data and command issue
+                var output = connection.Query<DataType>(query, arguments).ToList();
                 return output;
             }
         }
-        public List<Account> GetIdByCredentials(string user, string pass)
+        public Account GetAccountByUsername(string username)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
-            {
-                var output = connection.Query<Account>("dbo.Account_GetIdByCredentials @Pass, @User", new { User = user, Pass = pass }).ToList();
-                return output;
-            }
-        }
-        public List<Account> GetIdByName(string name)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
-            {
-                var output = connection.Query<Account>("dbo.Account_GetIdByName @Name", new { Name = name }).ToList();
-                return output;
-            }
-        }
+            //creating a new connection to our sql database
+            var args = new { Text = username };
+            var query = "dbo.Account_GetAccountByUsername @Text";
 
-        public List<Account> GetEmailById(int id)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
-            {
-                var output = connection.Query<Account>("dbo.Account_GetEmailById @Id", new { Id = id }).ToList();
-                return output;
-            }
+            return ExecuteQueryWithArgs<Account>(query, args);
         }
+        //public List<Account> GetAccountByPassword(string password)
+        //{
+        //    return ExecuteQueryWithArgs<Account>("dbo.Account_GetAccountByPassword @Text", password);
+        //}
+        public int GetIdByCredentials(string user, string pass)
+        {
+            var args = new { User = user, Pass = pass };
+            var query = "dbo.Account_GetIdByCredentials @Pass, @User";
 
-        public List<Account> GetPasswordById(int id)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
-            {
-                var output = connection.Query<Account>("dbo.Account_GetPasswordById @Id", new { Id = id }).ToList();
-                return output;
-            }
+            return ExecuteQueryWithArgs<int>(query, args);
         }
+        public int GetIdByName(string name)
+        {
+            var args = new { Name = name };
+            var query = "dbo.Account_GetIdByName @Name";
 
-        public List<Account> GetId(int id)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
-            {
-                var output = connection.Query<Account>("dbo.Account_GetAccountById @Id", new { Id = id }).ToList();
-                return output;
-            }
+            return ExecuteQueryWithArgs<int>(query, args );
         }
-        public List<Chore> GetChore(string chore)
+        public string GetEmailById(int id)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
-            {
-                var output = connection.Query<Chore>("dbo.Chores_GetByName @Text", new { Text = chore }).ToList();
-                return output;
-            }   
-        }
+            var args = new { Id = id };
+            var query = "dbo.Account_GetEmailById @Id";
 
-        public List<Announcement> AddAnnouncement(string announcement, string date)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
-            {
-                var output = connection.Query<Announcement>("dbo.Annoucements_AddAnnouncement @Announcement, @Date", new { Announcement = announcement, Date = date }).ToList();
-                return output;
-            }
+            return ExecuteQueryWithArgs<string>(query, args);
         }
+        public string GetPasswordById(int id)
+        {
+            var args = new { Id = id };
+            var query = "dbo.Account_GetPasswordById @Id";
 
-        public List<Announcement> GetAnnouncement()
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
-            {
-                var output = connection.Query<Announcement>("dbo.Announcement_GetAnnouncement").ToList();
-                return output;
-            }
+            return ExecuteQueryWithArgs<string>(query, args);
         }
-        public List<Announcement> GetDate()
+        public Account GetAccountById(int id)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
-            {
-                var output = connection.Query<Announcement>("dbo.Announcement_GetDate").ToList();
-                return output;
-            }
-        }
+            var args = new { Id = id };
+            var query = "dbo.Account_GetAccountById @Id";
 
-        public List<Points> ChangePoints(int point, int id)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
-            {
-                var output = connection.Query<Points>("dbo.Points_ChangePoints @Point, @Id", new { Point = point, Id = id }).ToList();
-                return output;
-            }
+            return ExecuteQueryWithArgs<Account>(query, args);
         }
-        public List<Points> GetPoints()
+        public Chore GetChoreByName(string chore)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
-            {
-                var output = connection.Query<Points>("dbo.Points_GetPoints").ToList();
-                return output;
-            }
+            var args = new { Text = chore };
+            var query = "dbo.Chores_GetByName @Text";
+
+            return ExecuteQueryWithArgs<Chore>(query, args);
         }
-        public List<Points> GetNames()
+        public void AddAnnouncement(string announcement, string date)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.ConnectionValue("dbi428024")))
-            {
-                var output = connection.Query<Points>("dbo.Account_GetAccountByName").ToList();
-                return output;
-            }
+            var args = new { Announcement = announcement, Date = date };
+            var query = "dbo.Annoucements_AddAnnouncement @Announcement, @Date";
+
+            ExecuteQueryWithArgs<object>(query, args);
+        }
+        public List<Announcement> GetAnnouncements()
+        {
+            var query = "dbo.Announcement_GetAnnouncement";
+
+            return ExecuteQueryWithArgsInList<Announcement>(query, null);
+        }
+        public List<Announcement> GetAnnouncementsDates()
+        {
+            var query = "dbo.Announcement_GetDate";
+            return ExecuteQueryWithArgsInList<Announcement>(query, null);
+        }
+        public void ChangePoints(int point, int id)
+        {
+            var args = new { Point = point, Id = id };
+            var query = "dbo.Account_ChangePoints @Point, @Id";
+
+            ExecuteQueryWithArgs<object>(query, args);
+        }
+        public List<Account> GetPoints()
+        {
+            throw new Exception("FUCK ME IN THE ASS, IT SHOULD NOT BE HERE MICHAEL(B, NOT GROENEWEGEN VAN DER WEIJDEN) WAKE THE FUCK UP, YOU TWAT");
+        }
+        public string GetAccountByName()
+        {
+            throw new Exception("MICHAEL(B, NOT GROENEWEGEN VAN DER WEIJDEN) YOU STUPID IDIOT, IT'S THE SECOND TIME YOU FUCK UP");
+
         }
     }
 }

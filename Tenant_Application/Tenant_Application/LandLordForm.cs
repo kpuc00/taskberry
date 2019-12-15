@@ -27,8 +27,6 @@ namespace Tenant_Application
         {
             timerRefreshScoreBoard.Start();
             //this.FormBorderStyle = FormBorderStyle.FixedDialog;
-
-            AddScoreBoard();
         }
 
         //Closes entire app
@@ -53,9 +51,6 @@ namespace Tenant_Application
                 try
                 {
                     db.AddAnnouncement(announcement, DateTime.Now.ToString());
-
-                    MessageBox.Show("Announcement Added");
-                    tbxAnnouncement.Clear();
                 }
                 catch (Exception ex) {
                     MessageBox.Show(ex.ToString());
@@ -70,95 +65,74 @@ namespace Tenant_Application
 
         private void TimerRefreshScoreBoard_Tick(object sender, EventArgs e)
         {
-            AddScoreBoard();
+            lbxScoreBoard.Items.Clear();
+
+            List<Account> pointList = db.GetPoints();
+            string nameList = db.GetAccountByName();
+
+            for (int i = 0; i < pointList.Count; i++) {
+                lbxScoreBoard.Items.Add(nameList + ": " + pointList[i].ToString());
+            }
         }
 
         private void BtnAddPoint_Click(object sender, EventArgs e)
         {
             string name = NameTenant();
 
-            AlterPoints(name, true);
+            if (name != null)
+            {
+                int id = db.GetIdByName(name);
+
+                if (!String.IsNullOrWhiteSpace(tbxPoint.Text))
+                {
+                    db.ChangePoints(Convert.ToInt32(tbxPoint.Text), id);
+                }
+            }
         }
 
         private void BtnRmvPoint_Click(object sender, EventArgs e)
         {
             string name = NameTenant();
 
-            AlterPoints(name, false);
+            if (name != null)
+            {
+                int id = db.GetIdByName(name);
+
+                if (!String.IsNullOrWhiteSpace(tbxPoint.Text))
+                {
+                    db.ChangePoints(-Convert.ToInt32(tbxPoint.Text), id);
+                }
+            }
         }
 
         private string NameTenant() {
 
 
-            if ((string)lbxScoreBoard.SelectedItem != null)
+            if (lbxScoreBoard.SelectedIndex >= 0)
             {
                 string name = "";
                 string item = (string)lbxScoreBoard.SelectedItem;
 
-                int index = 0;
-                while (item[index] != ':')
+                for (int i = 0; i < item.Length; i++)
                 {
-                    name += item[index].ToString();
-                    index++;
+                    if (!item[i].Equals(":"))
+                    {
+                        name += item[i];
+                        item = item.Substring(1);
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
 
                 return name;
             }
-            else
-            {
+            else {
                 return null;
             }
 
             
-        }
-
-        private void AddScoreBoard() {
-            lbxScoreBoard.Items.Clear();
-
-            List<Points> pointList = db.GetPoints();
-            List<Points> nameList = db.GetNames();
-
-            for (int i = 0; i < pointList.Count; i++)
-            {
-                lbxScoreBoard.Items.Add(nameList[i].Name + ": " + pointList[i].Point.ToString());
-            }
-        }
-
-        private void AlterPoints(string name, bool val) {
-
-            if (name != null)
-            {
-                int id = db.GetIdByName(name)[0].id;
-
-                try
-                {
-                    if (!String.IsNullOrWhiteSpace(tbxPoint.Text))
-                    {
-                        switch (val)
-                        {
-                            case true:
-                                db.ChangePoints(Convert.ToInt32(tbxPoint.Text), id);
-                                break;
-                            default:
-                                db.ChangePoints(-Convert.ToInt32(tbxPoint.Text), id);
-                                break;
-                        }
-                        tbxPoint.Clear();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Enter the points you want to add or remove!");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-            else
-            {
-                MessageBox.Show("Select a person you want to change");
-            }
         }
     }
 }
