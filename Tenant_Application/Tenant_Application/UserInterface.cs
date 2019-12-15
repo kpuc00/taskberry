@@ -143,7 +143,29 @@ namespace Tenant_Application
                 return true;
             }
         }
+<<<<<<< Updated upstream
 
+=======
+                        /*Handle Announcement*/
+
+        int lastLength = 0; //Keeps track if new announcemment is added
+        string msg = "";
+        //Disp new announcement as pop-up
+        private void TimerAnnDisp_Tick(object sender, EventArgs e)
+        {
+            if (db.GetAnnouncements().Count != lastLength)
+            {
+                lastLength = db.GetAnnouncements().Count;
+
+                string ann = db.GetAnnouncementsDates()[db.GetAnnouncementsDates().Count - 1].Date + ": " +db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Annoucement;
+
+                if (ann.Length > 20)
+                {
+                    //at 20th character - ...
+                    msg = ann.Substring(0, 20);
+                    msg += " ...";
+                }
+>>>>>>> Stashed changes
 
         //Will be changed to a method after we do the connection
         string announceDisplay = "";
@@ -159,8 +181,15 @@ namespace Tenant_Application
             DateTime dt = DateTime.Today;
             string hour = dt.ToShortDateString();
 
+<<<<<<< Updated upstream
             //Change the text in msg with the announcement coming from wherever 
             msg = textBox1.Text;
+=======
+            try
+            {
+                List<Announcement> listAnn = db.GetAnnouncements();
+                List<Announcement> listDate = db.GetAnnouncementsDates();
+>>>>>>> Stashed changes
 
             string addmsg = msg;
             string current = ($"[{hour}]  {msg}" + Environment.NewLine);
@@ -186,7 +215,19 @@ namespace Tenant_Application
 
         private void Btn_Click(object sender, EventArgs e)
         {
+<<<<<<< Updated upstream
             panelAnnChat.Visible = HidePanel(panelAnnChat.Visible);
+=======
+            lbxScoreboard.Items.Clear();
+
+            string nameList = db.GetAccountByName();
+            List<Account> pointList = db.GetPoints();
+
+            for (int j = 0; j < pointList.Count; j++)
+            {
+                lbxScoreboard.Items.Add(nameList + ": " +pointList);
+            }
+>>>>>>> Stashed changes
         }
 
         private void BtnAnnCalendar_Click(object sender, EventArgs e)

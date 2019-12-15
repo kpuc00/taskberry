@@ -39,8 +39,58 @@ namespace Tenant_Application
             }
             else
             {
+<<<<<<< Updated upstream
                 this.Hide();
                 uif.Show();
+=======
+                
+                DataAccess db = new DataAccess();
+
+                //Checks for errors
+                try
+                {
+
+                    if (db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text) > 0)
+                    {
+                        int id = db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text);
+
+                        switch (id)
+                        {
+                            //Log in LandLord
+                            case 1:
+                                LandLordForm landLordInterface = new LandLordForm(id);
+
+                                landLordInterface.Show();
+                                break;
+                            //Log in Tenant
+                            default:
+
+                                string email = db.GetEmailById(id);
+                                string username = tbxUserName.Text;
+                                string password = db.GetPasswordById(id);
+
+                                UserInterfaceForm userInterface = new UserInterfaceForm(id, email, username, password);
+
+
+                                userInterface.Show();
+                                break;
+                        }
+
+                        //Hides the login screen
+                        this.Hide();
+
+                    }
+                    else
+                    {
+                        MsgBoxWarning("User - name or Password is incorect!");
+                        firstTimePassword = true;
+                        firstTimeUsername = true;
+                    }
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+>>>>>>> Stashed changes
             }
         }
 
