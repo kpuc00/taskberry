@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,7 +26,6 @@ namespace Tenant_Application
         //Holding personal information
         int personId;
         string personEmail;
-        string personUsername;
         string personPassword;
 
         //Overried some painter settings - makes form load faster
@@ -40,34 +39,22 @@ namespace Tenant_Application
             }
         }
 
-        //Create an object of the class WebSocket
-        WebSocket ws;
-
-        public UserInterfaceForm(int personId, string personEmail, string personUsername, string personPassword)
+        public UserInterfaceForm(int personId, string personEmail, string personPassword)
         {
             InitializeComponent();
 
             //Get data passed from login screen
             this.personId = personId;
             this.personEmail = personEmail;
-            this.personUsername = personUsername;
             this.personPassword = personPassword;
 
-            ws = new WebSocket();
-
+            
             timerAnnDisp.Start(); //Displays new announcements
         }
 
         private void UserInterfaceForm_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            timerRefreshScoreBoard.Start();
-
-            //get user ip
-            //string localIp = ws.GetLocalIP();
-            InitializeChatConnection();
-            lbxOnlineUsers.Items.Add(this.personUsername);
-            timerChatListBox.Start();
         }
 
         //Closes entire app
@@ -147,9 +134,20 @@ namespace Tenant_Application
                 return true;
             }
         }
-<<<<<<< Updated upstream
 
-=======
+
+
+
+
+
+
+
+
+
+
+        
+
+
                         /*Handle Announcement*/
 
         int lastLength = 0; //Keeps track if new announcemment is added
@@ -161,25 +159,7 @@ namespace Tenant_Application
             {
                 lastLength = db.GetAnnouncements().Count;
 
-                string ann = db.GetAnnouncementsDates()[db.GetAnnouncementsDates().Count - 1].Date + ": " +db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Annoucement;
-
-                if (ann.Length > 20)
-                {
-                    //at 20th character - ...
-                    msg = ann.Substring(0, 20);
-                    msg += " ...";
-                }
->>>>>>> Stashed changes
-
-        //Will be changed to a method after we do the connection
-        string announceDisplay = "";
-        private void Button1_Click_1(object sender, EventArgs e)
-        {
-            if (db.GetAnnouncement().Count != lastLength)
-            {
-                lastLength = db.GetAnnouncement().Count;
-
-                string ann = db.GetDate()[db.GetDate().Count - 1].Date + ": " +db.GetAnnouncement()[db.GetAnnouncement().Count - 1].Annoucement;
+                string ann = db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Date + db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Annoucement;
 
                 if (ann.Length > 20)
                 {
@@ -193,15 +173,9 @@ namespace Tenant_Application
                 lblAnnCalendar.Text = msg;
                 lblAnnScore.Text = msg;
 
-<<<<<<< Updated upstream
-            //Change the text in msg with the announcement coming from wherever 
-            msg = textBox1.Text;
-=======
-            try
-            {
-                List<Announcement> listAnn = db.GetAnnouncements();
-                List<Announcement> listDate = db.GetAnnouncementsDates();
->>>>>>> Stashed changes
+                timerAnnouncement.Start();
+            }
+        }
 
         //Rmv new announcement as pop-up
         private void TimerAnnouncement_Tick(object sender, EventArgs e)
@@ -217,23 +191,19 @@ namespace Tenant_Application
         private void BtnAnnCalendar_Click(object sender, EventArgs e)
         {
             panelAnnCalendar.Visible = HidePanel(panelAnnCalendar.Visible);
-            panelAnnChat.Visible = HidePanel(panelAnnChat.Visible);
-            panelAnnComplaints.Visible = HidePanel(panelAnnComplaints.Visible);
-            panelAnnScore.Visible = HidePanel(panelAnnScore.Visible);
 
             try
             {
-                List<Announcement> listAnn = db.GetAnnouncement();
-                List<Announcement> listDate = db.GetDate();
+                List<Announcement> listAnn = db.GetAnnouncements();
 
                 RstAnnPanel(); //Clear the panel
 
                 //Add the announcements to the announcement panel
                 string storeText = "";
-                for (int i = 0; i < listAnn.Count; i++) {
-                    storeText += listDate[i].Date + listAnn[i].Annoucement + Environment.NewLine;
+                foreach (Announcement a in listAnn)
+                {
+                    storeText += a.Date + a.Annoucement + Environment.NewLine;
                 }
-
                 tbxAnnChat.Text = storeText;
                 tbxAnnComplaints.Text = storeText;
                 tbxAnnCalendar.Text = storeText;
@@ -253,22 +223,6 @@ namespace Tenant_Application
             tbxAnnScore.Text = "";
         }
 
-        private void TimerRefreshScoreBoard_Tick(object sender, EventArgs e)
-        {
-<<<<<<< Updated upstream
-            panelAnnChat.Visible = HidePanel(panelAnnChat.Visible);
-=======
-            lbxScoreboard.Items.Clear();
-
-            string nameList = db.GetAccountByName();
-            List<Account> pointList = db.GetPoints();
-
-            for (int j = 0; j < pointList.Count; j++)
-            {
-                lbxScoreboard.Items.Add(nameList + ": " +pointList);
-            }
->>>>>>> Stashed changes
-        }
 
         //Custom messagebox
         public void MsgBoxWarning(string message)
@@ -279,49 +233,6 @@ namespace Tenant_Application
         public void MsgBoxInformation(string message)
         {
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        //Code for the chat
-        string localip = "192.168.43.59";
-        string localport = "55555";
-
-        string user2ip = "192.168.43.111";
-        string user2port = "55555";
-
-        private void InitializeChatConnection()
-        {
-            try
-            {
-                ws.connect(localip, localport, user2ip, user2port);
-                lblChatConnection.Text = "Connection status: Connected";
-            }
-            catch
-            {
-                lblChatConnection.Text = "Connection status: Not connected";
-            }
-        }
-
-        private void BtnChatSend_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(tbxChatMsg.Text))
-            {
-                //do nothing 
-            }
-            else
-            {
-                //send the msg
-                ws.sendMsg(this.personUsername + ":" + " " + tbxChatMsg.Text);
-                tbxChatMsg.Text = "";
-            }
-        }
-
-        private void TimerChatListBox_Tick(object sender, EventArgs e)
-        {
-            lbxChat.Items.Clear();
-            foreach (var item in ws.messages)
-            {
-                lbxChat.Items.Add(item);
-            }
         }
     }
 }

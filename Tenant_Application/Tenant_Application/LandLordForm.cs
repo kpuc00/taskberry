@@ -25,8 +25,7 @@ namespace Tenant_Application
 
         private void LandLordForm_Load(object sender, EventArgs e)
         {
-            timerRefreshScoreBoard.Start();
-            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
 
         //Closes entire app
@@ -50,7 +49,7 @@ namespace Tenant_Application
                 announcement = tbxAnnouncement.Text;
                 try
                 {
-                    db.AddAnnouncement(announcement, DateTime.Now.ToString());
+                    db.AddAnnouncement(announcement, DateTime.Today.ToString());
                 }
                 catch (Exception ex) {
                     MessageBox.Show(ex.ToString());
@@ -63,76 +62,9 @@ namespace Tenant_Application
             
         }
 
-        private void TimerRefreshScoreBoard_Tick(object sender, EventArgs e)
+        private void tabAnnouncement_Click(object sender, EventArgs e)
         {
-            lbxScoreBoard.Items.Clear();
 
-            List<Account> pointList = db.GetPoints();
-            string nameList = db.GetAccountByName();
-
-            for (int i = 0; i < pointList.Count; i++) {
-                lbxScoreBoard.Items.Add(nameList + ": " + pointList[i].ToString());
-            }
-        }
-
-        private void BtnAddPoint_Click(object sender, EventArgs e)
-        {
-            string name = NameTenant();
-
-            if (name != null)
-            {
-                int id = db.GetIdByName(name);
-
-                if (!String.IsNullOrWhiteSpace(tbxPoint.Text))
-                {
-                    db.ChangePoints(Convert.ToInt32(tbxPoint.Text), id);
-                }
-            }
-        }
-
-        private void BtnRmvPoint_Click(object sender, EventArgs e)
-        {
-            string name = NameTenant();
-
-            if (name != null)
-            {
-                int id = db.GetIdByName(name);
-
-                if (!String.IsNullOrWhiteSpace(tbxPoint.Text))
-                {
-                    db.ChangePoints(-Convert.ToInt32(tbxPoint.Text), id);
-                }
-            }
-        }
-
-        private string NameTenant() {
-
-
-            if (lbxScoreBoard.SelectedIndex >= 0)
-            {
-                string name = "";
-                string item = (string)lbxScoreBoard.SelectedItem;
-
-                for (int i = 0; i < item.Length; i++)
-                {
-                    if (!item[i].Equals(":"))
-                    {
-                        name += item[i];
-                        item = item.Substring(1);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                return name;
-            }
-            else {
-                return null;
-            }
-
-            
         }
     }
 }

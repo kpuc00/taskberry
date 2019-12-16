@@ -59,10 +59,6 @@ namespace Tenant_Application
             }
             else
             {
-<<<<<<< Updated upstream
-                this.Hide();
-                uif.Show();
-=======
                 
                 DataAccess db = new DataAccess();
 
@@ -86,10 +82,9 @@ namespace Tenant_Application
                             default:
 
                                 string email = db.GetEmailById(id);
-                                string username = tbxUserName.Text;
                                 string password = db.GetPasswordById(id);
 
-                                UserInterfaceForm userInterface = new UserInterfaceForm(id, email, username, password);
+                                UserInterfaceForm userInterface = new UserInterfaceForm(id, email, password);
 
 
                                 userInterface.Show();
@@ -110,7 +105,6 @@ namespace Tenant_Application
                 {
                     MessageBox.Show(ex.ToString());
                 }
->>>>>>> Stashed changes
             }
         }
 
