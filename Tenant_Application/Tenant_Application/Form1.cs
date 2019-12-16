@@ -12,21 +12,42 @@ namespace Tenant_Application
 {
     public partial class LoginForm : Form
     {
-        UserInterfaceForm uif = new UserInterfaceForm();
         public LoginForm()
         {
             InitializeComponent();
         }
 
-        private void TbxUserName_Click(object sender, EventArgs e)
+        private void LoginForm_Load(object sender, EventArgs e)
         {
-            tbxUserName.Clear();
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
 
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Closes the whole application and it's thread
+            Environment.Exit(-1);
+        }
+
+        //Only deletes text on first click on form load
+        bool firstTimeUsername = true;
+        bool firstTimePassword = true;
+        private void TbxUserName_Click(object sender, EventArgs e)
+        {
+            if(firstTimeUsername)
+            {
+                firstTimeUsername = false;
+                tbxUserName.Clear();
+            }
+
+        }
 
         private void TbxPassWord_Click_1(object sender, EventArgs e)
         {
-            tbxPassWord.Clear();
+            if(firstTimePassword)
+            {
+                firstTimePassword = false;
+                tbxPassWord.Clear();
+            }
             tbxPassWord.PasswordChar = '*';
         }
 
@@ -34,8 +55,7 @@ namespace Tenant_Application
         {
             if(string.IsNullOrWhiteSpace(tbxUserName.Text) || tbxPassWord.Text == "Password" || tbxUserName.Text == "Username" || string.IsNullOrWhiteSpace(tbxPassWord.Text))
             {
-                UserInterfaceForm newForm = new UserInterfaceForm();
-                newForm.MsgBoxWarning("Please, enter your credentials");
+                MsgBoxWarning("Please, enter your credentials");
             }
             else
             {
@@ -94,10 +114,18 @@ namespace Tenant_Application
             }
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
+
+        //Custom Messageboxes
+
+        public void MsgBoxWarning(string message)
+        {
+            MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        public void MsgBoxInformation(string message)
+        {
+            MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
