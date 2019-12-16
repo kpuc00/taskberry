@@ -65,10 +65,7 @@ namespace Tenant_Application
         }
 
         //Closes entire app
-        private void UserInterfaceForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Environment.Exit(-1);
-        }
+
 
 
         private void SendMail(string complaint) {
@@ -102,7 +99,7 @@ namespace Tenant_Application
                     smtp.Send(message);
                 }
 
-                MsgBoxInformation("Thank you for your contacting us. We will review your complain, and get back to you as soon as possible!");
+                MsgBoxInformation("Thank you for your contacting us. We will review your complaint, and get back to you as soon as possible!");
             } catch (Exception ex){
                 MsgBoxWarning(ex.ToString());
             }
@@ -135,17 +132,6 @@ namespace Tenant_Application
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-        
 
 
                         /*Handle Announcement*/
@@ -191,6 +177,9 @@ namespace Tenant_Application
         private void BtnAnnCalendar_Click(object sender, EventArgs e)
         {
             panelAnnCalendar.Visible = HidePanel(panelAnnCalendar.Visible);
+            panelAnnChat.Visible = HidePanel(panelAnnChat.Visible);
+            panelAnnComplaints.Visible = HidePanel(panelAnnComplaints.Visible);
+            panelAnnScore.Visible = HidePanel(panelAnnScore.Visible);
 
             try
             {
@@ -233,6 +222,14 @@ namespace Tenant_Application
         public void MsgBoxInformation(string message)
         {
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void TabSwitch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            panelAnnScore.Visible = false;
+            panelAnnCalendar.Visible = false;
+            panelAnnComplaints.Visible = false;
+            panelAnnChat.Visible = false;
         }
     }
 }

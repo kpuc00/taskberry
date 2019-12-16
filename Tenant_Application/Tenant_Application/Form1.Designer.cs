@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbxUserName = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -42,23 +41,23 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(79, 110);
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Location = new System.Drawing.Point(80, 121);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(247, 1);
+            this.panel2.Size = new System.Drawing.Size(247, 3);
             this.panel2.TabIndex = 0;
             // 
             // tbxUserName
             // 
-            this.tbxUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
+            this.tbxUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(52)))), ((int)(((byte)(60)))));
             this.tbxUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxUserName.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbxUserName.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxUserName.ForeColor = System.Drawing.Color.White;
             this.tbxUserName.Location = new System.Drawing.Point(80, 80);
             this.tbxUserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxUserName.Name = "tbxUserName";
-            this.tbxUserName.Size = new System.Drawing.Size(244, 25);
+            this.tbxUserName.Size = new System.Drawing.Size(244, 37);
             this.tbxUserName.TabIndex = 0;
             this.tbxUserName.Text = "Username";
             this.tbxUserName.Click += new System.EventHandler(this.TbxUserName_Click);
@@ -66,7 +65,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
+            this.panel3.BackgroundImage = global::Tenant_Application.Properties.Resources.loginPaneObject;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.panel1);
@@ -82,9 +81,11 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(26)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(26)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.Color.White;
@@ -99,23 +100,23 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(79, 202);
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Location = new System.Drawing.Point(80, 213);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(247, 1);
+            this.panel1.Size = new System.Drawing.Size(247, 3);
             this.panel1.TabIndex = 4;
             // 
             // tbxPassWord
             // 
-            this.tbxPassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
+            this.tbxPassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(52)))), ((int)(((byte)(60)))));
             this.tbxPassWord.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxPassWord.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbxPassWord.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxPassWord.ForeColor = System.Drawing.Color.White;
             this.tbxPassWord.Location = new System.Drawing.Point(79, 172);
             this.tbxPassWord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxPassWord.Name = "tbxPassWord";
-            this.tbxPassWord.Size = new System.Drawing.Size(244, 25);
+            this.tbxPassWord.Size = new System.Drawing.Size(244, 37);
             this.tbxPassWord.TabIndex = 1;
             this.tbxPassWord.Text = "Password";
             this.tbxPassWord.Click += new System.EventHandler(this.TbxPassWord_Click_1);
@@ -138,7 +139,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::Tenant_Application.Properties.Resources.background1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1579, 838);
             this.Controls.Add(this.panel3);
