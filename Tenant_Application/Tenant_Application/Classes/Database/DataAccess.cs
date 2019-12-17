@@ -85,10 +85,10 @@ namespace Tenant_Application
 
             return ExecuteQueryWithArgs<Chore>(query, args);
         }
-        public void AddAnnouncement(string announcement, string date)
+        public void AddAnnouncement(string date, string testing)
         {
-            var args = new { Announcement = announcement, Date = date };
-            var query = "dbo.Annoucements_AddAnnouncement @Announcement, @Date";
+            var args = new { Date = date, Testing = testing };
+            var query = "dbo.Annoucements_AddAnnouncement @Date, @Testing";
 
             ExecuteQueryWithArgs<object>(query, args);
         }
@@ -98,11 +98,15 @@ namespace Tenant_Application
 
             return ExecuteQueryWithArgsInList<Announcement>(query, null);
         }
-        public List<Announcement> GetAnnouncementsDates()
-        {
-            var query = "dbo.Announcement_GetDate";
-            return ExecuteQueryWithArgsInList<Announcement>(query, null);
-        }
+
+        //This is useless
+        
+        //public List<Announcement> GetAnnouncementsDates()
+        //{
+        //    var query = "dbo.Announcement_GetDate";
+        //    return ExecuteQueryWithArgsInList<Announcement>(query, null);
+        //}
+        
         public void ChangePoints(int point, int id)
         {
             var args = new { Point = point, Id = id };
@@ -112,8 +116,20 @@ namespace Tenant_Application
         }
         public List<Account> GetPoints()
         {
-            throw new Exception("FUCK ME IN THE ASS, IT SHOULD NOT BE HERE MICHAEL(B, NOT GROENEWEGEN VAN DER WEIJDEN) WAKE THE FUCK UP, YOU TWAT");
+            var query = "dbo.Account_GetPoints";
+
+            return ExecuteQueryWithArgsInList<Account>(query, null);
+            
+            
+            //throw new Exception("FUCK ME IN THE ASS, IT SHOULD NOT BE HERE MICHAEL(B, NOT GROENEWEGEN VAN DER WEIJDEN) WAKE THE FUCK UP, YOU TWAT");
         }
+        //public int GetPointsById(int id)
+        //{
+        //    var args = new { Id = id };
+        //    var query = "dbo.Account_GetPoints @Id";
+
+        //    return ExecuteQueryWithArgs<int>(query, args);
+        //}
         public string GetAccountByName()
         {
             throw new Exception("MICHAEL(B, NOT GROENEWEGEN VAN DER WEIJDEN) YOU STUPID IDIOT, IT'S THE SECOND TIME YOU FUCK UP");

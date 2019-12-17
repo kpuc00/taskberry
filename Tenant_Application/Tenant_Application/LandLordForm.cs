@@ -21,6 +21,17 @@ namespace Tenant_Application
             InitializeComponent();
 
             this.personId = personId;
+            UpdateLbxScore();
+        }
+
+        void UpdateLbxScore()
+        {
+            List<Account> accounts = db.GetPoints();
+            lbxScoreBoard.Items.Clear();
+            foreach (Account a in accounts)
+            {
+                lbxScoreBoard.Items.Add($"{a.Name} - \t\t{a.Point}");
+            }
         }
 
         private void LandLordForm_Load(object sender, EventArgs e)
@@ -43,13 +54,14 @@ namespace Tenant_Application
 
         private void BtnSend_Click(object sender, EventArgs e)
         {
-            string announcement;
+            string testing;
             if (!String.IsNullOrWhiteSpace(tbxAnnouncement.Text))
             {
-                announcement = tbxAnnouncement.Text;
+                testing = tbxAnnouncement.Text;
                 try
                 {
-                    db.AddAnnouncement(announcement, DateTime.Today.ToString());
+                    db.AddAnnouncement(DateTime.Today.ToString("d"), testing);
+                    tbxAnnouncement.Text = "";
                 }
                 catch (Exception ex) {
                     MessageBox.Show(ex.ToString());
@@ -62,9 +74,32 @@ namespace Tenant_Application
             
         }
 
-        private void tabAnnouncement_Click(object sender, EventArgs e)
+        private void BtnAnnouncementLogout_Click(object sender, EventArgs e)
         {
+            DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (logout == DialogResult.Yes)
+            {
+                LoginForm loginF = new LoginForm();
+                loginF.Show();
+                this.Hide();
+            }
+        }
 
+        private void BtnAddPoint_Click(object sender, EventArgs e)
+        {
+            //lbx.count - 1
+            int id = lbxScoreBoard.SelectedIndex + 1;
+            NumericUpDown newish = new NumericUpDown();
+            try
+            {
+                db.ChangePoints(Convert.ToInt32(tbxPoint.Text), id);
+                tbxPoint.Text = "";
+                UpdateLbxScore();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

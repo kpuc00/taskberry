@@ -73,7 +73,7 @@ namespace Tenant_Application
                         switch (id)
                         {
                             //Log in LandLord
-                            case 1:
+                            case 5:
                                 LandLordForm landLordInterface = new LandLordForm(id);
 
                                 landLordInterface.Show();

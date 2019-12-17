@@ -19,7 +19,7 @@ namespace Tenant_Application
     public partial class UserInterfaceForm : Form
     {
 
-
+        
         DataAccess db = new DataAccess();
 
 
@@ -55,6 +55,8 @@ namespace Tenant_Application
         private void UserInterfaceForm_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            UpdateLbxScore();
+            timerScoreboard.Enabled = true;
         }
 
         //Closes entire app
@@ -132,9 +134,17 @@ namespace Tenant_Application
             }
         }
 
+        void UpdateLbxScore()
+        {
+            List<Account> accounts = db.GetPoints();
+            lbxScoreboard.Items.Clear();
+            foreach (Account a in accounts)
+            {
+                lbxScoreboard.Items.Add($"{a.Name} - \t\t{a.Point}");
+            }
+        }
 
-
-                        /*Handle Announcement*/
+        /*Handle Announcement*/
 
         int lastLength = 0; //Keeps track if new announcemment is added
         string msg = "";
@@ -145,12 +155,12 @@ namespace Tenant_Application
             {
                 lastLength = db.GetAnnouncements().Count;
 
-                string ann = db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Date + db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Annoucement;
+                string ann = $"{db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Date} - {db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Testing}";
 
                 if (ann.Length > 20)
                 {
-                    //at 20th character - ...
-                    msg = ann.Substring(0, 20);
+                    //at 30th character - ...
+                    msg = ann.Substring(0, 30);
                     msg += " ...";
                 }
 
@@ -191,7 +201,7 @@ namespace Tenant_Application
                 string storeText = "";
                 foreach (Announcement a in listAnn)
                 {
-                    storeText += a.Date + a.Annoucement + Environment.NewLine;
+                    storeText += $"{a.Date} - {a.Testing }{Environment.NewLine}";
                 }
                 tbxAnnChat.Text = storeText;
                 tbxAnnComplaints.Text = storeText;
@@ -230,6 +240,22 @@ namespace Tenant_Application
             panelAnnCalendar.Visible = false;
             panelAnnComplaints.Visible = false;
             panelAnnChat.Visible = false;
+        }
+
+        private void BtnComplaintLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (logout == DialogResult.Yes)
+            {
+                LoginForm loginF = new LoginForm();
+                loginF.Show();
+                this.Hide();
+            }
+        }
+
+        private void TimerScoreboard_Tick(object sender, EventArgs e)
+        {
+            UpdateLbxScore();
         }
     }
 }

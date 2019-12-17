@@ -10,7 +10,8 @@ namespace Tenant_Application
 {
     public class Announcement
     {
-        public string Annoucement { get; set; }
+        public string Announ { get; set; }
         public string Date { get; set; }
+        public string Testing { get; set; }
     }
 }
