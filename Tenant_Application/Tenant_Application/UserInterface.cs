@@ -59,6 +59,25 @@ namespace Tenant_Application
             timerScoreboard.Enabled = true;
         }
 
+        void UpdateChores()
+        {
+            try
+            {
+                List<Chore> availableChores = db.GetEmptyChores(1, 2);
+                lbxCalendarChores.Items.Clear();
+                lbxCalendarDays.Items.Clear();
+                foreach (Chore c in availableChores)
+                {
+                    lbxCalendarDays.Items.Add(c.Day);
+                    lbxCalendarChores.Items.Add($"{c.Chores} - {c.Name}");
+                }
+            }
+            catch(Exception ecc)
+            {
+                MessageBox.Show(ecc.ToString());
+            }
+        }
+
         //Closes entire app
         private void UserInterfaceForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -256,6 +275,69 @@ namespace Tenant_Application
         private void TimerScoreboard_Tick(object sender, EventArgs e)
         {
             UpdateLbxScore();
+        }
+
+
+        void TestingUpdate()
+        {
+            try
+            {
+                List<CalendarDays> days = db.CalendarMonday();
+                lbxScoreboard.Items.Clear();
+                foreach (CalendarDays a in days)
+                {
+                    if (a.Monday != "0")
+                    {
+                        lbxCalendarChores.Items.Add(a.Monday.Substring(1));
+                    }
+                    if (a.Tuesday != "0")
+                    {
+                        lbxCalendarChores.Items.Add(a.Tuesday.Substring(1));
+                    }
+                    if (a.Wednesday != "0")
+                    {
+                        lbxCalendarChores.Items.Add(a.Wednesday.Substring(1));
+                    }
+                    if (a.Thursday != "0")
+                    {
+                        lbxCalendarChores.Items.Add(a.Thursday.Substring(1));
+                    }
+                    if (a.Friday != "0")
+                    {
+                        lbxCalendarChores.Items.Add(a.Friday.Substring(1));
+                    }
+                    if (a.Saturday != "0")
+                    {
+                        lbxCalendarChores.Items.Add(a.Saturday.Substring(1));
+                    }
+                    if (a.Sunday != "0")
+                    {
+                        lbxCalendarChores.Items.Add(a.Sunday.Substring(1));
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        
+        private void BtnCalendarSelect_Click(object sender, EventArgs e)
+        {
+            //UpdateChores();
+            //TestingUpdate();
+
+            try
+            {
+                db.SetCalendar("Thursday", "3Mop Floor");
+                MessageBox.Show("It worked?");
+                TestingUpdate();
+            }
+            catch(Exception ec)
+            {
+                MessageBox.Show(ec.ToString());
+            }
         }
     }
 }

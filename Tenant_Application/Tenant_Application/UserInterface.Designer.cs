@@ -30,16 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tabSwitch = new System.Windows.Forms.TabControl();
+            this.timerAnnouncement = new System.Windows.Forms.Timer(this.components);
+            this.timerRefreshUDP = new System.Windows.Forms.Timer(this.components);
+            this.timerAnnDisp = new System.Windows.Forms.Timer(this.components);
+            this.timerScoreboard = new System.Windows.Forms.Timer(this.components);
             this.tabCalendar = new System.Windows.Forms.TabPage();
+            this.panelCalendarObject = new System.Windows.Forms.Panel();
+            this.lbxCalendarDays = new System.Windows.Forms.ListBox();
+            this.lbxCalendarChores = new System.Windows.Forms.ListBox();
+            this.lblCalendarMain = new System.Windows.Forms.Label();
+            this.btnCalendarSelect = new System.Windows.Forms.Button();
             this.btnCalendarLogout = new System.Windows.Forms.Button();
             this.panelAnnCalendar = new System.Windows.Forms.Panel();
             this.tbxAnnCalendar = new System.Windows.Forms.TextBox();
-            this.lblCalendarMain = new System.Windows.Forms.Label();
             this.pbxCalendarLegend = new System.Windows.Forms.PictureBox();
-            this.pbxCalendarLogo = new System.Windows.Forms.PictureBox();
-            this.btnCalendarSelect = new System.Windows.Forms.Button();
-            this.lbxCalendarChores = new System.Windows.Forms.ListBox();
-            this.lbxCalendarDays = new System.Windows.Forms.ListBox();
             this.lblAnnCalendar = new System.Windows.Forms.Label();
             this.btnAnnCalendar = new System.Windows.Forms.Button();
             this.tabChatRoom = new System.Windows.Forms.TabPage();
@@ -77,15 +81,13 @@
             this.tbxComplaint = new System.Windows.Forms.RichTextBox();
             this.lblAnnComplaints = new System.Windows.Forms.Label();
             this.pbxComplaintsLegend = new System.Windows.Forms.PictureBox();
-            this.timerAnnouncement = new System.Windows.Forms.Timer(this.components);
-            this.timerRefreshUDP = new System.Windows.Forms.Timer(this.components);
-            this.timerAnnDisp = new System.Windows.Forms.Timer(this.components);
-            this.timerScoreboard = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabSwitch.SuspendLayout();
             this.tabCalendar.SuspendLayout();
+            this.panelCalendarObject.SuspendLayout();
             this.panelAnnCalendar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCalendarLegend)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxCalendarLogo)).BeginInit();
             this.tabChatRoom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxChatLogo)).BeginInit();
             this.panelAnnChat.SuspendLayout();
@@ -116,18 +118,34 @@
             this.tabSwitch.TabIndex = 0;
             this.tabSwitch.SelectedIndexChanged += new System.EventHandler(this.TabSwitch_SelectedIndexChanged);
             // 
+            // timerAnnouncement
+            // 
+            this.timerAnnouncement.Interval = 10000;
+            this.timerAnnouncement.Tick += new System.EventHandler(this.TimerAnnouncement_Tick);
+            // 
+            // timerRefreshUDP
+            // 
+            this.timerRefreshUDP.Enabled = true;
+            // 
+            // timerAnnDisp
+            // 
+            this.timerAnnDisp.Enabled = true;
+            this.timerAnnDisp.Interval = 1000;
+            this.timerAnnDisp.Tick += new System.EventHandler(this.TimerAnnDisp_Tick);
+            // 
+            // timerScoreboard
+            // 
+            this.timerScoreboard.Interval = 20000;
+            this.timerScoreboard.Tick += new System.EventHandler(this.TimerScoreboard_Tick);
+            // 
             // tabCalendar
             // 
-            this.tabCalendar.BackgroundImage = global::Tenant_Application.Properties.Resources.background1;
+            this.tabCalendar.BackgroundImage = global::Tenant_Application.Properties.Resources.background2;
             this.tabCalendar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabCalendar.Controls.Add(this.panelCalendarObject);
             this.tabCalendar.Controls.Add(this.btnCalendarLogout);
             this.tabCalendar.Controls.Add(this.panelAnnCalendar);
-            this.tabCalendar.Controls.Add(this.lblCalendarMain);
             this.tabCalendar.Controls.Add(this.pbxCalendarLegend);
-            this.tabCalendar.Controls.Add(this.pbxCalendarLogo);
-            this.tabCalendar.Controls.Add(this.btnCalendarSelect);
-            this.tabCalendar.Controls.Add(this.lbxCalendarChores);
-            this.tabCalendar.Controls.Add(this.lbxCalendarDays);
             this.tabCalendar.Controls.Add(this.lblAnnCalendar);
             this.tabCalendar.Controls.Add(this.btnAnnCalendar);
             this.tabCalendar.Location = new System.Drawing.Point(4, 27);
@@ -137,6 +155,71 @@
             this.tabCalendar.TabIndex = 2;
             this.tabCalendar.Text = "Calendar";
             this.tabCalendar.UseVisualStyleBackColor = true;
+            // 
+            // panelCalendarObject
+            // 
+            this.panelCalendarObject.BackgroundImage = global::Tenant_Application.Properties.Resources.panelobject;
+            this.panelCalendarObject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelCalendarObject.Controls.Add(this.label2);
+            this.panelCalendarObject.Controls.Add(this.label1);
+            this.panelCalendarObject.Controls.Add(this.lblCalendarMain);
+            this.panelCalendarObject.Controls.Add(this.lbxCalendarChores);
+            this.panelCalendarObject.Controls.Add(this.lbxCalendarDays);
+            this.panelCalendarObject.Controls.Add(this.btnCalendarSelect);
+            this.panelCalendarObject.Location = new System.Drawing.Point(63, 100);
+            this.panelCalendarObject.Name = "panelCalendarObject";
+            this.panelCalendarObject.Size = new System.Drawing.Size(749, 467);
+            this.panelCalendarObject.TabIndex = 25;
+            // 
+            // lbxCalendarDays
+            // 
+            this.lbxCalendarDays.FormattingEnabled = true;
+            this.lbxCalendarDays.ItemHeight = 18;
+            this.lbxCalendarDays.Location = new System.Drawing.Point(23, 162);
+            this.lbxCalendarDays.Margin = new System.Windows.Forms.Padding(4);
+            this.lbxCalendarDays.Name = "lbxCalendarDays";
+            this.lbxCalendarDays.Size = new System.Drawing.Size(240, 220);
+            this.lbxCalendarDays.TabIndex = 11;
+            // 
+            // lbxCalendarChores
+            // 
+            this.lbxCalendarChores.FormattingEnabled = true;
+            this.lbxCalendarChores.ItemHeight = 18;
+            this.lbxCalendarChores.Location = new System.Drawing.Point(303, 162);
+            this.lbxCalendarChores.Margin = new System.Windows.Forms.Padding(4);
+            this.lbxCalendarChores.Name = "lbxCalendarChores";
+            this.lbxCalendarChores.Size = new System.Drawing.Size(281, 220);
+            this.lbxCalendarChores.TabIndex = 12;
+            // 
+            // lblCalendarMain
+            // 
+            this.lblCalendarMain.AutoSize = true;
+            this.lblCalendarMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblCalendarMain.ForeColor = System.Drawing.Color.White;
+            this.lblCalendarMain.Location = new System.Drawing.Point(9, 13);
+            this.lblCalendarMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCalendarMain.Name = "lblCalendarMain";
+            this.lblCalendarMain.Size = new System.Drawing.Size(697, 54);
+            this.lblCalendarMain.TabIndex = 14;
+            this.lblCalendarMain.Text = "Choose a day and a chore to do.\r\n";
+            // 
+            // btnCalendarSelect
+            // 
+            this.btnCalendarSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(66)))), ((int)(((byte)(120)))));
+            this.btnCalendarSelect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
+            this.btnCalendarSelect.FlatAppearance.BorderSize = 0;
+            this.btnCalendarSelect.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCalendarSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalendarSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCalendarSelect.ForeColor = System.Drawing.Color.White;
+            this.btnCalendarSelect.Location = new System.Drawing.Point(592, 234);
+            this.btnCalendarSelect.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCalendarSelect.Name = "btnCalendarSelect";
+            this.btnCalendarSelect.Size = new System.Drawing.Size(146, 68);
+            this.btnCalendarSelect.TabIndex = 13;
+            this.btnCalendarSelect.Text = "Choose chore";
+            this.btnCalendarSelect.UseVisualStyleBackColor = false;
+            this.btnCalendarSelect.Click += new System.EventHandler(this.BtnCalendarSelect_Click);
             // 
             // btnCalendarLogout
             // 
@@ -178,18 +261,6 @@
             this.tbxAnnCalendar.Size = new System.Drawing.Size(451, 650);
             this.tbxAnnCalendar.TabIndex = 2;
             // 
-            // lblCalendarMain
-            // 
-            this.lblCalendarMain.AutoSize = true;
-            this.lblCalendarMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblCalendarMain.ForeColor = System.Drawing.Color.White;
-            this.lblCalendarMain.Location = new System.Drawing.Point(213, 100);
-            this.lblCalendarMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCalendarMain.Name = "lblCalendarMain";
-            this.lblCalendarMain.Size = new System.Drawing.Size(697, 54);
-            this.lblCalendarMain.TabIndex = 14;
-            this.lblCalendarMain.Text = "Choose a day and a chore to do.\r\n";
-            // 
             // pbxCalendarLegend
             // 
             this.pbxCalendarLegend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -200,54 +271,6 @@
             this.pbxCalendarLegend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxCalendarLegend.TabIndex = 3;
             this.pbxCalendarLegend.TabStop = false;
-            // 
-            // pbxCalendarLogo
-            // 
-            this.pbxCalendarLogo.Image = global::Tenant_Application.Properties.Resources.onlylogo;
-            this.pbxCalendarLogo.Location = new System.Drawing.Point(41, 25);
-            this.pbxCalendarLogo.Margin = new System.Windows.Forms.Padding(4);
-            this.pbxCalendarLogo.Name = "pbxCalendarLogo";
-            this.pbxCalendarLogo.Size = new System.Drawing.Size(200, 185);
-            this.pbxCalendarLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxCalendarLogo.TabIndex = 1;
-            this.pbxCalendarLogo.TabStop = false;
-            // 
-            // btnCalendarSelect
-            // 
-            this.btnCalendarSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
-            this.btnCalendarSelect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
-            this.btnCalendarSelect.FlatAppearance.BorderSize = 0;
-            this.btnCalendarSelect.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCalendarSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalendarSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCalendarSelect.ForeColor = System.Drawing.Color.White;
-            this.btnCalendarSelect.Location = new System.Drawing.Point(731, 367);
-            this.btnCalendarSelect.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCalendarSelect.Name = "btnCalendarSelect";
-            this.btnCalendarSelect.Size = new System.Drawing.Size(181, 68);
-            this.btnCalendarSelect.TabIndex = 13;
-            this.btnCalendarSelect.Text = "Choose chore";
-            this.btnCalendarSelect.UseVisualStyleBackColor = false;
-            // 
-            // lbxCalendarChores
-            // 
-            this.lbxCalendarChores.FormattingEnabled = true;
-            this.lbxCalendarChores.ItemHeight = 18;
-            this.lbxCalendarChores.Location = new System.Drawing.Point(417, 286);
-            this.lbxCalendarChores.Margin = new System.Windows.Forms.Padding(4);
-            this.lbxCalendarChores.Name = "lbxCalendarChores";
-            this.lbxCalendarChores.Size = new System.Drawing.Size(281, 220);
-            this.lbxCalendarChores.TabIndex = 12;
-            // 
-            // lbxCalendarDays
-            // 
-            this.lbxCalendarDays.FormattingEnabled = true;
-            this.lbxCalendarDays.ItemHeight = 18;
-            this.lbxCalendarDays.Location = new System.Drawing.Point(137, 286);
-            this.lbxCalendarDays.Margin = new System.Windows.Forms.Padding(4);
-            this.lbxCalendarDays.Name = "lbxCalendarDays";
-            this.lbxCalendarDays.Size = new System.Drawing.Size(240, 220);
-            this.lbxCalendarDays.TabIndex = 11;
             // 
             // lblAnnCalendar
             // 
@@ -753,25 +776,29 @@
             this.pbxComplaintsLegend.TabIndex = 20;
             this.pbxComplaintsLegend.TabStop = false;
             // 
-            // timerAnnouncement
+            // label1
             // 
-            this.timerAnnouncement.Interval = 10000;
-            this.timerAnnouncement.Tick += new System.EventHandler(this.TimerAnnouncement_Tick);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(34, 386);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(216, 32);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Day of the week";
             // 
-            // timerRefreshUDP
+            // label2
             // 
-            this.timerRefreshUDP.Enabled = true;
-            // 
-            // timerAnnDisp
-            // 
-            this.timerAnnDisp.Enabled = true;
-            this.timerAnnDisp.Interval = 1000;
-            this.timerAnnDisp.Tick += new System.EventHandler(this.TimerAnnDisp_Tick);
-            // 
-            // timerScoreboard
-            // 
-            this.timerScoreboard.Interval = 20000;
-            this.timerScoreboard.Tick += new System.EventHandler(this.TimerScoreboard_Tick);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(331, 386);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(231, 32);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Available Chores";
             // 
             // UserInterfaceForm
             // 
@@ -790,11 +817,11 @@
             this.Load += new System.EventHandler(this.UserInterfaceForm_Load);
             this.tabSwitch.ResumeLayout(false);
             this.tabCalendar.ResumeLayout(false);
-            this.tabCalendar.PerformLayout();
+            this.panelCalendarObject.ResumeLayout(false);
+            this.panelCalendarObject.PerformLayout();
             this.panelAnnCalendar.ResumeLayout(false);
             this.panelAnnCalendar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCalendarLegend)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxCalendarLogo)).EndInit();
             this.tabChatRoom.ResumeLayout(false);
             this.tabChatRoom.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxChatLogo)).EndInit();
@@ -854,7 +881,6 @@
         private System.Windows.Forms.ListBox lbxScoreboard;
         private System.Windows.Forms.Timer timerRefreshUDP;
         private System.Windows.Forms.Timer timerAnnDisp;
-        private System.Windows.Forms.PictureBox pbxCalendarLogo;
         private System.Windows.Forms.PictureBox pbxChatLogo;
         private System.Windows.Forms.Label lblScoreboardMain;
         private System.Windows.Forms.PictureBox pbxScoreboardLogo;
@@ -870,5 +896,8 @@
         private System.Windows.Forms.Button btnChatLogout;
         private System.Windows.Forms.Button btnScoreboardLogout;
         private System.Windows.Forms.Timer timerScoreboard;
+        private System.Windows.Forms.Panel panelCalendarObject;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

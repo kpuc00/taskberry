@@ -78,13 +78,14 @@ namespace Tenant_Application
 
             return ExecuteQueryWithArgs<Account>(query, args);
         }
-        public Chore GetChoreByName(string chore)
-        {
-            var args = new { Text = chore };
-            var query = "dbo.Chores_GetByName @Text";
+        //Useless
+        //public Chore GetChoreByName(string chore)
+        //{
+        //    var args = new { Text = chore };
+        //    var query = "dbo.Chores_GetByName @Text";
 
-            return ExecuteQueryWithArgs<Chore>(query, args);
-        }
+        //    return ExecuteQueryWithArgs<Chore>(query, args);
+        //}
         public void AddAnnouncement(string date, string testing)
         {
             var args = new { Date = date, Testing = testing };
@@ -99,14 +100,22 @@ namespace Tenant_Application
             return ExecuteQueryWithArgsInList<Announcement>(query, null);
         }
 
+        public List<Chore> GetEmptyChores(int chore, int day)
+        {
+
+            var args = new { Chore = chore, Day =  day};
+            var query = "dbo.GetEmptyChores @Chore, @Day";
+            return ExecuteQueryWithArgsInList<Chore>(query, args);
+        }
+
         //This is useless
-        
+
         //public List<Announcement> GetAnnouncementsDates()
         //{
         //    var query = "dbo.Announcement_GetDate";
         //    return ExecuteQueryWithArgsInList<Announcement>(query, null);
         //}
-        
+
         public void ChangePoints(int point, int id)
         {
             var args = new { Point = point, Id = id };
@@ -130,6 +139,24 @@ namespace Tenant_Application
 
         //    return ExecuteQueryWithArgs<int>(query, args);
         //}
+
+
+        public List<CalendarDays> CalendarMonday()
+        {
+            var query = "dbo.GetCalendar";
+            return ExecuteQueryWithArgsInList<CalendarDays>(query, null);
+        }
+
+
+        public void SetCalendar(string day, string chore)
+        {
+            var args = new { Dayum = day, Chore = chore};
+            var query = "dbo.ModifyCalendar @Dayum, @Chore";
+
+            ExecuteQueryWithArgs<object>(query, args);
+        }
+
+
         public string GetAccountByName()
         {
             throw new Exception("MICHAEL(B, NOT GROENEWEGEN VAN DER WEIJDEN) YOU STUPID IDIOT, IT'S THE SECOND TIME YOU FUCK UP");

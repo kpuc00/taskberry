@@ -83,6 +83,16 @@ namespace Tenant_Application.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background2 {
+            get {
+                object obj = ResourceManager.GetObject("background2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buttonImage {
             get {
                 object obj = ResourceManager.GetObject("buttonImage", resourceCulture);
@@ -136,6 +146,16 @@ namespace Tenant_Application.Properties {
         internal static System.Drawing.Bitmap onlylogo {
             get {
                 object obj = ResourceManager.GetObject("onlylogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap panelobject {
+            get {
+                object obj = ResourceManager.GetObject("panelobject", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

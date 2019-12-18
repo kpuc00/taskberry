@@ -8,8 +8,10 @@ namespace Tenant_Application
 {
     public class Chore
     {
-        public int id { get; set; }
+        public string Name { get; set; }
         public string Chores { get; set; }
+
+        public string Day { get; set; }
 
         public string ChoreInfo
         {
