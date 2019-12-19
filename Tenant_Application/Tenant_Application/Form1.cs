@@ -83,8 +83,9 @@ namespace Tenant_Application
 
                                 string email = db.GetEmailById(id);
                                 string password = db.GetPasswordById(id);
+                                string name = db.GetNameById(id);
 
-                                UserInterfaceForm userInterface = new UserInterfaceForm(id, email, password);
+                                UserInterfaceForm userInterface = new UserInterfaceForm(id, email, password, name);
 
 
                                 userInterface.Show();

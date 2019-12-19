@@ -27,6 +27,7 @@ namespace Tenant_Application
         int personId;
         string personEmail;
         string personPassword;
+        string personName;
 
         //Overried some painter settings - makes form load faster
         protected override CreateParams CreateParams
@@ -39,7 +40,7 @@ namespace Tenant_Application
             }
         }
 
-        public UserInterfaceForm(int personId, string personEmail, string personPassword)
+        public UserInterfaceForm(int personId, string personEmail, string personPassword, string personName)
         {
             InitializeComponent();
 
@@ -47,6 +48,7 @@ namespace Tenant_Application
             this.personId = personId;
             this.personEmail = personEmail;
             this.personPassword = personPassword;
+            this.personName = personName;
 
             
             timerAnnDisp.Start(); //Displays new announcements
@@ -57,6 +59,7 @@ namespace Tenant_Application
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             UpdateLbxScore();
             timerScoreboard.Enabled = true;
+            lblChatMain.Text = $"{personName}, welcome to the chat room";
         }
 
         void UpdateChores()

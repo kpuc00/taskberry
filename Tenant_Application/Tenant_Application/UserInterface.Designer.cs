@@ -30,15 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tabSwitch = new System.Windows.Forms.TabControl();
-            this.timerAnnouncement = new System.Windows.Forms.Timer(this.components);
-            this.timerRefreshUDP = new System.Windows.Forms.Timer(this.components);
-            this.timerAnnDisp = new System.Windows.Forms.Timer(this.components);
-            this.timerScoreboard = new System.Windows.Forms.Timer(this.components);
             this.tabCalendar = new System.Windows.Forms.TabPage();
             this.panelCalendarObject = new System.Windows.Forms.Panel();
-            this.lbxCalendarDays = new System.Windows.Forms.ListBox();
-            this.lbxCalendarChores = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblCalendarMain = new System.Windows.Forms.Label();
+            this.lbxCalendarChores = new System.Windows.Forms.ListBox();
+            this.lbxCalendarDays = new System.Windows.Forms.ListBox();
             this.btnCalendarSelect = new System.Windows.Forms.Button();
             this.btnCalendarLogout = new System.Windows.Forms.Button();
             this.panelAnnCalendar = new System.Windows.Forms.Panel();
@@ -49,7 +47,6 @@
             this.tabChatRoom = new System.Windows.Forms.TabPage();
             this.btnChatLogout = new System.Windows.Forms.Button();
             this.lblChatMain = new System.Windows.Forms.Label();
-            this.pbxChatLogo = new System.Windows.Forms.PictureBox();
             this.tbxChat = new System.Windows.Forms.TextBox();
             this.tbxChatMsg = new System.Windows.Forms.TextBox();
             this.lblAnnChat = new System.Windows.Forms.Label();
@@ -62,8 +59,6 @@
             this.tabGrading = new System.Windows.Forms.TabPage();
             this.btnScoreboardLogout = new System.Windows.Forms.Button();
             this.lblScoreboardMain = new System.Windows.Forms.Label();
-            this.pbxScoreboardLogo = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.lbxScoreboard = new System.Windows.Forms.ListBox();
             this.lblAnnScore = new System.Windows.Forms.Label();
             this.panelAnnScore = new System.Windows.Forms.Panel();
@@ -73,7 +68,6 @@
             this.tabComplaints = new System.Windows.Forms.TabPage();
             this.btnComplaintLogout = new System.Windows.Forms.Button();
             this.lblComplaintsMain = new System.Windows.Forms.Label();
-            this.pbxComplaintsLogo = new System.Windows.Forms.PictureBox();
             this.panelAnnComplaints = new System.Windows.Forms.Panel();
             this.tbxAnnComplaints = new System.Windows.Forms.TextBox();
             this.btnAnnComplaints = new System.Windows.Forms.Button();
@@ -81,25 +75,30 @@
             this.tbxComplaint = new System.Windows.Forms.RichTextBox();
             this.lblAnnComplaints = new System.Windows.Forms.Label();
             this.pbxComplaintsLegend = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.timerAnnouncement = new System.Windows.Forms.Timer(this.components);
+            this.timerRefreshUDP = new System.Windows.Forms.Timer(this.components);
+            this.timerAnnDisp = new System.Windows.Forms.Timer(this.components);
+            this.timerScoreboard = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.tabSwitch.SuspendLayout();
             this.tabCalendar.SuspendLayout();
             this.panelCalendarObject.SuspendLayout();
             this.panelAnnCalendar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCalendarLegend)).BeginInit();
             this.tabChatRoom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxChatLogo)).BeginInit();
             this.panelAnnChat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxChatLegend)).BeginInit();
             this.tabGrading.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxScoreboardLogo)).BeginInit();
             this.panelAnnScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxScoreboardLegend)).BeginInit();
             this.tabComplaints.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxComplaintsLogo)).BeginInit();
             this.panelAnnComplaints.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxComplaintsLegend)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabSwitch
@@ -117,26 +116,6 @@
             this.tabSwitch.Size = new System.Drawing.Size(1572, 828);
             this.tabSwitch.TabIndex = 0;
             this.tabSwitch.SelectedIndexChanged += new System.EventHandler(this.TabSwitch_SelectedIndexChanged);
-            // 
-            // timerAnnouncement
-            // 
-            this.timerAnnouncement.Interval = 10000;
-            this.timerAnnouncement.Tick += new System.EventHandler(this.TimerAnnouncement_Tick);
-            // 
-            // timerRefreshUDP
-            // 
-            this.timerRefreshUDP.Enabled = true;
-            // 
-            // timerAnnDisp
-            // 
-            this.timerAnnDisp.Enabled = true;
-            this.timerAnnDisp.Interval = 1000;
-            this.timerAnnDisp.Tick += new System.EventHandler(this.TimerAnnDisp_Tick);
-            // 
-            // timerScoreboard
-            // 
-            this.timerScoreboard.Interval = 20000;
-            this.timerScoreboard.Tick += new System.EventHandler(this.TimerScoreboard_Tick);
             // 
             // tabCalendar
             // 
@@ -171,25 +150,29 @@
             this.panelCalendarObject.Size = new System.Drawing.Size(749, 467);
             this.panelCalendarObject.TabIndex = 25;
             // 
-            // lbxCalendarDays
+            // label2
             // 
-            this.lbxCalendarDays.FormattingEnabled = true;
-            this.lbxCalendarDays.ItemHeight = 18;
-            this.lbxCalendarDays.Location = new System.Drawing.Point(23, 162);
-            this.lbxCalendarDays.Margin = new System.Windows.Forms.Padding(4);
-            this.lbxCalendarDays.Name = "lbxCalendarDays";
-            this.lbxCalendarDays.Size = new System.Drawing.Size(240, 220);
-            this.lbxCalendarDays.TabIndex = 11;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(331, 386);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(231, 32);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Available Chores";
             // 
-            // lbxCalendarChores
+            // label1
             // 
-            this.lbxCalendarChores.FormattingEnabled = true;
-            this.lbxCalendarChores.ItemHeight = 18;
-            this.lbxCalendarChores.Location = new System.Drawing.Point(303, 162);
-            this.lbxCalendarChores.Margin = new System.Windows.Forms.Padding(4);
-            this.lbxCalendarChores.Name = "lbxCalendarChores";
-            this.lbxCalendarChores.Size = new System.Drawing.Size(281, 220);
-            this.lbxCalendarChores.TabIndex = 12;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(34, 386);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(216, 32);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Day of the week";
             // 
             // lblCalendarMain
             // 
@@ -202,6 +185,26 @@
             this.lblCalendarMain.Size = new System.Drawing.Size(697, 54);
             this.lblCalendarMain.TabIndex = 14;
             this.lblCalendarMain.Text = "Choose a day and a chore to do.\r\n";
+            // 
+            // lbxCalendarChores
+            // 
+            this.lbxCalendarChores.FormattingEnabled = true;
+            this.lbxCalendarChores.ItemHeight = 18;
+            this.lbxCalendarChores.Location = new System.Drawing.Point(303, 162);
+            this.lbxCalendarChores.Margin = new System.Windows.Forms.Padding(4);
+            this.lbxCalendarChores.Name = "lbxCalendarChores";
+            this.lbxCalendarChores.Size = new System.Drawing.Size(281, 220);
+            this.lbxCalendarChores.TabIndex = 12;
+            // 
+            // lbxCalendarDays
+            // 
+            this.lbxCalendarDays.FormattingEnabled = true;
+            this.lbxCalendarDays.ItemHeight = 18;
+            this.lbxCalendarDays.Location = new System.Drawing.Point(23, 162);
+            this.lbxCalendarDays.Margin = new System.Windows.Forms.Padding(4);
+            this.lbxCalendarDays.Name = "lbxCalendarDays";
+            this.lbxCalendarDays.Size = new System.Drawing.Size(240, 220);
+            this.lbxCalendarDays.TabIndex = 11;
             // 
             // btnCalendarSelect
             // 
@@ -305,16 +308,11 @@
             // 
             this.tabChatRoom.BackgroundImage = global::Tenant_Application.Properties.Resources.background1;
             this.tabChatRoom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabChatRoom.Controls.Add(this.panel1);
             this.tabChatRoom.Controls.Add(this.btnChatLogout);
-            this.tabChatRoom.Controls.Add(this.lblChatMain);
-            this.tabChatRoom.Controls.Add(this.pbxChatLogo);
-            this.tabChatRoom.Controls.Add(this.tbxChat);
-            this.tabChatRoom.Controls.Add(this.tbxChatMsg);
             this.tabChatRoom.Controls.Add(this.lblAnnChat);
-            this.tabChatRoom.Controls.Add(this.btnChatSend);
             this.tabChatRoom.Controls.Add(this.panelAnnChat);
             this.tabChatRoom.Controls.Add(this.btn);
-            this.tabChatRoom.Controls.Add(this.lbxOnlineUsers);
             this.tabChatRoom.Controls.Add(this.pbxChatLegend);
             this.tabChatRoom.Location = new System.Drawing.Point(4, 27);
             this.tabChatRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -348,28 +346,17 @@
             this.lblChatMain.AutoSize = true;
             this.lblChatMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblChatMain.ForeColor = System.Drawing.Color.White;
-            this.lblChatMain.Location = new System.Drawing.Point(213, 100);
+            this.lblChatMain.Location = new System.Drawing.Point(21, 26);
             this.lblChatMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChatMain.Name = "lblChatMain";
-            this.lblChatMain.Size = new System.Drawing.Size(749, 54);
+            this.lblChatMain.Size = new System.Drawing.Size(752, 54);
             this.lblChatMain.TabIndex = 1;
-            this.lblChatMain.Text = "Welcome <name> to the chat room";
-            // 
-            // pbxChatLogo
-            // 
-            this.pbxChatLogo.Image = global::Tenant_Application.Properties.Resources.onlylogo;
-            this.pbxChatLogo.Location = new System.Drawing.Point(41, 25);
-            this.pbxChatLogo.Margin = new System.Windows.Forms.Padding(4);
-            this.pbxChatLogo.Name = "pbxChatLogo";
-            this.pbxChatLogo.Size = new System.Drawing.Size(200, 185);
-            this.pbxChatLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxChatLogo.TabIndex = 10;
-            this.pbxChatLogo.TabStop = false;
+            this.lblChatMain.Text = "<name>, welcome to the chat room";
             // 
             // tbxChat
             // 
             this.tbxChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxChat.Location = new System.Drawing.Point(72, 218);
+            this.tbxChat.Location = new System.Drawing.Point(12, 104);
             this.tbxChat.Margin = new System.Windows.Forms.Padding(4);
             this.tbxChat.Multiline = true;
             this.tbxChat.Name = "tbxChat";
@@ -379,7 +366,7 @@
             // 
             // tbxChatMsg
             // 
-            this.tbxChatMsg.Location = new System.Drawing.Point(72, 632);
+            this.tbxChatMsg.Location = new System.Drawing.Point(12, 518);
             this.tbxChatMsg.Margin = new System.Windows.Forms.Padding(4);
             this.tbxChatMsg.Multiline = true;
             this.tbxChatMsg.Name = "tbxChatMsg";
@@ -399,14 +386,14 @@
             // 
             // btnChatSend
             // 
-            this.btnChatSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
+            this.btnChatSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(66)))), ((int)(((byte)(120)))));
             this.btnChatSend.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
             this.btnChatSend.FlatAppearance.BorderSize = 0;
             this.btnChatSend.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnChatSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChatSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnChatSend.ForeColor = System.Drawing.Color.White;
-            this.btnChatSend.Location = new System.Drawing.Point(646, 632);
+            this.btnChatSend.Location = new System.Drawing.Point(586, 518);
             this.btnChatSend.Margin = new System.Windows.Forms.Padding(4);
             this.btnChatSend.Name = "btnChatSend";
             this.btnChatSend.Size = new System.Drawing.Size(184, 33);
@@ -458,7 +445,7 @@
             // 
             this.lbxOnlineUsers.FormattingEnabled = true;
             this.lbxOnlineUsers.ItemHeight = 18;
-            this.lbxOnlineUsers.Location = new System.Drawing.Point(838, 218);
+            this.lbxOnlineUsers.Location = new System.Drawing.Point(778, 104);
             this.lbxOnlineUsers.Margin = new System.Windows.Forms.Padding(4);
             this.lbxOnlineUsers.Name = "lbxOnlineUsers";
             this.lbxOnlineUsers.Size = new System.Drawing.Size(211, 166);
@@ -479,11 +466,8 @@
             // 
             this.tabGrading.BackgroundImage = global::Tenant_Application.Properties.Resources.background1;
             this.tabGrading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabGrading.Controls.Add(this.panel2);
             this.tabGrading.Controls.Add(this.btnScoreboardLogout);
-            this.tabGrading.Controls.Add(this.lblScoreboardMain);
-            this.tabGrading.Controls.Add(this.pbxScoreboardLogo);
-            this.tabGrading.Controls.Add(this.label4);
-            this.tabGrading.Controls.Add(this.lbxScoreboard);
             this.tabGrading.Controls.Add(this.lblAnnScore);
             this.tabGrading.Controls.Add(this.panelAnnScore);
             this.tabGrading.Controls.Add(this.btnAnnScore);
@@ -519,41 +503,18 @@
             this.lblScoreboardMain.AutoSize = true;
             this.lblScoreboardMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblScoreboardMain.ForeColor = System.Drawing.Color.White;
-            this.lblScoreboardMain.Location = new System.Drawing.Point(213, 100);
+            this.lblScoreboardMain.Location = new System.Drawing.Point(17, 51);
             this.lblScoreboardMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblScoreboardMain.Name = "lblScoreboardMain";
             this.lblScoreboardMain.Size = new System.Drawing.Size(573, 54);
             this.lblScoreboardMain.TabIndex = 16;
             this.lblScoreboardMain.Text = "Tenant activity scoreboard";
             // 
-            // pbxScoreboardLogo
-            // 
-            this.pbxScoreboardLogo.Image = global::Tenant_Application.Properties.Resources.onlylogo;
-            this.pbxScoreboardLogo.Location = new System.Drawing.Point(41, 25);
-            this.pbxScoreboardLogo.Margin = new System.Windows.Forms.Padding(4);
-            this.pbxScoreboardLogo.Name = "pbxScoreboardLogo";
-            this.pbxScoreboardLogo.Size = new System.Drawing.Size(200, 185);
-            this.pbxScoreboardLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxScoreboardLogo.TabIndex = 17;
-            this.pbxScoreboardLogo.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(355, 97);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(235, 48);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Scoreboard";
-            // 
             // lbxScoreboard
             // 
             this.lbxScoreboard.FormattingEnabled = true;
             this.lbxScoreboard.ItemHeight = 18;
-            this.lbxScoreboard.Location = new System.Drawing.Point(351, 213);
+            this.lbxScoreboard.Location = new System.Drawing.Point(142, 184);
             this.lbxScoreboard.Margin = new System.Windows.Forms.Padding(4);
             this.lbxScoreboard.Name = "lbxScoreboard";
             this.lbxScoreboard.Size = new System.Drawing.Size(293, 328);
@@ -625,13 +586,10 @@
             // 
             this.tabComplaints.BackgroundImage = global::Tenant_Application.Properties.Resources.background1;
             this.tabComplaints.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabComplaints.Controls.Add(this.panel3);
             this.tabComplaints.Controls.Add(this.btnComplaintLogout);
-            this.tabComplaints.Controls.Add(this.lblComplaintsMain);
-            this.tabComplaints.Controls.Add(this.pbxComplaintsLogo);
             this.tabComplaints.Controls.Add(this.panelAnnComplaints);
             this.tabComplaints.Controls.Add(this.btnAnnComplaints);
-            this.tabComplaints.Controls.Add(this.btnSendMail);
-            this.tabComplaints.Controls.Add(this.tbxComplaint);
             this.tabComplaints.Controls.Add(this.lblAnnComplaints);
             this.tabComplaints.Controls.Add(this.pbxComplaintsLegend);
             this.tabComplaints.Location = new System.Drawing.Point(4, 27);
@@ -666,23 +624,12 @@
             this.lblComplaintsMain.AutoSize = true;
             this.lblComplaintsMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblComplaintsMain.ForeColor = System.Drawing.Color.White;
-            this.lblComplaintsMain.Location = new System.Drawing.Point(213, 100);
+            this.lblComplaintsMain.Location = new System.Drawing.Point(10, 33);
             this.lblComplaintsMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblComplaintsMain.Name = "lblComplaintsMain";
             this.lblComplaintsMain.Size = new System.Drawing.Size(585, 54);
             this.lblComplaintsMain.TabIndex = 18;
             this.lblComplaintsMain.Text = "Enter your complaint below";
-            // 
-            // pbxComplaintsLogo
-            // 
-            this.pbxComplaintsLogo.Image = global::Tenant_Application.Properties.Resources.onlylogo;
-            this.pbxComplaintsLogo.Location = new System.Drawing.Point(41, 25);
-            this.pbxComplaintsLogo.Margin = new System.Windows.Forms.Padding(4);
-            this.pbxComplaintsLogo.Name = "pbxComplaintsLogo";
-            this.pbxComplaintsLogo.Size = new System.Drawing.Size(200, 185);
-            this.pbxComplaintsLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxComplaintsLogo.TabIndex = 19;
-            this.pbxComplaintsLogo.TabStop = false;
             // 
             // panelAnnComplaints
             // 
@@ -726,14 +673,14 @@
             // 
             // btnSendMail
             // 
-            this.btnSendMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
+            this.btnSendMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(66)))), ((int)(((byte)(120)))));
             this.btnSendMail.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
             this.btnSendMail.FlatAppearance.BorderSize = 0;
             this.btnSendMail.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnSendMail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSendMail.ForeColor = System.Drawing.Color.White;
-            this.btnSendMail.Location = new System.Drawing.Point(384, 706);
+            this.btnSendMail.Location = new System.Drawing.Point(172, 492);
             this.btnSendMail.Margin = new System.Windows.Forms.Padding(4);
             this.btnSendMail.Name = "btnSendMail";
             this.btnSendMail.Size = new System.Drawing.Size(260, 70);
@@ -747,10 +694,10 @@
             this.tbxComplaint.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxComplaint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbxComplaint.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxComplaint.Location = new System.Drawing.Point(271, 219);
+            this.tbxComplaint.Location = new System.Drawing.Point(90, 134);
             this.tbxComplaint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxComplaint.Name = "tbxComplaint";
-            this.tbxComplaint.Size = new System.Drawing.Size(475, 480);
+            this.tbxComplaint.Size = new System.Drawing.Size(475, 316);
             this.tbxComplaint.TabIndex = 1;
             this.tbxComplaint.Text = "";
             // 
@@ -776,29 +723,62 @@
             this.pbxComplaintsLegend.TabIndex = 20;
             this.pbxComplaintsLegend.TabStop = false;
             // 
-            // label1
+            // timerAnnouncement
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(34, 386);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 32);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Day of the week";
+            this.timerAnnouncement.Interval = 10000;
+            this.timerAnnouncement.Tick += new System.EventHandler(this.TimerAnnouncement_Tick);
             // 
-            // label2
+            // timerRefreshUDP
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(331, 386);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(231, 32);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Available Chores";
+            this.timerRefreshUDP.Enabled = true;
+            // 
+            // timerAnnDisp
+            // 
+            this.timerAnnDisp.Enabled = true;
+            this.timerAnnDisp.Interval = 1000;
+            this.timerAnnDisp.Tick += new System.EventHandler(this.TimerAnnDisp_Tick);
+            // 
+            // timerScoreboard
+            // 
+            this.timerScoreboard.Interval = 20000;
+            this.timerScoreboard.Tick += new System.EventHandler(this.TimerScoreboard_Tick);
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::Tenant_Application.Properties.Resources.panelobject;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.tbxChat);
+            this.panel1.Controls.Add(this.lbxOnlineUsers);
+            this.panel1.Controls.Add(this.lblChatMain);
+            this.panel1.Controls.Add(this.btnChatSend);
+            this.panel1.Controls.Add(this.tbxChatMsg);
+            this.panel1.Location = new System.Drawing.Point(21, 100);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1009, 577);
+            this.panel1.TabIndex = 26;
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = global::Tenant_Application.Properties.Resources.panelobject;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.lblScoreboardMain);
+            this.panel2.Controls.Add(this.lbxScoreboard);
+            this.panel2.Location = new System.Drawing.Point(57, 100);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(636, 541);
+            this.panel2.TabIndex = 27;
+            // 
+            // panel3
+            // 
+            this.panel3.BackgroundImage = global::Tenant_Application.Properties.Resources.panelobject;
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel3.Controls.Add(this.tbxComplaint);
+            this.panel3.Controls.Add(this.btnSendMail);
+            this.panel3.Controls.Add(this.lblComplaintsMain);
+            this.panel3.Location = new System.Drawing.Point(88, 100);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(662, 577);
+            this.panel3.TabIndex = 28;
             // 
             // UserInterfaceForm
             // 
@@ -823,23 +803,23 @@
             this.panelAnnCalendar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCalendarLegend)).EndInit();
             this.tabChatRoom.ResumeLayout(false);
-            this.tabChatRoom.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxChatLogo)).EndInit();
             this.panelAnnChat.ResumeLayout(false);
             this.panelAnnChat.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxChatLegend)).EndInit();
             this.tabGrading.ResumeLayout(false);
-            this.tabGrading.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxScoreboardLogo)).EndInit();
             this.panelAnnScore.ResumeLayout(false);
             this.panelAnnScore.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxScoreboardLegend)).EndInit();
             this.tabComplaints.ResumeLayout(false);
-            this.tabComplaints.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxComplaintsLogo)).EndInit();
             this.panelAnnComplaints.ResumeLayout(false);
             this.panelAnnComplaints.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxComplaintsLegend)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -877,15 +857,11 @@
         private System.Windows.Forms.ListBox lbxCalendarChores;
         private System.Windows.Forms.ListBox lbxCalendarDays;
         private System.Windows.Forms.Label lblCalendarMain;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox lbxScoreboard;
         private System.Windows.Forms.Timer timerRefreshUDP;
         private System.Windows.Forms.Timer timerAnnDisp;
-        private System.Windows.Forms.PictureBox pbxChatLogo;
         private System.Windows.Forms.Label lblScoreboardMain;
-        private System.Windows.Forms.PictureBox pbxScoreboardLogo;
         private System.Windows.Forms.Label lblComplaintsMain;
-        private System.Windows.Forms.PictureBox pbxComplaintsLogo;
         private System.Windows.Forms.PictureBox pbxCalendarLegend;
         private System.Windows.Forms.PictureBox pbxChatLegend;
         private System.Windows.Forms.PictureBox pbxScoreboardLegend;
@@ -899,5 +875,8 @@
         private System.Windows.Forms.Panel panelCalendarObject;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }

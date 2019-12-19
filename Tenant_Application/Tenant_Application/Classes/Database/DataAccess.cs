@@ -71,6 +71,14 @@ namespace Tenant_Application
 
             return ExecuteQueryWithArgs<string>(query, args);
         }
+        public string GetNameById(int id)
+        {
+            var args = new { Id = id };
+            var query = "dbo.Account_GetNameById @Id";
+
+            return ExecuteQueryWithArgs<string>(query, args);
+        }
+        //Replace all above with this 
         public Account GetAccountById(int id)
         {
             var args = new { Id = id };
