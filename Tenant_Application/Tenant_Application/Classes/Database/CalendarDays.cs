@@ -17,5 +17,11 @@ namespace Tenant_Application
         public string Saturday { get; set; }
         public string Sunday { get; set; }
 
+
+        public string[] ShowDays()
+        {
+            string[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+            return days;
+        }
     }
 }

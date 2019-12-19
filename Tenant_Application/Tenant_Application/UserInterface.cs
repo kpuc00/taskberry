@@ -21,7 +21,7 @@ namespace Tenant_Application
 
         
         DataAccess db = new DataAccess();
-
+        //string[] days;
 
         //Holding personal information
         int personId;
@@ -58,8 +58,18 @@ namespace Tenant_Application
         {
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             UpdateLbxScore();
+            ListWeekdays();
             timerScoreboard.Enabled = true;
             lblChatMain.Text = $"{personName}, welcome to the chat room";
+        }
+
+        void ListWeekdays()
+        {
+            CalendarDays days = new CalendarDays();
+            foreach(string d in days.ShowDays())
+            {
+                lbxCalendarDays.Items.Add(d);
+            }
         }
 
         void UpdateChores()
@@ -281,66 +291,123 @@ namespace Tenant_Application
         }
 
 
-        void TestingUpdate()
+        void UpdateChoresLbx()
         {
+
             try
             {
                 List<CalendarDays> days = db.CalendarMonday();
-                lbxScoreboard.Items.Clear();
-                foreach (CalendarDays a in days)
+                //for(int i = 0; i < lbxCalendarDays.Items.Count; i++)
+                //{
+                //}
+                if (lbxCalendarDays.SelectedItem.ToString() == "Monday")
                 {
-                    if (a.Monday != "0")
+                    lbxCalendarChores.Items.Clear();
+                    foreach (CalendarDays a in days)
                     {
-                        lbxCalendarChores.Items.Add(a.Monday.Substring(1));
-                    }
-                    if (a.Tuesday != "0")
-                    {
-                        lbxCalendarChores.Items.Add(a.Tuesday.Substring(1));
-                    }
-                    if (a.Wednesday != "0")
-                    {
-                        lbxCalendarChores.Items.Add(a.Wednesday.Substring(1));
-                    }
-                    if (a.Thursday != "0")
-                    {
-                        lbxCalendarChores.Items.Add(a.Thursday.Substring(1));
-                    }
-                    if (a.Friday != "0")
-                    {
-                        lbxCalendarChores.Items.Add(a.Friday.Substring(1));
-                    }
-                    if (a.Saturday != "0")
-                    {
-                        lbxCalendarChores.Items.Add(a.Saturday.Substring(1));
-                    }
-                    if (a.Sunday != "0")
-                    {
-                        lbxCalendarChores.Items.Add(a.Sunday.Substring(1));
+                        if (a.Monday != "0")
+                        {
+                            lbxCalendarChores.Items.Add(a.Monday.Substring(1));
+                        }
                     }
                 }
+                else if (lbxCalendarDays.SelectedItem.ToString() == "Tuesday")
+                {
+                    lbxCalendarChores.Items.Clear();
+                    foreach (CalendarDays a in days)
+                    {
+                        if (a.Tuesday != "0")
+                        {
+                            lbxCalendarChores.Items.Add(a.Tuesday.Substring(1));
+                        }
+                    }
+                }
+                else if (lbxCalendarDays.SelectedItem.ToString() == "Wednesday")
+                {
+                    lbxCalendarChores.Items.Clear();
+                    foreach (CalendarDays a in days)
+                    {
+                        if (a.Wednesday != "0")
+                        {
+                            lbxCalendarChores.Items.Add(a.Wednesday.Substring(1));
+                        }
+                    }
+                }
+                else if (lbxCalendarDays.SelectedItem.ToString() == "Thursday")
+                {
+                    lbxCalendarChores.Items.Clear();
+                    foreach (CalendarDays a in days)
+                    {
+                        if (a.Thursday != "0")
+                        {
+                            lbxCalendarChores.Items.Add(a.Thursday.Substring(1));
+                        }
+                    }
+                }
+                else if (lbxCalendarDays.SelectedItem.ToString() == "Friday")
+                {
+                    lbxCalendarChores.Items.Clear();
+                    foreach (CalendarDays a in days)
+                    {
+                        if (a.Friday != "0")
+                        {
+                            lbxCalendarChores.Items.Add(a.Friday.Substring(1));
+                        }
+                    }
+                }
+                else if (lbxCalendarDays.SelectedItem.ToString() == "Saturday")
+                {
+                    lbxCalendarChores.Items.Clear();
+                    foreach (CalendarDays a in days)
+                    {
+                        if (a.Saturday != "0")
+                        {
+                            lbxCalendarChores.Items.Add(a.Saturday.Substring(1));
+                        }
+                    }
+                }
+                else if (lbxCalendarDays.SelectedItem.ToString() == "Sunday")
+                {
+                    lbxCalendarChores.Items.Clear();
+                    foreach (CalendarDays a in days)
+                    {
+                        if (a.Sunday != "0")
+                        {
+                            lbxCalendarChores.Items.Add(a.Sunday.Substring(1));
+                        }
+                    }
+                }
+
+
+                //db.SetCalendar("Friday", "0Shop Misc");
+                //MessageBox.Show("It worked?");
+                //TestingUpdate();
             }
-            catch(Exception ex)
+            catch (Exception ec)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ec.ToString());
             }
         }
 
         
         private void BtnCalendarSelect_Click(object sender, EventArgs e)
         {
-            //UpdateChores();
-            //TestingUpdate();
-
             try
             {
-                db.SetCalendar("Thursday", "3Mop Floor");
-                MessageBox.Show("It worked?");
-                TestingUpdate();
+                string chore = "0" + lbxCalendarChores.SelectedItem.ToString();
+                db.SetCalendar(lbxCalendarDays.SelectedItem.ToString(), chore);
+                UpdateChoresLbx();
             }
-            catch(Exception ec)
+            catch(Exception ex)
             {
-                MessageBox.Show(ec.ToString());
+                MessageBox.Show(ex.ToString());
             }
+            //db.SetCalendar("Wednesday", "3Wash Dishes");
+        }
+
+        private void LbxCalendarDays_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateChoresLbx();
         }
     }
 }
