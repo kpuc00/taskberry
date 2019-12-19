@@ -63,31 +63,13 @@ namespace Tenant_Application
             lblChatMain.Text = $"{personName}, welcome to the chat room";
         }
 
+        //Listbox of calendar: Shows the days of the week
         void ListWeekdays()
         {
             CalendarDays days = new CalendarDays();
             foreach(string d in days.ShowDays())
             {
                 lbxCalendarDays.Items.Add(d);
-            }
-        }
-
-        void UpdateChores()
-        {
-            try
-            {
-                List<Chore> availableChores = db.GetEmptyChores(1, 2);
-                lbxCalendarChores.Items.Clear();
-                lbxCalendarDays.Items.Clear();
-                foreach (Chore c in availableChores)
-                {
-                    lbxCalendarDays.Items.Add(c.Day);
-                    lbxCalendarChores.Items.Add($"{c.Chores} - {c.Name}");
-                }
-            }
-            catch(Exception ecc)
-            {
-                MessageBox.Show(ecc.ToString());
             }
         }
 
@@ -166,6 +148,7 @@ namespace Tenant_Application
             }
         }
 
+        //Updates scoreboard listbox: Fetches the data from the DB
         void UpdateLbxScore()
         {
             List<Account> accounts = db.GetPoints();
@@ -266,6 +249,7 @@ namespace Tenant_Application
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+
         private void TabSwitch_SelectedIndexChanged(object sender, EventArgs e)
         {
             panelAnnScore.Visible = false;
@@ -274,6 +258,7 @@ namespace Tenant_Application
             panelAnnChat.Visible = false;
         }
 
+        //Logout button functionality
         private void BtnComplaintLogout_Click(object sender, EventArgs e)
         {
             DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -285,18 +270,23 @@ namespace Tenant_Application
             }
         }
 
+        //timer for interval between pulling scoreboard info
         private void TimerScoreboard_Tick(object sender, EventArgs e)
         {
             UpdateLbxScore();
         }
 
 
+
+        //Needs a lot of cleaning i know
+        //
+        //Pulls calendar information: If a chore is 0 - it's already been taken by someone; it ain't shown in the lbx
         void UpdateChoresLbx()
         {
 
             try
             {
-                List<CalendarDays> days = db.CalendarMonday();
+                List<CalendarDays> days = db.Calendar();
                 //for(int i = 0; i < lbxCalendarDays.Items.Count; i++)
                 //{
                 //}
@@ -389,7 +379,8 @@ namespace Tenant_Application
             }
         }
 
-        
+        //Communicates with the db - sends the selectedchore and the DB places a 0 in its place - when the data from the DB
+        //is called again - the lbx ignores the 0; So people can only select NON-TAKEN chores
         private void BtnCalendarSelect_Click(object sender, EventArgs e)
         {
             try
@@ -405,6 +396,7 @@ namespace Tenant_Application
             //db.SetCalendar("Wednesday", "3Wash Dishes");
         }
 
+        //Sets current chores for the selected day that are available
         private void LbxCalendarDays_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateChoresLbx();

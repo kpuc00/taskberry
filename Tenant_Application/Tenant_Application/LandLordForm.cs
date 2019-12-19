@@ -14,6 +14,7 @@ namespace Tenant_Application
     {
         DataAccess db = new DataAccess();
 
+        //Stores the ID of the landlord that currently logged in
         int personId;
 
         public LandLordForm(int personId)
@@ -24,6 +25,7 @@ namespace Tenant_Application
             UpdateLbxScore();
         }
 
+        //Updates the lbx with the latest scores
         void UpdateLbxScore()
         {
             List<Account> accounts = db.GetPoints();
@@ -52,6 +54,7 @@ namespace Tenant_Application
             Environment.Exit(-1);
         }
 
+        //Sends an announcement to the db // Takes parameters such as date of the pc that sent it and the actual announcement
         private void BtnSend_Click(object sender, EventArgs e)
         {
             string testing;
@@ -74,6 +77,7 @@ namespace Tenant_Application
             
         }
 
+        //Logs out of the landlord form and goes back to the login form
         private void BtnAnnouncementLogout_Click(object sender, EventArgs e)
         {
             DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -85,9 +89,10 @@ namespace Tenant_Application
             }
         }
 
+
+        //Sets a new amount of points to the seletedperson from the listbox
         private void BtnAddPoint_Click(object sender, EventArgs e)
         {
-            //lbx.count - 1
             int id = lbxScoreBoard.SelectedIndex + 1;
             NumericUpDown newish = new NumericUpDown();
             try
