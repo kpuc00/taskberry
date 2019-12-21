@@ -28,7 +28,7 @@ namespace Tenant_Application
         //Updates the lbx with the latest scores
         void UpdateLbxScore()
         {
-            List<Account> accounts = db.GetPoints();
+            List<Account> accounts = db.GetAccountData();
             lbxScoreBoard.Items.Clear();
             foreach (Account a in accounts)
             {

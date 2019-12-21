@@ -33,33 +33,6 @@ namespace Tenant_Application
         }
 
 
-
-        //Why not just have all account information stored inside the account class instead of calling every 
-        //Time for different data and temporary storing it
-        //What is more resource heavy: Holding 6 objects in a class OR calling for different fields of an object
-        //everytime you need the information
-
-
-
-
-
-
-        //Can be stored inside an account object
-        public Account GetAccountByUsername(string username)
-        {
-            //creating a new connection to our sql database
-            var args = new { Text = username };
-            var query = "dbo.Account_GetAccountByUsername @Text";
-
-            return ExecuteQueryWithArgs<Account>(query, args);
-        }
-
-        //Can be stored inside an account object
-
-        //public List<Account> GetAccountByPassword(string password)
-        //{
-        //    return ExecuteQueryWithArgs<Account>("dbo.Account_GetAccountByPassword @Text", password);
-        //}
         public int GetIdByCredentials(string user, string pass)
         {
             var args = new { User = user, Pass = pass };
@@ -67,15 +40,7 @@ namespace Tenant_Application
 
             return ExecuteQueryWithArgs<int>(query, args);
         }
-        //Can be stored inside an account object
-        public int GetIdByName(string name)
-        {
-            var args = new { Name = name };
-            var query = "dbo.Account_GetIdByName @Name";
 
-            return ExecuteQueryWithArgs<int>(query, args );
-        }
-        //Can be stored inside an account object
         public string GetEmailById(int id)
         {
             var args = new { Id = id };
@@ -83,7 +48,7 @@ namespace Tenant_Application
 
             return ExecuteQueryWithArgs<string>(query, args);
         }
-        //Can be stored inside an account object
+
         public string GetPasswordById(int id)
         {
             var args = new { Id = id };
@@ -92,7 +57,6 @@ namespace Tenant_Application
             return ExecuteQueryWithArgs<string>(query, args);
         }
 
-        //Can be stored inside an account object
         public string GetNameById(int id)
         {
             var args = new { Id = id };
@@ -100,24 +64,7 @@ namespace Tenant_Application
 
             return ExecuteQueryWithArgs<string>(query, args);
         }
-        //Can be stored inside an account object
-        public Account GetAccountById(int id)
-        {
-            var args = new { Id = id };
-            var query = "dbo.Account_GetAccountById @Id";
 
-            return ExecuteQueryWithArgs<Account>(query, args);
-        }
-        //Can be stored inside an account object
-        public Chore GetChoreByName(string chore)
-        {
-            var args = new { Text = chore };
-            var query = "dbo.Chores_GetByName @Text";
-
-            return ExecuteQueryWithArgs<Chore>(query, args);
-        }
-
-        //Adds an announcement to the database, takes date of pc and the actual announcement as parameters
         public void AddAnnouncement(string date, string testing)
         {
             var args = new { Date = date, Testing = testing };
@@ -126,7 +73,6 @@ namespace Tenant_Application
             ExecuteQueryWithArgs<object>(query, args);
         }
 
-        //Gets all of the announcements and date in the database and stores em in objects
         public List<Announcement> GetAnnouncements()
         {
             var query = "dbo.Announcement_GetAnnouncement";
@@ -134,21 +80,6 @@ namespace Tenant_Application
             return ExecuteQueryWithArgsInList<Announcement>(query, null);
         }
 
-        //An unsuccessful atempt of mine using your idea. Should be deleted.
-        public List<Chore> GetEmptyChores(int chore, int day)
-        {
-
-            var args = new { Chore = chore, Day =  day};
-            var query = "dbo.GetEmptyChores @Chore, @Day";
-            return ExecuteQueryWithArgsInList<Chore>(query, args);
-        }
-        //Why?
-        public List<Announcement> GetAnnouncementsDates()
-        {
-            var query = "dbo.Announcement_GetDate";
-            return ExecuteQueryWithArgsInList<Announcement>(query, null);
-        }
-        //Takes the points inside of a tbx and sets them for the selected person 
         public void ChangePoints(int point, int id)
         {
             var args = new { Point = point, Id = id };
@@ -156,48 +87,28 @@ namespace Tenant_Application
 
             ExecuteQueryWithArgs<object>(query, args);
         }
-
-        //Gets all account information and stores in an object || Should be replaced by a method to receieve all Account information
-        public List<Account> GetPoints()
+        //Use this method for accessing the account info and replace the previous ones
+        public List<Account> GetAccountData()
         {
-            var query = "dbo.Account_GetPoints";
+            var query = "dbo.Account_GetAll";
 
             return ExecuteQueryWithArgsInList<Account>(query, null);
             
-            
-            //throw new Exception("FUCK ME IN THE ASS, IT SHOULD NOT BE HERE MICHAEL(B, NOT GROENEWEGEN VAN DER WEIJDEN) WAKE THE FUCK UP, YOU TWAT");
         }
 
-        //Why?
-        public int GetPointsById(int id)
+        public List<CalendarDays> GetCalendar()
         {
-            var args = new { Id = id };
-            var query = "dbo.Account_GetPoints @Id";
-
-            return ExecuteQueryWithArgs<int>(query, args);
-        }
-
-        //Creates objects for the days of the week each filled with the Chores || Wherever the value is 0, the chore is taken
-        public List<CalendarDays> Calendar()
-        {
-            var query = "dbo.GetCalendar";
+            var query = "dbo.Calendar_GetAll";
             return ExecuteQueryWithArgsInList<CalendarDays>(query, null);
         }
 
         //0's a chore that has been selected (Points need to be assigned to that person's ID)
-        public void SetCalendar(string day, string chore)
+        public void UpdateCalendarChores(string day, string chore)
         {
-            var args = new { Dayum = day, Chore = chore};
-            var query = "dbo.ModifyCalendar @Dayum, @Chore";
+            var args = new { Day = day, Chore = chore};
+            var query = "dbo.Calendar_UpdateCalendar @Day, @Chore";
 
             ExecuteQueryWithArgs<object>(query, args);
-        }
-
-        //Why?
-        public string GetAccountByName()
-        {
-            throw new Exception("MICHAEL(B, NOT GROENEWEGEN VAN DER WEIJDEN) YOU STUPID IDIOT, IT'S THE SECOND TIME YOU FUCK UP");
-
         }
     }
 }
