@@ -13,7 +13,7 @@ namespace Tenant_Application
         public string Password { get; set; }
         public string EmailAddress { get; set; }
         public string Name { get; set; }
-        public string Point { get; set; }
+        public int Point { get; set; }
 
         public string FullInfo
         {

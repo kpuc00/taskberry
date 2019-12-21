@@ -356,89 +356,6 @@ namespace Tenant_Application
                         }
                         break;
                 }
-
-                //if (lbxCalendarDays.SelectedItem.ToString() == "Monday")
-                //{
-                //    lbxCalendarChores.Items.Clear();
-                //    foreach (CalendarDays a in days)
-                //    {
-                //        if (a.Monday != "taken")
-                //        {
-                //            lbxCalendarChores.Items.Add(a.Monday.Substring(1));
-                //        }
-                //    }
-                //}
-                //else if (lbxCalendarDays.SelectedItem.ToString() == "Tuesday")
-                //{
-                //    lbxCalendarChores.Items.Clear();
-                //    foreach (CalendarDays a in days)
-                //    {
-                //        if (a.Tuesday != "taken")
-                //        {
-                //            lbxCalendarChores.Items.Add(a.Tuesday.Substring(1));
-                //        }
-                //    }
-                //}
-                //else if (lbxCalendarDays.SelectedItem.ToString() == "Wednesday")
-                //{
-                //    lbxCalendarChores.Items.Clear();
-                //    foreach (CalendarDays a in days)
-                //    {
-                //        if (a.Wednesday != "taken")
-                //        {
-                //            lbxCalendarChores.Items.Add(a.Wednesday.Substring(1));
-                //        }
-                //    }
-                //}
-                //else if (lbxCalendarDays.SelectedItem.ToString() == "Thursday")
-                //{
-                //    lbxCalendarChores.Items.Clear();
-                //    foreach (CalendarDays a in days)
-                //    {
-                //        if (a.Thursday != "taken")
-                //        {
-                //            lbxCalendarChores.Items.Add(a.Thursday.Substring(1));
-                //        }
-                //    }
-                //}
-                //else if (lbxCalendarDays.SelectedItem.ToString() == "Friday")
-                //{
-                //    lbxCalendarChores.Items.Clear();
-                //    foreach (CalendarDays a in days)
-                //    {
-                //        if (a.Friday != "taken")
-                //        {
-                //            lbxCalendarChores.Items.Add(a.Friday.Substring(1));
-                //        }
-                //    }
-                //}
-                //else if (lbxCalendarDays.SelectedItem.ToString() == "Saturday")
-                //{
-                //    lbxCalendarChores.Items.Clear();
-                //    foreach (CalendarDays a in days)
-                //    {
-                //        if (a.Saturday != "taken")
-                //        {
-                //            lbxCalendarChores.Items.Add(a.Saturday.Substring(1));
-                //        }
-                //    }
-                //}
-                //else if (lbxCalendarDays.SelectedItem.ToString() == "Sunday")
-                //{
-                //    lbxCalendarChores.Items.Clear();
-                //    foreach (CalendarDays a in days)
-                //    {
-                //        if (a.Sunday != "taken")
-                //        {
-                //            lbxCalendarChores.Items.Add(a.Sunday.Substring(1));
-                //        }
-                //    }
-                //}
-
-
-                //db.SetCalendar("Friday", "0Shop Misc");
-                //MessageBox.Show("It worked?");
-                //TestingUpdate();
             }
             catch (Exception ec)
             {
@@ -452,9 +369,39 @@ namespace Tenant_Application
         {
             try
             {
-                string chore = "taken" + lbxCalendarChores.SelectedItem.ToString();
+                string chore = "0" + lbxCalendarChores.SelectedItem.ToString();
                 db.UpdateCalendarChores(lbxCalendarDays.SelectedItem.ToString(), chore);
+                string selChore = lbxCalendarChores.SelectedItem.ToString();
+                List<Account> accounts = db.GetAccountData();
+                int points = 0;
+
+                for(int i = 0; i < accounts.Count; i++)
+                {
+                    if(accounts[i].id == personId)
+                    {
+                        points = accounts[i].Point;
+                    }
+                }
+                switch (selChore)
+                {
+                    case "Throw Thrash":
+                        db.ChangePoints(points + 2, personId);
+                        break;
+                    case "Wash Dishes":
+                        db.ChangePoints(points + 5, personId);
+                        break;
+                    case "Vacuum Floor":
+                        db.ChangePoints(points +4, personId);
+                        break;
+                    case "Mop Floor":
+                        db.ChangePoints(points + 4, personId);
+                        break;
+                    case "Shop Misc":
+                        db.ChangePoints(points + 3, personId);
+                        break;
+                }
                 UpdateChoresLbx();
+                UpdateLbxScore();
             }
             catch(Exception ex)
             {
