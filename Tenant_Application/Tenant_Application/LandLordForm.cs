@@ -71,7 +71,7 @@ namespace Tenant_Application
                 }
             }
             else {
-                MessageBox.Show("Enter an announcement!");
+                MsgBoxWarning("Enter an announcement!");
             }
             
             
@@ -106,5 +106,28 @@ namespace Tenant_Application
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void BtnCreateAcc_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tbxRegEmail.Text) || string.IsNullOrWhiteSpace(tbxRegName.Text) || string.IsNullOrWhiteSpace(tbxRegPassword.Text) || string.IsNullOrWhiteSpace(tbxRegUsername.Text))
+            {
+                MsgBoxWarning("You didn't fill out all of the information!");
+            }
+            else
+            {
+                //Actual account creation
+            }
+        }
+
+        public void MsgBoxWarning(string message)
+        {
+            MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        public void MsgBoxInformation(string message)
+        {
+            MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
     }
 }

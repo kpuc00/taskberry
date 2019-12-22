@@ -289,7 +289,7 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays a in days)
                         {
-                            if (a.Tuesday != "taken")
+                            if (a.Tuesday != "0")
                             {
                                 lbxCalendarChores.Items.Add(a.Tuesday.Substring(1));
                             }
@@ -299,7 +299,7 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays a in days)
                         {
-                            if (a.Wednesday != "taken")
+                            if (a.Wednesday != "0")
                             {
                                 lbxCalendarChores.Items.Add(a.Wednesday.Substring(1));
                             }
@@ -309,7 +309,7 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays a in days)
                         {
-                            if (a.Thursday != "taken")
+                            if (a.Thursday != "0")
                             {
                                 lbxCalendarChores.Items.Add(a.Thursday.Substring(1));
                             }
@@ -319,7 +319,7 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays a in days)
                         {
-                            if (a.Friday != "taken")
+                            if (a.Friday != "0")
                             {
                                 lbxCalendarChores.Items.Add(a.Friday.Substring(1));
                             }
@@ -329,7 +329,7 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays a in days)
                         {
-                            if (a.Saturday != "taken")
+                            if (a.Saturday != "0")
                             {
                                 lbxCalendarChores.Items.Add(a.Saturday.Substring(1));
                             }
@@ -339,7 +339,7 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays a in days)
                         {
-                            if (a.Sunday != "taken")
+                            if (a.Sunday != "0")
                             {
                                 lbxCalendarChores.Items.Add(a.Sunday.Substring(1));
                             }
@@ -349,7 +349,7 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays day in days)
                         {
-                            if (day.Monday != "taken")
+                            if (day.Monday != "0")
                             {
                                 lbxCalendarChores.Items.Add(day.Monday.Substring(1));
                             }
