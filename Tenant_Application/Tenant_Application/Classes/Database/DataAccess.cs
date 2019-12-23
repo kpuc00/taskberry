@@ -96,6 +96,14 @@ namespace Tenant_Application
             
         }
 
+        public void AddAccount(string username, string password, string email, string name)
+        {
+            var args = new { Username = username, Password = password, EmailAddress = email, Name = name };
+            var query = "dbo.Account_AddAccount @Username, @Password, @EmailAddress, @Name";
+
+            ExecuteQueryWithArgs<object>(query, args);
+        }
+
         public List<CalendarDays> GetCalendar()
         {
             var query = "dbo.Calendar_GetAll";

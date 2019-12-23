@@ -14,6 +14,8 @@ namespace Tenant_Application
     {
         DataAccess db = new DataAccess();
 
+        RegistrationForm newForm = new RegistrationForm();
+
         //Stores the ID of the landlord that currently logged in
         int personId;
 
@@ -70,7 +72,8 @@ namespace Tenant_Application
                     MessageBox.Show(ex.ToString());
                 }
             }
-            else {
+            else
+            {
                 MsgBoxWarning("Enter an announcement!");
             }
             
@@ -107,18 +110,6 @@ namespace Tenant_Application
             }
         }
 
-        private void BtnCreateAcc_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(tbxRegEmail.Text) || string.IsNullOrWhiteSpace(tbxRegName.Text) || string.IsNullOrWhiteSpace(tbxRegPassword.Text) || string.IsNullOrWhiteSpace(tbxRegUsername.Text))
-            {
-                MsgBoxWarning("You didn't fill out all of the information!");
-            }
-            else
-            {
-                //Actual account creation
-            }
-        }
-
         public void MsgBoxWarning(string message)
         {
             MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -129,5 +120,14 @@ namespace Tenant_Application
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabControlLandlord.SelectedIndex == 2)
+            {
+                tabControlLandlord.SelectedIndex = 1;
+                newForm.Show();
+                newForm.Focus();
+            }
+        }
     }
 }
