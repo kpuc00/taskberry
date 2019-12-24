@@ -65,7 +65,7 @@ namespace Tenant_Application
         {
             List<Account> accounts = db.GetAccountData();
             string temp = ""; //Stores the taken Username from the textbox, so when it searches the other account objects - it doesn't get skipped
-            if (!string.IsNullOrWhiteSpace(tbxRegUsername.Text) && tbxRegUsername.Text.Length >= 4)
+            if (!string.IsNullOrWhiteSpace(tbxRegUsername.Text) && tbxRegUsername.Text.Length >= 4 && tbxRegUsername.Text.Length <= 25)
             {
                 for (int i = 0; i < accounts.Count; i++)
                 {
@@ -89,7 +89,7 @@ namespace Tenant_Application
             else
             {
                 lblStatusUsername.Visible = true;
-                lblStatusUsername.Text = "At least 4 characters";
+                lblStatusUsername.Text = "Between 4-25 characters";
                 tbxRegUsername.BackColor = Color.IndianRed;
             }
         }
@@ -98,7 +98,7 @@ namespace Tenant_Application
         {
             List<Account> accounts = db.GetAccountData();
             string temp = ""; //Stores the taken Password from the textbox, so when it searches the other account objects - it doesn't get skipped
-            if (!string.IsNullOrWhiteSpace(tbxRegPassword.Text) && tbxRegPassword.Text.Length >= 4)
+            if (!string.IsNullOrWhiteSpace(tbxRegPassword.Text) && tbxRegPassword.Text.Length >= 4 && tbxRegPassword.Text.Length <= 25)
             {
                 for (int i = 0; i < accounts.Count; i++)
                 {
@@ -122,7 +122,7 @@ namespace Tenant_Application
             else
             {
                 lblStatusPassword.Visible = true;
-                lblStatusPassword.Text = "At least 4 characters";
+                lblStatusPassword.Text = "Between 4-25 characters";
                 tbxRegPassword.BackColor = Color.IndianRed;
             }
         }
@@ -173,7 +173,7 @@ namespace Tenant_Application
         {
             List<Account> accounts = db.GetAccountData();
             string temp = ""; //Stores the taken Name from the textbox, so when it searches the other account objects - it doesn't get skipped
-            if (!string.IsNullOrWhiteSpace(tbxRegName.Text) && tbxRegName.Text.Length >= 4)
+            if (!string.IsNullOrWhiteSpace(tbxRegName.Text) && tbxRegName.Text.Length >= 4 && tbxRegName.Text.Length <= 25)
             {
                 for (int i = 0; i < accounts.Count; i++)
                 {
@@ -197,7 +197,7 @@ namespace Tenant_Application
             else
             {
                 lblStatusName.Visible = true;
-                lblStatusName.Text = "At least 4 characters";
+                lblStatusName.Text = "Between 4-25 characters";
                 tbxRegName.BackColor = Color.IndianRed;
             }
         }
