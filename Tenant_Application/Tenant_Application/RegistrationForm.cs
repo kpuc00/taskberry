@@ -23,8 +23,6 @@ namespace Tenant_Application
         {
             try
             {
-
-
                 if (string.IsNullOrWhiteSpace(tbxRegEmail.Text) || string.IsNullOrWhiteSpace(tbxRegName.Text) ||
                     string.IsNullOrWhiteSpace(tbxRegPassword.Text) || string.IsNullOrWhiteSpace(tbxRegUsername.Text) ||
                     tbxRegUsername.BackColor == Color.IndianRed || tbxRegPassword.BackColor == Color.IndianRed ||
@@ -53,6 +51,16 @@ namespace Tenant_Application
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /*This part is only for checking the actual accounts if they already contain this username,
+        * password, email or name.
+        * 
+        * It could've been done with 1 event BUT that would be a 150+ line nested loop which would 
+        * be a pain in the ass to troubleshoot in case something went wrong.
+        * 
+        * Also - the events check for different things contained inside of the textbox so it
+        * wouldn't be a good idea to make it all inside of 1 event
+        */
+
         private void TbxRegUsername_TextChanged(object sender, EventArgs e)
         {
             List<Account> accounts = db.GetAccountData();
@@ -69,7 +77,7 @@ namespace Tenant_Application
                         lblStatusUsername.Text = "Username is taken";
                         temp = tbxRegUsername.Text.ToLower();
                     }
-                    else if (temp != tbxRegUsername.Text.ToLower())
+                    else if (temp != tbxRegUsername.Text.ToLower()) //Makes sure that the program doesn't skip an already checked account
                     {
                         tbxRegUsername.BackColor = Color.LightGreen;
                         lblStatusUsername.Text = "Username is taken";
@@ -135,7 +143,7 @@ namespace Tenant_Application
                             tbxRegEmail.BackColor = Color.IndianRed;
                             lblStatusEmail.Visible = true;
                             lblStatusEmail.Text = "Email is taken";
-                            temp = lblStatusEmail.Text.ToLower();
+                            temp = tbxRegEmail.Text.ToLower();
                         }
                         else if (temp != tbxRegEmail.Text.ToLower())
                         {
@@ -175,7 +183,7 @@ namespace Tenant_Application
                         tbxRegName.BackColor = Color.IndianRed;
                         lblStatusName.Visible = true;
                         lblStatusName.Text = "Name is taken";
-                        temp = lblStatusName.Text.ToLower();
+                        temp = tbxRegName.Text.ToLower();
                     }
                     else if (temp != tbxRegName.Text.ToLower())
                     {

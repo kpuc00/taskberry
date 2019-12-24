@@ -87,6 +87,14 @@ namespace Tenant_Application
 
             ExecuteQueryWithArgs<object>(query, args);
         }
+
+        public void ModifyAccount(int id, string username, string password, string email, string name)
+        {
+            var args = new { Id= id, Username = username, Password = password, Email = email, Name = name};
+            var query = "dbo.Account_ModifyAccount @Id, @Username, @Password, @Email, @Name";
+
+            ExecuteQueryWithArgs<object>(query, args);
+        }
         //Use this method for accessing the account info and replace the previous ones
         public List<Account> GetAccountData()
         {

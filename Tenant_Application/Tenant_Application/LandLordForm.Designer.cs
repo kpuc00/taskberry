@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControlLandlord = new System.Windows.Forms.TabControl();
             this.tabScoreBoard = new System.Windows.Forms.TabPage();
             this.panelCalendarObject = new System.Windows.Forms.Panel();
@@ -45,12 +46,21 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.btnAnnouncementLogout = new System.Windows.Forms.Button();
             this.tabRegistration = new System.Windows.Forms.TabPage();
+            this.btnCreateAcc = new System.Windows.Forms.Button();
+            this.btnModify = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.lbxAccInfo = new System.Windows.Forms.ListBox();
+            this.panelAccMng = new System.Windows.Forms.Panel();
+            this.lblAccMng = new System.Windows.Forms.Label();
+            this.timerUpdateAccounts = new System.Windows.Forms.Timer(this.components);
             this.tabControlLandlord.SuspendLayout();
             this.tabScoreBoard.SuspendLayout();
             this.panelCalendarObject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCalendarLegend)).BeginInit();
             this.tabAnnouncement.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tabRegistration.SuspendLayout();
+            this.panelAccMng.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlLandlord
@@ -274,14 +284,99 @@
             // 
             // tabRegistration
             // 
+            this.tabRegistration.BackgroundImage = global::Tenant_Application.Properties.Resources.background2;
             this.tabRegistration.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabRegistration.Controls.Add(this.panelAccMng);
             this.tabRegistration.Location = new System.Drawing.Point(4, 25);
             this.tabRegistration.Name = "tabRegistration";
             this.tabRegistration.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabRegistration.Size = new System.Drawing.Size(1555, 793);
             this.tabRegistration.TabIndex = 2;
-            this.tabRegistration.Text = "Account Creation";
+            this.tabRegistration.Text = "Account Managment";
             this.tabRegistration.UseVisualStyleBackColor = true;
+            // 
+            // btnCreateAcc
+            // 
+            this.btnCreateAcc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(66)))), ((int)(((byte)(120)))));
+            this.btnCreateAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCreateAcc.ForeColor = System.Drawing.Color.White;
+            this.btnCreateAcc.Location = new System.Drawing.Point(682, 271);
+            this.btnCreateAcc.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCreateAcc.Name = "btnCreateAcc";
+            this.btnCreateAcc.Size = new System.Drawing.Size(308, 66);
+            this.btnCreateAcc.TabIndex = 4;
+            this.btnCreateAcc.Text = "Create a new account";
+            this.btnCreateAcc.UseVisualStyleBackColor = false;
+            this.btnCreateAcc.Click += new System.EventHandler(this.BtnCreateAcc_Click);
+            // 
+            // btnModify
+            // 
+            this.btnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(66)))), ((int)(((byte)(120)))));
+            this.btnModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnModify.ForeColor = System.Drawing.Color.White;
+            this.btnModify.Location = new System.Drawing.Point(365, 643);
+            this.btnModify.Margin = new System.Windows.Forms.Padding(2);
+            this.btnModify.Name = "btnModify";
+            this.btnModify.Size = new System.Drawing.Size(270, 66);
+            this.btnModify.TabIndex = 3;
+            this.btnModify.Text = "Modify Account";
+            this.btnModify.UseVisualStyleBackColor = false;
+            this.btnModify.Click += new System.EventHandler(this.BtnModify_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Red;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(82, 643);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(163, 66);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Delete Account";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
+            // lbxAccInfo
+            // 
+            this.lbxAccInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbxAccInfo.FormattingEnabled = true;
+            this.lbxAccInfo.ItemHeight = 25;
+            this.lbxAccInfo.Location = new System.Drawing.Point(82, 96);
+            this.lbxAccInfo.Name = "lbxAccInfo";
+            this.lbxAccInfo.Size = new System.Drawing.Size(553, 529);
+            this.lbxAccInfo.TabIndex = 0;
+            // 
+            // panelAccMng
+            // 
+            this.panelAccMng.BackgroundImage = global::Tenant_Application.Properties.Resources.panelobject;
+            this.panelAccMng.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelAccMng.Controls.Add(this.lblAccMng);
+            this.panelAccMng.Controls.Add(this.lbxAccInfo);
+            this.panelAccMng.Controls.Add(this.btnCreateAcc);
+            this.panelAccMng.Controls.Add(this.btnDelete);
+            this.panelAccMng.Controls.Add(this.btnModify);
+            this.panelAccMng.Location = new System.Drawing.Point(290, 41);
+            this.panelAccMng.Name = "panelAccMng";
+            this.panelAccMng.Size = new System.Drawing.Size(1027, 730);
+            this.panelAccMng.TabIndex = 5;
+            // 
+            // lblAccMng
+            // 
+            this.lblAccMng.AutoSize = true;
+            this.lblAccMng.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblAccMng.ForeColor = System.Drawing.Color.White;
+            this.lblAccMng.Location = new System.Drawing.Point(73, 26);
+            this.lblAccMng.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAccMng.Name = "lblAccMng";
+            this.lblAccMng.Size = new System.Drawing.Size(446, 54);
+            this.lblAccMng.TabIndex = 19;
+            this.lblAccMng.Text = "All existing accounts";
+            // 
+            // timerUpdateAccounts
+            // 
+            this.timerUpdateAccounts.Interval = 10000;
+            this.timerUpdateAccounts.Tick += new System.EventHandler(this.TimerUpdateAccounts_Tick);
             // 
             // LandLordForm
             // 
@@ -304,6 +399,9 @@
             this.tabAnnouncement.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tabRegistration.ResumeLayout(false);
+            this.panelAccMng.ResumeLayout(false);
+            this.panelAccMng.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -327,5 +425,12 @@
         private System.Windows.Forms.Label lblCalendarMain;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblComplaintsMain;
+        private System.Windows.Forms.Button btnCreateAcc;
+        private System.Windows.Forms.Button btnModify;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.ListBox lbxAccInfo;
+        private System.Windows.Forms.Panel panelAccMng;
+        private System.Windows.Forms.Label lblAccMng;
+        private System.Windows.Forms.Timer timerUpdateAccounts;
     }
 }

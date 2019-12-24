@@ -20,7 +20,15 @@ namespace Tenant_Application
             get 
             { 
                 // "pesho123 gosho gosho@patka.com"
-                return $"{ Username } { Password } { EmailAddress }";
+                return $"{ id } \t { Username } \t { Password } \t {EmailAddress} \t {Name} \t {Point}";
+            }
+        }
+
+        public string IdName
+        {
+            get
+            {
+                return $"{id} \t {Name}";
             }
         }
     }

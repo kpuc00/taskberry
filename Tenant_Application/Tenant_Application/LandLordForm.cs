@@ -14,7 +14,9 @@ namespace Tenant_Application
     {
         DataAccess db = new DataAccess();
 
-        RegistrationForm newForm = new RegistrationForm();
+        //New form objects for account managment
+        RegistrationForm regForm = new RegistrationForm();
+        ModifyForm modForm; 
 
         //Stores the ID of the landlord that currently logged in
         int personId;
@@ -25,6 +27,7 @@ namespace Tenant_Application
 
             this.personId = personId;
             UpdateLbxScore();
+            //timerUpdateAccounts.Start();
         }
 
         //Updates the lbx with the latest scores
@@ -110,6 +113,7 @@ namespace Tenant_Application
             }
         }
 
+        //Custom messageboxes
         public void MsgBoxWarning(string message)
         {
             MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -120,14 +124,60 @@ namespace Tenant_Application
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        //Updates the listbox with all accounts
+        void UpdateAccounts()
+        {
+            lbxAccInfo.Items.Clear();
+            List<Account> accounts = db.GetAccountData();
+            for (int i = 0; i < accounts.Count; i++)
+            {
+                lbxAccInfo.Items.Add(accounts[i].IdName);
+            }
+        }
+
+        //Whenever you select the account managment tab
         private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(tabControlLandlord.SelectedIndex == 2)
             {
-                tabControlLandlord.SelectedIndex = 1;
-                newForm.Show();
-                newForm.Focus();
+                UpdateAccounts();
             }
+        }
+
+        //Deletes selected account
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            MsgBoxInformation("Check code for info");
+            if(lbxAccInfo.SelectedIndex != -1)
+            {
+                //Still a concept, hard to achieve properly because of ID primary/foreign key missmatch
+            }
+        }
+
+        //Modifies the information of the selected account - opens new form
+        private void BtnModify_Click(object sender, EventArgs e)
+        {
+            if (lbxAccInfo.SelectedIndex != -1) //So it doesn't crash if nothing is selected
+            {
+                List<Account> accounts = db.GetAccountData();
+                int index = lbxAccInfo.SelectedIndex;
+                modForm = new ModifyForm(accounts[index]);
+                modForm.Show();
+                modForm.Focus();
+            }
+        }
+
+        //Opens a form to create a new account
+        private void BtnCreateAcc_Click(object sender, EventArgs e)
+        {
+            regForm.Show();
+            regForm.Focus();
+        }
+
+        //Updates the accounts every 10 seconds
+        private void TimerUpdateAccounts_Tick(object sender, EventArgs e)
+        {
+            UpdateAccounts();
         }
     }
 }
