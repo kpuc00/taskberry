@@ -53,7 +53,7 @@ namespace Tenant_Application
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(tbxUserName.Text) || tbxPassWord.Text == "Password" || tbxUserName.Text == "Username" || string.IsNullOrWhiteSpace(tbxPassWord.Text))
+            if(string.IsNullOrWhiteSpace(tbxUserName.Text) || tbxPassWord.Text.ToLower() == "password" || tbxUserName.Text.ToLower() == "username" || tbxPassWord.Text.ToLower() == "deleted" || tbxUserName.Text.ToLower() == "deleted" || string.IsNullOrWhiteSpace(tbxPassWord.Text))
             {
                 MsgBoxWarning("Please, enter your credentials");
             }
@@ -66,43 +66,73 @@ namespace Tenant_Application
                 try
                 {
 
-                    if (db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text) > 0)
+                    //if (db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text) > 0)
+                    //{
+                    //    int id = db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text);
+                    //    switch (id)
+                    //    {
+                    //        //Log in LandLord
+                    //        case 5:
+                    //            LandLordForm landLordInterface = new LandLordForm(id);
+
+                    //            landLordInterface.Show();
+                    //            break;
+                    //        //Log in Tenant
+                    //        default:
+
+                    //            string email = db.GetEmailById(id);
+                    //            string password = db.GetPasswordById(id);
+                    //            string name = db.GetNameById(id);
+
+                    //            UserInterfaceForm userInterface = new UserInterfaceForm(id, email, password, name);
+
+
+                    //            userInterface.Show();
+                    //            break;
+                    //    }
+
+                    //    //Hides the login screen
+                    //    this.Hide();
+
+                    //}
+                    //else
+                    //{
+                    //    MsgBoxWarning("User - name or Password is incorect!");
+                    //    firstTimePassword = true;
+                    //    firstTimeUsername = true;
+                    //}
+                    List<Account> accounts = db.GetAccountData();
+                    bool isIn = false;
+                    foreach(Account a in accounts)
                     {
-                        int id = db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text);
-
-                        switch (id)
+                        if(a.Username == tbxUserName.Text && a.Password == tbxPassWord.Text)
                         {
-                            //Log in LandLord
-                            case 5:
-                                LandLordForm landLordInterface = new LandLordForm(id);
-
-                                landLordInterface.Show();
+                            if(a.Admin == 1)
+                            {
+                                LandLordForm landlordInterface = new LandLordForm(a.id);
+                                isIn = true;
+                                landlordInterface.Show();
+                                this.Hide();
                                 break;
-                            //Log in Tenant
-                            default:
-
-                                string email = db.GetEmailById(id);
-                                string password = db.GetPasswordById(id);
-                                string name = db.GetNameById(id);
-
-                                UserInterfaceForm userInterface = new UserInterfaceForm(id, email, password, name);
-
-
+                            }
+                            else
+                            {
+                                UserInterfaceForm userInterface = new UserInterfaceForm(a.id, a.EmailAddress, a.Password, a.Name);
+                                isIn = true;
                                 userInterface.Show();
+                                this.Hide();
                                 break;
+                            }
                         }
-
-                        //Hides the login screen
-                        this.Hide();
-
                     }
-                    else
+                    if(isIn == false)
                     {
                         MsgBoxWarning("User - name or Password is incorect!");
                         firstTimePassword = true;
                         firstTimeUsername = true;
                     }
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }

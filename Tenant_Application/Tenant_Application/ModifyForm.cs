@@ -19,11 +19,13 @@ namespace Tenant_Application
         string password;
         string email;
         string name;
+        LandLordForm llf;
 
-        public ModifyForm(Account account)
+        public ModifyForm(Account account, LandLordForm llf)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.llf = llf;
             this.id = account.id;
             this.username = account.Username;
             this.password = account.Password;
@@ -52,7 +54,9 @@ namespace Tenant_Application
                 else //Sends the information to the database and changes account information
                 {
                     db.ModifyAccount(this.id, tbxRegUsername.Text, tbxRegPassword.Text, tbxRegEmail.Text, tbxRegName.Text);
-                    MsgBoxInformation("You created a new account");
+                    MsgBoxInformation("You modified an account!");
+                    llf.UpdateAccounts();
+                    llf.UpdateLbxScore();
                 }
             }
             catch (Exception ex)

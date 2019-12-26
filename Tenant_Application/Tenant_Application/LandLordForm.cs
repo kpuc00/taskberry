@@ -15,7 +15,7 @@ namespace Tenant_Application
         DataAccess db = new DataAccess();
 
         //New form objects for account managment
-        RegistrationForm regForm = new RegistrationForm();
+        RegistrationForm regForm;
         ModifyForm modForm; 
 
         //Stores the ID of the landlord that currently logged in
@@ -31,12 +31,16 @@ namespace Tenant_Application
         }
 
         //Updates the lbx with the latest scores
-        void UpdateLbxScore()
+        public void UpdateLbxScore()
         {
             List<Account> accounts = db.GetAccountData();
             lbxScoreBoard.Items.Clear();
             foreach (Account a in accounts)
             {
+                if(a.Admin == 1)
+                {
+                    lbxScoreBoard.Items.Add($"(+){a.Name} - \t\t{a.Point}");
+                }
                 lbxScoreBoard.Items.Add($"{a.Name} - \t\t{a.Point}");
             }
         }
@@ -100,16 +104,27 @@ namespace Tenant_Application
         private void BtnAddPoint_Click(object sender, EventArgs e)
         {
             int id = lbxScoreBoard.SelectedIndex + 1;
+            string selected = (string)lbxScoreBoard.SelectedItem;
             NumericUpDown newish = new NumericUpDown();
-            try
+            if (lbxScoreBoard.SelectedIndex != -1 && !string.IsNullOrWhiteSpace(tbxPoint.Text))
             {
-                db.ChangePoints(Convert.ToInt32(tbxPoint.Text), id);
-                tbxPoint.Text = "";
-                UpdateLbxScore();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+                if (!selected.StartsWith("DELETED") && !selected.StartsWith("(+)"))
+                {
+                    try
+                    {
+                        db.ChangePoints(Convert.ToInt32(tbxPoint.Text), id);
+                        tbxPoint.Text = "";
+                        UpdateLbxScore();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                else
+                {
+                    MsgBoxWarning("You can't add points to a deleted or landlord account");
+                }
             }
         }
 
@@ -125,12 +140,16 @@ namespace Tenant_Application
         }
 
         //Updates the listbox with all accounts
-        void UpdateAccounts()
+        public void UpdateAccounts()
         {
             lbxAccInfo.Items.Clear();
             List<Account> accounts = db.GetAccountData();
             for (int i = 0; i < accounts.Count; i++)
             {
+                if(accounts[i].Admin == 1)
+                {
+                    lbxAccInfo.Items.Add($"{accounts[i].IdName} (Landlord)");
+                }
                 lbxAccInfo.Items.Add(accounts[i].IdName);
             }
         }
@@ -147,10 +166,17 @@ namespace Tenant_Application
         //Deletes selected account
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            MsgBoxInformation("Check code for info");
             if(lbxAccInfo.SelectedIndex != -1)
             {
-                //Still a concept, hard to achieve properly because of ID primary/foreign key missmatch
+                DialogResult delete = MessageBox.Show("Are you sure you want to delete this account?", "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (delete == DialogResult.Yes)
+                {
+                    //Still a concept, hard to achieve properly because of ID primary/foreign key missmatch
+                    List<Account> accounts = db.GetAccountData();
+                    int index = lbxAccInfo.SelectedIndex;
+                    db.DeleteAccount(accounts[index].id);
+                    UpdateAccounts();
+                }
             }
         }
 
@@ -161,7 +187,7 @@ namespace Tenant_Application
             {
                 List<Account> accounts = db.GetAccountData();
                 int index = lbxAccInfo.SelectedIndex;
-                modForm = new ModifyForm(accounts[index]);
+                modForm = new ModifyForm(accounts[index], this);
                 modForm.Show();
                 modForm.Focus();
             }
@@ -170,6 +196,7 @@ namespace Tenant_Application
         //Opens a form to create a new account
         private void BtnCreateAcc_Click(object sender, EventArgs e)
         {
+            regForm = new RegistrationForm(this);
             regForm.Show();
             regForm.Focus();
         }

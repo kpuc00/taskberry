@@ -154,7 +154,10 @@ namespace Tenant_Application
             lbxScoreboard.Items.Clear();
             foreach (Account a in accounts)
             {
-                lbxScoreboard.Items.Add($"{a.Name} - \t\t{a.Point}");
+                if (a.Name != "DELETED" && a.Admin != 1)
+                {
+                    lbxScoreboard.Items.Add($"{a.Name} - \t\t{a.Point}");
+                }
             }
         }
 
@@ -174,8 +177,11 @@ namespace Tenant_Application
                 if (ann.Length > 20)
                 {
                     //at 30th character - ...
-                    msg = ann.Substring(0, 30);
-                    msg += " ...";
+                    if (msg != "")
+                    {
+                        msg = ann.Substring(0, 30);
+                        msg += " ...";
+                    }
                 }
 
                 lblAnnComplaints.Text = msg;

@@ -14,15 +14,8 @@ namespace Tenant_Application
         public string EmailAddress { get; set; }
         public string Name { get; set; }
         public int Point { get; set; }
+        public int Admin { get; set; }
 
-        public string FullInfo
-        {
-            get 
-            { 
-                // "pesho123 gosho gosho@patka.com"
-                return $"{ id } \t { Username } \t { Password } \t {EmailAddress} \t {Name} \t {Point}";
-            }
-        }
 
         public string IdName
         {

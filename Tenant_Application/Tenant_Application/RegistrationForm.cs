@@ -13,10 +13,12 @@ namespace Tenant_Application
     public partial class RegistrationForm : Form
     {
         DataAccess db = new DataAccess();
-        public RegistrationForm()
+        LandLordForm llf;
+        public RegistrationForm(LandLordForm llf)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.llf = llf;
         }
 
         private void BtnCreateAcc_Click(object sender, EventArgs e)
@@ -34,6 +36,8 @@ namespace Tenant_Application
                 {
                     db.AddAccount(tbxRegUsername.Text, tbxRegPassword.Text, tbxRegEmail.Text, tbxRegName.Text);
                     MsgBoxInformation("You created a new account");
+                    llf.UpdateAccounts();
+                    llf.UpdateLbxScore();
                 }
             }
             catch(Exception ex)

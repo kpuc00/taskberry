@@ -33,37 +33,37 @@ namespace Tenant_Application
         }
 
 
-        public int GetIdByCredentials(string user, string pass)
-        {
-            var args = new { User = user, Pass = pass };
-            var query = "dbo.Account_GetIdByCredentials @Pass, @User";
+        //public int GetIdByCredentials(string user, string pass)
+        //{
+        //    var args = new { User = user, Pass = pass };
+        //    var query = "dbo.Account_GetIdByCredentials @Pass, @User";
 
-            return ExecuteQueryWithArgs<int>(query, args);
-        }
+        //    return ExecuteQueryWithArgs<int>(query, args);
+        //}
 
-        public string GetEmailById(int id)
-        {
-            var args = new { Id = id };
-            var query = "dbo.Account_GetEmailById @Id";
+        //public string GetEmailById(int id)
+        //{
+        //    var args = new { Id = id };
+        //    var query = "dbo.Account_GetEmailById @Id";
 
-            return ExecuteQueryWithArgs<string>(query, args);
-        }
+        //    return ExecuteQueryWithArgs<string>(query, args);
+        //}
 
-        public string GetPasswordById(int id)
-        {
-            var args = new { Id = id };
-            var query = "dbo.Account_GetPasswordById @Id";
+        //public string GetPasswordById(int id)
+        //{
+        //    var args = new { Id = id };
+        //    var query = "dbo.Account_GetPasswordById @Id";
 
-            return ExecuteQueryWithArgs<string>(query, args);
-        }
+        //    return ExecuteQueryWithArgs<string>(query, args);
+        //}
 
-        public string GetNameById(int id)
-        {
-            var args = new { Id = id };
-            var query = "dbo.Account_GetNameById @Id";
+        //public string GetNameById(int id)
+        //{
+        //    var args = new { Id = id };
+        //    var query = "dbo.Account_GetNameById @Id";
 
-            return ExecuteQueryWithArgs<string>(query, args);
-        }
+        //    return ExecuteQueryWithArgs<string>(query, args);
+        //}
 
         public void AddAnnouncement(string date, string testing)
         {
@@ -92,6 +92,14 @@ namespace Tenant_Application
         {
             var args = new { Id= id, Username = username, Password = password, Email = email, Name = name};
             var query = "dbo.Account_ModifyAccount @Id, @Username, @Password, @Email, @Name";
+
+            ExecuteQueryWithArgs<object>(query, args);
+        }
+
+        public void DeleteAccount(int id)
+        {
+            var args = new { Id = id };
+            var query = "dbo.Account_DeleteAccount @Id";
 
             ExecuteQueryWithArgs<object>(query, args);
         }
