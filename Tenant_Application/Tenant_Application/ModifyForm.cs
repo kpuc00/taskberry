@@ -19,6 +19,7 @@ namespace Tenant_Application
         string password;
         string email;
         string name;
+        int admin;
         LandLordForm llf;
 
         public ModifyForm(Account account, LandLordForm llf)
@@ -31,6 +32,7 @@ namespace Tenant_Application
             this.password = account.Password;
             this.email = account.EmailAddress;
             this.name = account.Name;
+            this.admin = account.Admin;
             lblRegMain.Text = $"Modify {name}'s account";
             //Fills the textboxes with the current information of the account
             tbxRegUsername.Text = this.username;
@@ -53,10 +55,22 @@ namespace Tenant_Application
                 }
                 else //Sends the information to the database and changes account information
                 {
-                    db.ModifyAccount(this.id, tbxRegUsername.Text, tbxRegPassword.Text, tbxRegEmail.Text, tbxRegName.Text);
-                    MsgBoxInformation("You modified an account!");
-                    llf.UpdateAccounts();
-                    llf.UpdateLbxScore();
+                    int isAdmin = 0;
+                    if (cbxAdmin.Checked)
+                    {
+                        isAdmin = 1;
+                    }
+                    if (isAdmin == 0 && this.admin == 1)
+                    {
+                        MsgBoxInformation("You can't revoke your own landlord status");
+                    }
+                    else
+                    {
+                        db.ModifyAccount(this.id, tbxRegUsername.Text, tbxRegPassword.Text, tbxRegEmail.Text, tbxRegName.Text, isAdmin);
+                        MsgBoxInformation("You modified an account!");
+                        llf.UpdateAccounts();
+                        llf.UpdateLbxScore();
+                    }
                 }
             }
             catch (Exception ex)

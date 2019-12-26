@@ -34,7 +34,12 @@ namespace Tenant_Application
                 }
                 else
                 {
-                    db.AddAccount(tbxRegUsername.Text, tbxRegPassword.Text, tbxRegEmail.Text, tbxRegName.Text);
+                    int isAdmin = 0;
+                    if(cbxAdmin.Checked)
+                    {
+                        isAdmin = 1;
+                    }
+                    db.AddAccount(tbxRegUsername.Text, tbxRegPassword.Text, tbxRegEmail.Text, tbxRegName.Text, isAdmin);
                     MsgBoxInformation("You created a new account");
                     llf.UpdateAccounts();
                     llf.UpdateLbxScore();

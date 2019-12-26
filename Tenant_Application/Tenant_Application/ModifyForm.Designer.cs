@@ -42,6 +42,7 @@
             this.tbxRegEmail = new System.Windows.Forms.TextBox();
             this.tbxRegUsername = new System.Windows.Forms.TextBox();
             this.tbxRegPassword = new System.Windows.Forms.TextBox();
+            this.cbxAdmin = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblStatusName
@@ -179,7 +180,7 @@
             this.btnCreateAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCreateAcc.ForeColor = System.Drawing.Color.White;
-            this.btnCreateAcc.Location = new System.Drawing.Point(206, 379);
+            this.btnCreateAcc.Location = new System.Drawing.Point(29, 379);
             this.btnCreateAcc.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateAcc.Name = "btnCreateAcc";
             this.btnCreateAcc.Size = new System.Drawing.Size(257, 68);
@@ -215,13 +216,27 @@
             this.tbxRegPassword.TabIndex = 36;
             this.tbxRegPassword.TextChanged += new System.EventHandler(this.TbxRegPassword_TextChanged);
             // 
+            // cbxAdmin
+            // 
+            this.cbxAdmin.AutoSize = true;
+            this.cbxAdmin.BackColor = System.Drawing.Color.Transparent;
+            this.cbxAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbxAdmin.ForeColor = System.Drawing.Color.White;
+            this.cbxAdmin.Location = new System.Drawing.Point(580, 400);
+            this.cbxAdmin.Name = "cbxAdmin";
+            this.cbxAdmin.Size = new System.Drawing.Size(184, 29);
+            this.cbxAdmin.TabIndex = 52;
+            this.cbxAdmin.Text = "Landlord account";
+            this.cbxAdmin.UseVisualStyleBackColor = false;
+            // 
             // ModifyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Tenant_Application.Properties.Resources.panelobject;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(780, 478);
+            this.ClientSize = new System.Drawing.Size(847, 478);
+            this.Controls.Add(this.cbxAdmin);
             this.Controls.Add(this.lblStatusName);
             this.Controls.Add(this.lblStatusEmail);
             this.Controls.Add(this.lblStatusPassword);
@@ -261,5 +276,6 @@
         private System.Windows.Forms.TextBox tbxRegEmail;
         private System.Windows.Forms.TextBox tbxRegUsername;
         private System.Windows.Forms.TextBox tbxRegPassword;
+        private System.Windows.Forms.CheckBox cbxAdmin;
     }
 }

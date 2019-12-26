@@ -40,8 +40,11 @@ namespace Tenant_Application
                 if(a.Admin == 1)
                 {
                     lbxScoreBoard.Items.Add($"(+){a.Name} - \t\t{a.Point}");
+                } 
+                else
+                {
+                    lbxScoreBoard.Items.Add($"{a.Name} - \t\t{a.Point}");
                 }
-                lbxScoreBoard.Items.Add($"{a.Name} - \t\t{a.Point}");
             }
         }
 
@@ -150,7 +153,10 @@ namespace Tenant_Application
                 {
                     lbxAccInfo.Items.Add($"{accounts[i].IdName} (Landlord)");
                 }
-                lbxAccInfo.Items.Add(accounts[i].IdName);
+                else
+                {
+                    lbxAccInfo.Items.Add(accounts[i].IdName);
+                }
             }
         }
 

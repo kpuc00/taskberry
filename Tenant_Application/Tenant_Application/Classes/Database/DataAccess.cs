@@ -88,10 +88,10 @@ namespace Tenant_Application
             ExecuteQueryWithArgs<object>(query, args);
         }
 
-        public void ModifyAccount(int id, string username, string password, string email, string name)
+        public void ModifyAccount(int id, string username, string password, string email, string name, int admin)
         {
-            var args = new { Id= id, Username = username, Password = password, Email = email, Name = name};
-            var query = "dbo.Account_ModifyAccount @Id, @Username, @Password, @Email, @Name";
+            var args = new { Id= id, Username = username, Password = password, Email = email, Name = name, Admin = admin};
+            var query = "dbo.Account_ModifyAccount @Id, @Username, @Password, @Email, @Name, @Admin";
 
             ExecuteQueryWithArgs<object>(query, args);
         }
@@ -112,10 +112,10 @@ namespace Tenant_Application
             
         }
 
-        public void AddAccount(string username, string password, string email, string name)
+        public void AddAccount(string username, string password, string email, string name, int admin)
         {
-            var args = new { Username = username, Password = password, EmailAddress = email, Name = name };
-            var query = "dbo.Account_AddAccount @Username, @Password, @EmailAddress, @Name";
+            var args = new { Username = username, Password = password, EmailAddress = email, Name = name, Admin = admin };
+            var query = "dbo.Account_AddAccount @Username, @Password, @EmailAddress, @Name, @Admin";
 
             ExecuteQueryWithArgs<object>(query, args);
         }
