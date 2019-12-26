@@ -54,6 +54,8 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.timerUpdateAccounts = new System.Windows.Forms.Timer(this.components);
+            this.btnResetCalendar = new System.Windows.Forms.Button();
+            this.lblCalendar = new System.Windows.Forms.Label();
             this.tabControlLandlord.SuspendLayout();
             this.tabScoreBoard.SuspendLayout();
             this.panelCalendarObject.SuspendLayout();
@@ -98,14 +100,16 @@
             // 
             this.panelCalendarObject.BackgroundImage = global::Tenant_Application.Properties.Resources.panelobject;
             this.panelCalendarObject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelCalendarObject.Controls.Add(this.lblCalendar);
+            this.panelCalendarObject.Controls.Add(this.btnResetCalendar);
             this.panelCalendarObject.Controls.Add(this.lblPointsSet);
             this.panelCalendarObject.Controls.Add(this.btnAddPoint);
             this.panelCalendarObject.Controls.Add(this.lblCalendarMain);
             this.panelCalendarObject.Controls.Add(this.lbxScoreBoard);
             this.panelCalendarObject.Controls.Add(this.tbxPoint);
-            this.panelCalendarObject.Location = new System.Drawing.Point(303, 100);
+            this.panelCalendarObject.Location = new System.Drawing.Point(289, 95);
             this.panelCalendarObject.Name = "panelCalendarObject";
-            this.panelCalendarObject.Size = new System.Drawing.Size(546, 681);
+            this.panelCalendarObject.Size = new System.Drawing.Size(725, 681);
             this.panelCalendarObject.TabIndex = 28;
             // 
             // lblPointsSet
@@ -160,7 +164,7 @@
             this.lbxScoreBoard.Location = new System.Drawing.Point(65, 114);
             this.lbxScoreBoard.Margin = new System.Windows.Forms.Padding(2);
             this.lbxScoreBoard.Name = "lbxScoreBoard";
-            this.lbxScoreBoard.Size = new System.Drawing.Size(418, 354);
+            this.lbxScoreBoard.Size = new System.Drawing.Size(383, 354);
             this.lbxScoreBoard.TabIndex = 0;
             // 
             // tbxPoint
@@ -177,7 +181,7 @@
             // 
             this.pbxCalendarLegend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbxCalendarLegend.Image = global::Tenant_Application.Properties.Resources.legend;
-            this.pbxCalendarLegend.Location = new System.Drawing.Point(1051, 100);
+            this.pbxCalendarLegend.Location = new System.Drawing.Point(1037, 95);
             this.pbxCalendarLegend.Name = "pbxCalendarLegend";
             this.pbxCalendarLegend.Size = new System.Drawing.Size(484, 681);
             this.pbxCalendarLegend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -398,6 +402,34 @@
             this.timerUpdateAccounts.Interval = 10000;
             this.timerUpdateAccounts.Tick += new System.EventHandler(this.TimerUpdateAccounts_Tick);
             // 
+            // btnResetCalendar
+            // 
+            this.btnResetCalendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(66)))), ((int)(((byte)(120)))));
+            this.btnResetCalendar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
+            this.btnResetCalendar.FlatAppearance.BorderSize = 0;
+            this.btnResetCalendar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnResetCalendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnResetCalendar.ForeColor = System.Drawing.Color.White;
+            this.btnResetCalendar.Location = new System.Drawing.Point(471, 338);
+            this.btnResetCalendar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnResetCalendar.Name = "btnResetCalendar";
+            this.btnResetCalendar.Size = new System.Drawing.Size(241, 70);
+            this.btnResetCalendar.TabIndex = 27;
+            this.btnResetCalendar.Text = "Reset Calendar";
+            this.btnResetCalendar.UseVisualStyleBackColor = false;
+            this.btnResetCalendar.Click += new System.EventHandler(this.BtnResetCalendar_Click);
+            // 
+            // lblCalendar
+            // 
+            this.lblCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblCalendar.ForeColor = System.Drawing.Color.White;
+            this.lblCalendar.Location = new System.Drawing.Point(482, 253);
+            this.lblCalendar.Name = "lblCalendar";
+            this.lblCalendar.Size = new System.Drawing.Size(205, 70);
+            this.lblCalendar.TabIndex = 28;
+            this.lblCalendar.Text = "Manually reset the calendar";
+            // 
             // LandLordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -453,5 +485,7 @@
         private System.Windows.Forms.Label lblAccMng;
         private System.Windows.Forms.Timer timerUpdateAccounts;
         private System.Windows.Forms.Button btnLogoutMng;
+        private System.Windows.Forms.Button btnResetCalendar;
+        private System.Windows.Forms.Label lblCalendar;
     }
 }

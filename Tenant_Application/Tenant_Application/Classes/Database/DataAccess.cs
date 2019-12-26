@@ -134,5 +134,11 @@ namespace Tenant_Application
 
             ExecuteQueryWithArgs<object>(query, args);
         }
+
+        public void ResetCalendar()
+        {
+            var query = "dbo.Calendar_ResetCalendar";
+            ExecuteQueryWithArgs<object>(query, null);
+        }
     }
 }

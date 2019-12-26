@@ -22,7 +22,9 @@ namespace Tenant_Application
         int admin;
         LandLordForm llf;
 
-        public ModifyForm(Account account, LandLordForm llf)
+        int personModifyingId; //For revoking own landlord status
+
+        public ModifyForm(Account account, LandLordForm llf, int personId)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -39,6 +41,7 @@ namespace Tenant_Application
             tbxRegPassword.Text = this.password;
             tbxRegEmail.Text = this.email;
             tbxRegName.Text = this.name;
+            this.personModifyingId = personId;
         }
 
         private void BtnCreateAcc_Click(object sender, EventArgs e)
@@ -55,12 +58,13 @@ namespace Tenant_Application
                 }
                 else //Sends the information to the database and changes account information
                 {
-                    int isAdmin = 0;
+                    int isAdmin = 0; //Landlord status = 1
                     if (cbxAdmin.Checked)
                     {
                         isAdmin = 1;
                     }
-                    if (isAdmin == 0 && this.admin == 1)
+
+                    if (isAdmin == 0 && personModifyingId == id)
                     {
                         MsgBoxInformation("You can't revoke your own landlord status");
                     }

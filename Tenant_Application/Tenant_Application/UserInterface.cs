@@ -28,6 +28,10 @@ namespace Tenant_Application
         string personPassword;
         string personName;
 
+        //Memory fix
+        //Use the existing instance of this form
+        LoginForm loginForm;
+
         //Overried some painter settings - makes form load faster
         protected override CreateParams CreateParams
         {
@@ -39,7 +43,7 @@ namespace Tenant_Application
             }
         }
 
-        public UserInterfaceForm(int personId, string personEmail, string personPassword, string personName)
+        public UserInterfaceForm(int personId, string personEmail, string personPassword, string personName, LoginForm loginForm)
         {
             InitializeComponent();
 
@@ -48,6 +52,7 @@ namespace Tenant_Application
             this.personEmail = personEmail;
             this.personPassword = personPassword;
             this.personName = personName;
+            this.loginForm = loginForm;
 
             
             timerAnnDisp.Start(); //Displays new announcements
@@ -269,9 +274,10 @@ namespace Tenant_Application
             DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (logout == DialogResult.Yes)
             {
-                LoginForm loginF = new LoginForm();
-                loginF.Show();
+                //LoginForm loginF = new LoginForm();
+                loginForm.Show();
                 this.Hide();
+                this.Dispose();
             }
         }
 
@@ -397,7 +403,7 @@ namespace Tenant_Application
                         db.ChangePoints(points + 5, personId);
                         break;
                     case "Vacuum Floor":
-                        db.ChangePoints(points +4, personId);
+                        db.ChangePoints(points + 4, personId);
                         break;
                     case "Mop Floor":
                         db.ChangePoints(points + 4, personId);

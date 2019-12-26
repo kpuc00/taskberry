@@ -16,16 +16,21 @@ namespace Tenant_Application
 
         //New form objects for account managment
         RegistrationForm regForm;
-        ModifyForm modForm; 
+        ModifyForm modForm;
+
+        //Memory fix
+        //Use the existing instance of this form
+        LoginForm loginForm;
 
         //Stores the ID of the landlord that currently logged in
         int personId;
 
-        public LandLordForm(int personId)
+        public LandLordForm(int personId, LoginForm loginForm)
         {
             InitializeComponent();
 
             this.personId = personId;
+            this.loginForm = loginForm;
             UpdateLbxScore();
             //timerUpdateAccounts.Start();
         }
@@ -96,9 +101,9 @@ namespace Tenant_Application
             DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (logout == DialogResult.Yes)
             {
-                LoginForm loginF = new LoginForm();
-                loginF.Show();
+                loginForm.Show();
                 this.Hide();
+                this.Dispose();
             }
         }
 
@@ -108,7 +113,6 @@ namespace Tenant_Application
         {
             int id = lbxScoreBoard.SelectedIndex + 1;
             string selected = (string)lbxScoreBoard.SelectedItem;
-            NumericUpDown newish = new NumericUpDown();
             if (lbxScoreBoard.SelectedIndex != -1 && !string.IsNullOrWhiteSpace(tbxPoint.Text))
             {
                 if (!selected.StartsWith("DELETED") && !selected.StartsWith("(+)"))
@@ -182,6 +186,7 @@ namespace Tenant_Application
                     int index = lbxAccInfo.SelectedIndex;
                     db.DeleteAccount(accounts[index].id);
                     UpdateAccounts();
+                    UpdateLbxScore();
                 }
             }
         }
@@ -193,7 +198,7 @@ namespace Tenant_Application
             {
                 List<Account> accounts = db.GetAccountData();
                 int index = lbxAccInfo.SelectedIndex;
-                modForm = new ModifyForm(accounts[index], this);
+                modForm = new ModifyForm(accounts[index], this, this.personId);
                 modForm.Show();
                 modForm.Focus();
             }
@@ -211,6 +216,11 @@ namespace Tenant_Application
         private void TimerUpdateAccounts_Tick(object sender, EventArgs e)
         {
             UpdateAccounts();
+        }
+
+        private void BtnResetCalendar_Click(object sender, EventArgs e)
+        {
+            db.ResetCalendar();
         }
     }
 }

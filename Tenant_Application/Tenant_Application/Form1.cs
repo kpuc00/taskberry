@@ -109,7 +109,7 @@ namespace Tenant_Application
                         {
                             if(a.Admin == 1)
                             {
-                                LandLordForm landlordInterface = new LandLordForm(a.id);
+                                LandLordForm landlordInterface = new LandLordForm(a.id, this);
                                 isIn = true;
                                 landlordInterface.Show();
                                 this.Hide();
@@ -117,7 +117,7 @@ namespace Tenant_Application
                             }
                             else
                             {
-                                UserInterfaceForm userInterface = new UserInterfaceForm(a.id, a.EmailAddress, a.Password, a.Name);
+                                UserInterfaceForm userInterface = new UserInterfaceForm(a.id, a.EmailAddress, a.Password, a.Name, this);
                                 isIn = true;
                                 userInterface.Show();
                                 this.Hide();
