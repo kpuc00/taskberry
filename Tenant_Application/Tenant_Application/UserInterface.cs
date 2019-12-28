@@ -32,6 +32,9 @@ namespace Tenant_Application
         //Use the existing instance of this form
         LoginForm loginForm;
 
+        //Moved the email to a class so we can use it everywhere
+        EmailForward newEmail = new EmailForward();
+
         //Overried some painter settings - makes form load faster
         protected override CreateParams CreateParams
         {
@@ -88,41 +91,11 @@ namespace Tenant_Application
 
 
 
-        private void SendMail(string complaint) {
+        private void SendMail(string complaint)
+        {
             tbxComplaint.Clear();
-
-            // ONLY Gmail accounts that have "Use LESS secure apps" ENABLED will work!!!!!
-            try
-            {
-                var fromAddress = new MailAddress(personEmail);
-                var toAddress = new MailAddress("tenantcomplaints69@gmail.com", "Joseph Stalin");
-                string fromPassword = personPassword;
-                const string subject = "Complaint";
-                string body = complaint;
-
-                var smtp = new SmtpClient
-                {
-                    //Don't change these settings
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-                };
-                using (var message = new MailMessage(fromAddress, toAddress)
-                {
-                    Subject = subject,
-                    Body = body
-                })
-                {
-                    smtp.Send(message);
-                }
-
-                MsgBoxInformation("Thank you for your contacting us. We will review your complaint, and get back to you as soon as possible!");
-            } catch (Exception ex){
-                MsgBoxWarning(ex.ToString());
-            }
+            string sucessful = "Thank you for contacting us. We will review your complaint, and get back to you as soon as possible!";
+            MsgBoxInformation(newEmail.SendMail(personEmail, personPassword, complaint, "Complaint", sucessful));
         }
 
         private void BtnSendMail_Click(object sender, EventArgs e)
