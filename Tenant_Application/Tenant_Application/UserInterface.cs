@@ -28,8 +28,7 @@ namespace Tenant_Application
         string personPassword;
         string personName;
 
-        //Memory fix
-        //Use the existing instance of this form
+        //Memory Fix. Use the existing instance of this form
         LoginForm loginForm;
 
         //Moved the email to a class so we can use it everywhere
@@ -49,7 +48,6 @@ namespace Tenant_Application
         public UserInterfaceForm(int personId, string personEmail, string personPassword, string personName, LoginForm loginForm)
         {
             InitializeComponent();
-
             //Get data passed from login screen
             this.personId = personId;
             this.personEmail = personEmail;
@@ -58,8 +56,7 @@ namespace Tenant_Application
             this.loginForm = loginForm;
             db.SetOnline(personId, 1);
             timerOnline.Start();
-
-            
+            UpdateChat();
             timerAnnDisp.Start(); //Displays new announcements
         }
 
@@ -68,7 +65,7 @@ namespace Tenant_Application
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             UpdateLbxScore();
             ListWeekdays();
-            timerScoreboard.Enabled = true;
+            timerChatScoreboard.Enabled = true;
             lblChatMain.Text = $"{personName}, welcome to the chat room";
         }
 
@@ -87,11 +84,10 @@ namespace Tenant_Application
         {
             Application.ExitThread();
             Application.Exit();
+            db.SetOnline(personId, 0);
         }
 
         //Closes entire app
-
-
 
         private void SendMail(string complaint)
         {
@@ -110,8 +106,6 @@ namespace Tenant_Application
             {
                 MsgBoxWarning("You need to enter a complaint!");
             }
-
-
         }
 
         //Hides or shows announcement panel
@@ -163,12 +157,10 @@ namespace Tenant_Application
                         msg += " ...";
                     }
                 }
-
                 lblAnnComplaints.Text = msg;
                 lblAnnChat.Text = msg;
                 lblAnnCalendar.Text = msg;
                 lblAnnScore.Text = msg;
-
                 timerAnnouncement.Start();
             }
         }
@@ -261,6 +253,7 @@ namespace Tenant_Application
         private void TimerScoreboard_Tick(object sender, EventArgs e)
         {
             UpdateLbxScore();
+            UpdateChat();
         }
 
         //Pulls calendar information: If a chore is "taken" - it's already been taken by someone; it ain't shown in the lbx
@@ -395,7 +388,6 @@ namespace Tenant_Application
             {
                 MessageBox.Show(ex.ToString());
             }
-            //db.SetCalendar("Wednesday", "3Wash Dishes");
         }
 
         //Sets current chores for the selected day that are available
@@ -406,6 +398,19 @@ namespace Tenant_Application
 
         private void TimerOnline_Tick(object sender, EventArgs e)
         {
+            UpdateChat();
+        }
+
+        private void BtnChatSend_Click(object sender, EventArgs e)
+        {
+            string msg = tbxChatMsg.Text;
+            db.SendChat(msg, personId);
+            UpdateChat();
+            tbxChatMsg.Text = "";
+        }
+        
+        void UpdateChat()
+        {
             lbxOnlineUsers.Items.Clear();
             List<Account> accounts = db.GetAccountData();
             foreach (Account a in accounts)
@@ -414,6 +419,14 @@ namespace Tenant_Application
                 {
                     lbxOnlineUsers.Items.Add(a.Name);
                 }
+            }
+            //Have to find a way to save the messages inside a list inside 1 OBJECT, atm there are 20 objects (each msg is an object)
+            string previousMsg = ""; //Saves previous messages
+            List<ChatDB> chats = db.GetChat();
+            for (int i = chats.Count; i > 0; i--) //It's reversed because i order by descending ID in the db
+            {
+                previousMsg += $"[{chats[i - 1].Name}] \t {chats[i - 1].Message} {Environment.NewLine}";
+                tbxChat.Text = previousMsg;
             }
         }
     }

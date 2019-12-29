@@ -126,6 +126,19 @@ namespace Tenant_Application
             return ExecuteQueryWithArgsInList<CalendarDays>(query, null);
         }
 
+        public List<ChatDB> GetChat()
+        {
+            var query = "dbo.Chat_GetAll";
+            return ExecuteQueryWithArgsInList<ChatDB>(query, null);
+        }
+
+        public void SendChat(string message, int accountId)
+        {
+            var args = new { Message = message, AccountId = accountId };
+            var query = "dbo.Chat_Send @Message, @AccountId";
+            ExecuteQueryWithArgs<object>(query, args);
+        }
+
         //0's a chore that has been selected (Points need to be assigned to that person's ID)
         public void UpdateCalendarChores(string day, string chore)
         {

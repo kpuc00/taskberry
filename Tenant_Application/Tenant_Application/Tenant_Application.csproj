@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="Classes\Database\Announcement.cs" />
     <Compile Include="Classes\Database\CalendarDays.cs" />
+    <Compile Include="Classes\Database\ChatDB.cs" />
     <Compile Include="Classes\Database\Chore.cs" />
     <Compile Include="Classes\Database\DataAccess.cs" />
     <Compile Include="Classes\Database\EmailForward.cs" />

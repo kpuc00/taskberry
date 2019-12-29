@@ -81,7 +81,7 @@
             this.timerAnnouncement = new System.Windows.Forms.Timer(this.components);
             this.timerRefreshUDP = new System.Windows.Forms.Timer(this.components);
             this.timerAnnDisp = new System.Windows.Forms.Timer(this.components);
-            this.timerScoreboard = new System.Windows.Forms.Timer(this.components);
+            this.timerChatScoreboard = new System.Windows.Forms.Timer(this.components);
             this.timerOnline = new System.Windows.Forms.Timer(this.components);
             this.tabSwitch.SuspendLayout();
             this.tabCalendar.SuspendLayout();
@@ -336,7 +336,7 @@
             this.panel1.Controls.Add(this.tbxChatMsg);
             this.panel1.Location = new System.Drawing.Point(21, 100);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1009, 577);
+            this.panel1.Size = new System.Drawing.Size(1009, 584);
             this.panel1.TabIndex = 26;
             // 
             // tbxChat
@@ -347,7 +347,7 @@
             this.tbxChat.Multiline = true;
             this.tbxChat.Name = "tbxChat";
             this.tbxChat.ReadOnly = true;
-            this.tbxChat.Size = new System.Drawing.Size(757, 384);
+            this.tbxChat.Size = new System.Drawing.Size(757, 406);
             this.tbxChat.TabIndex = 3;
             // 
             // lbxOnlineUsers
@@ -381,17 +381,18 @@
             this.btnChatSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChatSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnChatSend.ForeColor = System.Drawing.Color.White;
-            this.btnChatSend.Location = new System.Drawing.Point(586, 518);
+            this.btnChatSend.Location = new System.Drawing.Point(586, 527);
             this.btnChatSend.Margin = new System.Windows.Forms.Padding(4);
             this.btnChatSend.Name = "btnChatSend";
             this.btnChatSend.Size = new System.Drawing.Size(184, 33);
             this.btnChatSend.TabIndex = 8;
             this.btnChatSend.Text = "Send";
             this.btnChatSend.UseVisualStyleBackColor = false;
+            this.btnChatSend.Click += new System.EventHandler(this.BtnChatSend_Click);
             // 
             // tbxChatMsg
             // 
-            this.tbxChatMsg.Location = new System.Drawing.Point(12, 518);
+            this.tbxChatMsg.Location = new System.Drawing.Point(12, 527);
             this.tbxChatMsg.Margin = new System.Windows.Forms.Padding(4);
             this.tbxChatMsg.Multiline = true;
             this.tbxChatMsg.Name = "tbxChatMsg";
@@ -777,10 +778,10 @@
             this.timerAnnDisp.Interval = 1000;
             this.timerAnnDisp.Tick += new System.EventHandler(this.TimerAnnDisp_Tick);
             // 
-            // timerScoreboard
+            // timerChatScoreboard
             // 
-            this.timerScoreboard.Interval = 20000;
-            this.timerScoreboard.Tick += new System.EventHandler(this.TimerScoreboard_Tick);
+            this.timerChatScoreboard.Interval = 20000;
+            this.timerChatScoreboard.Tick += new System.EventHandler(this.TimerScoreboard_Tick);
             // 
             // timerOnline
             // 
@@ -878,7 +879,7 @@
         private System.Windows.Forms.Button btnCalendarLogout;
         private System.Windows.Forms.Button btnChatLogout;
         private System.Windows.Forms.Button btnScoreboardLogout;
-        private System.Windows.Forms.Timer timerScoreboard;
+        private System.Windows.Forms.Timer timerChatScoreboard;
         private System.Windows.Forms.Panel panelCalendarObject;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
