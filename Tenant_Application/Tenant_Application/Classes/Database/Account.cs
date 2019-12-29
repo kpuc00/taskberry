@@ -15,6 +15,7 @@ namespace Tenant_Application
         public string Name { get; set; }
         public int Point { get; set; }
         public int Admin { get; set; }
+        public int Online { get; set; }
 
 
         public string IdName

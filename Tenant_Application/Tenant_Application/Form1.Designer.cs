@@ -68,8 +68,8 @@
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BackgroundImage = global::Tenant_Application.Properties.Resources.loginPaneObject;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Controls.Add(this.btnForgotten);
             this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.btnForgotten);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.tbxPassWord);
             this.panel3.Controls.Add(this.panel2);
@@ -89,7 +89,7 @@
             this.btnForgotten.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnForgotten.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnForgotten.ForeColor = System.Drawing.Color.White;
-            this.btnForgotten.Location = new System.Drawing.Point(89, 304);
+            this.btnForgotten.Location = new System.Drawing.Point(90, 315);
             this.btnForgotten.Margin = new System.Windows.Forms.Padding(4);
             this.btnForgotten.Name = "btnForgotten";
             this.btnForgotten.Size = new System.Drawing.Size(214, 38);

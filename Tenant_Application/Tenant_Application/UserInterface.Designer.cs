@@ -82,6 +82,7 @@
             this.timerRefreshUDP = new System.Windows.Forms.Timer(this.components);
             this.timerAnnDisp = new System.Windows.Forms.Timer(this.components);
             this.timerScoreboard = new System.Windows.Forms.Timer(this.components);
+            this.timerOnline = new System.Windows.Forms.Timer(this.components);
             this.tabSwitch.SuspendLayout();
             this.tabCalendar.SuspendLayout();
             this.panelCalendarObject.SuspendLayout();
@@ -660,7 +661,7 @@
             this.btnSendMail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSendMail.ForeColor = System.Drawing.Color.White;
-            this.btnSendMail.Location = new System.Drawing.Point(172, 492);
+            this.btnSendMail.Location = new System.Drawing.Point(201, 486);
             this.btnSendMail.Margin = new System.Windows.Forms.Padding(4);
             this.btnSendMail.Name = "btnSendMail";
             this.btnSendMail.Size = new System.Drawing.Size(260, 70);
@@ -781,6 +782,11 @@
             this.timerScoreboard.Interval = 20000;
             this.timerScoreboard.Tick += new System.EventHandler(this.TimerScoreboard_Tick);
             // 
+            // timerOnline
+            // 
+            this.timerOnline.Interval = 8000;
+            this.timerOnline.Tick += new System.EventHandler(this.TimerOnline_Tick);
+            // 
             // UserInterfaceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -879,5 +885,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Timer timerOnline;
     }
 }

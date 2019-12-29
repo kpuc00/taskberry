@@ -56,6 +56,8 @@ namespace Tenant_Application
             this.personPassword = personPassword;
             this.personName = personName;
             this.loginForm = loginForm;
+            db.SetOnline(personId, 1);
+            timerOnline.Start();
 
             
             timerAnnDisp.Start(); //Displays new announcements
@@ -247,6 +249,7 @@ namespace Tenant_Application
             DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (logout == DialogResult.Yes)
             {
+                db.SetOnline(personId, 0);
                 //LoginForm loginF = new LoginForm();
                 loginForm.Show();
                 this.Hide();
@@ -399,6 +402,19 @@ namespace Tenant_Application
         private void LbxCalendarDays_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateChoresLbx();
+        }
+
+        private void TimerOnline_Tick(object sender, EventArgs e)
+        {
+            lbxOnlineUsers.Items.Clear();
+            List<Account> accounts = db.GetAccountData();
+            foreach (Account a in accounts)
+            {
+                if (a.Online == 1)
+                {
+                    lbxOnlineUsers.Items.Add(a.Name);
+                }
+            }
         }
     }
 }

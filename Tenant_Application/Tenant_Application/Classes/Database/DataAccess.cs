@@ -135,6 +135,15 @@ namespace Tenant_Application
             ExecuteQueryWithArgs<object>(query, args);
         }
 
+
+        public void SetOnline(int id, int online)
+        {
+            var args = new { Id = id, Online = online };
+            var query = "dbo.Account_SetOnline @Id, @Online";
+
+            ExecuteQueryWithArgs<object>(query, args);
+        }
+
         public void ResetCalendar()
         {
             var query = "dbo.Calendar_ResetCalendar";
