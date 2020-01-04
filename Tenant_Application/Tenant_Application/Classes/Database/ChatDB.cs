@@ -17,5 +17,7 @@ namespace Tenant_Application
 
         public string Name { get; set; }
 
+        public string Date { get; set; }
+
     }
 }

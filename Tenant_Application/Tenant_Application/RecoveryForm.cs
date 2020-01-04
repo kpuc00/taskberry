@@ -35,7 +35,7 @@ namespace Tenant_Application
                 {
                     if(a.EmailAddress == tbxEmail.Text)
                     {
-                        string data = $"We've received a forgotten password alert from our application TaskBerry. In case that wasn't you - ignore this email. Otherwise, here are your credentials\t\t\t\t\t Username: {a.Username}\t\t\t\t\t Password: {a.Password}";
+                        string data = $"We've received a forgotten password alert from our application TaskBerry. In case that wasn't you - ignore this email. Otherwise, here are your credentials: {Environment.NewLine}Username: {a.Username}{Environment.NewLine}Password: {a.Password}";
                         MessageBox.Show( newEmail.SendRecovery(tbxEmail.Text, data, "Password Recovery", "Recovey email sent! Check your email for more information."));
                         
                         //Hides and defaults all values in this form

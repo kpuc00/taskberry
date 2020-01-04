@@ -403,8 +403,9 @@ namespace Tenant_Application
 
         private void BtnChatSend_Click(object sender, EventArgs e)
         {
+            string date = DateTime.Now.ToString("MM/dd/yyyy");
             string msg = tbxChatMsg.Text;
-            db.SendChat(msg, personId);
+            db.SendChat(msg, personId, date);
             UpdateChat();
             tbxChatMsg.Text = "";
         }
@@ -425,7 +426,7 @@ namespace Tenant_Application
             List<ChatDB> chats = db.GetChat();
             for (int i = chats.Count; i > 0; i--) //It's reversed because i order by descending ID in the db
             {
-                previousMsg += $"[{chats[i - 1].Name}] \t {chats[i - 1].Message} {Environment.NewLine}";
+                previousMsg += $"[{chats[i - 1].Date}] [{chats[i - 1].Name}] \t {chats[i - 1].Message} {Environment.NewLine}";
                 tbxChat.Text = previousMsg;
             }
         }
