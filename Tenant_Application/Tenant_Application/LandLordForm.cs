@@ -17,22 +17,17 @@ namespace Tenant_Application
         //New form objects for account managment
         RegistrationForm regForm;
         ModifyForm modForm;
+        LoginForm loginForm; //Use the existing instance of this form
 
-        //Memory fix
-        //Use the existing instance of this form
-        LoginForm loginForm;
-
-        //Stores the ID of the landlord that currently logged in
-        int personId;
+        int personId; //Stores the ID of the landlord that currently logged in
 
         public LandLordForm(int personId, LoginForm loginForm)
         {
             InitializeComponent();
-
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.personId = personId;
             this.loginForm = loginForm;
             UpdateLbxScore();
-            //timerUpdateAccounts.Start();
         }
 
         //Updates the lbx with the latest scores
@@ -42,7 +37,7 @@ namespace Tenant_Application
             lbxScoreBoard.Items.Clear();
             foreach (Account a in accounts)
             {
-                if(a.Admin == 1)
+                if(a.Admin == 1) //Landlordd account = 1, NORMAL account = 0
                 {
                     lbxScoreBoard.Items.Add($"(+){a.Name} - \t\t{a.Point}");
                 } 
@@ -51,11 +46,6 @@ namespace Tenant_Application
                     lbxScoreBoard.Items.Add($"{a.Name} - \t\t{a.Point}");
                 }
             }
-        }
-
-        private void LandLordForm_Load(object sender, EventArgs e)
-        {
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
 
         //Closes entire app
@@ -74,13 +64,13 @@ namespace Tenant_Application
         //Sends an announcement to the db // Takes parameters such as date of the pc that sent it and the actual announcement
         private void BtnSend_Click(object sender, EventArgs e)
         {
-            string testing;
+            string announcement;
             if (!String.IsNullOrWhiteSpace(tbxAnnouncement.Text))
             {
-                testing = tbxAnnouncement.Text;
+                announcement = tbxAnnouncement.Text;
                 try
                 {
-                    db.AddAnnouncement(DateTime.Today.ToString("d"), testing);
+                    db.AddAnnouncement(DateTime.Today.ToString("d"), announcement);
                     tbxAnnouncement.Text = "";
                 }
                 catch (Exception ex) {
@@ -91,8 +81,6 @@ namespace Tenant_Application
             {
                 MsgBoxWarning("Enter an announcement!");
             }
-            
-            
         }
 
         //Logs out of the landlord form and goes back to the login form
@@ -113,14 +101,34 @@ namespace Tenant_Application
         {
             int id = lbxScoreBoard.SelectedIndex + 1;
             string selected = (string)lbxScoreBoard.SelectedItem;
-            if (lbxScoreBoard.SelectedIndex != -1 && !string.IsNullOrWhiteSpace(tbxPoint.Text))
+            int points = 0;
+            List<Account> accounts = db.GetAccountData();
+            foreach (Account a in accounts)
+            {
+                if (a.id == id)
+                {
+                    points = a.Point;
+                    break;
+                }
+            }
+            accounts.Clear();
+
+            if (lbxScoreBoard.SelectedIndex != -1 && !string.IsNullOrWhiteSpace(nudPoints.Text))
             {
                 if (!selected.StartsWith("DELETED") && !selected.StartsWith("(+)"))
                 {
                     try
                     {
-                        db.ChangePoints(Convert.ToInt32(tbxPoint.Text), id);
-                        tbxPoint.Text = "";
+                        points += Convert.ToInt32(nudPoints.Text);
+                        if(points < 0)
+                        {
+                            db.ChangePoints(0, id);
+                        }
+                        else
+                        {
+                            db.ChangePoints(points, id);
+                        }
+                        nudPoints.Text = "";
                         UpdateLbxScore();
                     }
                     catch (Exception ex)
@@ -176,17 +184,24 @@ namespace Tenant_Application
         //Deletes selected account
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if(lbxAccInfo.SelectedIndex != -1)
+            if (lbxAccInfo.SelectedIndex != -1)
             {
-                DialogResult delete = MessageBox.Show("Are you sure you want to delete this account?", "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (delete == DialogResult.Yes)
+                if (lbxAccInfo.SelectedIndex + 1 != this.personId) //No deletion of your own account
                 {
-                    //Still a concept, hard to achieve properly because of ID primary/foreign key missmatch
-                    List<Account> accounts = db.GetAccountData();
-                    int index = lbxAccInfo.SelectedIndex;
-                    db.DeleteAccount(accounts[index].id);
-                    UpdateAccounts();
-                    UpdateLbxScore();
+                    DialogResult delete = MessageBox.Show("Are you sure you want to delete this account?", "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (delete == DialogResult.Yes)
+                    {
+                        //Still a concept, hard to achieve properly because of ID primary/foreign key missmatch
+                        List<Account> accounts = db.GetAccountData();
+                        int index = lbxAccInfo.SelectedIndex;
+                        db.DeleteAccount(accounts[index].id);
+                        UpdateAccounts();
+                        UpdateLbxScore();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("You can't delete your own account!");
                 }
             }
         }
@@ -218,6 +233,7 @@ namespace Tenant_Application
             UpdateAccounts();
         }
 
+        //Manually resets the calendar
         private void BtnResetCalendar_Click(object sender, EventArgs e)
         {
             db.ResetCalendar();

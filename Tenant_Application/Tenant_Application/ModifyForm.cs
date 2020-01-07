@@ -44,6 +44,7 @@ namespace Tenant_Application
             this.personModifyingId = personId;
         }
 
+        //If either textbox is either empty or in RED (not meeting criteria), it won't update the database with the new information
         private void BtnCreateAcc_Click(object sender, EventArgs e)
         {
             try

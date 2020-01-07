@@ -54,19 +54,14 @@ namespace Tenant_Application
             this.personPassword = personPassword;
             this.personName = personName;
             this.loginForm = loginForm;
-            db.SetOnline(personId, 1);
-            timerOnline.Start();
-            UpdateChat();
-            timerAnnDisp.Start(); //Displays new announcements
-        }
-
-        private void UserInterfaceForm_Load(object sender, EventArgs e)
-        {
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            UpdateLbxScore();
-            ListWeekdays();
-            timerChatScoreboard.Enabled = true;
-            lblChatMain.Text = $"{personName}, welcome to the chat room";
+            db.SetOnline(personId, 1);                          //Sets the account as Online
+            UpdateChat();                                       //Update the chat on login
+            timerAnnDisp.Start();                               //Displays new announcements
+            this.FormBorderStyle = FormBorderStyle.FixedDialog; //No user resizing
+            UpdateLbxScore();                                   //Updates the scoreboard
+            ListWeekdays();                                     //Lists all of the weekdays in the calendar
+            timerChatScoreboard.Enabled = true;                 //Timer for updating chat related methods every X seconds
+            lblChatMain.Text = $"{personName}, welcome to the chat room"; //Updates the chat welcome message
         }
 
         //Listbox of calendar: Shows the days of the week
@@ -84,23 +79,17 @@ namespace Tenant_Application
         {
             Application.ExitThread();
             Application.Exit();
-            db.SetOnline(personId, 0);
+            db.SetOnline(personId, 0); //Sets the user as OFFLINE
         }
 
-        //Closes entire app
-
-        private void SendMail(string complaint)
-        {
-            tbxComplaint.Clear();
-            string sucessful = "Thank you for contacting us. We will review your complaint, and get back to you as soon as possible!";
-            MsgBoxInformation(newEmail.SendMail(personEmail, personPassword, complaint, "Complaint", sucessful));
-        }
-
+        //Sending complaints 
         private void BtnSendMail_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(tbxComplaint.Text))
             {
-                SendMail(tbxComplaint.Text);
+                string sucessful = "Thank you for contacting us. We will review your complaint, and get back to you as soon as possible!";
+                MsgBoxInformation(newEmail.SendMail(personEmail, personPassword, tbxComplaint.Text, "Complaint", sucessful)); //Forwards this to an object
+                tbxComplaint.Clear();
             }
             else
             {
@@ -207,7 +196,8 @@ namespace Tenant_Application
         }
         /*End Handle Announcement*/
 
-        private void RstAnnPanel() {
+        private void RstAnnPanel() 
+        {
             tbxAnnChat.Text = "";
             tbxAnnComplaints.Text = "";
             tbxAnnCalendar.Text = "";
@@ -226,7 +216,7 @@ namespace Tenant_Application
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-
+        //Closes the announcement panel on all tabs
         private void TabSwitch_SelectedIndexChanged(object sender, EventArgs e)
         {
             panelAnnScore.Visible = false;
@@ -242,14 +232,13 @@ namespace Tenant_Application
             if (logout == DialogResult.Yes)
             {
                 db.SetOnline(personId, 0);
-                //LoginForm loginF = new LoginForm();
                 loginForm.Show();
                 this.Hide();
                 this.Dispose();
             }
         }
 
-        //timer for interval between pulling scoreboard info
+        //Timer for updating scoreboard info
         private void TimerScoreboard_Tick(object sender, EventArgs e)
         {
             UpdateLbxScore();
@@ -396,11 +385,7 @@ namespace Tenant_Application
             UpdateChoresLbx();
         }
 
-        private void TimerOnline_Tick(object sender, EventArgs e)
-        {
-            UpdateChat();
-        }
-
+        //Sends the chat message to the db
         private void BtnChatSend_Click(object sender, EventArgs e)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy");
@@ -409,7 +394,8 @@ namespace Tenant_Application
             UpdateChat();
             tbxChatMsg.Text = "";
         }
-        
+
+        //Updates the chat with the last 20 messages
         void UpdateChat()
         {
             lbxOnlineUsers.Items.Clear();

@@ -13,14 +13,15 @@ namespace Tenant_Application
     public partial class RegistrationForm : Form
     {
         DataAccess db = new DataAccess();
-        LandLordForm llf;
+        LandLordForm llf; //Existing instance of the landlordform
         public RegistrationForm(LandLordForm llf)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.llf = llf;
         }
-
+        
+        //If either textbox is either empty or in RED (not meeting criteria), it won't update the database with the new information
         private void BtnCreateAcc_Click(object sender, EventArgs e)
         {
             try
@@ -211,6 +212,7 @@ namespace Tenant_Application
             }
         }
 
+        //Only hides the instance, otherwise program will crash
         private void RegistrationForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(e.CloseReason == CloseReason.UserClosing)

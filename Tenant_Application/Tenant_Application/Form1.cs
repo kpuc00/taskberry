@@ -13,16 +13,9 @@ namespace Tenant_Application
     public partial class LoginForm : Form
     {
         RecoveryForm recovery;
-
-        //3 times until Forgotten Password comes up
-        //int failedLogin = 0;
         public LoginForm()
         {
             InitializeComponent();
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
 
@@ -42,7 +35,6 @@ namespace Tenant_Application
                 firstTimeUsername = false;
                 tbxUserName.Clear();
             }
-
         }
 
         private void TbxPassWord_Click_1(object sender, EventArgs e)
@@ -63,48 +55,11 @@ namespace Tenant_Application
             }
             else
             {
-                
                 DataAccess db = new DataAccess();
 
                 //Checks for errors
                 try
                 {
-
-                    //if (db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text) > 0)
-                    //{
-                    //    int id = db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text);
-                    //    switch (id)
-                    //    {
-                    //        //Log in LandLord
-                    //        case 5:
-                    //            LandLordForm landLordInterface = new LandLordForm(id);
-
-                    //            landLordInterface.Show();
-                    //            break;
-                    //        //Log in Tenant
-                    //        default:
-
-                    //            string email = db.GetEmailById(id);
-                    //            string password = db.GetPasswordById(id);
-                    //            string name = db.GetNameById(id);
-
-                    //            UserInterfaceForm userInterface = new UserInterfaceForm(id, email, password, name);
-
-
-                    //            userInterface.Show();
-                    //            break;
-                    //    }
-
-                    //    //Hides the login screen
-                    //    this.Hide();
-
-                    //}
-                    //else
-                    //{
-                    //    MsgBoxWarning("User - name or Password is incorect!");
-                    //    firstTimePassword = true;
-                    //    firstTimeUsername = true;
-                    //}
                     List<Account> accounts = db.GetAccountData();
                     bool isIn = false;
                     foreach(Account a in accounts)
@@ -115,8 +70,6 @@ namespace Tenant_Application
                             {
                                 LandLordForm landlordInterface = new LandLordForm(a.id, this);
                                 isIn = true;
-                                //failedLogin = 0;
-                                //btnForgotten.Visible = false;
                                 landlordInterface.Show();
                                 this.Hide();
                                 break;
@@ -125,8 +78,6 @@ namespace Tenant_Application
                             {
                                 UserInterfaceForm userInterface = new UserInterfaceForm(a.id, a.EmailAddress, a.Password, a.Name, this);
                                 isIn = true;
-                                //failedLogin = 0;
-                                //btnForgotten.Visible = false;
                                 userInterface.Show();
                                 this.Hide();
                                 break;
@@ -136,11 +87,6 @@ namespace Tenant_Application
                     if(isIn == false)
                     {
                         MsgBoxWarning("User - name or Password is incorect!");
-                        //failedLogin += 1;
-                        //if(failedLogin >= 3)
-                        //{
-                        //    btnForgotten.Visible = true;
-                        //}
                         firstTimePassword = true;
                         firstTimeUsername = true;
                     }
@@ -151,8 +97,6 @@ namespace Tenant_Application
                 }
             }
         }
-
-
 
         //Custom Messageboxes
 

@@ -38,7 +38,6 @@
             this.btnAddPoint = new System.Windows.Forms.Button();
             this.lblCalendarMain = new System.Windows.Forms.Label();
             this.lbxScoreBoard = new System.Windows.Forms.ListBox();
-            this.tbxPoint = new System.Windows.Forms.TextBox();
             this.pbxCalendarLegend = new System.Windows.Forms.PictureBox();
             this.btnScoreboardLogout = new System.Windows.Forms.Button();
             this.tabAnnouncement = new System.Windows.Forms.TabPage();
@@ -56,6 +55,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.timerUpdateAccounts = new System.Windows.Forms.Timer(this.components);
+            this.nudPoints = new System.Windows.Forms.NumericUpDown();
             this.tabControlLandlord.SuspendLayout();
             this.tabScoreBoard.SuspendLayout();
             this.panelCalendarObject.SuspendLayout();
@@ -64,6 +64,7 @@
             this.panel3.SuspendLayout();
             this.tabRegistration.SuspendLayout();
             this.panelAccMng.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPoints)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlLandlord
@@ -100,15 +101,15 @@
             // 
             this.panelCalendarObject.BackgroundImage = global::Tenant_Application.Properties.Resources.panelobject;
             this.panelCalendarObject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelCalendarObject.Controls.Add(this.nudPoints);
             this.panelCalendarObject.Controls.Add(this.lblCalendar);
             this.panelCalendarObject.Controls.Add(this.btnResetCalendar);
             this.panelCalendarObject.Controls.Add(this.lblPointsSet);
             this.panelCalendarObject.Controls.Add(this.btnAddPoint);
             this.panelCalendarObject.Controls.Add(this.lblCalendarMain);
             this.panelCalendarObject.Controls.Add(this.lbxScoreBoard);
-            this.panelCalendarObject.Controls.Add(this.tbxPoint);
             this.panelCalendarObject.Location = new System.Drawing.Point(217, 77);
-            this.panelCalendarObject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelCalendarObject.Margin = new System.Windows.Forms.Padding(2);
             this.panelCalendarObject.Name = "panelCalendarObject";
             this.panelCalendarObject.Size = new System.Drawing.Size(544, 553);
             this.panelCalendarObject.TabIndex = 28;
@@ -193,22 +194,12 @@
             this.lbxScoreBoard.Size = new System.Drawing.Size(288, 284);
             this.lbxScoreBoard.TabIndex = 0;
             // 
-            // tbxPoint
-            // 
-            this.tbxPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxPoint.Location = new System.Drawing.Point(49, 443);
-            this.tbxPoint.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxPoint.Name = "tbxPoint";
-            this.tbxPoint.Size = new System.Drawing.Size(288, 26);
-            this.tbxPoint.TabIndex = 3;
-            this.tbxPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // pbxCalendarLegend
             // 
             this.pbxCalendarLegend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbxCalendarLegend.Image = global::Tenant_Application.Properties.Resources.legend;
             this.pbxCalendarLegend.Location = new System.Drawing.Point(778, 77);
-            this.pbxCalendarLegend.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxCalendarLegend.Margin = new System.Windows.Forms.Padding(2);
             this.pbxCalendarLegend.Name = "pbxCalendarLegend";
             this.pbxCalendarLegend.Size = new System.Drawing.Size(363, 553);
             this.pbxCalendarLegend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -255,7 +246,7 @@
             this.panel3.Controls.Add(this.tbxAnnouncement);
             this.panel3.Controls.Add(this.btnSend);
             this.panel3.Location = new System.Drawing.Point(255, 81);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(692, 469);
             this.panel3.TabIndex = 29;
@@ -319,7 +310,7 @@
             this.tabRegistration.Controls.Add(this.btnLogoutMng);
             this.tabRegistration.Controls.Add(this.panelAccMng);
             this.tabRegistration.Location = new System.Drawing.Point(4, 22);
-            this.tabRegistration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabRegistration.Margin = new System.Windows.Forms.Padding(2);
             this.tabRegistration.Name = "tabRegistration";
             this.tabRegistration.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabRegistration.Size = new System.Drawing.Size(1164, 642);
@@ -354,7 +345,7 @@
             this.panelAccMng.Controls.Add(this.btnDelete);
             this.panelAccMng.Controls.Add(this.btnModify);
             this.panelAccMng.Location = new System.Drawing.Point(218, 33);
-            this.panelAccMng.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelAccMng.Margin = new System.Windows.Forms.Padding(2);
             this.panelAccMng.Name = "panelAccMng";
             this.panelAccMng.Size = new System.Drawing.Size(770, 593);
             this.panelAccMng.TabIndex = 5;
@@ -376,7 +367,7 @@
             this.lbxAccInfo.FormattingEnabled = true;
             this.lbxAccInfo.ItemHeight = 20;
             this.lbxAccInfo.Location = new System.Drawing.Point(62, 78);
-            this.lbxAccInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbxAccInfo.Margin = new System.Windows.Forms.Padding(2);
             this.lbxAccInfo.Name = "lbxAccInfo";
             this.lbxAccInfo.Size = new System.Drawing.Size(416, 424);
             this.lbxAccInfo.TabIndex = 0;
@@ -428,6 +419,20 @@
             this.timerUpdateAccounts.Interval = 10000;
             this.timerUpdateAccounts.Tick += new System.EventHandler(this.TimerUpdateAccounts_Tick);
             // 
+            // nudPoints
+            // 
+            this.nudPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudPoints.Location = new System.Drawing.Point(49, 440);
+            this.nudPoints.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.nudPoints.Name = "nudPoints";
+            this.nudPoints.Size = new System.Drawing.Size(288, 26);
+            this.nudPoints.TabIndex = 29;
+            this.nudPoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // LandLordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -440,7 +445,6 @@
             this.Text = "LandLordForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LandLordForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LandLordForm_FormClosed);
-            this.Load += new System.EventHandler(this.LandLordForm_Load);
             this.tabControlLandlord.ResumeLayout(false);
             this.tabScoreBoard.ResumeLayout(false);
             this.panelCalendarObject.ResumeLayout(false);
@@ -452,6 +456,7 @@
             this.tabRegistration.ResumeLayout(false);
             this.panelAccMng.ResumeLayout(false);
             this.panelAccMng.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPoints)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -462,7 +467,6 @@
         private System.Windows.Forms.TabPage tabScoreBoard;
         private System.Windows.Forms.TabPage tabAnnouncement;
         private System.Windows.Forms.ListBox lbxScoreBoard;
-        private System.Windows.Forms.TextBox tbxPoint;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.RichTextBox tbxAnnouncement;
         private System.Windows.Forms.Button btnScoreboardLogout;
@@ -485,5 +489,6 @@
         private System.Windows.Forms.Button btnLogoutMng;
         private System.Windows.Forms.Button btnResetCalendar;
         private System.Windows.Forms.Label lblCalendar;
+        private System.Windows.Forms.NumericUpDown nudPoints;
     }
 }
