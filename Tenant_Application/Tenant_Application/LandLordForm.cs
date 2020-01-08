@@ -10,10 +10,11 @@ using System.Windows.Forms;
 
 namespace Tenant_Application
 {
+    
     public partial class LandLordForm : Form
     {
         DataAccess db = new DataAccess();
-
+            
         //New form objects for account managment
         RegistrationForm regForm;
         ModifyForm modForm;
@@ -101,6 +102,21 @@ namespace Tenant_Application
         {
             int id = lbxScoreBoard.SelectedIndex + 1;
             string selected = (string)lbxScoreBoard.SelectedItem;
+<<<<<<< HEAD
+
+            List<Account> accounts = db.GetAccountData();
+
+            int points = 0;
+            foreach (Account a in accounts) { 
+                if (a.id == id)
+                {
+                    points = a.Point;
+                    break;
+                }
+            }
+
+            if (lbxScoreBoard.SelectedIndex != -1 && !string.IsNullOrWhiteSpace(tbxPoint.Text) && HelperMethods.CheckIfNum(tbxPoint.Text))
+=======
             int points = 0;
             List<Account> accounts = db.GetAccountData();
             foreach (Account a in accounts)
@@ -114,11 +130,17 @@ namespace Tenant_Application
             accounts.Clear();
 
             if (lbxScoreBoard.SelectedIndex != -1 && !string.IsNullOrWhiteSpace(nudPoints.Text))
+>>>>>>> production
             {
                 if (!selected.StartsWith("DELETED") && !selected.StartsWith("(+)"))
                 {
+                    int newPoints = points + Convert.ToInt32(tbxPoint.Text);
                     try
                     {
+<<<<<<< HEAD
+                        db.ChangePoints(Convert.ToInt32(newPoints), id);
+                        tbxPoint.Text = "";
+=======
                         points += Convert.ToInt32(nudPoints.Text);
                         if(points < 0)
                         {
@@ -129,6 +151,7 @@ namespace Tenant_Application
                             db.ChangePoints(points, id);
                         }
                         nudPoints.Text = "";
+>>>>>>> production
                         UpdateLbxScore();
                     }
                     catch (Exception ex)
@@ -140,6 +163,9 @@ namespace Tenant_Application
                 {
                     MsgBoxWarning("You can't add points to a deleted or landlord account");
                 }
+            }
+            else {
+                MessageBox.Show("Invalid info or not a tenant selected");
             }
         }
 

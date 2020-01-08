@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="Classes\Database\Helper.cs" />
     <Compile Include="Classes\Program.cs" />
+    <Compile Include="HelperMethods.cs" />
     <Compile Include="LandLordForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -110,6 +110,9 @@ namespace Tenant_Application
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+
+
+
         private void BtnForgotten_Click(object sender, EventArgs e)
         {
             recovery = new RecoveryForm(this);
