@@ -17,6 +17,7 @@ namespace Tenant_Application
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            tbxPassWord.PasswordChar = '*';
         }
 
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -68,7 +69,7 @@ namespace Tenant_Application
                         {
                             if(a.Admin == 1)
                             {
-                                LandLordForm landlordInterface = new LandLordForm(a.id, this);
+                                LandLordForm landlordInterface = new LandLordForm(a.id, this, a.Name);
                                 isIn = true;
                                 landlordInterface.Show();
                                 this.Hide();
@@ -109,9 +110,6 @@ namespace Tenant_Application
         {
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-
-
 
         private void BtnForgotten_Click(object sender, EventArgs e)
         {

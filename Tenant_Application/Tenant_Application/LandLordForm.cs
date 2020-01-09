@@ -10,23 +10,24 @@ using System.Windows.Forms;
 
 namespace Tenant_Application
 {
-    
     public partial class LandLordForm : Form
     {
         DataAccess db = new DataAccess();
-            
+
         //New form objects for account managment
         RegistrationForm regForm;
         ModifyForm modForm;
         LoginForm loginForm; //Use the existing instance of this form
 
         int personId; //Stores the ID of the landlord that currently logged in
+        string personName; //Stores his name
 
-        public LandLordForm(int personId, LoginForm loginForm)
+        public LandLordForm(int personId, LoginForm loginForm, string personName)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.personId = personId;
+            this.personName = personName;
             this.loginForm = loginForm;
             UpdateLbxScore();
         }
@@ -100,58 +101,30 @@ namespace Tenant_Application
         //Sets a new amount of points to the seletedperson from the listbox
         private void BtnAddPoint_Click(object sender, EventArgs e)
         {
-            int id = lbxScoreBoard.SelectedIndex + 1;
-            string selected = (string)lbxScoreBoard.SelectedItem;
-<<<<<<< HEAD
-
-            List<Account> accounts = db.GetAccountData();
-
-            int points = 0;
-            foreach (Account a in accounts) { 
-                if (a.id == id)
-                {
-                    points = a.Point;
-                    break;
-                }
-            }
-
-            if (lbxScoreBoard.SelectedIndex != -1 && !string.IsNullOrWhiteSpace(tbxPoint.Text) && HelperMethods.CheckIfNum(tbxPoint.Text))
-=======
+            string selected = (string)lbxScoreBoard.SelectedItem; //SelectedAccount
             int points = 0;
             List<Account> accounts = db.GetAccountData();
+            int theId = 0; //Id of selected account
             foreach (Account a in accounts)
             {
-                if (a.id == id)
+                if (selected.Contains(a.Name))
                 {
                     points = a.Point;
+                    theId = a.id;
                     break;
                 }
             }
             accounts.Clear();
 
             if (lbxScoreBoard.SelectedIndex != -1 && !string.IsNullOrWhiteSpace(nudPoints.Text))
->>>>>>> production
             {
-                if (!selected.StartsWith("DELETED") && !selected.StartsWith("(+)"))
+                if (!selected.StartsWith("(+)"))
                 {
-                    int newPoints = points + Convert.ToInt32(tbxPoint.Text);
                     try
                     {
-<<<<<<< HEAD
-                        db.ChangePoints(Convert.ToInt32(newPoints), id);
-                        tbxPoint.Text = "";
-=======
                         points += Convert.ToInt32(nudPoints.Text);
-                        if(points < 0)
-                        {
-                            db.ChangePoints(0, id);
-                        }
-                        else
-                        {
-                            db.ChangePoints(points, id);
-                        }
+                        db.ChangePoints(points, theId);
                         nudPoints.Text = "";
->>>>>>> production
                         UpdateLbxScore();
                     }
                     catch (Exception ex)
@@ -161,11 +134,12 @@ namespace Tenant_Application
                 }
                 else
                 {
-                    MsgBoxWarning("You can't add points to a deleted or landlord account");
+                    MsgBoxWarning("You can't add points to a landlord account");
                 }
             }
-            else {
-                MessageBox.Show("Invalid info or not a tenant selected");
+            else
+            {
+                MsgBoxWarning("Select an account and write down points");
             }
         }
 
@@ -212,22 +186,29 @@ namespace Tenant_Application
         {
             if (lbxAccInfo.SelectedIndex != -1)
             {
-                if (lbxAccInfo.SelectedIndex + 1 != this.personId) //No deletion of your own account
+                string info = (string)lbxAccInfo.SelectedItem;
+                if(info.Contains(this.personName))
+                {
+                    MessageBox.Show("You can't delete your own account!");
+                }
+                else
                 {
                     DialogResult delete = MessageBox.Show("Are you sure you want to delete this account?", "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (delete == DialogResult.Yes)
                     {
-                        //Still a concept, hard to achieve properly because of ID primary/foreign key missmatch
                         List<Account> accounts = db.GetAccountData();
-                        int index = lbxAccInfo.SelectedIndex;
-                        db.DeleteAccount(accounts[index].id);
+                        int selectedPersonId = 0;
+                        foreach(Account a in accounts)
+                        {
+                            if(info.Contains(a.Name))
+                            {
+                                selectedPersonId = a.id;
+                            }
+                        }
+                        db.DeleteAccount(selectedPersonId);
                         UpdateAccounts();
                         UpdateLbxScore();
                     }
-                }
-                else
-                {
-                    MessageBox.Show("You can't delete your own account!");
                 }
             }
         }

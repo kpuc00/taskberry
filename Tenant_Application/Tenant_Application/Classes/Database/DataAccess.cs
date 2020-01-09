@@ -32,39 +32,6 @@ namespace Tenant_Application
             }
         }
 
-
-        //public int GetIdByCredentials(string user, string pass)
-        //{
-        //    var args = new { User = user, Pass = pass };
-        //    var query = "dbo.Account_GetIdByCredentials @Pass, @User";
-
-        //    return ExecuteQueryWithArgs<int>(query, args);
-        //}
-
-        //public string GetEmailById(int id)
-        //{
-        //    var args = new { Id = id };
-        //    var query = "dbo.Account_GetEmailById @Id";
-
-        //    return ExecuteQueryWithArgs<string>(query, args);
-        //}
-
-        //public string GetPasswordById(int id)
-        //{
-        //    var args = new { Id = id };
-        //    var query = "dbo.Account_GetPasswordById @Id";
-
-        //    return ExecuteQueryWithArgs<string>(query, args);
-        //}
-
-        //public string GetNameById(int id)
-        //{
-        //    var args = new { Id = id };
-        //    var query = "dbo.Account_GetNameById @Id";
-
-        //    return ExecuteQueryWithArgs<string>(query, args);
-        //}
-
         public void AddAnnouncement(string date, string testing)
         {
             var args = new { Date = date, Testing = testing };

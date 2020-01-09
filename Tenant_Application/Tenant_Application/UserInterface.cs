@@ -408,6 +408,7 @@ namespace Tenant_Application
                 }
             }
             //Have to find a way to save the messages inside a list inside 1 OBJECT, atm there are 20 objects (each msg is an object)
+            //You can't directly save msgs inside a list inside an object, a loop maybe
             string previousMsg = ""; //Saves previous messages
             List<ChatDB> chats = db.GetChat();
             for (int i = chats.Count; i > 0; i--) //It's reversed because i order by descending ID in the db
