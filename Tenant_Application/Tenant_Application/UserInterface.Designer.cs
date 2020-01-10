@@ -527,10 +527,10 @@
             // 
             this.lbxScoreboard.FormattingEnabled = true;
             this.lbxScoreboard.ItemHeight = 18;
-            this.lbxScoreboard.Location = new System.Drawing.Point(141, 185);
+            this.lbxScoreboard.Location = new System.Drawing.Point(124, 185);
             this.lbxScoreboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbxScoreboard.Name = "lbxScoreboard";
-            this.lbxScoreboard.Size = new System.Drawing.Size(293, 310);
+            this.lbxScoreboard.Size = new System.Drawing.Size(368, 310);
             this.lbxScoreboard.TabIndex = 11;
             // 
             // btnScoreboardLogout
