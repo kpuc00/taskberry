@@ -65,7 +65,6 @@ namespace Tenant_Application
                 try
                 {
                     List<Account> accounts = db.GetAccountData();
-                    bool isIn = false;
                     foreach(Account a in accounts)
                     {
                         if (a.Online != 1)
@@ -75,7 +74,6 @@ namespace Tenant_Application
                                 if (a.Admin == 1)
                                 {
                                     LandLordForm landlordInterface = new LandLordForm(a.id, this, a.Name);
-                                    isIn = true;
                                     landlordInterface.Show();
                                     this.Hide();
                                     break;
@@ -83,24 +81,18 @@ namespace Tenant_Application
                                 else
                                 {
                                     UserInterfaceForm userInterface = new UserInterfaceForm(a.id, a.EmailAddress, a.Password, a.Name, this);
-                                    isIn = true;
                                     userInterface.Show();
                                     this.Hide();
                                     break;
                                 }
                             }
+                            else {
+                                MessageBox.Show("Wrong Username and Password combination");
+                            }
                         }
                         else {
                             MessageBox.Show("This account is already logged in!");
                         }
-                    }
-
-
-                    if(isIn == false)
-                    {
-                        MsgBoxWarning("User - name or Password is incorect!");
-                        firstTimePassword = true;
-                        firstTimeUsername = true;
                     }
                 }
                 catch (Exception ex)
