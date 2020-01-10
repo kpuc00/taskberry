@@ -171,7 +171,6 @@ namespace Tenant_Application
             lblAnnChat.Text = "";
             lblAnnCalendar.Text = "";
             lblAnnScore.Text = "";
-            timerAnnouncement.Stop();
         }
 
         //Open/Close the announcememnt panel

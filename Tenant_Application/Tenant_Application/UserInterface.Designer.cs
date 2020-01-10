@@ -771,7 +771,7 @@
             // 
             // timerAnnouncement
             // 
-            this.timerAnnouncement.Interval = 10000;
+            this.timerAnnouncement.Interval = 1000;
             this.timerAnnouncement.Tick += new System.EventHandler(this.TimerAnnouncement_Tick);
             // 
             // timerAnnDisp
