@@ -50,6 +50,7 @@ namespace Tenant_Application
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            
             if(string.IsNullOrWhiteSpace(tbxUserName.Text) || tbxPassWord.Text.ToLower() == "password" || tbxUserName.Text.ToLower() == "username" || tbxPassWord.Text.ToLower() == "deleted" || tbxUserName.Text.ToLower() == "deleted" || string.IsNullOrWhiteSpace(tbxPassWord.Text))
             {
                 MsgBoxWarning("Please, enter your credentials");
@@ -58,6 +59,8 @@ namespace Tenant_Application
             {
                 DataAccess db = new DataAccess();
 
+            
+
                 //Checks for errors
                 try
                 {
@@ -65,26 +68,34 @@ namespace Tenant_Application
                     bool isIn = false;
                     foreach(Account a in accounts)
                     {
-                        if(a.Username == tbxUserName.Text && a.Password == tbxPassWord.Text)
+                        if (a.Online != 1)
                         {
-                            if(a.Admin == 1)
+                            if (a.Username == tbxUserName.Text && a.Password == tbxPassWord.Text)
                             {
-                                LandLordForm landlordInterface = new LandLordForm(a.id, this, a.Name);
-                                isIn = true;
-                                landlordInterface.Show();
-                                this.Hide();
-                                break;
-                            }
-                            else
-                            {
-                                UserInterfaceForm userInterface = new UserInterfaceForm(a.id, a.EmailAddress, a.Password, a.Name, this);
-                                isIn = true;
-                                userInterface.Show();
-                                this.Hide();
-                                break;
+                                if (a.Admin == 1)
+                                {
+                                    LandLordForm landlordInterface = new LandLordForm(a.id, this, a.Name);
+                                    isIn = true;
+                                    landlordInterface.Show();
+                                    this.Hide();
+                                    break;
+                                }
+                                else
+                                {
+                                    UserInterfaceForm userInterface = new UserInterfaceForm(a.id, a.EmailAddress, a.Password, a.Name, this);
+                                    isIn = true;
+                                    userInterface.Show();
+                                    this.Hide();
+                                    break;
+                                }
                             }
                         }
+                        else {
+                            MessageBox.Show("This account is already logged in!");
+                        }
                     }
+
+
                     if(isIn == false)
                     {
                         MsgBoxWarning("User - name or Password is incorect!");

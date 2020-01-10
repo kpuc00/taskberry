@@ -29,6 +29,8 @@ namespace Tenant_Application
             this.personId = personId;
             this.personName = personName;
             this.loginForm = loginForm;
+            db.SetOnline(this.personId, 1);
+
             UpdateLbxScore();
         }
 
