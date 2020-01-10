@@ -114,5 +114,17 @@ namespace Tenant_Application
                 uif.Dispose();
             }
         }
+
+        //Custom messageboxes
+        public static void MsgBoxWarning(string message)
+        {
+            MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        public static void MsgBoxInformation(string message)
+        {
+            MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
     }
 }

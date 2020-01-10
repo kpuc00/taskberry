@@ -56,7 +56,7 @@ namespace Tenant_Application
             
             if(string.IsNullOrWhiteSpace(tbxUserName.Text) || tbxPassWord.Text.ToLower() == "password" || tbxUserName.Text.ToLower() == "username" || tbxPassWord.Text.ToLower() == "deleted" || tbxUserName.Text.ToLower() == "deleted" || string.IsNullOrWhiteSpace(tbxPassWord.Text))
             {
-                MsgBoxWarning("Please, enter your credentials");
+                Helper.MsgBoxWarning("Please, enter your credentials");
             }
             else
             {
@@ -84,16 +84,16 @@ namespace Tenant_Application
                             }
                             else
                             {
-                                MessageBox.Show("The Username and Password combination is wrong!");
+                                Helper.MsgBoxInformation("The Username and Password combination is wrong!");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("This account is logged in on a different device!");
+                            Helper.MsgBoxInformation("This account is logged in on a different device!");
                         }
                     }
                     else {
-                        MessageBox.Show("The account does not exist!");
+                        Helper.MsgBoxWarning("This account does not exist!");
                     }
                 }
                 catch (Exception ex)
@@ -105,15 +105,7 @@ namespace Tenant_Application
 
         //Custom Messageboxes
 
-        public void MsgBoxWarning(string message)
-        {
-            MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
-
-        public void MsgBoxInformation(string message)
-        {
-            MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+ 
 
         private void BtnForgotten_Click(object sender, EventArgs e)
         {

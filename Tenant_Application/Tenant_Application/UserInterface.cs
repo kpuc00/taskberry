@@ -89,12 +89,12 @@ namespace Tenant_Application
             if (!string.IsNullOrWhiteSpace(tbxComplaint.Text))
             {
                 string sucessful = "Thank you for contacting us. We will review your complaint, and get back to you as soon as possible!";
-                MsgBoxInformation(newEmail.SendMail(personEmail, personPassword, tbxComplaint.Text, "Complaint", sucessful)); //Forwards this to an object
+                Helper.MsgBoxInformation(newEmail.SendMail(personEmail, personPassword, tbxComplaint.Text, "Complaint", sucessful)); //Forwards this to an object
                 tbxComplaint.Clear();
             }
             else
             {
-                MsgBoxWarning("You need to enter a complaint!");
+                Helper.MsgBoxWarning("You need to enter a complaint!");
             }
         }
 
@@ -192,7 +192,7 @@ namespace Tenant_Application
             }
             catch (Exception ex)
             {
-                MsgBoxWarning(ex.ToString());
+                Helper.MsgBoxWarning(ex.ToString());
             }
         }
         /*End Handle Announcement*/
@@ -206,16 +206,7 @@ namespace Tenant_Application
         }
 
 
-        //Custom messagebox
-        public void MsgBoxWarning(string message)
-        {
-            MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
-
-        public void MsgBoxInformation(string message)
-        {
-            MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+  
 
         //Closes the announcement panel on all tabs
         private void TabSwitch_SelectedIndexChanged(object sender, EventArgs e)

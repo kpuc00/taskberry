@@ -21,7 +21,7 @@ namespace Tenant_Application
         string name;
         int admin;
         LandLordForm llf;
-
+        
         int personModifyingId; //For revoking own landlord status
 
         public ModifyForm(Account account, LandLordForm llf, int personId)
@@ -55,7 +55,7 @@ namespace Tenant_Application
                     tbxRegUsername.BackColor == Color.IndianRed || tbxRegPassword.BackColor == Color.IndianRed ||
                     tbxRegEmail.BackColor == Color.IndianRed || tbxRegName.BackColor == Color.IndianRed)
                 {
-                    MsgBoxWarning("Incorrect information!");
+                    Helper.MsgBoxWarning("Incorrect information!");
                 }
                 else //Sends the information to the database and changes account information
                 {
@@ -67,12 +67,12 @@ namespace Tenant_Application
 
                     if (isAdmin == 0 && personModifyingId == id)
                     {
-                        MsgBoxInformation("You can't revoke your own landlord status");
+                        Helper.MsgBoxInformation("You can't revoke your own landlord status");
                     }
                     else
                     {
                         db.ModifyAccount(this.id, tbxRegUsername.Text, tbxRegPassword.Text, tbxRegEmail.Text, tbxRegName.Text, isAdmin);
-                        MsgBoxInformation("You modified an account!");
+                        Helper.MsgBoxInformation("You modified an account!");
                         llf.UpdateAccounts();
                         llf.UpdateLbxScore();
                     }
@@ -80,18 +80,10 @@ namespace Tenant_Application
             }
             catch (Exception ex)
             {
-                MsgBoxWarning(ex.ToString());
+                Helper.MsgBoxWarning(ex.ToString());
             }
         }
 
-        public void MsgBoxWarning(string message)
-        {
-            MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
-        public void MsgBoxInformation(string message)
-        {
-            MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
 
         /*This part is only for checking the actual accounts if they already contain this username,
          * password, email or name.

@@ -31,7 +31,7 @@ namespace Tenant_Application
                     tbxRegUsername.BackColor == Color.IndianRed || tbxRegPassword.BackColor == Color.IndianRed ||
                     tbxRegEmail.BackColor == Color.IndianRed || tbxRegName.BackColor == Color.IndianRed)
                 {
-                    MsgBoxWarning("Incorrect information!");
+                    Helper.MsgBoxWarning("Incorrect information!");
                 }
                 else
                 {
@@ -41,24 +41,15 @@ namespace Tenant_Application
                         isAdmin = 1;
                     }
                     db.AddAccount(tbxRegUsername.Text, tbxRegPassword.Text, tbxRegEmail.Text, tbxRegName.Text, isAdmin);
-                    MsgBoxInformation("You created a new account");
+                    Helper.MsgBoxInformation("You created a new account");
                     llf.UpdateAccounts();
                     llf.UpdateLbxScore();
                 }
             }
             catch(Exception ex)
             {
-                MsgBoxWarning(ex.ToString());
+                Helper.MsgBoxWarning(ex.ToString());
             }
-        }
-
-        public void MsgBoxWarning(string message)
-        {
-            MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
-        public void MsgBoxInformation(string message)
-        {
-            MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /*This part is only for checking the actual accounts if they already contain this username,
