@@ -388,11 +388,19 @@ namespace Tenant_Application
         //Sends the chat message to the db
         private void BtnChatSend_Click(object sender, EventArgs e)
         {
-            string date = DateTime.Now.ToString("MM/dd/yyyy");
-            string msg = tbxChatMsg.Text;
-            db.SendChat(msg, personId, date);
-            UpdateChat();
-            tbxChatMsg.Text = "";
+            if (string.IsNullOrWhiteSpace(tbxChatMsg.Text))
+            {
+                //do nothing
+            }
+            else
+            {
+                //send the message
+                string date = DateTime.Now.ToString("MM/dd/yyyy");
+                string msg = tbxChatMsg.Text;
+                db.SendChat(msg, personId, date);
+                UpdateChat();
+                tbxChatMsg.Text = "";
+            }
         }
 
         //Updates the chat with the last 20 messages
