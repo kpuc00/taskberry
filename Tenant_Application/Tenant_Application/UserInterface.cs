@@ -57,6 +57,7 @@ namespace Tenant_Application
             db.SetOnline(personId, 1);                          //Sets the account as Online
             UpdateChat();                                       //Update the chat on login
             timerAnnDisp.Start();                               //Displays new announcements
+            timerAnnouncement.Start();
             this.FormBorderStyle = FormBorderStyle.FixedDialog; //No user resizing
             UpdateLbxScore();                                   //Updates the scoreboard
             ListWeekdays();                                     //Lists all of the weekdays in the calendar
@@ -160,7 +161,7 @@ namespace Tenant_Application
                 lblAnnChat.Text = msg;
                 lblAnnCalendar.Text = msg;
                 lblAnnScore.Text = msg;
-                timerAnnouncement.Start();
+                
             }
         }
 
