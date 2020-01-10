@@ -13,11 +13,14 @@ namespace Tenant_Application
     public partial class LoginForm : Form
     {
         RecoveryForm recovery;
+
+        private DataAccess db; 
         public LoginForm()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             tbxPassWord.PasswordChar = '*';
+            db = new DataAccess();
         }
 
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -50,46 +53,47 @@ namespace Tenant_Application
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            
             if(string.IsNullOrWhiteSpace(tbxUserName.Text) || tbxPassWord.Text.ToLower() == "password" || tbxUserName.Text.ToLower() == "username" || tbxPassWord.Text.ToLower() == "deleted" || tbxUserName.Text.ToLower() == "deleted" || string.IsNullOrWhiteSpace(tbxPassWord.Text))
             {
                 MsgBoxWarning("Please, enter your credentials");
             }
             else
             {
-                DataAccess db = new DataAccess();
-
-                //Checks for errors
+                
                 try
                 {
-                    List<Account> accounts = db.GetAccountData();
-                    bool isIn = false;
-                    foreach(Account a in accounts)
+                    Account a = Helper.ReturnAccountInfo(tbxUserName.Text, tbxPassWord.Text, this.db);
+                    if (a != null)
                     {
-                        if(a.Username == tbxUserName.Text && a.Password == tbxPassWord.Text)
+                        if (a.Online != 1)
                         {
-                            if(a.Admin == 1)
+
+                            if (a.Admin == 1)
                             {
                                 LandLordForm landlordInterface = new LandLordForm(a.id, this, a.Name);
-                                isIn = true;
                                 landlordInterface.Show();
                                 this.Hide();
-                                break;
+
+                            }
+                            else if (a.Admin == 0)
+                            {
+                                UserInterfaceForm userInterface = new UserInterfaceForm(a.id, a.EmailAddress, a.Password, a.Name, this);
+                                userInterface.Show();
+                                this.Hide();
                             }
                             else
                             {
-                                UserInterfaceForm userInterface = new UserInterfaceForm(a.id, a.EmailAddress, a.Password, a.Name, this);
-                                isIn = true;
-                                userInterface.Show();
-                                this.Hide();
-                                break;
+                                MessageBox.Show("The Username and Password combination is wrong!");
                             }
                         }
+                        else
+                        {
+                            MessageBox.Show("This account is logged in on a different device!");
+                        }
                     }
-                    if(isIn == false)
-                    {
-                        MsgBoxWarning("User - name or Password is incorect!");
-                        firstTimePassword = true;
-                        firstTimeUsername = true;
+                    else {
+                        MessageBox.Show("The account does not exist!");
                     }
                 }
                 catch (Exception ex)
