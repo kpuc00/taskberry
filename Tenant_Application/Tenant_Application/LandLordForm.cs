@@ -60,8 +60,6 @@ namespace Tenant_Application
             Application.Exit();
         }
 
-        //closes entire app
-
 
         //Sends an announcement to the db // Takes parameters such as date of the pc that sent it and the actual announcement
         private void BtnSend_Click(object sender, EventArgs e)
@@ -81,7 +79,7 @@ namespace Tenant_Application
             }
             else
             {
-                MsgBoxWarning("Enter an announcement!");
+                Helper.MsgBoxWarning("Enter an announcement!");
             }
         }
 
@@ -97,7 +95,7 @@ namespace Tenant_Application
         {
             //personId = (string);
             string name = (string)lbxScoreBoard.SelectedItem; //SelectedAccount
-            if (!string.IsNullOrEmpty(name) && !name.StartsWith("(+)")) {
+            if (!string.IsNullOrEmpty(name) && !name.StartsWith("(+)") && !string.IsNullOrWhiteSpace(nudPoints.Text)) {
 
                 Account a = Helper.ReturnAccountInfo(name, this.db);
 
@@ -105,6 +103,9 @@ namespace Tenant_Application
                 try
                 {
                     points += Convert.ToInt32(nudPoints.Text);
+                    if (points < 0) {
+                        points = 0;
+                    }
                     db.ChangePoints(points, a.id);
                     nudPoints.Text = "";
                     UpdateLbxScore();
@@ -116,21 +117,12 @@ namespace Tenant_Application
             }
             else
             {
-                MsgBoxWarning("Select an tenant account and write down points");
+                Helper.MsgBoxWarning("Select an tenant account and write down points");
             }
             
         }
 
-        //Custom messageboxes
-        public void MsgBoxWarning(string message)
-        {
-            MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
 
-        public void MsgBoxInformation(string message)
-        {
-            MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
 
         //Updates the listbox with all accounts
         public void UpdateAccounts()
@@ -167,7 +159,8 @@ namespace Tenant_Application
                 string info = (string)lbxAccInfo.SelectedItem;
                 if(info.Contains(this.personName))
                 {
-                    MessageBox.Show("You can't delete your own account!");
+                    Helper.MsgBoxInformation("You can't delete your own account!");
+                    
                 }
                 else
                 {
