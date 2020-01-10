@@ -117,9 +117,19 @@ namespace Tenant_Application
             lbxScoreboard.Items.Clear();
             foreach (Account a in accounts)
             {
-                if (a.Name != "DELETED" && a.Admin != 1)
+                if (a.Name.Length > 15)
                 {
-                    lbxScoreboard.Items.Add($"{a.Name} - \t\t{a.Point}");
+                    if (a.Admin != 1)
+                    {
+                        lbxScoreboard.Items.Add($"{a.Name} \t - {a.Point}");
+                    }
+                }
+                else
+                {
+                    if (a.Admin != 1)
+                    {
+                        lbxScoreboard.Items.Add($"{a.Name} \t\t\t - {a.Point}");
+                    }
                 }
             }
         }
