@@ -55,7 +55,7 @@ namespace Tenant_Application
         //Closes entire app
         private void LandLordForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Helper.LogOut(this.personId, this.db, this);
+            db.SetOnline(personId, 0); //Sets the user as OFFLINE
             Application.ExitThread();
             Application.Exit();  
         }
