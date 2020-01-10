@@ -50,7 +50,6 @@ namespace Tenant_Application
         //Handel the logout of an account from landlord form
         public static void LogOut(int id, DataAccess db, LandLordForm llf, LoginForm lgf)
         {
-
             //Fancy messagebox with two choices "yes" and "no"
             DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -68,7 +67,6 @@ namespace Tenant_Application
         //Handel the logout of an account from landlord form when close
         public static void LogOut(int id, DataAccess db, LandLordForm llf)
         {
-
             //Fancy messagebox with two choices "yes" and "no"
             DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -79,13 +77,11 @@ namespace Tenant_Application
                 llf.Hide();
                 llf.Dispose();
             }
-
         }
 
         //Handel the logout of an account from User interface form
         public static void LogOut(int id, DataAccess db, UserInterfaceForm uif, LoginForm lgf)
-        {
-
+        { 
             //Fancy messagebox with two choices "yes" and "no"
             DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -102,7 +98,6 @@ namespace Tenant_Application
         //Handel the logout of an account from User interface form when close
         public static void LogOut(int id, DataAccess db, UserInterfaceForm uif)
         {
-
             //Fancy messagebox with two choices "yes" and "no"
             DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -124,7 +119,6 @@ namespace Tenant_Application
         public static void MsgBoxInformation(string message)
         {
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
     }
 }

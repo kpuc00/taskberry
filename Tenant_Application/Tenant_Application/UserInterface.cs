@@ -19,7 +19,7 @@ namespace Tenant_Application
     public partial class UserInterfaceForm : Form
     {
 
-        
+
         DataAccess db = new DataAccess();
 
         //Holding personal information
@@ -69,7 +69,7 @@ namespace Tenant_Application
         void ListWeekdays()
         {
             CalendarDays days = new CalendarDays();
-            foreach(string d in days.ShowDays())
+            foreach (string d in days.ShowDays())
             {
                 lbxCalendarDays.Items.Add(d);
             }
@@ -138,13 +138,14 @@ namespace Tenant_Application
         /*Handle Announcement*/
 
         int lastLength = 0; //Keeps track if new announcemment is added
-        
+
         //Disp new announcement as pop-up
         private void TimerAnnDisp_Tick(object sender, EventArgs e)
         {
-            string msg = "";
+
             if (db.GetAnnouncements().Count != lastLength)
             {
+                string msg = "";
                 lastLength = db.GetAnnouncements().Count;
 
                 string ann = $"{db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Date} - {db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Testing}";
@@ -154,11 +155,11 @@ namespace Tenant_Application
                     msg = ann.Substring(0, 20);
                     msg += " ...";
                 }
+
                 lblAnnComplaints.Text = msg;
                 lblAnnChat.Text = msg;
                 lblAnnCalendar.Text = msg;
                 lblAnnScore.Text = msg;
-                
             }
         }
 
@@ -189,12 +190,9 @@ namespace Tenant_Application
                 string storeText = "";
                 foreach (Announcement a in listAnn)
                 {
-                    storeText += $"{a.Date} - {a.Testing }{Environment.NewLine}";
+                    storeText = $"{a.Date} - {a.Testing }{Environment.NewLine}";
+                    ListBoxesPopulate(storeText);
                 }
-                tbxAnnChat.Text = storeText;
-                tbxAnnComplaints.Text = storeText;
-                tbxAnnCalendar.Text = storeText;
-                tbxAnnScore.Text = storeText;
             }
             catch (Exception ex)
             {
@@ -203,16 +201,21 @@ namespace Tenant_Application
         }
         /*End Handle Announcement*/
 
-        private void RstAnnPanel() 
+        public void ListBoxesPopulate(string text)
         {
-            tbxAnnChat.Text = "";
-            tbxAnnComplaints.Text = "";
-            tbxAnnCalendar.Text = "";
-            tbxAnnScore.Text = "";
+            lbxAnnCalendar.Items.Insert(0, text);
+            lbxAnnCR.Items.Insert(0, text);
+            lbxAnnScore.Items.Insert(0, text);
+            lbxAnnComp.Items.Insert(0, text);
         }
 
-
-  
+        private void RstAnnPanel()
+        {
+            lbxAnnCalendar.Items.Clear();
+            lbxAnnCR.Items.Clear();
+            lbxAnnScore.Items.Clear();
+            lbxAnnComp.Items.Clear();
+        }
 
         //Closes the announcement panel on all tabs
         private void TabSwitch_SelectedIndexChanged(object sender, EventArgs e)
@@ -336,9 +339,9 @@ namespace Tenant_Application
                 List<Account> accounts = db.GetAccountData();
                 int points = 0;
 
-                for(int i = 0; i < accounts.Count; i++)
+                for (int i = 0; i < accounts.Count; i++)
                 {
-                    if(accounts[i].id == personId)
+                    if (accounts[i].id == personId)
                     {
                         points = accounts[i].Point;
                     }
@@ -364,7 +367,7 @@ namespace Tenant_Application
                 UpdateChoresLbx();
                 UpdateLbxScore();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -426,5 +429,7 @@ namespace Tenant_Application
         }
 
 
+
     }
+
 }
