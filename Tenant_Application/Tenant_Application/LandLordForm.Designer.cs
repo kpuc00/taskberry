@@ -118,7 +118,7 @@
             // 
             this.nudPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudPoints.Location = new System.Drawing.Point(65, 542);
-            this.nudPoints.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudPoints.Margin = new System.Windows.Forms.Padding(4);
             this.nudPoints.Maximum = new decimal(new int[] {
             500,
             0,
@@ -154,7 +154,7 @@
             this.btnResetCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnResetCalendar.ForeColor = System.Drawing.Color.White;
             this.btnResetCalendar.Location = new System.Drawing.Point(471, 338);
-            this.btnResetCalendar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnResetCalendar.Margin = new System.Windows.Forms.Padding(4);
             this.btnResetCalendar.Name = "btnResetCalendar";
             this.btnResetCalendar.Size = new System.Drawing.Size(241, 70);
             this.btnResetCalendar.TabIndex = 27;
@@ -184,7 +184,7 @@
             this.btnAddPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAddPoint.ForeColor = System.Drawing.Color.White;
             this.btnAddPoint.Location = new System.Drawing.Point(115, 581);
-            this.btnAddPoint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddPoint.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddPoint.Name = "btnAddPoint";
             this.btnAddPoint.Size = new System.Drawing.Size(283, 70);
             this.btnAddPoint.TabIndex = 26;
@@ -239,7 +239,7 @@
             this.btnScoreboardLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnScoreboardLogout.ForeColor = System.Drawing.Color.White;
             this.btnScoreboardLogout.Location = new System.Drawing.Point(41, 698);
-            this.btnScoreboardLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnScoreboardLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnScoreboardLogout.Name = "btnScoreboardLogout";
             this.btnScoreboardLogout.Size = new System.Drawing.Size(165, 68);
             this.btnScoreboardLogout.TabIndex = 25;
@@ -290,6 +290,7 @@
             // tbxAnnouncement
             // 
             this.tbxAnnouncement.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbxAnnouncement.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxAnnouncement.Location = new System.Drawing.Point(47, 121);
             this.tbxAnnouncement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxAnnouncement.Name = "tbxAnnouncement";
@@ -321,7 +322,7 @@
             this.btnAnnouncementLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAnnouncementLogout.ForeColor = System.Drawing.Color.White;
             this.btnAnnouncementLogout.Location = new System.Drawing.Point(41, 698);
-            this.btnAnnouncementLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAnnouncementLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnAnnouncementLogout.Name = "btnAnnouncementLogout";
             this.btnAnnouncementLogout.Size = new System.Drawing.Size(165, 68);
             this.btnAnnouncementLogout.TabIndex = 25;
@@ -354,7 +355,7 @@
             this.btnLogoutMng.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnLogoutMng.ForeColor = System.Drawing.Color.White;
             this.btnLogoutMng.Location = new System.Drawing.Point(41, 698);
-            this.btnLogoutMng.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogoutMng.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogoutMng.Name = "btnLogoutMng";
             this.btnLogoutMng.Size = new System.Drawing.Size(165, 68);
             this.btnLogoutMng.TabIndex = 26;
@@ -458,7 +459,6 @@
             this.Name = "LandLordForm";
             this.Text = "7";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LandLordForm_FormClosing);
-
             this.tabControlLandlord.ResumeLayout(false);
             this.tabScoreBoard.ResumeLayout(false);
             this.panelCalendarObject.ResumeLayout(false);

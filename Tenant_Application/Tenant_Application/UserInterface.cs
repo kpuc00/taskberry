@@ -414,7 +414,7 @@ namespace Tenant_Application
             List<Account> accounts = db.GetAccountData();
             foreach (Account a in accounts)
             {
-                if (a.Online == 1)
+                if (a.Online == 1 && a.Admin != 1)
                 {
                     lbxOnlineUsers.Items.Add(a.Name);
                 }
