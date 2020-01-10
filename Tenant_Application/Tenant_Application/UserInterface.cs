@@ -138,10 +138,11 @@ namespace Tenant_Application
         /*Handle Announcement*/
 
         int lastLength = 0; //Keeps track if new announcemment is added
-        string msg = "";
+        
         //Disp new announcement as pop-up
         private void TimerAnnDisp_Tick(object sender, EventArgs e)
         {
+            string msg = "";
             if (db.GetAnnouncements().Count != lastLength)
             {
                 lastLength = db.GetAnnouncements().Count;
@@ -150,12 +151,8 @@ namespace Tenant_Application
 
                 if (ann.Length > 20)
                 {
-                    //at 30th character - ...
-                    if (msg != "")
-                    {
-                        msg = ann.Substring(0, 30);
-                        msg += " ...";
-                    }
+                    msg = ann.Substring(0, 20);
+                    msg += " ...";
                 }
                 lblAnnComplaints.Text = msg;
                 lblAnnChat.Text = msg;
