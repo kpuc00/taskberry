@@ -457,7 +457,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "LandLordForm";
-            this.Text = "7";
+            this.Text = "f";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LandLordForm_FormClosing);
             this.tabControlLandlord.ResumeLayout(false);
             this.tabScoreBoard.ResumeLayout(false);

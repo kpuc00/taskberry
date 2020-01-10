@@ -77,10 +77,9 @@ namespace Tenant_Application
         //Closes entire app
         private void UserInterfaceForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Helper.LogOut(this.personId, this.db, this); 
+            Helper.LogOut(this.personId, this.db, this);
             Application.ExitThread();
             Application.Exit();
- 
         }
 
         //Sending complaints 
@@ -405,7 +404,7 @@ namespace Tenant_Application
             List<Account> accounts = db.GetAccountData();
             foreach (Account a in accounts)
             {
-                if (a.Online == 1 && a.Admin != 1)
+                if (a.Online == 1)
                 {
                     lbxOnlineUsers.Items.Add(a.Name);
                 }
@@ -428,5 +427,7 @@ namespace Tenant_Application
                 btnChatSend.Enabled = true;
             }
         }
+
+
     }
 }

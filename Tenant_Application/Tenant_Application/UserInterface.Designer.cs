@@ -650,7 +650,7 @@
             // 
             this.tbxComplaint.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbxComplaint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbxComplaint.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbxComplaint.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxComplaint.Location = new System.Drawing.Point(91, 134);
             this.tbxComplaint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxComplaint.Name = "tbxComplaint";
@@ -799,6 +799,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserInterfaceForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserInterfaceForm_FormClosing);
+            
             this.tabSwitch.ResumeLayout(false);
             this.tabCalendar.ResumeLayout(false);
             this.panelCalendarObject.ResumeLayout(false);

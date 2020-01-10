@@ -57,7 +57,7 @@ namespace Tenant_Application
         {
             Helper.LogOut(this.personId, this.db, this);
             Application.ExitThread();
-            Application.Exit();
+            Application.Exit();  
         }
 
 
