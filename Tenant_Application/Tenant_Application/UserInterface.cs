@@ -77,9 +77,10 @@ namespace Tenant_Application
         //Closes entire app
         private void UserInterfaceForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Helper.LogOut(this.personId, this.db, this); 
             Application.ExitThread();
             Application.Exit();
-            db.SetOnline(personId, 0); //Sets the user as OFFLINE
+ 
         }
 
         //Sending complaints 
@@ -238,14 +239,7 @@ namespace Tenant_Application
         //Logout button functionality
         private void BtnComplaintLogout_Click(object sender, EventArgs e)
         {
-            DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (logout == DialogResult.Yes)
-            {
-                db.SetOnline(personId, 0);
-                loginForm.Show();
-                this.Hide();
-                this.Dispose();
-            }
+            Helper.LogOut(this.personId, this.db, this, loginForm);
         }
 
         //Timer for updating scoreboard info
