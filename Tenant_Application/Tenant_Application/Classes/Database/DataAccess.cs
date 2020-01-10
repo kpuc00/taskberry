@@ -99,10 +99,10 @@ namespace Tenant_Application
             return ExecuteQueryWithArgsInList<ChatDB>(query, null);
         }
 
-        public void SendChat(string message, int accountId, string date)
+        public void SendChat(string message, int accountId)
         {
-            var args = new { Message = message, AccountId = accountId, Date = date };
-            var query = "dbo.Chat_Send @Message, @AccountId, @Date";
+            var args = new { Message = message, AccountId = accountId };
+            var query = "dbo.Chat_Send @Message, @AccountId";
             ExecuteQueryWithArgs<object>(query, args);
         }
 

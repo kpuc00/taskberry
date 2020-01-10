@@ -398,9 +398,8 @@ namespace Tenant_Application
             else
             {
                 //send the message
-                string date = DateTime.Now.ToString("MM/dd/yyyy");
                 string msg = tbxChatMsg.Text;
-                db.SendChat(msg, personId, date);
+                db.SendChat(msg, personId);
                 UpdateChat();
                 tbxChatMsg.Text = "";
             }
