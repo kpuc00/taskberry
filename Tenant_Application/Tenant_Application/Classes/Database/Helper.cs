@@ -65,8 +65,9 @@ namespace Tenant_Application
         }
 
         //Handel the logout of an account from landlord form when close
-        public static void LogOut(int id, DataAccess db, LandLordForm llf)
+        public static bool LogOut(int id, DataAccess db, LandLordForm llf)
         {
+            bool val = false;
             //Fancy messagebox with two choices "yes" and "no"
             DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -76,7 +77,11 @@ namespace Tenant_Application
                 db.SetOnline(id, 0);
                 llf.Hide();
                 llf.Dispose();
+
+                val = true;
             }
+
+            return val;
         }
 
         //Handel the logout of an account from User interface form
@@ -96,8 +101,9 @@ namespace Tenant_Application
         }
 
         //Handel the logout of an account from User interface form when close
-        public static void LogOut(int id, DataAccess db, UserInterfaceForm uif)
+        public static bool LogOut(int id, DataAccess db, UserInterfaceForm uif)
         {
+            bool val = false;
             //Fancy messagebox with two choices "yes" and "no"
             DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -107,7 +113,11 @@ namespace Tenant_Application
                 db.SetOnline(id, 0);
                 uif.Hide();
                 uif.Dispose();
+
+                val = true;
             }
+
+            return val;
         }
 
         //Custom messageboxes

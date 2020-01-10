@@ -78,9 +78,16 @@ namespace Tenant_Application
         //Closes entire app
         private void UserInterfaceForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            db.SetOnline(personId, 0); //Sets the user as OFFLINE
-            Application.ExitThread();
-            Application.Exit();
+            bool close = Helper.LogOut(this.personId, this.db, this); //Sets the user as OFFLINE
+
+            if (!close)
+            {
+                e.Cancel = !close;
+            }
+            else {
+                Application.ExitThread();
+                Application.Exit();
+            }
         }
 
         //Sending complaints 
@@ -156,20 +163,22 @@ namespace Tenant_Application
                     msg += " ...";
                 }
 
-                lblAnnComplaints.Text = msg;
-                lblAnnChat.Text = msg;
-                lblAnnCalendar.Text = msg;
-                lblAnnScore.Text = msg;
+                AnnLabelHandling(msg);
             }
         }
 
         //Rmv new announcement as pop-up
         private void TimerAnnouncement_Tick(object sender, EventArgs e)
         {
-            lblAnnComplaints.Text = "";
-            lblAnnChat.Text = "";
-            lblAnnCalendar.Text = "";
-            lblAnnScore.Text = "";
+            AnnLabelHandling("");
+        }
+
+
+        private void AnnLabelHandling(string text) {
+            lblAnnComplaints.Text = text;
+            lblAnnChat.Text = text;
+            lblAnnCalendar.Text = text;
+            lblAnnScore.Text = text;
         }
 
         //Open/Close the announcememnt panel
