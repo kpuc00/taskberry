@@ -55,15 +55,13 @@ namespace Tenant_Application
         //Closes entire app
         private void LandLordForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Helper.LogOut(this.personId, this.db, this);
             Application.ExitThread();
             Application.Exit();
         }
 
         //closes entire app
-        private void LandLordForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Environment.Exit(-1);
-        }
+
 
         //Sends an announcement to the db // Takes parameters such as date of the pc that sent it and the actual announcement
         private void BtnSend_Click(object sender, EventArgs e)
@@ -90,59 +88,37 @@ namespace Tenant_Application
         //Logs out of the landlord form and goes back to the login form
         private void BtnAnnouncementLogout_Click(object sender, EventArgs e)
         {
-            DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (logout == DialogResult.Yes)
-            {
-                loginForm.Show();
-                this.Hide();
-                this.Dispose();
-            }
+            Helper.LogOut(this.personId, this.db, this, loginForm);
         }
 
 
         //Sets a new amount of points to the seletedperson from the listbox
         private void BtnAddPoint_Click(object sender, EventArgs e)
         {
-            string selected = (string)lbxScoreBoard.SelectedItem; //SelectedAccount
-            int points = 0;
-            List<Account> accounts = db.GetAccountData();
-            int theId = 0; //Id of selected account
-            foreach (Account a in accounts)
-            {
-                if (selected.Contains(a.Name))
-                {
-                    points = a.Point;
-                    theId = a.id;
-                    break;
-                }
-            }
-            accounts.Clear();
+            //personId = (string);
+            string name = (string)lbxScoreBoard.SelectedItem; //SelectedAccount
+            if (!string.IsNullOrEmpty(name) && !name.StartsWith("(+)")) {
 
-            if (lbxScoreBoard.SelectedIndex != -1 && !string.IsNullOrWhiteSpace(nudPoints.Text))
-            {
-                if (!selected.StartsWith("(+)"))
+                Account a = Helper.ReturnAccountInfo(name, this.db);
+
+                int points = a.Point;
+                try
                 {
-                    try
-                    {
-                        points += Convert.ToInt32(nudPoints.Text);
-                        db.ChangePoints(points, theId);
-                        nudPoints.Text = "";
-                        UpdateLbxScore();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
+                    points += Convert.ToInt32(nudPoints.Text);
+                    db.ChangePoints(points, a.id);
+                    nudPoints.Text = "";
+                    UpdateLbxScore();
                 }
-                else
+                catch (Exception ex)
                 {
-                    MsgBoxWarning("You can't add points to a landlord account");
+                    MessageBox.Show(ex.ToString());
                 }
             }
             else
             {
-                MsgBoxWarning("Select an account and write down points");
+                MsgBoxWarning("Select an tenant account and write down points");
             }
+            
         }
 
         //Custom messageboxes

@@ -458,7 +458,7 @@
             this.Name = "LandLordForm";
             this.Text = "7";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LandLordForm_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LandLordForm_FormClosed);
+
             this.tabControlLandlord.ResumeLayout(false);
             this.tabScoreBoard.ResumeLayout(false);
             this.panelCalendarObject.ResumeLayout(false);
