@@ -424,6 +424,14 @@ namespace Tenant_Application
                 previousMsg += $"[{chats[i - 1].Date}] [{chats[i - 1].Name}] \t {chats[i - 1].Message} {Environment.NewLine}";
                 tbxChat.Text = previousMsg;
             }
+            if (string.IsNullOrWhiteSpace(tbxChatMsg.Text))
+            {
+                btnChatSend.Enabled = false;
+            }
+            else
+            {
+                btnChatSend.Enabled = true;
+            }
         }
     }
 }
