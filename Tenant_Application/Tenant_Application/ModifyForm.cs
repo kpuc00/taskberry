@@ -21,7 +21,10 @@ namespace Tenant_Application
         string name;
         int admin;
         LandLordForm llf;
-        
+
+        Bitmap showPassword = Tenant_Application.Properties.Resources.passwordHideWhite;
+        Bitmap hidePassword = Tenant_Application.Properties.Resources.passwordShowWhite;
+
         int personModifyingId; //For revoking own landlord status
 
         public ModifyForm(Account account, LandLordForm llf, int personId)
@@ -42,6 +45,7 @@ namespace Tenant_Application
             tbxRegEmail.Text = this.email;
             tbxRegName.Text = this.name;
             this.personModifyingId = personId;
+            tbxRegPassword.PasswordChar = '*';
         }
 
         //If either textbox is either empty or in RED (not meeting criteria), it won't update the database with the new information
@@ -119,7 +123,6 @@ namespace Tenant_Application
                             lblStatusUsername.Visible = false;
                         }
                     }
-
                 }
             }
             else
@@ -132,29 +135,11 @@ namespace Tenant_Application
 
         private void TbxRegPassword_TextChanged(object sender, EventArgs e)
         {
-            List<Account> accounts = db.GetAccountData();
-            string temp = ""; //Stores the taken Password from the textbox, so when it searches the other account objects - it doesn't get skipped
             if (!string.IsNullOrWhiteSpace(tbxRegPassword.Text) && tbxRegPassword.Text.Length >= 4 && tbxRegPassword.Text.Length <= 25)
             {
-                for (int i = 0; i < accounts.Count; i++)
-                {
-                    if (accounts[i].Password.ToLower() != this.password.ToLower())
-                    {
-                        if (accounts[i].Password.ToLower() == tbxRegPassword.Text.ToLower())
-                        {
-                            tbxRegPassword.BackColor = Color.IndianRed;
-                            lblStatusPassword.Visible = true;
-                            lblStatusPassword.Text = "Password is taken";
-                            temp = tbxRegPassword.Text.ToLower();
-                        }
-                        else if (temp != tbxRegPassword.Text.ToLower())
-                        {
-                            tbxRegPassword.BackColor = Color.LightGreen;
-                            lblStatusPassword.Text = "Password is taken";
-                            lblStatusPassword.Visible = false;
-                        }
-                    }
-                }
+                tbxRegPassword.BackColor = Color.LightGreen;
+                lblStatusPassword.Text = "Password is taken";
+                lblStatusPassword.Visible = false;
             }
             else
             {
@@ -249,6 +234,11 @@ namespace Tenant_Application
                 e.Cancel = true;
                 this.Hide();
             }
+        }
+
+        private void pbxPassword_Click(object sender, EventArgs e)
+        {
+            Helper.passwordSwitcher(pbxPassword, tbxRegPassword, showPassword, hidePassword);
         }
     }
 }

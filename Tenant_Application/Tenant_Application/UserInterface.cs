@@ -31,9 +31,6 @@ namespace Tenant_Application
         //Memory Fix. Use the existing instance of this form
         LoginForm loginForm;
 
-        //Moved the email to a class so we can use it everywhere
-        EmailForward newEmail = new EmailForward();
-
         //Overried some painter settings - makes form load faster
         protected override CreateParams CreateParams
         {
@@ -96,7 +93,7 @@ namespace Tenant_Application
             if (!string.IsNullOrWhiteSpace(tbxComplaint.Text))
             {
                 string sucessful = "Thank you for contacting us. We will review your complaint, and get back to you as soon as possible!";
-                Helper.MsgBoxInformation(newEmail.SendMail(personEmail, personPassword, tbxComplaint.Text, "Complaint", sucessful)); //Forwards this to an object
+                Helper.MsgBoxInformation(EmailForward.SendMail(personEmail, personPassword, tbxComplaint.Text, "Complaint", sucessful)); //Forwards this to an object
                 tbxComplaint.Clear();
             }
             else
@@ -404,7 +401,7 @@ namespace Tenant_Application
                 tbxChatMsg.Text = "";
             }
         }
-
+        string last = "";
         //Updates the chat with the last 20 messages
         void UpdateChat()
         {
@@ -421,11 +418,19 @@ namespace Tenant_Application
             //You can't directly save msgs inside a list inside an object, a loop maybe
             string previousMsg = ""; //Saves previous messages
             List<ChatDB> chats = db.GetChat();
-            for (int i = chats.Count; i > 0; i--) //It's reversed because i order by descending ID in the db
+
+            if (chats[0].Message != last)
             {
-                previousMsg += $"[{chats[i - 1].Date}] [{chats[i - 1].Name}] \t {chats[i - 1].Message} {Environment.NewLine}";
-                tbxChat.Text = previousMsg;
+                for (int i = chats.Count; i > 0; i--) //It's reversed because i order by descending ID in the db
+                {
+                    previousMsg += $"[{chats[i - 1].Date}] [{chats[i - 1].Name}] \t {chats[i - 1].Message} {Environment.NewLine}";
+                    tbxChat.Text = previousMsg;
+                }
+                last = chats[0].Message;
+                tbxChat.SelectionStart = tbxChat.Text.Length;
+                tbxChat.ScrollToCaret();
             }
+
             if (string.IsNullOrWhiteSpace(tbxChatMsg.Text))
             {
                 btnChatSend.Enabled = false;

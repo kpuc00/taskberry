@@ -13,7 +13,6 @@ namespace Tenant_Application
     public partial class RecoveryForm : Form
     {
         DataAccess db = new DataAccess(); //Retrieving info from db
-        EmailForward newEmail = new EmailForward(); //Email object
         LoginForm login; //login form object
         public RecoveryForm(LoginForm login)
         {
@@ -38,7 +37,7 @@ namespace Tenant_Application
                         string data = $"We've received a forgotten password alert from our application TaskBerry. In case that wasn't you - ignore this email. Otherwise, here are your credentials: {Environment.NewLine}Username: {a.Username}{Environment.NewLine}Password: {a.Password}";
 
 
-                        Helper.MsgBoxInformation(newEmail.SendRecovery(tbxEmail.Text, data, "Password Recovery", "Recovey email sent! Check your email for more information."));
+                        Helper.MsgBoxInformation(EmailForward.SendRecovery(tbxEmail.Text, data, "Password Recovery", "Recovey email sent! Check your email for more information."));
 
                         //Hides and defaults all values in this form
                         sent = true;

@@ -76,7 +76,11 @@ namespace Tenant_Application
                 announcement = tbxAnnouncement.Text;
                 try
                 {
-                    db.AddAnnouncement(DateTime.Today.ToString("d"), announcement);
+                    db.AddAnnouncement(announcement);
+                    if(cbxAnnEmails.Checked)
+                    {
+                        MessageBox.Show(EmailForward.SendAnnToEveryMail(Helper.AllEmails(db), tbxAnnouncement.Text, "Announcement", "Successfully sent announcements"));
+                    }
                     tbxAnnouncement.Text = "";
                 }
                 catch (Exception ex) {

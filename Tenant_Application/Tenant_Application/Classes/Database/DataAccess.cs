@@ -32,10 +32,10 @@ namespace Tenant_Application
             }
         }
 
-        public void AddAnnouncement(string date, string testing)
+        public void AddAnnouncement(string testing)
         {
-            var args = new { Date = date, Testing = testing };
-            var query = "dbo.Annoucements_AddAnnouncement @Date, @Testing";
+            var args = new { Testing = testing };
+            var query = "dbo.Annoucements_AddAnnouncement @Testing";
 
             ExecuteQueryWithArgs<object>(query, args);
         }

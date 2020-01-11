@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Tenant_Application
 {
@@ -116,8 +117,34 @@ namespace Tenant_Application
 
                 val = true;
             }
-
             return val;
+        }
+        public static List<string> AllEmails(DataAccess db)
+        {
+            List<Account> accounts = db.GetAccountData();
+            List<string> emails = new List<string>();
+            foreach(Account a in accounts)
+            {
+                if(a.Admin != 1)
+                {
+                    emails.Add(a.EmailAddress);
+                }
+            }
+            return emails;
+        }
+
+        public static void passwordSwitcher(PictureBox pbx, TextBox tbx, Bitmap showPassword, Bitmap hidePassword) 
+        {
+            if (pbx.Image == showPassword)
+            {
+                pbx.Image = hidePassword;
+                tbx.PasswordChar = char.Parse("\0");
+            }
+            else
+            {
+                pbx.Image = showPassword;
+                tbx.PasswordChar = '*';
+            }
         }
 
         //Custom messageboxes

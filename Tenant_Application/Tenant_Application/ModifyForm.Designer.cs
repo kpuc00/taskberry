@@ -43,6 +43,8 @@
             this.tbxRegUsername = new System.Windows.Forms.TextBox();
             this.tbxRegPassword = new System.Windows.Forms.TextBox();
             this.cbxAdmin = new System.Windows.Forms.CheckBox();
+            this.pbxPassword = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPassword)).BeginInit();
             this.SuspendLayout();
             // 
             // lblStatusName
@@ -79,7 +81,7 @@
             this.lblStatusPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblStatusPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblStatusPassword.ForeColor = System.Drawing.Color.White;
-            this.lblStatusPassword.Location = new System.Drawing.Point(442, 158);
+            this.lblStatusPassword.Location = new System.Drawing.Point(473, 158);
             this.lblStatusPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatusPassword.Name = "lblStatusPassword";
             this.lblStatusPassword.Size = new System.Drawing.Size(137, 20);
@@ -165,7 +167,7 @@
             // 
             this.tbxRegName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxRegName.Location = new System.Drawing.Point(220, 249);
-            this.tbxRegName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxRegName.Margin = new System.Windows.Forms.Padding(2);
             this.tbxRegName.Name = "tbxRegName";
             this.tbxRegName.Size = new System.Drawing.Size(218, 26);
             this.tbxRegName.TabIndex = 38;
@@ -192,7 +194,7 @@
             // 
             this.tbxRegEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxRegEmail.Location = new System.Drawing.Point(220, 203);
-            this.tbxRegEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxRegEmail.Margin = new System.Windows.Forms.Padding(2);
             this.tbxRegEmail.Name = "tbxRegEmail";
             this.tbxRegEmail.Size = new System.Drawing.Size(218, 26);
             this.tbxRegEmail.TabIndex = 37;
@@ -202,7 +204,7 @@
             // 
             this.tbxRegUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxRegUsername.Location = new System.Drawing.Point(220, 109);
-            this.tbxRegUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxRegUsername.Margin = new System.Windows.Forms.Padding(2);
             this.tbxRegUsername.Name = "tbxRegUsername";
             this.tbxRegUsername.Size = new System.Drawing.Size(218, 26);
             this.tbxRegUsername.TabIndex = 35;
@@ -212,7 +214,7 @@
             // 
             this.tbxRegPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxRegPassword.Location = new System.Drawing.Point(220, 155);
-            this.tbxRegPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxRegPassword.Margin = new System.Windows.Forms.Padding(2);
             this.tbxRegPassword.Name = "tbxRegPassword";
             this.tbxRegPassword.Size = new System.Drawing.Size(218, 26);
             this.tbxRegPassword.TabIndex = 36;
@@ -225,12 +227,24 @@
             this.cbxAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbxAdmin.ForeColor = System.Drawing.Color.White;
             this.cbxAdmin.Location = new System.Drawing.Point(480, 324);
-            this.cbxAdmin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxAdmin.Margin = new System.Windows.Forms.Padding(2);
             this.cbxAdmin.Name = "cbxAdmin";
             this.cbxAdmin.Size = new System.Drawing.Size(151, 24);
             this.cbxAdmin.TabIndex = 52;
             this.cbxAdmin.Text = "Landlord account";
             this.cbxAdmin.UseVisualStyleBackColor = false;
+            // 
+            // pbxPassword
+            // 
+            this.pbxPassword.BackColor = System.Drawing.Color.Transparent;
+            this.pbxPassword.Image = global::Tenant_Application.Properties.Resources.passwordHideWhite;
+            this.pbxPassword.Location = new System.Drawing.Point(438, 153);
+            this.pbxPassword.Name = "pbxPassword";
+            this.pbxPassword.Size = new System.Drawing.Size(30, 30);
+            this.pbxPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxPassword.TabIndex = 53;
+            this.pbxPassword.TabStop = false;
+            this.pbxPassword.Click += new System.EventHandler(this.pbxPassword_Click);
             // 
             // ModifyForm
             // 
@@ -239,6 +253,7 @@
             this.BackgroundImage = global::Tenant_Application.Properties.Resources.panelobject;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(644, 388);
+            this.Controls.Add(this.pbxPassword);
             this.Controls.Add(this.cbxAdmin);
             this.Controls.Add(this.lblStatusName);
             this.Controls.Add(this.lblStatusEmail);
@@ -254,11 +269,12 @@
             this.Controls.Add(this.tbxRegEmail);
             this.Controls.Add(this.tbxRegUsername);
             this.Controls.Add(this.tbxRegPassword);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "ModifyForm";
             this.Text = "ModifyForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModifyForm_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPassword)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,5 +297,6 @@
         private System.Windows.Forms.TextBox tbxRegUsername;
         private System.Windows.Forms.TextBox tbxRegPassword;
         private System.Windows.Forms.CheckBox cbxAdmin;
+        private System.Windows.Forms.PictureBox pbxPassword;
     }
 }

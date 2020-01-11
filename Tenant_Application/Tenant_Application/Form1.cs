@@ -14,7 +14,11 @@ namespace Tenant_Application
     {
         RecoveryForm recovery;
 
-        private DataAccess db; 
+        private DataAccess db;
+
+        Bitmap showPassword = Tenant_Application.Properties.Resources.passwordHideWhite;
+        Bitmap hidePassword = Tenant_Application.Properties.Resources.passwordShowWhite;
+
         public LoginForm()
         {
             InitializeComponent();
@@ -112,6 +116,11 @@ namespace Tenant_Application
             recovery = new RecoveryForm(this);
             recovery.Show();
             this.Hide();
+        }
+
+        private void pbxPassword_Click(object sender, EventArgs e)
+        {
+            Helper.passwordSwitcher(pbxPassword, tbxPassWord, showPassword, hidePassword);
         }
     }
 }

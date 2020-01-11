@@ -43,6 +43,8 @@
             this.lblStatusEmail = new System.Windows.Forms.Label();
             this.lblStatusName = new System.Windows.Forms.Label();
             this.cbxAdmin = new System.Windows.Forms.CheckBox();
+            this.pbxPassword = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPassword)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -182,7 +184,7 @@
             this.lblStatusPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblStatusPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblStatusPassword.ForeColor = System.Drawing.Color.White;
-            this.lblStatusPassword.Location = new System.Drawing.Point(446, 151);
+            this.lblStatusPassword.Location = new System.Drawing.Point(476, 151);
             this.lblStatusPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatusPassword.Name = "lblStatusPassword";
             this.lblStatusPassword.Size = new System.Drawing.Size(137, 20);
@@ -232,6 +234,18 @@
             this.cbxAdmin.Text = "Landlord account";
             this.cbxAdmin.UseVisualStyleBackColor = false;
             // 
+            // pbxPassword
+            // 
+            this.pbxPassword.BackColor = System.Drawing.Color.Transparent;
+            this.pbxPassword.Image = global::Tenant_Application.Properties.Resources.passwordHideWhite;
+            this.pbxPassword.Location = new System.Drawing.Point(441, 146);
+            this.pbxPassword.Name = "pbxPassword";
+            this.pbxPassword.Size = new System.Drawing.Size(30, 30);
+            this.pbxPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxPassword.TabIndex = 54;
+            this.pbxPassword.TabStop = false;
+            this.pbxPassword.Click += new System.EventHandler(this.pbxPassword_Click);
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,6 +253,7 @@
             this.BackgroundImage = global::Tenant_Application.Properties.Resources.panelobject;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(644, 388);
+            this.Controls.Add(this.pbxPassword);
             this.Controls.Add(this.cbxAdmin);
             this.Controls.Add(this.lblStatusName);
             this.Controls.Add(this.lblStatusEmail);
@@ -259,6 +274,7 @@
             this.Name = "RegistrationForm";
             this.Text = "RegistrationForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegistrationForm_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPassword)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,5 +297,6 @@
         private System.Windows.Forms.Label lblStatusEmail;
         private System.Windows.Forms.Label lblStatusName;
         private System.Windows.Forms.CheckBox cbxAdmin;
+        private System.Windows.Forms.PictureBox pbxPassword;
     }
 }
