@@ -12,91 +12,99 @@ namespace Tenant_Application
 {
     public partial class LoginForm : Form
     {
-        UserInterfaceForm uif = new UserInterfaceForm();
+        RecoveryForm recovery;
+
+        private DataAccess db;
+
+        Bitmap showPassword = Tenant_Application.Properties.Resources.passwordHideWhite;
+        Bitmap hidePassword = Tenant_Application.Properties.Resources.passwordShowWhite;
+
         public LoginForm()
         {
             InitializeComponent();
-        }
-
-        private void TbxUserName_Click(object sender, EventArgs e)
-        {
-            tbxUserName.Clear();
-        }
-
-
-        private void TbxPassWord_Click_1(object sender, EventArgs e)
-        {
-            tbxPassWord.Clear();
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             tbxPassWord.PasswordChar = '*';
+            db = new DataAccess();
         }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Closes the whole application and it's thread
+            Environment.Exit(-1);
+        }
+
+        //Only deletes text on first click on form load
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(tbxUserName.Text) || tbxPassWord.Text == "Password" || tbxUserName.Text == "Username" || string.IsNullOrWhiteSpace(tbxPassWord.Text))
+            
+            if(string.IsNullOrWhiteSpace(tbxUserName.Text) || tbxPassWord.Text.ToLower() == "password" || tbxUserName.Text.ToLower() == "username" || tbxPassWord.Text.ToLower() == "deleted" || tbxUserName.Text.ToLower() == "deleted" || string.IsNullOrWhiteSpace(tbxPassWord.Text))
             {
-                UserInterfaceForm newForm = new UserInterfaceForm();
-                newForm.MsgBoxWarning("Please, enter your credentials");
+                Helper.MsgBoxWarning("Please, enter your credentials");
             }
             else
             {
-<<<<<<< Updated upstream
-                this.Hide();
-                uif.Show();
-=======
                 
-                DataAccess db = new DataAccess();
-
-                //Checks for errors
                 try
                 {
-
-                    if (db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text) > 0)
+                    Account a = Helper.ReturnAccountInfo(tbxUserName.Text, tbxPassWord.Text, this.db);
+                    if (a != null)
                     {
-                        int id = db.GetIdByCredentials(tbxUserName.Text, tbxPassWord.Text);
-
-                        switch (id)
+                        if (a.Online != 1)
                         {
-                            //Log in LandLord
-                            case 1:
-                                LandLordForm landLordInterface = new LandLordForm(id);
 
-                                landLordInterface.Show();
-                                break;
-                            //Log in Tenant
-                            default:
+                            if (a.Admin == 1)
+                            {
+                                LandLordForm landlordInterface = new LandLordForm(a.id, this, a.Name);
+                                landlordInterface.Show();
+                                this.Hide();
 
-                                string email = db.GetEmailById(id);
-                                string username = tbxUserName.Text;
-                                string password = db.GetPasswordById(id);
-
-                                UserInterfaceForm userInterface = new UserInterfaceForm(id, email, username, password);
-
-
+                            }
+                            else if (a.Admin == 0)
+                            {
+                                UserInterfaceForm userInterface = new UserInterfaceForm(a.id, a.EmailAddress, a.Password, a.Name, this);
                                 userInterface.Show();
-                                break;
+                                this.Hide();
+                            }
+                            else
+                            {
+                                Helper.MsgBoxInformation("The Username and Password combination is wrong!");
+                            }
                         }
-
-                        //Hides the login screen
-                        this.Hide();
-
+                        else
+                        {
+                            Helper.MsgBoxInformation("This account is logged in on a different device!");
+                        }
                     }
-                    else
-                    {
-                        MsgBoxWarning("User - name or Password is incorect!");
-                        firstTimePassword = true;
-                        firstTimeUsername = true;
+                    else {
+                        Helper.MsgBoxWarning("This account does not exist!");
                     }
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
->>>>>>> Stashed changes
             }
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
+        //Custom Messageboxes
+
+ 
+
+        private void BtnForgotten_Click(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            recovery = new RecoveryForm(this);
+            recovery.Show();
+            this.Hide();
+        }
+
+        private void pbxPassword_Click(object sender, EventArgs e)
+        {
+            Helper.passwordSwitcher(pbxPassword, tbxPassWord, showPassword, hidePassword);
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

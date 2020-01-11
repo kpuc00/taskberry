@@ -14,34 +14,74 @@ namespace Tenant_Application
     {
         DataAccess db = new DataAccess();
 
-        int personId;
+        //New form objects for account managment
+        RegistrationForm regForm;
+        ModifyForm modForm;
+        LoginForm loginForm; //Use the existing instance of this form
 
-        public LandLordForm(int personId)
+        int personId; //Stores the ID of the landlord that currently logged in
+        string personName; //Stores his name
+
+        public LandLordForm(int personId, LoginForm loginForm, string personName)
         {
             InitializeComponent();
-
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.personId = personId;
+            this.personName = personName;
+            this.loginForm = loginForm;
+            db.SetOnline(this.personId, 1);
+
+            UpdateLbxScore();
         }
 
-        private void LandLordForm_Load(object sender, EventArgs e)
+        //Updates the lbx with the latest scores
+        public void UpdateLbxScore()
         {
-            timerRefreshScoreBoard.Start();
-            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            List<Account> accounts = db.GetAccountData();
+            lbxScoreBoard.Items.Clear();
+            foreach (Account a in accounts)
+            {
+                if (a.Name.Length > 15)
+                {
+                    if (a.Admin == 1) //Landlordd account = 1, NORMAL account = 0
+                    {
+                        lbxScoreBoard.Items.Add($"(+){a.Name} -     {a.Point}");
+                    }
+                    else
+                    {
+                        lbxScoreBoard.Items.Add($"{a.Name} -     {a.Point}");
+                    }
+                }
+                else
+                {
+                    if (a.Admin == 1) //Landlordd account = 1, NORMAL account = 0
+                    {
+                        lbxScoreBoard.Items.Add($"(+){a.Name} -     {a.Point}");
+                    }
+                    else
+                    {
+                        lbxScoreBoard.Items.Add($"{a.Name} -     {a.Point}");
+                    }
+                }
+            }
         }
 
         //Closes entire app
         private void LandLordForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.ExitThread();
-            Application.Exit();
+            bool close = Helper.LogOut(this.personId, this.db, this); //Sets the user as OFFLINE
+            if (!close)
+            {
+                e.Cancel = !close;
+            }
+            else {
+                Application.ExitThread();
+                Application.Exit();
+            }
         }
 
-        //closes entire app
-        private void LandLordForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Environment.Exit(-1);
-        }
 
+        //Sends an announcement to the db // Takes parameters such as date of the pc that sent it and the actual announcement
         private void BtnSend_Click(object sender, EventArgs e)
         {
             string announcement;
@@ -50,89 +90,153 @@ namespace Tenant_Application
                 announcement = tbxAnnouncement.Text;
                 try
                 {
-                    db.AddAnnouncement(announcement, DateTime.Now.ToString());
+                    db.AddAnnouncement(announcement);
+                    if(cbxAnnEmails.Checked)
+                    {
+                        MessageBox.Show(EmailForward.SendAnnToEveryMail(Helper.AllEmails(db), tbxAnnouncement.Text, "Announcement", "Successfully sent announcements"));
+                    }
+                    tbxAnnouncement.Text = "";
                 }
                 catch (Exception ex) {
                     MessageBox.Show(ex.ToString());
                 }
             }
-            else {
-                MessageBox.Show("Enter an announcement!");
+            else
+            {
+                Helper.MsgBoxWarning("Enter an announcement!");
             }
-            
-            
         }
 
-        private void TimerRefreshScoreBoard_Tick(object sender, EventArgs e)
+        //Logs out of the landlord form and goes back to the login form
+        private void BtnAnnouncementLogout_Click(object sender, EventArgs e)
         {
-            lbxScoreBoard.Items.Clear();
-
-            List<Account> pointList = db.GetPoints();
-            string nameList = db.GetAccountByName();
-
-            for (int i = 0; i < pointList.Count; i++) {
-                lbxScoreBoard.Items.Add(nameList + ": " + pointList[i].ToString());
-            }
+            Helper.LogOut(this.personId, this.db, this, loginForm);
         }
 
+
+        //Sets a new amount of points to the seletedperson from the listbox
         private void BtnAddPoint_Click(object sender, EventArgs e)
         {
-            string name = NameTenant();
+            //personId = (string);
+            string name = (string)lbxScoreBoard.SelectedItem; //SelectedAccount
+            if (!string.IsNullOrEmpty(name) && !name.StartsWith("(+)") && !string.IsNullOrWhiteSpace(nudPoints.Text)) {
 
-            if (name != null)
-            {
-                int id = db.GetIdByName(name);
+                Account a = Helper.ReturnAccountInfo(name, this.db);
 
-                if (!String.IsNullOrWhiteSpace(tbxPoint.Text))
+                int points = a.Point;
+                try
                 {
-                    db.ChangePoints(Convert.ToInt32(tbxPoint.Text), id);
-                }
-            }
-        }
-
-        private void BtnRmvPoint_Click(object sender, EventArgs e)
-        {
-            string name = NameTenant();
-
-            if (name != null)
-            {
-                int id = db.GetIdByName(name);
-
-                if (!String.IsNullOrWhiteSpace(tbxPoint.Text))
-                {
-                    db.ChangePoints(-Convert.ToInt32(tbxPoint.Text), id);
-                }
-            }
-        }
-
-        private string NameTenant() {
-
-
-            if (lbxScoreBoard.SelectedIndex >= 0)
-            {
-                string name = "";
-                string item = (string)lbxScoreBoard.SelectedItem;
-
-                for (int i = 0; i < item.Length; i++)
-                {
-                    if (!item[i].Equals(":"))
-                    {
-                        name += item[i];
-                        item = item.Substring(1);
+                    points += Convert.ToInt32(nudPoints.Text);
+                    if (points < 0) {
+                        points = 0;
                     }
-                    else
-                    {
-                        break;
-                    }
+                    db.ChangePoints(points, a.id);
+                    nudPoints.Text = "";
+                    UpdateLbxScore();
                 }
-
-                return name;
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
-            else {
-                return null;
+            else
+            {
+                Helper.MsgBoxWarning("Select an tenant account and write down points");
             }
-
             
+        }
+
+        //Updates the listbox with all accounts
+        public void UpdateAccounts()
+        {
+            lbxAccInfo.Items.Clear();
+            List<Account> accounts = db.GetAccountData();
+            for (int i = 0; i < accounts.Count; i++)
+            {
+                if(accounts[i].Admin == 1)
+                {
+                    lbxAccInfo.Items.Add($"{accounts[i].IdName} (Landlord)");
+                }
+                else
+                {
+                    lbxAccInfo.Items.Add(accounts[i].IdName);
+                }
+            }
+        }
+
+        //Whenever you select the account managment tab
+        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabControlLandlord.SelectedIndex == 2)
+            {
+                UpdateAccounts();
+            }
+        }
+
+        //Deletes selected account
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (lbxAccInfo.SelectedIndex != -1)
+            {
+                string info = (string)lbxAccInfo.SelectedItem;
+                if(info.Contains(this.personName))
+                {
+                    Helper.MsgBoxInformation("You can't delete your own account!");
+                    
+                }
+                else
+                {
+                    DialogResult delete = MessageBox.Show("Are you sure you want to delete this account?", "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (delete == DialogResult.Yes)
+                    {
+                        List<Account> accounts = db.GetAccountData();
+                        int selectedPersonId = 0;
+                        foreach(Account a in accounts)
+                        {
+                            if(info.Contains(a.Name))
+                            {
+                                selectedPersonId = a.id;
+                            }
+                        }
+                        db.DeleteAccount(selectedPersonId);
+                        UpdateAccounts();
+                        UpdateLbxScore();
+                    }
+                }
+            }
+        }
+
+        //Modifies the information of the selected account - opens new form
+        private void BtnModify_Click(object sender, EventArgs e)
+        {
+            if (lbxAccInfo.SelectedIndex != -1) //So it doesn't crash if nothing is selected
+            {
+                List<Account> accounts = db.GetAccountData();
+                int index = lbxAccInfo.SelectedIndex;
+                modForm = new ModifyForm(accounts[index], this, this.personId);
+                modForm.Show();
+                modForm.Focus();
+            }
+        }
+
+        //Opens a form to create a new account
+        private void BtnCreateAcc_Click(object sender, EventArgs e)
+        {
+            regForm = new RegistrationForm(this);
+            regForm.Show();
+            regForm.Focus();
+        }
+
+        //Updates the accounts every 10 seconds
+        private void TimerUpdateAccounts_Tick(object sender, EventArgs e)
+        {
+            UpdateAccounts();
+        }
+
+        //Manually resets the calendar
+        private void BtnResetCalendar_Click(object sender, EventArgs e)
+        {
+            db.ResetCalendar();
         }
     }
 }
