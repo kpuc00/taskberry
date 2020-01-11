@@ -138,7 +138,7 @@ namespace Tenant_Application
             if (!string.IsNullOrWhiteSpace(tbxRegPassword.Text) && tbxRegPassword.Text.Length >= 4 && tbxRegPassword.Text.Length <= 25)
             {
                 tbxRegPassword.BackColor = Color.LightGreen;
-                lblStatusPassword.Text = "Password is taken";
+                //lblStatusPassword.Text = "Password is taken";
                 lblStatusPassword.Visible = false;
             }
             else

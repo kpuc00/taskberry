@@ -19,7 +19,6 @@ namespace Tenant_Application
     public partial class UserInterfaceForm : Form
     {
 
-
         DataAccess db = new DataAccess();
 
         //Holding personal information
@@ -447,6 +446,11 @@ namespace Tenant_Application
             {
                 BtnChatSend_Click(this, new EventArgs());
             }
+        }
+
+        private void lblAnnComplaints_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

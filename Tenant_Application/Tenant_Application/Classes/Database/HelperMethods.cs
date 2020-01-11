@@ -8,7 +8,7 @@ namespace Tenant_Application
 {
     class HelperMethods
     {
-        static public bool CheckIfNum(string str)
+        public static bool CheckIfNum(string str)
         {
             int count = 0;
             foreach (char c in str)

@@ -45,22 +45,22 @@ namespace Tenant_Application
                 {
                     if (a.Admin == 1) //Landlordd account = 1, NORMAL account = 0
                     {
-                        lbxScoreBoard.Items.Add($"(+){a.Name} - \t{a.Point}");
+                        lbxScoreBoard.Items.Add($"(+){a.Name} -     {a.Point}");
                     }
                     else
                     {
-                        lbxScoreBoard.Items.Add($"{a.Name} - \t{a.Point}");
+                        lbxScoreBoard.Items.Add($"{a.Name} -     {a.Point}");
                     }
                 }
                 else
                 {
                     if (a.Admin == 1) //Landlordd account = 1, NORMAL account = 0
                     {
-                        lbxScoreBoard.Items.Add($"(+){a.Name} - \t\t{a.Point}");
+                        lbxScoreBoard.Items.Add($"(+){a.Name} -     {a.Point}");
                     }
                     else
                     {
-                        lbxScoreBoard.Items.Add($"{a.Name} - \t\t{a.Point}");
+                        lbxScoreBoard.Items.Add($"{a.Name} -     {a.Point}");
                     }
                 }
             }

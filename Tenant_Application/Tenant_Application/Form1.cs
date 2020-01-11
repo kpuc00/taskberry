@@ -122,5 +122,10 @@ namespace Tenant_Application
         {
             Helper.passwordSwitcher(pbxPassword, tbxPassWord, showPassword, hidePassword);
         }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

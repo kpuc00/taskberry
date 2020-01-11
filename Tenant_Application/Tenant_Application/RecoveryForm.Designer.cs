@@ -35,21 +35,21 @@
             // 
             // tbxEmail
             // 
-            this.tbxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxEmail.Location = new System.Drawing.Point(32, 83);
+            this.tbxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbxEmail.Location = new System.Drawing.Point(32, 79);
             this.tbxEmail.Name = "tbxEmail";
-            this.tbxEmail.Size = new System.Drawing.Size(486, 38);
+            this.tbxEmail.Size = new System.Drawing.Size(486, 45);
             this.tbxEmail.TabIndex = 0;
             // 
             // lblMain
             // 
             this.lblMain.AutoSize = true;
             this.lblMain.BackColor = System.Drawing.Color.Transparent;
-            this.lblMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblMain.ForeColor = System.Drawing.Color.White;
-            this.lblMain.Location = new System.Drawing.Point(26, 33);
+            this.lblMain.Location = new System.Drawing.Point(25, 28);
             this.lblMain.Name = "lblMain";
-            this.lblMain.Size = new System.Drawing.Size(221, 32);
+            this.lblMain.Size = new System.Drawing.Size(264, 39);
             this.lblMain.TabIndex = 1;
             this.lblMain.Text = "Enter your email";
             // 
@@ -60,12 +60,12 @@
             this.btnSend.FlatAppearance.BorderSize = 0;
             this.btnSend.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSend.ForeColor = System.Drawing.Color.White;
-            this.btnSend.Location = new System.Drawing.Point(581, 83);
+            this.btnSend.Location = new System.Drawing.Point(555, 79);
             this.btnSend.Margin = new System.Windows.Forms.Padding(4);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(197, 38);
+            this.btnSend.Size = new System.Drawing.Size(205, 45);
             this.btnSend.TabIndex = 14;
             this.btnSend.Text = "Send ";
             this.btnSend.UseVisualStyleBackColor = false;
