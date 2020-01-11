@@ -81,12 +81,6 @@
             this.timerAnnouncement = new System.Windows.Forms.Timer(this.components);
             this.timerAnnDisp = new System.Windows.Forms.Timer(this.components);
             this.timerChatScoreboard = new System.Windows.Forms.Timer(this.components);
-<<<<<<< HEAD
-            this.lbxAnnCR = new System.Windows.Forms.ListBox();
-            this.lbxAnnScore = new System.Windows.Forms.ListBox();
-            this.lbxAnnComp = new System.Windows.Forms.ListBox();
-=======
->>>>>>> production
             this.tabControl.SuspendLayout();
             this.tabCalendar.SuspendLayout();
             this.panelCalendarObject.SuspendLayout();
@@ -114,7 +108,7 @@
             this.tabControl.Controls.Add(this.tabComplaints);
             this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabControl.Location = new System.Drawing.Point(6, 6);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -150,7 +144,7 @@
             this.panelCalendarObject.Controls.Add(this.lbxCalendarDays);
             this.panelCalendarObject.Controls.Add(this.btnCalendarSelect);
             this.panelCalendarObject.Location = new System.Drawing.Point(47, 81);
-            this.panelCalendarObject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelCalendarObject.Margin = new System.Windows.Forms.Padding(2);
             this.panelCalendarObject.Name = "panelCalendarObject";
             this.panelCalendarObject.Size = new System.Drawing.Size(563, 379);
             this.panelCalendarObject.TabIndex = 25;
@@ -256,19 +250,12 @@
             // 
             this.lbxAnnCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbxAnnCalendar.FormattingEnabled = true;
-<<<<<<< HEAD
             this.lbxAnnCalendar.HorizontalScrollbar = true;
             this.lbxAnnCalendar.ItemHeight = 20;
-            this.lbxAnnCalendar.Location = new System.Drawing.Point(15, 11);
-            this.lbxAnnCalendar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.lbxAnnCalendar.Name = "lbxAnnCalendar";
-            this.lbxAnnCalendar.Size = new System.Drawing.Size(332, 524);
-=======
-            this.lbxAnnCalendar.ItemHeight = 25;
             this.lbxAnnCalendar.Location = new System.Drawing.Point(17, 14);
+            this.lbxAnnCalendar.Margin = new System.Windows.Forms.Padding(2);
             this.lbxAnnCalendar.Name = "lbxAnnCalendar";
-            this.lbxAnnCalendar.Size = new System.Drawing.Size(452, 629);
->>>>>>> production
+            this.lbxAnnCalendar.Size = new System.Drawing.Size(452, 624);
             this.lbxAnnCalendar.TabIndex = 0;
             // 
             // pbxCalendarLegend
@@ -276,7 +263,7 @@
             this.pbxCalendarLegend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbxCalendarLegend.Image = global::Tenant_Application.Properties.Resources.legend;
             this.pbxCalendarLegend.Location = new System.Drawing.Point(799, 81);
-            this.pbxCalendarLegend.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxCalendarLegend.Margin = new System.Windows.Forms.Padding(2);
             this.pbxCalendarLegend.Name = "pbxCalendarLegend";
             this.pbxCalendarLegend.Size = new System.Drawing.Size(363, 553);
             this.pbxCalendarLegend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -321,9 +308,9 @@
             this.tabChatRoom.Controls.Add(this.btn);
             this.tabChatRoom.Controls.Add(this.pbxChatLegend);
             this.tabChatRoom.Location = new System.Drawing.Point(4, 25);
-            this.tabChatRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabChatRoom.Margin = new System.Windows.Forms.Padding(2);
             this.tabChatRoom.Name = "tabChatRoom";
-            this.tabChatRoom.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabChatRoom.Padding = new System.Windows.Forms.Padding(2);
             this.tabChatRoom.Size = new System.Drawing.Size(1171, 644);
             this.tabChatRoom.TabIndex = 0;
             this.tabChatRoom.Text = "Chat Room";
@@ -339,7 +326,7 @@
             this.panel1.Controls.Add(this.btnChatSend);
             this.panel1.Controls.Add(this.tbxChatMsg);
             this.panel1.Location = new System.Drawing.Point(16, 81);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(757, 474);
             this.panel1.TabIndex = 26;
@@ -352,11 +339,7 @@
             this.tbxChat.Name = "tbxChat";
             this.tbxChat.ReadOnly = true;
             this.tbxChat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-<<<<<<< HEAD
             this.tbxChat.Size = new System.Drawing.Size(569, 331);
-=======
-            this.tbxChat.Size = new System.Drawing.Size(757, 406);
->>>>>>> production
             this.tbxChat.TabIndex = 3;
             // 
             // lbxOnlineUsers
@@ -447,11 +430,13 @@
             // 
             this.lbxAnnCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbxAnnCR.FormattingEnabled = true;
-            this.lbxAnnCR.ItemHeight = 25;
-            this.lbxAnnCR.Location = new System.Drawing.Point(21, 26);
+            this.lbxAnnCR.HorizontalScrollbar = true;
+            this.lbxAnnCR.ItemHeight = 20;
+            this.lbxAnnCR.Location = new System.Drawing.Point(15, 14);
+            this.lbxAnnCR.Margin = new System.Windows.Forms.Padding(2);
             this.lbxAnnCR.Name = "lbxAnnCR";
-            this.lbxAnnCR.Size = new System.Drawing.Size(446, 629);
-            this.lbxAnnCR.TabIndex = 0;
+            this.lbxAnnCR.Size = new System.Drawing.Size(332, 524);
+            this.lbxAnnCR.TabIndex = 1;
             // 
             // btn
             // 
@@ -475,7 +460,7 @@
             this.pbxChatLegend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbxChatLegend.Image = global::Tenant_Application.Properties.Resources.legend;
             this.pbxChatLegend.Location = new System.Drawing.Point(799, 81);
-            this.pbxChatLegend.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxChatLegend.Margin = new System.Windows.Forms.Padding(2);
             this.pbxChatLegend.Name = "pbxChatLegend";
             this.pbxChatLegend.Size = new System.Drawing.Size(363, 553);
             this.pbxChatLegend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -506,7 +491,7 @@
             this.panel2.Controls.Add(this.lblScoreboardMain);
             this.panel2.Controls.Add(this.lbxScoreboard);
             this.panel2.Location = new System.Drawing.Point(43, 81);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(477, 440);
             this.panel2.TabIndex = 27;
@@ -570,12 +555,15 @@
             // 
             // lbxAnnScore
             // 
+            this.lbxAnnScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbxAnnScore.FormattingEnabled = true;
+            this.lbxAnnScore.HorizontalScrollbar = true;
             this.lbxAnnScore.ItemHeight = 20;
-            this.lbxAnnScore.Location = new System.Drawing.Point(17, 20);
+            this.lbxAnnScore.Location = new System.Drawing.Point(15, 14);
+            this.lbxAnnScore.Margin = new System.Windows.Forms.Padding(2);
             this.lbxAnnScore.Name = "lbxAnnScore";
-            this.lbxAnnScore.Size = new System.Drawing.Size(450, 644);
-            this.lbxAnnScore.TabIndex = 0;
+            this.lbxAnnScore.Size = new System.Drawing.Size(332, 524);
+            this.lbxAnnScore.TabIndex = 1;
             // 
             // btnAnnScore
             // 
@@ -599,7 +587,7 @@
             this.pbxScoreboardLegend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbxScoreboardLegend.Image = global::Tenant_Application.Properties.Resources.legend;
             this.pbxScoreboardLegend.Location = new System.Drawing.Point(799, 81);
-            this.pbxScoreboardLegend.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxScoreboardLegend.Margin = new System.Windows.Forms.Padding(2);
             this.pbxScoreboardLegend.Name = "pbxScoreboardLegend";
             this.pbxScoreboardLegend.Size = new System.Drawing.Size(363, 553);
             this.pbxScoreboardLegend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -617,9 +605,9 @@
             this.tabComplaints.Controls.Add(this.lblAnnComplaints);
             this.tabComplaints.Controls.Add(this.pbxComplaintsLegend);
             this.tabComplaints.Location = new System.Drawing.Point(4, 25);
-            this.tabComplaints.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabComplaints.Margin = new System.Windows.Forms.Padding(2);
             this.tabComplaints.Name = "tabComplaints";
-            this.tabComplaints.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabComplaints.Padding = new System.Windows.Forms.Padding(2);
             this.tabComplaints.Size = new System.Drawing.Size(1171, 644);
             this.tabComplaints.TabIndex = 1;
             this.tabComplaints.Text = "Complaints";
@@ -633,7 +621,7 @@
             this.panel3.Controls.Add(this.btnSendMail);
             this.panel3.Controls.Add(this.lblComplaintsMain);
             this.panel3.Location = new System.Drawing.Point(66, 81);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(496, 469);
             this.panel3.TabIndex = 28;
@@ -644,7 +632,7 @@
             this.tbxComplaint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbxComplaint.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxComplaint.Location = new System.Drawing.Point(68, 109);
-            this.tbxComplaint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxComplaint.Margin = new System.Windows.Forms.Padding(2);
             this.tbxComplaint.Name = "tbxComplaint";
             this.tbxComplaint.Size = new System.Drawing.Size(357, 258);
             this.tbxComplaint.TabIndex = 1;
@@ -709,11 +697,13 @@
             // 
             this.lbxAnnComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbxAnnComp.FormattingEnabled = true;
-            this.lbxAnnComp.ItemHeight = 25;
-            this.lbxAnnComp.Location = new System.Drawing.Point(25, 21);
+            this.lbxAnnComp.HorizontalScrollbar = true;
+            this.lbxAnnComp.ItemHeight = 20;
+            this.lbxAnnComp.Location = new System.Drawing.Point(15, 14);
+            this.lbxAnnComp.Margin = new System.Windows.Forms.Padding(2);
             this.lbxAnnComp.Name = "lbxAnnComp";
-            this.lbxAnnComp.Size = new System.Drawing.Size(438, 629);
-            this.lbxAnnComp.TabIndex = 0;
+            this.lbxAnnComp.Size = new System.Drawing.Size(332, 524);
+            this.lbxAnnComp.TabIndex = 1;
             // 
             // btnAnnComplaints
             // 
@@ -747,7 +737,7 @@
             this.pbxComplaintsLegend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbxComplaintsLegend.Image = global::Tenant_Application.Properties.Resources.legend;
             this.pbxComplaintsLegend.Location = new System.Drawing.Point(799, 81);
-            this.pbxComplaintsLegend.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxComplaintsLegend.Margin = new System.Windows.Forms.Padding(2);
             this.pbxComplaintsLegend.Name = "pbxComplaintsLegend";
             this.pbxComplaintsLegend.Size = new System.Drawing.Size(363, 553);
             this.pbxComplaintsLegend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -770,45 +760,6 @@
             this.timerChatScoreboard.Interval = 1000;
             this.timerChatScoreboard.Tick += new System.EventHandler(this.TimerScoreboard_Tick);
             // 
-<<<<<<< HEAD
-            // lbxAnnCR
-            // 
-            this.lbxAnnCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbxAnnCR.FormattingEnabled = true;
-            this.lbxAnnCR.HorizontalScrollbar = true;
-            this.lbxAnnCR.ItemHeight = 20;
-            this.lbxAnnCR.Location = new System.Drawing.Point(15, 14);
-            this.lbxAnnCR.Margin = new System.Windows.Forms.Padding(2);
-            this.lbxAnnCR.Name = "lbxAnnCR";
-            this.lbxAnnCR.Size = new System.Drawing.Size(332, 524);
-            this.lbxAnnCR.TabIndex = 1;
-            // 
-            // lbxAnnScore
-            // 
-            this.lbxAnnScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbxAnnScore.FormattingEnabled = true;
-            this.lbxAnnScore.HorizontalScrollbar = true;
-            this.lbxAnnScore.ItemHeight = 20;
-            this.lbxAnnScore.Location = new System.Drawing.Point(15, 14);
-            this.lbxAnnScore.Margin = new System.Windows.Forms.Padding(2);
-            this.lbxAnnScore.Name = "lbxAnnScore";
-            this.lbxAnnScore.Size = new System.Drawing.Size(332, 524);
-            this.lbxAnnScore.TabIndex = 1;
-            // 
-            // lbxAnnComp
-            // 
-            this.lbxAnnComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbxAnnComp.FormattingEnabled = true;
-            this.lbxAnnComp.HorizontalScrollbar = true;
-            this.lbxAnnComp.ItemHeight = 20;
-            this.lbxAnnComp.Location = new System.Drawing.Point(15, 14);
-            this.lbxAnnComp.Margin = new System.Windows.Forms.Padding(2);
-            this.lbxAnnComp.Name = "lbxAnnComp";
-            this.lbxAnnComp.Size = new System.Drawing.Size(332, 524);
-            this.lbxAnnComp.TabIndex = 1;
-            // 
-=======
->>>>>>> production
             // UserInterfaceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -817,7 +768,7 @@
             this.ClientSize = new System.Drawing.Size(1178, 687);
             this.Controls.Add(this.tabControl);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "UserInterfaceForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
