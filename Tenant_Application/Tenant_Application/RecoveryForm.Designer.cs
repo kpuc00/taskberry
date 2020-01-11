@@ -82,6 +82,7 @@
             this.Controls.Add(this.lblMain);
             this.Controls.Add(this.tbxEmail);
             this.Name = "RecoveryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RecoveryForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RecoveryForm_FormClosing);
             this.ResumeLayout(false);

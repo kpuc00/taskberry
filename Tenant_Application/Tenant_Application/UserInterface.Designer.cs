@@ -54,6 +54,7 @@
             this.btnChatLogout = new System.Windows.Forms.Button();
             this.lblAnnChat = new System.Windows.Forms.Label();
             this.panelAnnChat = new System.Windows.Forms.Panel();
+            this.lbxAnnCR = new System.Windows.Forms.ListBox();
             this.btn = new System.Windows.Forms.Button();
             this.pbxChatLegend = new System.Windows.Forms.PictureBox();
             this.tabGrading = new System.Windows.Forms.TabPage();
@@ -63,6 +64,7 @@
             this.btnScoreboardLogout = new System.Windows.Forms.Button();
             this.lblAnnScore = new System.Windows.Forms.Label();
             this.panelAnnScore = new System.Windows.Forms.Panel();
+            this.lbxAnnScore = new System.Windows.Forms.ListBox();
             this.btnAnnScore = new System.Windows.Forms.Button();
             this.pbxScoreboardLegend = new System.Windows.Forms.PictureBox();
             this.tabComplaints = new System.Windows.Forms.TabPage();
@@ -72,15 +74,19 @@
             this.lblComplaintsMain = new System.Windows.Forms.Label();
             this.btnComplaintLogout = new System.Windows.Forms.Button();
             this.panelAnnComplaints = new System.Windows.Forms.Panel();
+            this.lbxAnnComp = new System.Windows.Forms.ListBox();
             this.btnAnnComplaints = new System.Windows.Forms.Button();
             this.lblAnnComplaints = new System.Windows.Forms.Label();
             this.pbxComplaintsLegend = new System.Windows.Forms.PictureBox();
             this.timerAnnouncement = new System.Windows.Forms.Timer(this.components);
             this.timerAnnDisp = new System.Windows.Forms.Timer(this.components);
             this.timerChatScoreboard = new System.Windows.Forms.Timer(this.components);
+<<<<<<< HEAD
             this.lbxAnnCR = new System.Windows.Forms.ListBox();
             this.lbxAnnScore = new System.Windows.Forms.ListBox();
             this.lbxAnnComp = new System.Windows.Forms.ListBox();
+=======
+>>>>>>> production
             this.tabControl.SuspendLayout();
             this.tabCalendar.SuspendLayout();
             this.panelCalendarObject.SuspendLayout();
@@ -250,12 +256,19 @@
             // 
             this.lbxAnnCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbxAnnCalendar.FormattingEnabled = true;
+<<<<<<< HEAD
             this.lbxAnnCalendar.HorizontalScrollbar = true;
             this.lbxAnnCalendar.ItemHeight = 20;
             this.lbxAnnCalendar.Location = new System.Drawing.Point(15, 11);
             this.lbxAnnCalendar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbxAnnCalendar.Name = "lbxAnnCalendar";
             this.lbxAnnCalendar.Size = new System.Drawing.Size(332, 524);
+=======
+            this.lbxAnnCalendar.ItemHeight = 25;
+            this.lbxAnnCalendar.Location = new System.Drawing.Point(17, 14);
+            this.lbxAnnCalendar.Name = "lbxAnnCalendar";
+            this.lbxAnnCalendar.Size = new System.Drawing.Size(452, 629);
+>>>>>>> production
             this.lbxAnnCalendar.TabIndex = 0;
             // 
             // pbxCalendarLegend
@@ -339,7 +352,11 @@
             this.tbxChat.Name = "tbxChat";
             this.tbxChat.ReadOnly = true;
             this.tbxChat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+<<<<<<< HEAD
             this.tbxChat.Size = new System.Drawing.Size(569, 331);
+=======
+            this.tbxChat.Size = new System.Drawing.Size(757, 406);
+>>>>>>> production
             this.tbxChat.TabIndex = 3;
             // 
             // lbxOnlineUsers
@@ -425,6 +442,16 @@
             this.panelAnnChat.Size = new System.Drawing.Size(363, 553);
             this.panelAnnChat.TabIndex = 7;
             this.panelAnnChat.Visible = false;
+            // 
+            // lbxAnnCR
+            // 
+            this.lbxAnnCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbxAnnCR.FormattingEnabled = true;
+            this.lbxAnnCR.ItemHeight = 25;
+            this.lbxAnnCR.Location = new System.Drawing.Point(21, 26);
+            this.lbxAnnCR.Name = "lbxAnnCR";
+            this.lbxAnnCR.Size = new System.Drawing.Size(446, 629);
+            this.lbxAnnCR.TabIndex = 0;
             // 
             // btn
             // 
@@ -540,6 +567,15 @@
             this.panelAnnScore.Size = new System.Drawing.Size(363, 553);
             this.panelAnnScore.TabIndex = 9;
             this.panelAnnScore.Visible = false;
+            // 
+            // lbxAnnScore
+            // 
+            this.lbxAnnScore.FormattingEnabled = true;
+            this.lbxAnnScore.ItemHeight = 20;
+            this.lbxAnnScore.Location = new System.Drawing.Point(17, 20);
+            this.lbxAnnScore.Name = "lbxAnnScore";
+            this.lbxAnnScore.Size = new System.Drawing.Size(450, 644);
+            this.lbxAnnScore.TabIndex = 0;
             // 
             // btnAnnScore
             // 
@@ -669,6 +705,16 @@
             this.panelAnnComplaints.TabIndex = 5;
             this.panelAnnComplaints.Visible = false;
             // 
+            // lbxAnnComp
+            // 
+            this.lbxAnnComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbxAnnComp.FormattingEnabled = true;
+            this.lbxAnnComp.ItemHeight = 25;
+            this.lbxAnnComp.Location = new System.Drawing.Point(25, 21);
+            this.lbxAnnComp.Name = "lbxAnnComp";
+            this.lbxAnnComp.Size = new System.Drawing.Size(438, 629);
+            this.lbxAnnComp.TabIndex = 0;
+            // 
             // btnAnnComplaints
             // 
             this.btnAnnComplaints.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
@@ -724,6 +770,7 @@
             this.timerChatScoreboard.Interval = 1000;
             this.timerChatScoreboard.Tick += new System.EventHandler(this.TimerScoreboard_Tick);
             // 
+<<<<<<< HEAD
             // lbxAnnCR
             // 
             this.lbxAnnCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -760,6 +807,8 @@
             this.lbxAnnComp.Size = new System.Drawing.Size(332, 524);
             this.lbxAnnComp.TabIndex = 1;
             // 
+=======
+>>>>>>> production
             // UserInterfaceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
