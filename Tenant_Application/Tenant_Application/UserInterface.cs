@@ -398,7 +398,7 @@ namespace Tenant_Application
                 string msg = tbxChatMsg.Text;
                 db.SendChat(msg, personId);
                 UpdateChat();
-                tbxChatMsg.Text = "";
+                tbxChatMsg.Text = null;
             }
         }
         string last = "";
@@ -441,8 +441,13 @@ namespace Tenant_Application
             }
         }
 
-
-
+        private void tbxChatMsg_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                BtnChatSend_Click(this, new EventArgs());
+            }
+        }
     }
 
 }

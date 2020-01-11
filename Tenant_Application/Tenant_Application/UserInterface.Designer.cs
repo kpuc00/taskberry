@@ -384,10 +384,10 @@
             // tbxChatMsg
             // 
             this.tbxChatMsg.Location = new System.Drawing.Point(9, 428);
-            this.tbxChatMsg.Multiline = true;
             this.tbxChatMsg.Name = "tbxChatMsg";
-            this.tbxChatMsg.Size = new System.Drawing.Size(415, 27);
+            this.tbxChatMsg.Size = new System.Drawing.Size(415, 22);
             this.tbxChatMsg.TabIndex = 9;
+            this.tbxChatMsg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxChatMsg_KeyPress);
             // 
             // btnChatLogout
             // 

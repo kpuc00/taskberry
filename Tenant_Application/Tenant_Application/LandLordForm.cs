@@ -41,13 +41,27 @@ namespace Tenant_Application
             lbxScoreBoard.Items.Clear();
             foreach (Account a in accounts)
             {
-                if(a.Admin == 1) //Landlordd account = 1, NORMAL account = 0
+                if (a.Name.Length > 15)
                 {
-                    lbxScoreBoard.Items.Add($"(+){a.Name} - \t\t{a.Point}");
-                } 
+                    if (a.Admin == 1) //Landlordd account = 1, NORMAL account = 0
+                    {
+                        lbxScoreBoard.Items.Add($"(+){a.Name} - \t{a.Point}");
+                    }
+                    else
+                    {
+                        lbxScoreBoard.Items.Add($"{a.Name} - \t{a.Point}");
+                    }
+                }
                 else
                 {
-                    lbxScoreBoard.Items.Add($"{a.Name} - \t\t{a.Point}");
+                    if (a.Admin == 1) //Landlordd account = 1, NORMAL account = 0
+                    {
+                        lbxScoreBoard.Items.Add($"(+){a.Name} - \t\t{a.Point}");
+                    }
+                    else
+                    {
+                        lbxScoreBoard.Items.Add($"{a.Name} - \t\t{a.Point}");
+                    }
                 }
             }
         }
@@ -131,8 +145,6 @@ namespace Tenant_Application
             }
             
         }
-
-
 
         //Updates the listbox with all accounts
         public void UpdateAccounts()
