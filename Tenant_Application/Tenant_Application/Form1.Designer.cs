@@ -63,7 +63,6 @@
             this.tbxUserName.Size = new System.Drawing.Size(230, 36);
             this.tbxUserName.TabIndex = 0;
             this.tbxUserName.Text = "Username";
-            this.tbxUserName.Click += new System.EventHandler(this.TbxUserName_Click);
             // 
             // panel3
             // 
@@ -152,7 +151,6 @@
             this.tbxPassWord.Size = new System.Drawing.Size(230, 36);
             this.tbxPassWord.TabIndex = 1;
             this.tbxPassWord.Text = "Password";
-            this.tbxPassWord.Click += new System.EventHandler(this.TbxPassWord_Click_1);
             // 
             // pbxLogo
             // 
