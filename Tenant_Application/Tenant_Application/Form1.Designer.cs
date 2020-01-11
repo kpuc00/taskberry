@@ -63,7 +63,6 @@
             this.tbxUserName.Size = new System.Drawing.Size(400, 49);
             this.tbxUserName.TabIndex = 0;
             this.tbxUserName.Text = "Username";
-            this.tbxUserName.Click += new System.EventHandler(this.TbxUserName_Click);
             // 
             // panel3
             // 
@@ -157,6 +156,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 2);
             this.panel1.TabIndex = 4;
+            // 
+            // tbxPassWord
+            // 
+            this.tbxPassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(52)))), ((int)(((byte)(60)))));
+            this.tbxPassWord.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxPassWord.Font = new System.Drawing.Font("Calibri", 22F);
+            this.tbxPassWord.ForeColor = System.Drawing.Color.White;
+            this.tbxPassWord.Location = new System.Drawing.Point(59, 125);
+            this.tbxPassWord.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxPassWord.Name = "tbxPassWord";
+            this.tbxPassWord.Size = new System.Drawing.Size(230, 36);
+            this.tbxPassWord.TabIndex = 1;
+            this.tbxPassWord.Text = "Password";
             // 
             // pbxLogo
             // 

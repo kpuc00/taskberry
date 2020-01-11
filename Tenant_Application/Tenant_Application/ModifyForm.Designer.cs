@@ -53,9 +53,9 @@
             this.lblStatusName.BackColor = System.Drawing.Color.Transparent;
             this.lblStatusName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblStatusName.ForeColor = System.Drawing.Color.White;
-            this.lblStatusName.Location = new System.Drawing.Point(589, 301);
+            this.lblStatusName.Location = new System.Drawing.Point(589, 306);
             this.lblStatusName.Name = "lblStatusName";
-            this.lblStatusName.Size = new System.Drawing.Size(202, 36);
+            this.lblStatusName.Size = new System.Drawing.Size(136, 25);
             this.lblStatusName.TabIndex = 48;
             this.lblStatusName.Text = "Name is taken";
             this.lblStatusName.Visible = false;
@@ -66,9 +66,9 @@
             this.lblStatusEmail.BackColor = System.Drawing.Color.Transparent;
             this.lblStatusEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblStatusEmail.ForeColor = System.Drawing.Color.White;
-            this.lblStatusEmail.Location = new System.Drawing.Point(588, 244);
+            this.lblStatusEmail.Location = new System.Drawing.Point(589, 254);
             this.lblStatusEmail.Name = "lblStatusEmail";
-            this.lblStatusEmail.Size = new System.Drawing.Size(198, 36);
+            this.lblStatusEmail.Size = new System.Drawing.Size(132, 25);
             this.lblStatusEmail.TabIndex = 47;
             this.lblStatusEmail.Text = "Email is taken";
             this.lblStatusEmail.Visible = false;
@@ -79,9 +79,9 @@
             this.lblStatusPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblStatusPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblStatusPassword.ForeColor = System.Drawing.Color.White;
-            this.lblStatusPassword.Location = new System.Drawing.Point(631, 188);
+            this.lblStatusPassword.Location = new System.Drawing.Point(631, 194);
             this.lblStatusPassword.Name = "lblStatusPassword";
-            this.lblStatusPassword.Size = new System.Drawing.Size(257, 36);
+            this.lblStatusPassword.Size = new System.Drawing.Size(170, 25);
             this.lblStatusPassword.TabIndex = 46;
             this.lblStatusPassword.Text = "Password is taken";
             this.lblStatusPassword.Visible = false;
@@ -92,9 +92,9 @@
             this.lblStatusUsername.BackColor = System.Drawing.Color.Transparent;
             this.lblStatusUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblStatusUsername.ForeColor = System.Drawing.Color.White;
-            this.lblStatusUsername.Location = new System.Drawing.Point(588, 128);
+            this.lblStatusUsername.Location = new System.Drawing.Point(589, 137);
             this.lblStatusUsername.Name = "lblStatusUsername";
-            this.lblStatusUsername.Size = new System.Drawing.Size(260, 36);
+            this.lblStatusUsername.Size = new System.Drawing.Size(174, 25);
             this.lblStatusUsername.TabIndex = 45;
             this.lblStatusUsername.Text = "Username is taken";
             this.lblStatusUsername.Visible = false;
@@ -183,8 +183,8 @@
             this.btnCreateAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCreateAcc.ForeColor = System.Drawing.Color.White;
-            this.btnCreateAcc.Location = new System.Drawing.Point(191, 379);
-            this.btnCreateAcc.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCreateAcc.Location = new System.Drawing.Point(29, 379);
+            this.btnCreateAcc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCreateAcc.Name = "btnCreateAcc";
             this.btnCreateAcc.Size = new System.Drawing.Size(257, 68);
             this.btnCreateAcc.TabIndex = 39;
@@ -228,10 +228,10 @@
             this.cbxAdmin.BackColor = System.Drawing.Color.Transparent;
             this.cbxAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbxAdmin.ForeColor = System.Drawing.Color.White;
-            this.cbxAdmin.Location = new System.Drawing.Point(539, 389);
+            this.cbxAdmin.Location = new System.Drawing.Point(640, 399);
             this.cbxAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxAdmin.Name = "cbxAdmin";
-            this.cbxAdmin.Size = new System.Drawing.Size(289, 42);
+            this.cbxAdmin.Size = new System.Drawing.Size(184, 29);
             this.cbxAdmin.TabIndex = 52;
             this.cbxAdmin.Text = "Landlord account";
             this.cbxAdmin.UseVisualStyleBackColor = false;
@@ -241,7 +241,7 @@
             this.pbxPassword.BackColor = System.Drawing.Color.Transparent;
             this.pbxPassword.Image = global::Tenant_Application.Properties.Resources.passwordHideWhite;
             this.pbxPassword.Location = new System.Drawing.Point(584, 188);
-            this.pbxPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.pbxPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbxPassword.Name = "pbxPassword";
             this.pbxPassword.Size = new System.Drawing.Size(40, 37);
             this.pbxPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -255,7 +255,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Tenant_Application.Properties.Resources.panelobject;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(964, 478);
+            this.ClientSize = new System.Drawing.Size(859, 478);
             this.Controls.Add(this.pbxPassword);
             this.Controls.Add(this.cbxAdmin);
             this.Controls.Add(this.lblStatusName);
@@ -275,6 +275,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "ModifyForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModifyForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModifyForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pbxPassword)).EndInit();
