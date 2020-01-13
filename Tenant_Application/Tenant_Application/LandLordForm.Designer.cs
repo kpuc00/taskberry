@@ -57,6 +57,8 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.timerUpdateAccounts = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnResetPoints = new System.Windows.Forms.Button();
             this.tabControlLandlord.SuspendLayout();
             this.tabScoreBoard.SuspendLayout();
             this.panelCalendarObject.SuspendLayout();
@@ -102,6 +104,8 @@
             // 
             this.panelCalendarObject.BackgroundImage = global::Tenant_Application.Properties.Resources.panelobject;
             this.panelCalendarObject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelCalendarObject.Controls.Add(this.btnResetPoints);
+            this.panelCalendarObject.Controls.Add(this.label1);
             this.panelCalendarObject.Controls.Add(this.nudPoints);
             this.panelCalendarObject.Controls.Add(this.lblCalendar);
             this.panelCalendarObject.Controls.Add(this.btnResetCalendar);
@@ -285,7 +289,7 @@
             this.cbxAnnEmails.Location = new System.Drawing.Point(512, 490);
             this.cbxAnnEmails.Margin = new System.Windows.Forms.Padding(4);
             this.cbxAnnEmails.Name = "cbxAnnEmails";
-            this.cbxAnnEmails.Size = new System.Drawing.Size(318, 37);
+            this.cbxAnnEmails.Size = new System.Drawing.Size(312, 36);
             this.cbxAnnEmails.TabIndex = 30;
             this.cbxAnnEmails.Text = "Send email to tenants";
             this.cbxAnnEmails.UseVisualStyleBackColor = true;
@@ -463,6 +467,35 @@
             this.timerUpdateAccounts.Interval = 10000;
             this.timerUpdateAccounts.Tick += new System.EventHandler(this.TimerUpdateAccounts_Tick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(502, 127);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(197, 36);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Mothly Reset:";
+            // 
+            // btnResetPoints
+            // 
+            this.btnResetPoints.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(66)))), ((int)(((byte)(120)))));
+            this.btnResetPoints.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
+            this.btnResetPoints.FlatAppearance.BorderSize = 0;
+            this.btnResetPoints.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnResetPoints.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnResetPoints.ForeColor = System.Drawing.Color.White;
+            this.btnResetPoints.Location = new System.Drawing.Point(503, 167);
+            this.btnResetPoints.Margin = new System.Windows.Forms.Padding(4);
+            this.btnResetPoints.Name = "btnResetPoints";
+            this.btnResetPoints.Size = new System.Drawing.Size(218, 70);
+            this.btnResetPoints.TabIndex = 32;
+            this.btnResetPoints.Text = "Reset Calendar";
+            this.btnResetPoints.UseVisualStyleBackColor = false;
+            this.btnResetPoints.Click += new System.EventHandler(this.btnResetPoints_Click);
+            // 
             // LandLordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -521,5 +554,7 @@
         private System.Windows.Forms.Label lblCalendar;
         private System.Windows.Forms.NumericUpDown nudPoints;
         private System.Windows.Forms.CheckBox cbxAnnEmails;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnResetPoints;
     }
 }

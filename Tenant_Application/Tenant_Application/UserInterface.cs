@@ -119,9 +119,13 @@ namespace Tenant_Application
         {
             List<Account> accounts = db.GetAccountData();
             lbxScoreboard.Items.Clear();
-            foreach (Account a in accounts)
+            foreach (Account a in accounts) {
+                lbxScoreboard.Items.Add(Helper.PopulateScoreBoard(a));
+            }
+            
+            /*foreach (Account a in accounts)
             {
-                if (a.Name.Length > 15)
+                if (a.Name.Length >= 15)
                 {
                     if (a.Admin != 1)
                     {
@@ -132,10 +136,10 @@ namespace Tenant_Application
                 {
                     if (a.Admin != 1)
                     {
-                        lbxScoreboard.Items.Add($"{a.Name} \t\t\t - {a.Point}");
+                        lbxScoreboard.Items.Add($"{a.Name} \t\t - {a.Point}");
                     }
                 }
-            }
+            }*/
         }
 
         /*Handle Announcement*/
@@ -195,7 +199,8 @@ namespace Tenant_Application
                 string storeText = "";
                 foreach (Announcement a in listAnn)
                 {
-                    storeText = $"{a.Date} - {a.Testing }{Environment.NewLine}";
+                    //string s = formatAnn(a.Testing);
+                    storeText = $"{a.Date} {Environment.NewLine} - {a.Testing}   {Environment.NewLine}";
                     ListBoxesPopulate(storeText);
                 }
             }
@@ -204,6 +209,21 @@ namespace Tenant_Application
                 Helper.MsgBoxWarning(ex.ToString());
             }
         }
+
+        //Tried something dont remove
+        /*private string formatAnn(string ann)
+        {
+            string[] s = ann.Split(' ');
+            string str = "";
+            for (int i = 0; i < s.Length; i++) {
+                if (i % 1 == 0) {
+                    str += Environment.NewLine;
+                }
+                str += s[i] + " ";
+            }
+
+            return str;
+        }*/
         /*End Handle Announcement*/
 
         public void ListBoxesPopulate(string text)
