@@ -37,33 +37,32 @@ namespace Tenant_Application
         //Updates the lbx with the latest scores
         public void UpdateLbxScore()
         {
+
             List<Account> accounts = db.GetAccountData();
+            lbxScoreBoard.Items.Clear();
+            foreach (Account a in accounts)
+            {
+                lbxScoreBoard.Items.Add(Helper.PopulateScoreBoard(a));
+            }
+            /*List<Account> accounts = db.GetAccountData();
             lbxScoreBoard.Items.Clear();
             foreach (Account a in accounts)
             {
                 if (a.Name.Length > 15)
                 {
-                    if (a.Admin == 1) //Landlordd account = 1, NORMAL account = 0
-                    {
-                        lbxScoreBoard.Items.Add($"(+){a.Name} -     {a.Point}");
-                    }
-                    else
+                    if (a.Admin != 1) //Landlordd account = 1, NORMAL account = 0
                     {
                         lbxScoreBoard.Items.Add($"{a.Name} -     {a.Point}");
                     }
                 }
                 else
                 {
-                    if (a.Admin == 1) //Landlordd account = 1, NORMAL account = 0
-                    {
-                        lbxScoreBoard.Items.Add($"(+){a.Name} -     {a.Point}");
-                    }
-                    else
+                    if (a.Admin != 1) //Landlordd account = 1, NORMAL account = 0
                     {
                         lbxScoreBoard.Items.Add($"{a.Name} -     {a.Point}");
                     }
                 }
-            }
+            }*/
         }
 
         //Closes entire app
@@ -237,6 +236,16 @@ namespace Tenant_Application
         private void BtnResetCalendar_Click(object sender, EventArgs e)
         {
             db.ResetCalendar();
+        }
+
+        private void btnResetPoints_Click(object sender, EventArgs e)
+        {
+            foreach (Account a in db.GetAccountData()) {
+                if (a.Admin != 1) {
+                    db.ChangePoints(0, a.id);
+                }
+            }
+            UpdateLbxScore();
         }
     }
 }

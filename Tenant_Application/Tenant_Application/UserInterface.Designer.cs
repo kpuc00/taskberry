@@ -266,7 +266,7 @@
             this.lbxAnnCalendar.Location = new System.Drawing.Point(23, 17);
             this.lbxAnnCalendar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbxAnnCalendar.Name = "lbxAnnCalendar";
-            this.lbxAnnCalendar.Size = new System.Drawing.Size(601, 748);
+            this.lbxAnnCalendar.Size = new System.Drawing.Size(444, 655);
             this.lbxAnnCalendar.TabIndex = 0;
             // 
             // pbxCalendarLegend
@@ -457,7 +457,7 @@
             this.lbxAnnCR.Location = new System.Drawing.Point(20, 17);
             this.lbxAnnCR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbxAnnCR.Name = "lbxAnnCR";
-            this.lbxAnnCR.Size = new System.Drawing.Size(441, 642);
+            this.lbxAnnCR.Size = new System.Drawing.Size(444, 642);
             this.lbxAnnCR.TabIndex = 1;
             // 
             // btn
@@ -592,7 +592,7 @@
             this.lbxAnnScore.Location = new System.Drawing.Point(20, 17);
             this.lbxAnnScore.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbxAnnScore.Name = "lbxAnnScore";
-            this.lbxAnnScore.Size = new System.Drawing.Size(441, 642);
+            this.lbxAnnScore.Size = new System.Drawing.Size(444, 642);
             this.lbxAnnScore.TabIndex = 1;
             // 
             // btnAnnScore
@@ -737,7 +737,7 @@
             this.lbxAnnComp.Location = new System.Drawing.Point(20, 17);
             this.lbxAnnComp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbxAnnComp.Name = "lbxAnnComp";
-            this.lbxAnnComp.Size = new System.Drawing.Size(441, 642);
+            this.lbxAnnComp.Size = new System.Drawing.Size(444, 642);
             this.lbxAnnComp.TabIndex = 1;
             // 
             // btnAnnComplaints
@@ -784,6 +784,7 @@
             // 
             // timerAnnouncement
             // 
+            this.timerAnnouncement.Enabled = true;
             this.timerAnnouncement.Interval = 10000;
             this.timerAnnouncement.Tick += new System.EventHandler(this.TimerAnnouncement_Tick);
             // 

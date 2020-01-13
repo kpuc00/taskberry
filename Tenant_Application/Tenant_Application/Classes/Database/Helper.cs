@@ -147,6 +147,19 @@ namespace Tenant_Application
             }
         }
 
+        public static string PopulateScoreBoard(Account a) 
+        {
+
+            string val = "";
+                
+            if (a.Admin != 1) //Landlordd account = 1, NORMAL account = 0
+            {
+                val = $"{a.Name} - {a.Point}";
+            }
+
+            return val;
+        }
+
         //Custom messageboxes
         public static void MsgBoxWarning(string message)
         {
