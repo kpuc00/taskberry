@@ -1,146 +1,140 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Tenant_Application.Account">
-    <Position X="20.25" Y="6.75" Width="1.75" />
+    <Position X="16.5" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAggAAAQAAEQQAAAAAAAACAAAAAgAAAgA=</HashCode>
       <FileName>Classes\Database\Account.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tenant_Application.Announcement">
-    <Position X="20.25" Y="9.75" Width="1.5" />
+    <Position X="18.25" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAgA=</HashCode>
       <FileName>Classes\Database\Announcement.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tenant_Application.CalendarDays">
-    <Position X="22.25" Y="6.75" Width="1.5" />
+    <Position X="20" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAAIAACAAAAAAAAAABCAAIACAIAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Database\CalendarDays.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tenant_Application.ChatDB">
-    <Position X="22.25" Y="11.75" Width="1.5" />
+    <Position X="21.75" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAABAAAAIAAAAAA=</HashCode>
       <FileName>Classes\Database\ChatDB.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tenant_Application.Chore">
-    <Position X="22.25" Y="9.75" Width="1.5" />
+    <Position X="16.5" Y="11.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAIAAAAAAAAQAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Database\Chore.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tenant_Application.DataAccess">
-    <Position X="9.75" Y="11" Width="3.25" />
+    <Position X="10.75" Y="8.75" Width="3" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAICAAAAAAAAIAACAAIYAIAAAAAEBiAQAAAAQ=</HashCode>
       <FileName>Classes\Database\DataAccess.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tenant_Application.EmailForward">
-    <Position X="20.25" Y="11.75" Width="1.75" />
+    <Position X="18.25" Y="11.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAACAAA=</HashCode>
       <FileName>Classes\Database\EmailForward.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tenant_Application.Helper">
-    <Position X="20.25" Y="2.25" Width="3.5" />
+    <Position X="20.25" Y="11.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAACwAAAAABAAAAAgAAAgABAAAAAAA=</HashCode>
       <FileName>Classes\Database\Helper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tenant_Application.HelperMethods">
-    <Position X="20.25" Y="5" Width="1.5" />
+    <Position X="20.25" Y="14" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Database\HelperMethods.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tenant_Application.Points">
-    <Position X="22.25" Y="5" Width="1.5" />
+    <Position X="16.5" Y="13.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Database\Points.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tenant_Application.UDPConnection">
-    <Position X="22.25" Y="13.5" Width="1.5" />
+    <Position X="18.25" Y="13.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAAKAAAAAAAACAAAAAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Classes\UDPConnection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tenant_Application.LoginForm">
-    <Position X="2.75" Y="2.25" Width="2.5" />
-    <AssociationLine Name="db" Type="Tenant_Application.DataAccess" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="3.938" Y="7.396" />
-        <Point X="3.938" Y="7.771" />
-        <Point X="5.75" Y="7.771" />
-        <Point X="5.75" Y="1.875" />
-        <Point X="7.417" Y="1.875" Type="JumpStart" />
-        <Point X="7.583" Y="1.875" Type="JumpEnd" />
-        <Point X="12.188" Y="1.875" />
-        <Point X="12.188" Y="11" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="recovery" Type="Tenant_Application.RecoveryForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="3.375" Y="7.396" />
-        <Point X="3.375" Y="8" />
-        <Point X="2.32" Y="8" />
-        <Point X="2.32" Y="16.67" />
-        <Point X="3.25" Y="16.67" />
-        <Point X="3.25" Y="17" />
-      </Path>
-    </AssociationLine>
+    <Position X="5.75" Y="8.25" Width="2" />
+    <Members>
+      <Field Name="btnForgotten" Hidden="true" />
+      <Field Name="button1" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="panel3" Hidden="true" />
+      <Field Name="pbxLogo" Hidden="true" />
+      <Field Name="pbxPassword" Hidden="true" />
+      <Field Name="tbxPassWord" Hidden="true" />
+      <Field Name="tbxUserName" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>ABCAQAAkACAQAgAAAAiAAAACAAEIRAAKBAAAAQAAAAA=</HashCode>
       <FileName>Form1.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="db" />
       <Field Name="recovery" />
+      <Field Name="db" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Tenant_Application.LandLordForm">
-    <Position X="13.75" Y="2.25" Width="2.75" />
-    <AssociationLine Name="regForm" Type="Tenant_Application.RegistrationForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="14.5" Y="12.973" />
-        <Point X="14.5" Y="20.542" />
-        <Point X="12.271" Y="20.542" Type="JumpStart" />
-        <Point X="12.104" Y="20.542" Type="JumpEnd" />
-        <Point X="11.021" Y="20.542" Type="JumpStart" />
-        <Point X="10.854" Y="20.542" Type="JumpEnd" />
-        <Point X="5.848" Y="20.542" />
-        <Point X="5.848" Y="11.688" />
-        <Point X="5.25" Y="11.688" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="modForm" Type="Tenant_Application.ModifyForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="15.875" Y="12.973" />
-        <Point X="15.875" Y="13.76" />
-        <Point X="17.875" Y="13.76" />
-        <Point X="17.875" Y="10.473" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="loginForm" Type="Tenant_Application.LoginForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="14.562" Y="2.25" />
-        <Point X="14.562" Y="1.161" />
-        <Point X="4" Y="1.161" />
-        <Point X="4" Y="2.25" />
-      </Path>
-    </AssociationLine>
+    <Position X="10.25" Y="3" Width="2.75" />
+    <Members>
+      <Field Name="btnAddPoint" Hidden="true" />
+      <Field Name="btnAnnouncementLogout" Hidden="true" />
+      <Field Name="btnCreateAcc" Hidden="true" />
+      <Field Name="btnDelete" Hidden="true" />
+      <Field Name="btnLogoutMng" Hidden="true" />
+      <Field Name="btnModify" Hidden="true" />
+      <Field Name="btnResetCalendar" Hidden="true" />
+      <Field Name="btnResetPoints" Hidden="true" />
+      <Field Name="btnScoreboardLogout" Hidden="true" />
+      <Field Name="btnSend" Hidden="true" />
+      <Field Name="cbxAnnEmails" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="lblAccMng" Hidden="true" />
+      <Field Name="lblCalendar" Hidden="true" />
+      <Field Name="lblCalendarMain" Hidden="true" />
+      <Field Name="lblComplaintsMain" Hidden="true" />
+      <Field Name="lblPointsSet" Hidden="true" />
+      <Field Name="lbxAccInfo" Hidden="true" />
+      <Field Name="lbxScoreBoard" Hidden="true" />
+      <Field Name="nudPoints" Hidden="true" />
+      <Field Name="panel3" Hidden="true" />
+      <Field Name="panelAccMng" Hidden="true" />
+      <Field Name="panelCalendarObject" Hidden="true" />
+      <Field Name="pbxCalendarLegend" Hidden="true" />
+      <Field Name="tabAnnouncement" Hidden="true" />
+      <Field Name="tabControlLandlord" Hidden="true" />
+      <Field Name="tabRegistration" Hidden="true" />
+      <Field Name="tabScoreBoard" Hidden="true" />
+      <Field Name="tbxAnnouncement" Hidden="true" />
+      <Field Name="timerUpdateAccounts" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>EQAAoEEABCMcIHMaABCAQLI2AAAgJAzEAAQJgQAIAAQ=</HashCode>
       <FileName>LandLordForm.cs</FileName>
@@ -153,15 +147,26 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Tenant_Application.ModifyForm">
-    <Position X="17" Y="2.25" Width="2.5" />
-    <AssociationLine Name="llf" Type="Tenant_Application.LandLordForm" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="18.25" Y="2.25" />
-        <Point X="18.25" Y="1.875" />
-        <Point X="15.5" Y="1.875" />
-        <Point X="15.5" Y="2.25" />
-      </Path>
-    </AssociationLine>
+    <Position X="14" Y="2.25" Width="2.5" />
+    <Members>
+      <Field Name="btnCreateAcc" Hidden="true" />
+      <Field Name="cbxAdmin" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="label5" Hidden="true" />
+      <Field Name="lblEmail" Hidden="true" />
+      <Field Name="lblPassword" Hidden="true" />
+      <Field Name="lblRegMain" Hidden="true" />
+      <Field Name="lblStatusEmail" Hidden="true" />
+      <Field Name="lblStatusName" Hidden="true" />
+      <Field Name="lblStatusPassword" Hidden="true" />
+      <Field Name="lblStatusUsername" Hidden="true" />
+      <Field Name="lblUsername" Hidden="true" />
+      <Field Name="pbxPassword" Hidden="true" />
+      <Field Name="tbxRegEmail" Hidden="true" />
+      <Field Name="tbxRegName" Hidden="true" />
+      <Field Name="tbxRegPassword" Hidden="true" />
+      <Field Name="tbxRegUsername" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>AACgCAAgAGEUAJAgCAKAKgECAEEkAAAIRgRCQgAEAgE=</HashCode>
       <FileName>ModifyForm.cs</FileName>
@@ -172,29 +177,13 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Tenant_Application.RecoveryForm">
-    <Position X="2.75" Y="17" Width="2.5" />
-    <AssociationLine Name="db" Type="Tenant_Application.DataAccess" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="4.062" Y="20.031" />
-        <Point X="4.062" Y="21.416" />
-        <Point X="5.532" Y="21.416" Type="JumpStart" />
-        <Point X="5.699" Y="21.416" Type="JumpEnd" />
-        <Point X="10.854" Y="21.416" Type="JumpStart" />
-        <Point X="11.021" Y="21.416" Type="JumpEnd" />
-        <Point X="12.188" Y="21.416" />
-        <Point X="12.188" Y="14.796" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="login" Type="Tenant_Application.LoginForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="3.625" Y="20.031" />
-        <Point X="3.625" Y="20.406" />
-        <Point X="2.005" Y="20.406" />
-        <Point X="2.005" Y="1.875" />
-        <Point X="2.938" Y="1.875" />
-        <Point X="2.938" Y="2.25" />
-      </Path>
-    </AssociationLine>
+    <Position X="7" Y="15" Width="2.25" />
+    <Members>
+      <Field Name="btnSend" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="lblMain" Hidden="true" />
+      <Field Name="tbxEmail" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>AAAAAAAAACARAAAAIACAAAISAAEAAAAAAAAAAAAAEAA=</HashCode>
       <FileName>RecoveryForm.cs</FileName>
@@ -205,33 +194,26 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Tenant_Application.RegistrationForm">
-    <Position X="2.75" Y="8.25" Width="2.5" />
-    <AssociationLine Name="db" Type="Tenant_Application.DataAccess" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="4.625" Y="15.127" />
-        <Point X="4.625" Y="15.502" />
-        <Point X="5.615" Y="15.502" />
-        <Point X="5.615" Y="21.931" />
-        <Point X="10.938" Y="21.931" />
-        <Point X="10.938" Y="14.796" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="llf" Type="Tenant_Application.LandLordForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="3.562" Y="15.127" />
-        <Point X="3.562" Y="16.096" />
-        <Point X="5.406" Y="16.096" />
-        <Point X="5.406" Y="20.984" />
-        <Point X="5.532" Y="20.984" Type="JumpStart" />
-        <Point X="5.699" Y="20.984" Type="JumpEnd" />
-        <Point X="10.854" Y="20.984" Type="JumpStart" />
-        <Point X="11.021" Y="20.984" Type="JumpEnd" />
-        <Point X="12.104" Y="20.984" Type="JumpStart" />
-        <Point X="12.271" Y="20.984" Type="JumpEnd" />
-        <Point X="15.062" Y="20.984" />
-        <Point X="15.062" Y="12.973" />
-      </Path>
-    </AssociationLine>
+    <Position X="6.25" Y="3" Width="2.5" />
+    <Members>
+      <Field Name="btnCreateAcc" Hidden="true" />
+      <Field Name="cbxAdmin" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="label5" Hidden="true" />
+      <Field Name="lblEmail" Hidden="true" />
+      <Field Name="lblPassword" Hidden="true" />
+      <Field Name="lblRegMain" Hidden="true" />
+      <Field Name="lblStatusEmail" Hidden="true" />
+      <Field Name="lblStatusName" Hidden="true" />
+      <Field Name="lblStatusPassword" Hidden="true" />
+      <Field Name="lblStatusUsername" Hidden="true" />
+      <Field Name="lblUsername" Hidden="true" />
+      <Field Name="pbxPassword" Hidden="true" />
+      <Field Name="tbxRegEmail" Hidden="true" />
+      <Field Name="tbxRegName" Hidden="true" />
+      <Field Name="tbxRegPassword" Hidden="true" />
+      <Field Name="tbxRegUsername" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>AACgCAAgAGEUABAACAKAKgADAEAgAAAIRgRCQAAEAAE=</HashCode>
       <FileName>RegistrationForm.cs</FileName>
@@ -242,15 +224,62 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Tenant_Application.UserInterfaceForm">
-    <Position X="6" Y="2.25" Width="3" />
-    <AssociationLine Name="loginForm" Type="Tenant_Application.LoginForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="7.5" Y="2.25" />
-        <Point X="7.5" Y="1.499" />
-        <Point X="5.062" Y="1.499" />
-        <Point X="5.062" Y="2.25" />
-      </Path>
-    </AssociationLine>
+    <Position X="1.75" Y="6.5" Width="3" />
+    <Members>
+      <Field Name="btn" Hidden="true" />
+      <Field Name="btnAnnCalendar" Hidden="true" />
+      <Field Name="btnAnnComplaints" Hidden="true" />
+      <Field Name="btnAnnScore" Hidden="true" />
+      <Field Name="btnCalendarLogout" Hidden="true" />
+      <Field Name="btnCalendarSelect" Hidden="true" />
+      <Field Name="btnChatLogout" Hidden="true" />
+      <Field Name="btnChatSend" Hidden="true" />
+      <Field Name="btnComplaintLogout" Hidden="true" />
+      <Field Name="btnScoreboardLogout" Hidden="true" />
+      <Field Name="btnSendMail" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="lblAnnCalendar" Hidden="true" />
+      <Field Name="lblAnnChat" Hidden="true" />
+      <Field Name="lblAnnComplaints" Hidden="true" />
+      <Field Name="lblAnnScore" Hidden="true" />
+      <Field Name="lblCalendarMain" Hidden="true" />
+      <Field Name="lblChatMain" Hidden="true" />
+      <Field Name="lblComplaintsMain" Hidden="true" />
+      <Field Name="lblScoreboardMain" Hidden="true" />
+      <Field Name="lbxAnnCalendar" Hidden="true" />
+      <Field Name="lbxAnnComp" Hidden="true" />
+      <Field Name="lbxAnnCR" Hidden="true" />
+      <Field Name="lbxAnnScore" Hidden="true" />
+      <Field Name="lbxCalendarChores" Hidden="true" />
+      <Field Name="lbxCalendarDays" Hidden="true" />
+      <Field Name="lbxOnlineUsers" Hidden="true" />
+      <Field Name="lbxScoreboard" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="panel3" Hidden="true" />
+      <Field Name="panelAnnCalendar" Hidden="true" />
+      <Field Name="panelAnnChat" Hidden="true" />
+      <Field Name="panelAnnComplaints" Hidden="true" />
+      <Field Name="panelAnnScore" Hidden="true" />
+      <Field Name="panelCalendarObject" Hidden="true" />
+      <Field Name="pbxCalendarLegend" Hidden="true" />
+      <Field Name="pbxChatLegend" Hidden="true" />
+      <Field Name="pbxComplaintsLegend" Hidden="true" />
+      <Field Name="pbxScoreboardLegend" Hidden="true" />
+      <Field Name="tabCalendar" Hidden="true" />
+      <Field Name="tabChatRoom" Hidden="true" />
+      <Field Name="tabComplaints" Hidden="true" />
+      <Field Name="tabControl" Hidden="true" />
+      <Field Name="tabGrading" Hidden="true" />
+      <Field Name="tbxChat" Hidden="true" />
+      <Field Name="tbxChatMsg" Hidden="true" />
+      <Field Name="tbxComplaint" Hidden="true" />
+      <Field Name="timerAnnDisp" Hidden="true" />
+      <Field Name="timerAnnouncement" Hidden="true" />
+      <Field Name="timerChatScoreboard" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>AggAIBBqSmgYQPUCBACgAmA+ABdAC6QUOhQIPYMoB8o=</HashCode>
       <FileName>UserInterface.cs</FileName>
