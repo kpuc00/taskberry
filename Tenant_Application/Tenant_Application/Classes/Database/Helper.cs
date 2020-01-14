@@ -57,8 +57,9 @@ namespace Tenant_Application
             //If true logout the account
             if (logout == DialogResult.Yes)
             {
-                db.SetOnline(id, 0);
-                lgf.Show();
+                db.SetOnline(id, 0); //Set offline
+                lgf.Show(); //Open login form
+                //Close current window
                 llf.Hide();
                 llf.Dispose();
             }
@@ -75,7 +76,8 @@ namespace Tenant_Application
             //If true logout the account
             if (logout == DialogResult.Yes)
             {
-                db.SetOnline(id, 0);
+                db.SetOnline(id, 0); //Set offline
+                //Close the current window
                 llf.Hide();
                 llf.Dispose();
 
@@ -94,8 +96,9 @@ namespace Tenant_Application
             //If true logout the account
             if (logout == DialogResult.Yes)
             {
-                db.SetOnline(id, 0);
-                lgf.Show();
+                db.SetOnline(id, 0); //Set offline
+                lgf.Show(); //Open login form
+                //Close the current widow
                 uif.Hide();
                 uif.Dispose();
             }
@@ -111,7 +114,8 @@ namespace Tenant_Application
             //If true logout the account
             if (logout == DialogResult.Yes)
             {
-                db.SetOnline(id, 0);
+                db.SetOnline(id, 0); //Set offline
+                //Close the current window
                 uif.Hide();
                 uif.Dispose();
 
@@ -119,42 +123,46 @@ namespace Tenant_Application
             }
             return val;
         }
+
+        //Get the tenants emails
         public static List<string> AllEmails(DataAccess db)
         {
-            List<Account> accounts = db.GetAccountData();
-            List<string> emails = new List<string>();
+            List<Account> accounts = db.GetAccountData(); //Get data of the accounts store in list
+            List<string> emails = new List<string>(); //List ot store the emails
             foreach(Account a in accounts)
             {
-                if(a.Admin != 1)
+                if(a.Admin != 1) //Check if the account is a tenant
                 {
-                    emails.Add(a.EmailAddress);
+                    emails.Add(a.EmailAddress); //Add the email to the list
                 }
             }
             return emails;
         }
 
+        //Handles the showing or hiding of the loggin password
         public static void passwordSwitcher(PictureBox pbx, TextBox tbx, Bitmap showPassword, Bitmap hidePassword) 
         {
-            if (pbx.Image == showPassword)
+            if (pbx.Image == showPassword) //If the image is the show icon
             {
-                pbx.Image = hidePassword;
-                tbx.PasswordChar = char.Parse("\0");
+                pbx.Image = hidePassword; //Change to the hide icon
+                tbx.PasswordChar = char.Parse("\0"); //Show the password
             }
             else
             {
-                pbx.Image = showPassword;
-                tbx.PasswordChar = '*';
+                pbx.Image = showPassword; //Change to the hide icon
+                tbx.PasswordChar = '*'; //Hide the password with '*' 
             }
         }
 
+        //Populate the scorebords
         public static string PopulateScoreBoard(Account a) 
         {
 
             string val = "";
                 
-            if (a.Admin != 1) //Landlordd account = 1, NORMAL account = 0
+            if (a.Admin != 1) //Check if the account is a tenant
             {
-                val = $"{a.Name} - {a.Point}";
+                val = $"{a.Name} - {a.Point}"; //Add the name and the coresponding points
             }
 
             return val;
@@ -170,5 +178,6 @@ namespace Tenant_Application
         {
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        //End custom messageboxes
     }
 }

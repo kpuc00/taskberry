@@ -22,6 +22,7 @@ namespace Tenant_Application
 
         private void BtnSend_Click(object sender, EventArgs e)
         {
+            //Checks if email is given
             if(string.IsNullOrWhiteSpace(tbxEmail.Text) || !tbxEmail.Text.EndsWith("@gmail.com"))
             {
                 MessageBox.Show("Enter your gmail address to proceed");
@@ -32,6 +33,7 @@ namespace Tenant_Application
                 bool sent = false; //Accessing IF, if it doesn't find the email
                 foreach(Account a in accounts)
                 {
+                    //Find the right account && send the email to tenants email
                     if(a.EmailAddress == tbxEmail.Text)
                     {
                         string data = $"We've received a forgotten password alert from our application TaskBerry. In case that wasn't you - ignore this email. Otherwise, here are your credentials: {Environment.NewLine}Username: {a.Username}{Environment.NewLine}Password: {a.Password}";

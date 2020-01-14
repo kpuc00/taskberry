@@ -19,7 +19,7 @@ namespace Tenant_Application
     public partial class UserInterfaceForm : Form
     {
 
-        DataAccess db = new DataAccess();
+        DataAccess db = new DataAccess(); 
 
         //Holding personal information
         int personId;
@@ -78,9 +78,10 @@ namespace Tenant_Application
 
             if (!close)
             {
-                e.Cancel = !close;
+                e.Cancel = !close; //Close is candeled 
             }
             else {
+                //Exit normaly
                 Application.ExitThread();
                 Application.Exit();
             }
@@ -122,24 +123,6 @@ namespace Tenant_Application
             foreach (Account a in accounts) {
                 lbxScoreboard.Items.Add(Helper.PopulateScoreBoard(a));
             }
-            
-            /*foreach (Account a in accounts)
-            {
-                if (a.Name.Length >= 15)
-                {
-                    if (a.Admin != 1)
-                    {
-                        lbxScoreboard.Items.Add($"{a.Name} \t - {a.Point}");
-                    }
-                }
-                else
-                {
-                    if (a.Admin != 1)
-                    {
-                        lbxScoreboard.Items.Add($"{a.Name} \t\t - {a.Point}");
-                    }
-                }
-            }*/
         }
 
         /*Handle Announcement*/
@@ -150,20 +133,22 @@ namespace Tenant_Application
         private void TimerAnnDisp_Tick(object sender, EventArgs e)
         {
 
-            if (db.GetAnnouncements().Count != lastLength)
+            if (db.GetAnnouncements().Count != lastLength) //Checks if new announcement is added
             {
                 string msg = "";
-                lastLength = db.GetAnnouncements().Count;
+                lastLength = db.GetAnnouncements().Count; //Gets the new amount of announcements
 
-                string ann = $"{db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Date} - {db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Testing}";
+                //Gets the last announcement in the data base
+                string ann = $"{db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Date} - {db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Testing}"; 
 
+                //Show only the 20 first characters
                 if (ann.Length > 20)
                 {
                     msg = ann.Substring(0, 20);
                     msg += " ...";
                 }
 
-                AnnLabelHandling(msg);
+                AnnLabelHandling(msg); //Show the announcement
             }
         }
 
@@ -173,7 +158,7 @@ namespace Tenant_Application
             AnnLabelHandling("");
         }
 
-
+        //Populates the pop-up label for announcements acording to the paramenter
         private void AnnLabelHandling(string text) {
             lblAnnComplaints.Text = text;
             lblAnnChat.Text = text;
@@ -191,7 +176,7 @@ namespace Tenant_Application
 
             try
             {
-                List<Announcement> listAnn = db.GetAnnouncements();
+                List<Announcement> listAnn = db.GetAnnouncements(); //Get all the announcements
 
                 RstAnnPanel(); //Clear the panel
 
@@ -201,7 +186,7 @@ namespace Tenant_Application
                 {
                     //string s = formatAnn(a.Testing);
                     storeText = $"{a.Date} {Environment.NewLine} - {a.Testing}   {Environment.NewLine}";
-                    ListBoxesPopulate(storeText);
+                    ListBoxesPopulate(storeText); //Add the announcement to the announcement panel
                 }
             }
             catch (Exception ex)
@@ -209,23 +194,9 @@ namespace Tenant_Application
                 Helper.MsgBoxWarning(ex.ToString());
             }
         }
-
-        //Tried something dont remove
-        /*private string formatAnn(string ann)
-        {
-            string[] s = ann.Split(' ');
-            string str = "";
-            for (int i = 0; i < s.Length; i++) {
-                if (i % 1 == 0) {
-                    str += Environment.NewLine;
-                }
-                str += s[i] + " ";
-            }
-
-            return str;
-        }*/
         /*End Handle Announcement*/
 
+        //Adds the announcement on top one of another
         public void ListBoxesPopulate(string text)
         {
             lbxAnnCalendar.Items.Insert(0, text);
@@ -234,6 +205,7 @@ namespace Tenant_Application
             lbxAnnComp.Items.Insert(0, text);
         }
 
+        //Empty the announcement panel
         private void RstAnnPanel()
         {
             lbxAnnCalendar.Items.Clear();
@@ -421,6 +393,7 @@ namespace Tenant_Application
             }
         }
         string last = "";
+
         //Updates the chat with the last 20 messages
         void UpdateChat()
         {
@@ -428,9 +401,9 @@ namespace Tenant_Application
             List<Account> accounts = db.GetAccountData();
             foreach (Account a in accounts)
             {
-                if (a.Online == 1)
+                if (a.Online == 1) //If user online
                 {
-                    lbxOnlineUsers.Items.Add(a.Name);
+                    lbxOnlineUsers.Items.Add(a.Name); //Shows user in chat
                 }
             }
             //Have to find a way to save the messages inside a list inside 1 OBJECT, atm there are 20 objects (each msg is an object)
@@ -450,6 +423,7 @@ namespace Tenant_Application
                 tbxChat.ScrollToCaret();
             }
 
+            //Alowes to send message only when you have writen text
             if (string.IsNullOrWhiteSpace(tbxChatMsg.Text))
             {
                 btnChatSend.Enabled = false;
@@ -459,6 +433,7 @@ namespace Tenant_Application
                 btnChatSend.Enabled = true;
             }
         }
+
 
         private void tbxChatMsg_KeyPress(object sender, KeyPressEventArgs e)
         {
