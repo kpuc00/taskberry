@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Tenant_Application.Account">
+    <Position X="20.25" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAggAAAQAAEQQAAAAAAAACAAAAAgAAAgA=</HashCode>
+      <FileName>Classes\Database\Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tenant_Application.Announcement">
+    <Position X="20.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAgA=</HashCode>
+      <FileName>Classes\Database\Announcement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tenant_Application.CalendarDays">
+    <Position X="22.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAIAACAAAAAAAAAABCAAIACAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Database\CalendarDays.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tenant_Application.ChatDB">
+    <Position X="22.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAABAAAAIAAAAAA=</HashCode>
+      <FileName>Classes\Database\ChatDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tenant_Application.Chore">
+    <Position X="22.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAIAAAAAAAAQAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Database\Chore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tenant_Application.DataAccess">
+    <Position X="9.75" Y="11" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAICAAAAAAAAIAACAAIYAIAAAAAEBiAQAAAAQ=</HashCode>
+      <FileName>Classes\Database\DataAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tenant_Application.EmailForward">
+    <Position X="20.25" Y="11.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Classes\Database\EmailForward.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tenant_Application.Helper">
+    <Position X="20.25" Y="2.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAACwAAAAABAAAAAgAAAgABAAAAAAA=</HashCode>
+      <FileName>Classes\Database\Helper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tenant_Application.HelperMethods">
+    <Position X="20.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Database\HelperMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tenant_Application.Points">
+    <Position X="22.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Database\Points.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tenant_Application.UDPConnection">
+    <Position X="22.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAKAAAAAAAACAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Classes\UDPConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tenant_Application.LoginForm">
+    <Position X="2.75" Y="2.25" Width="2.5" />
+    <AssociationLine Name="db" Type="Tenant_Application.DataAccess" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.938" Y="7.396" />
+        <Point X="3.938" Y="7.771" />
+        <Point X="5.75" Y="7.771" />
+        <Point X="5.75" Y="1.875" />
+        <Point X="7.417" Y="1.875" Type="JumpStart" />
+        <Point X="7.583" Y="1.875" Type="JumpEnd" />
+        <Point X="12.188" Y="1.875" />
+        <Point X="12.188" Y="11" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="recovery" Type="Tenant_Application.RecoveryForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.375" Y="7.396" />
+        <Point X="3.375" Y="8" />
+        <Point X="2.32" Y="8" />
+        <Point X="2.32" Y="16.67" />
+        <Point X="3.25" Y="16.67" />
+        <Point X="3.25" Y="17" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ABCAQAAkACAQAgAAAAiAAAACAAEIRAAKBAAAAQAAAAA=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="db" />
+      <Field Name="recovery" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Tenant_Application.LandLordForm">
+    <Position X="13.75" Y="2.25" Width="2.75" />
+    <AssociationLine Name="regForm" Type="Tenant_Application.RegistrationForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.5" Y="12.973" />
+        <Point X="14.5" Y="20.542" />
+        <Point X="12.271" Y="20.542" Type="JumpStart" />
+        <Point X="12.104" Y="20.542" Type="JumpEnd" />
+        <Point X="11.021" Y="20.542" Type="JumpStart" />
+        <Point X="10.854" Y="20.542" Type="JumpEnd" />
+        <Point X="5.848" Y="20.542" />
+        <Point X="5.848" Y="11.688" />
+        <Point X="5.25" Y="11.688" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="modForm" Type="Tenant_Application.ModifyForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.875" Y="12.973" />
+        <Point X="15.875" Y="13.76" />
+        <Point X="17.875" Y="13.76" />
+        <Point X="17.875" Y="10.473" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="loginForm" Type="Tenant_Application.LoginForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.562" Y="2.25" />
+        <Point X="14.562" Y="1.161" />
+        <Point X="4" Y="1.161" />
+        <Point X="4" Y="2.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EQAAoEEABCMcIHMaABCAQLI2AAAgJAzEAAQJgQAIAAQ=</HashCode>
+      <FileName>LandLordForm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="db" />
+      <Field Name="regForm" />
+      <Field Name="modForm" />
+      <Field Name="loginForm" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Tenant_Application.ModifyForm">
+    <Position X="17" Y="2.25" Width="2.5" />
+    <AssociationLine Name="llf" Type="Tenant_Application.LandLordForm" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="18.25" Y="2.25" />
+        <Point X="18.25" Y="1.875" />
+        <Point X="15.5" Y="1.875" />
+        <Point X="15.5" Y="2.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AACgCAAgAGEUAJAgCAKAKgECAEEkAAAIRgRCQgAEAgE=</HashCode>
+      <FileName>ModifyForm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="db" />
+      <Field Name="llf" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Tenant_Application.RecoveryForm">
+    <Position X="2.75" Y="17" Width="2.5" />
+    <AssociationLine Name="db" Type="Tenant_Application.DataAccess" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.062" Y="20.031" />
+        <Point X="4.062" Y="21.416" />
+        <Point X="5.532" Y="21.416" Type="JumpStart" />
+        <Point X="5.699" Y="21.416" Type="JumpEnd" />
+        <Point X="10.854" Y="21.416" Type="JumpStart" />
+        <Point X="11.021" Y="21.416" Type="JumpEnd" />
+        <Point X="12.188" Y="21.416" />
+        <Point X="12.188" Y="14.796" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="login" Type="Tenant_Application.LoginForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.625" Y="20.031" />
+        <Point X="3.625" Y="20.406" />
+        <Point X="2.005" Y="20.406" />
+        <Point X="2.005" Y="1.875" />
+        <Point X="2.938" Y="1.875" />
+        <Point X="2.938" Y="2.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACARAAAAIACAAAISAAEAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>RecoveryForm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="db" />
+      <Field Name="login" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Tenant_Application.RegistrationForm">
+    <Position X="2.75" Y="8.25" Width="2.5" />
+    <AssociationLine Name="db" Type="Tenant_Application.DataAccess" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.625" Y="15.127" />
+        <Point X="4.625" Y="15.502" />
+        <Point X="5.615" Y="15.502" />
+        <Point X="5.615" Y="21.931" />
+        <Point X="10.938" Y="21.931" />
+        <Point X="10.938" Y="14.796" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="llf" Type="Tenant_Application.LandLordForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.562" Y="15.127" />
+        <Point X="3.562" Y="16.096" />
+        <Point X="5.406" Y="16.096" />
+        <Point X="5.406" Y="20.984" />
+        <Point X="5.532" Y="20.984" Type="JumpStart" />
+        <Point X="5.699" Y="20.984" Type="JumpEnd" />
+        <Point X="10.854" Y="20.984" Type="JumpStart" />
+        <Point X="11.021" Y="20.984" Type="JumpEnd" />
+        <Point X="12.104" Y="20.984" Type="JumpStart" />
+        <Point X="12.271" Y="20.984" Type="JumpEnd" />
+        <Point X="15.062" Y="20.984" />
+        <Point X="15.062" Y="12.973" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AACgCAAgAGEUABAACAKAKgADAEAgAAAIRgRCQAAEAAE=</HashCode>
+      <FileName>RegistrationForm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="db" />
+      <Field Name="llf" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Tenant_Application.UserInterfaceForm">
+    <Position X="6" Y="2.25" Width="3" />
+    <AssociationLine Name="loginForm" Type="Tenant_Application.LoginForm" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="2.25" />
+        <Point X="7.5" Y="1.499" />
+        <Point X="5.062" Y="1.499" />
+        <Point X="5.062" Y="2.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AggAIBBqSmgYQPUCBACgAmA+ABdAC6QUOhQIPYMoB8o=</HashCode>
+      <FileName>UserInterface.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="db" />
+      <Field Name="loginForm" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
