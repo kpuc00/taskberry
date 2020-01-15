@@ -439,11 +439,12 @@ namespace Tenant_Application
             //You can't directly save msgs inside a list inside an object, a loop maybe
             string previousMsg = ""; //Saves previous messages
             List<ChatDB> chats = db.GetChat();
+
             if (chats != null)
             {
                 if (chats[0].Message != last)
                 {
-                    for (int i = chats.Count; i > 0; i--) //It's reversed because i order by descending ID in the db
+                    for (int i = chats.Count - 1; i > 0; i--) //It's reversed because i order by descending ID in the db
                     {
                         previousMsg += $"[{chats[i - 1].Date}] [{chats[i - 1].Name}] \t {chats[i - 1].Message} {Environment.NewLine}";
                         tbxChat.Text = previousMsg;
