@@ -120,10 +120,10 @@ namespace Tenant_Application
         }
 
         //0's a chore that has been selected (Points need to be assigned to that person's ID)
-        public void UpdateCalendarChores(string day, string chore)
+        public void UpdateCalendarChores(string day, string chore, string name)
         {
-            var args = new { Day = day, Chore = chore};
-            var query = "dbo.Calendar_UpdateCalendar @Day, @Chore";
+            var args = new { Day = day, Chore = chore, Name = name};
+            var query = "dbo.Calendar_UpdateCalendar @Day, @Chore, @Name";
 
             ExecuteQueryWithArgs<object>(query, args);
         }

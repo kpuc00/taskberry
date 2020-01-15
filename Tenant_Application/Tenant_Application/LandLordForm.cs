@@ -228,5 +228,11 @@ namespace Tenant_Application
             }
             UpdateLbxScore();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Calendar calendar = new Calendar();
+            calendar.Show();
+        }
     }
 }

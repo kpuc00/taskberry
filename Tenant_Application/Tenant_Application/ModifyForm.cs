@@ -198,24 +198,36 @@ namespace Tenant_Application
             string temp = ""; //Stores the taken Name from the textbox, so when it searches the other account objects - it doesn't get skipped
             if (!string.IsNullOrWhiteSpace(tbxRegName.Text) && tbxRegName.Text.Length >= 4 && tbxRegName.Text.Length <= 25)
             {
-                for (int i = 0; i < accounts.Count; i++)
+                if (!tbxRegName.Text.StartsWith("0") && !tbxRegName.Text.StartsWith("1") && !tbxRegName.Text.StartsWith("2") &&
+                    !tbxRegName.Text.StartsWith("3") && !tbxRegName.Text.StartsWith("4") && !tbxRegName.Text.StartsWith("5") &&
+                     !tbxRegName.Text.StartsWith("6") && !tbxRegName.Text.StartsWith("7") && !tbxRegName.Text.StartsWith("8") &&
+                     !tbxRegName.Text.StartsWith("9"))
                 {
-                    if (accounts[i].Name.ToLower() != this.name.ToLower())
+                    for (int i = 0; i < accounts.Count; i++)
                     {
-                        if (accounts[i].Name.ToLower() == tbxRegName.Text.ToLower())
+                        if (accounts[i].Name.ToLower() != this.name.ToLower())
                         {
-                            tbxRegName.BackColor = Color.IndianRed;
-                            lblStatusName.Visible = true;
-                            lblStatusName.Text = "Name is taken";
-                            temp = tbxRegName.Text.ToLower();
-                        }
-                        else if (temp != tbxRegName.Text.ToLower())
-                        {
-                            tbxRegName.BackColor = Color.LightGreen;
-                            lblStatusName.Text = "Name is taken";
-                            lblStatusName.Visible = false;
+                            if (accounts[i].Name.ToLower() == tbxRegName.Text.ToLower())
+                            {
+                                tbxRegName.BackColor = Color.IndianRed;
+                                lblStatusName.Visible = true;
+                                lblStatusName.Text = "Name is taken";
+                                temp = tbxRegName.Text.ToLower();
+                            }
+                            else if (temp != tbxRegName.Text.ToLower())
+                            {
+                                tbxRegName.BackColor = Color.LightGreen;
+                                lblStatusName.Text = "Name is taken";
+                                lblStatusName.Visible = false;
+                            }
                         }
                     }
+                }
+                else
+                {
+                    lblStatusName.Visible = true;
+                    lblStatusName.Text = "Can't start with a digit";
+                    tbxRegName.BackColor = Color.IndianRed;
                 }
             }
             else
@@ -237,6 +249,11 @@ namespace Tenant_Application
         }
 
         private void pbxPassword_Click(object sender, EventArgs e)
+        {
+            Helper.passwordSwitcher(pbxPassword, tbxRegPassword, showPassword, hidePassword);
+        }
+
+        private void pbxPassword_Click_1(object sender, EventArgs e)
         {
             Helper.passwordSwitcher(pbxPassword, tbxRegPassword, showPassword, hidePassword);
         }

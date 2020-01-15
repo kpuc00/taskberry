@@ -20,7 +20,7 @@ namespace Tenant_Application
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
-            //Application.Run(new RecoveryForm());
+            //Application.Run(new Calendar());
         }
     }
 }

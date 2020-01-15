@@ -19,7 +19,8 @@ namespace Tenant_Application
     public partial class UserInterfaceForm : Form
     {
 
-        DataAccess db = new DataAccess(); 
+        DataAccess db = new DataAccess();
+
 
         //Holding personal information
         int personId;
@@ -250,7 +251,8 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays a in days)
                         {
-                            if (a.Tuesday != "0")
+                            if (a.Tuesday.StartsWith("0") || a.Tuesday.StartsWith("1") || a.Tuesday.StartsWith("2") || a.Tuesday.StartsWith("3") ||
+                                a.Tuesday.StartsWith("4") || a.Tuesday.StartsWith("5") || a.Tuesday.StartsWith("6"))
                             {
                                 lbxCalendarChores.Items.Add(a.Tuesday.Substring(1));
                             }
@@ -260,7 +262,8 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays a in days)
                         {
-                            if (a.Wednesday != "0")
+                            if (a.Wednesday.StartsWith("0") || a.Wednesday.StartsWith("1") || a.Wednesday.StartsWith("2") || a.Wednesday.StartsWith("3") ||
+                                a.Wednesday.StartsWith("4") || a.Wednesday.StartsWith("5") || a.Wednesday.StartsWith("6"))
                             {
                                 lbxCalendarChores.Items.Add(a.Wednesday.Substring(1));
                             }
@@ -270,7 +273,8 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays a in days)
                         {
-                            if (a.Thursday != "0")
+                            if (a.Thursday.StartsWith("0") || a.Thursday.StartsWith("1") || a.Thursday.StartsWith("2") || a.Thursday.StartsWith("3") ||
+                                a.Thursday.StartsWith("4") || a.Thursday.StartsWith("5") || a.Thursday.StartsWith("6"))
                             {
                                 lbxCalendarChores.Items.Add(a.Thursday.Substring(1));
                             }
@@ -280,7 +284,8 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays a in days)
                         {
-                            if (a.Friday != "0")
+                            if (a.Friday.StartsWith("0") || a.Friday.StartsWith("1") || a.Friday.StartsWith("2") || a.Friday.StartsWith("3") ||
+                                a.Friday.StartsWith("4") || a.Friday.StartsWith("5") || a.Friday.StartsWith("6"))
                             {
                                 lbxCalendarChores.Items.Add(a.Friday.Substring(1));
                             }
@@ -290,7 +295,8 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays a in days)
                         {
-                            if (a.Saturday != "0")
+                            if (a.Saturday.StartsWith("0") || a.Saturday.StartsWith("1") || a.Saturday.StartsWith("2") || a.Saturday.StartsWith("3") ||
+                                a.Saturday.StartsWith("4") || a.Saturday.StartsWith("5") || a.Saturday.StartsWith("6"))
                             {
                                 lbxCalendarChores.Items.Add(a.Saturday.Substring(1));
                             }
@@ -300,7 +306,8 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays a in days)
                         {
-                            if (a.Sunday != "0")
+                            if (a.Sunday.StartsWith("0") || a.Sunday.StartsWith("1") || a.Sunday.StartsWith("2") || a.Sunday.StartsWith("3") ||
+                                a.Sunday.StartsWith("4") || a.Sunday.StartsWith("5") || a.Sunday.StartsWith("6"))
                             {
                                 lbxCalendarChores.Items.Add(a.Sunday.Substring(1));
                             }
@@ -310,7 +317,8 @@ namespace Tenant_Application
                         lbxCalendarChores.Items.Clear();
                         foreach (CalendarDays day in days)
                         {
-                            if (day.Monday != "0")
+                            if (day.Monday.StartsWith("0") || day.Monday.StartsWith("1") || day.Monday.StartsWith("2") || day.Monday.StartsWith("3") ||
+                                day.Monday.StartsWith("4") || day.Monday.StartsWith("5") || day.Monday.StartsWith("6"))
                             {
                                 lbxCalendarChores.Items.Add(day.Monday.Substring(1));
                             }
@@ -330,8 +338,12 @@ namespace Tenant_Application
         {
             try
             {
-                string chore = "0" + lbxCalendarChores.SelectedItem.ToString();
-                db.UpdateCalendarChores(lbxCalendarDays.SelectedItem.ToString(), chore);
+                //In the database - days have a unique Identifier, 0-Monday, 1-Tuesday etc.
+                //thats why whenever the selected item is a day - it needs to send its unique identifier 
+                string  s = lbxCalendarDays.SelectedIndex.ToString();
+                //Sends
+                string chore = s + lbxCalendarChores.SelectedItem.ToString();
+                db.UpdateCalendarChores(lbxCalendarDays.SelectedItem.ToString(), chore, this.personName);
                 string selChore = lbxCalendarChores.SelectedItem.ToString();
                 List<Account> accounts = db.GetAccountData();
                 int points = 0;
@@ -345,7 +357,7 @@ namespace Tenant_Application
                 }
                 switch (selChore)
                 {
-                    case "Throw Thrash":
+                    case "Throw Trash":
                         db.ChangePoints(points + 2, personId);
                         break;
                     case "Wash Dishes":
@@ -401,7 +413,7 @@ namespace Tenant_Application
             List<Account> accounts = db.GetAccountData();
             foreach (Account a in accounts)
             {
-                if (a.Online == 1) //If user online
+                if (a.Online == 1 && a.Admin == 0) //If user online
                 {
                     lbxOnlineUsers.Items.Add(a.Name); //Shows user in chat
                 }
@@ -443,9 +455,10 @@ namespace Tenant_Application
             }
         }
 
-        private void lblAnnComplaints_Click(object sender, EventArgs e)
+        private void btnOpenCalendar_Click(object sender, EventArgs e)
         {
-
+            Calendar calendar = new Calendar();
+            calendar.Show();
         }
     }
 
