@@ -210,6 +210,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\legend2.png" />
+    <None Include="Resources\legend1.png" />
     <None Include="Resources\passwordShowWhite.png" />
     <None Include="Resources\passwordHideWhite.png" />
     <None Include="Resources\passwordShow.png" />
