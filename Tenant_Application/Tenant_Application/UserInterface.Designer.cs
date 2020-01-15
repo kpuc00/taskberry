@@ -41,6 +41,7 @@
             this.btnCalendarSelect = new System.Windows.Forms.Button();
             this.btnCalendarLogout = new System.Windows.Forms.Button();
             this.panelAnnCalendar = new System.Windows.Forms.Panel();
+            this.tbxAnnCalendar = new System.Windows.Forms.RichTextBox();
             this.pbxCalendarLegend = new System.Windows.Forms.PictureBox();
             this.lblAnnCalendar = new System.Windows.Forms.Label();
             this.btnAnnCalendar = new System.Windows.Forms.Button();
@@ -54,6 +55,7 @@
             this.btnChatLogout = new System.Windows.Forms.Button();
             this.lblAnnChat = new System.Windows.Forms.Label();
             this.panelAnnChat = new System.Windows.Forms.Panel();
+            this.tbxAnnCR = new System.Windows.Forms.RichTextBox();
             this.btn = new System.Windows.Forms.Button();
             this.pbxChatLegend = new System.Windows.Forms.PictureBox();
             this.tabGrading = new System.Windows.Forms.TabPage();
@@ -63,6 +65,7 @@
             this.btnScoreboardLogout = new System.Windows.Forms.Button();
             this.lblAnnScore = new System.Windows.Forms.Label();
             this.panelAnnScore = new System.Windows.Forms.Panel();
+            this.tbxAnnScore = new System.Windows.Forms.RichTextBox();
             this.btnAnnScore = new System.Windows.Forms.Button();
             this.pbxScoreboardLegend = new System.Windows.Forms.PictureBox();
             this.tabComplaints = new System.Windows.Forms.TabPage();
@@ -72,16 +75,13 @@
             this.lblComplaintsMain = new System.Windows.Forms.Label();
             this.btnComplaintLogout = new System.Windows.Forms.Button();
             this.panelAnnComplaints = new System.Windows.Forms.Panel();
+            this.tbxAnnCom = new System.Windows.Forms.RichTextBox();
             this.btnAnnComplaints = new System.Windows.Forms.Button();
             this.lblAnnComplaints = new System.Windows.Forms.Label();
             this.pbxComplaintsLegend = new System.Windows.Forms.PictureBox();
             this.timerAnnouncement = new System.Windows.Forms.Timer(this.components);
             this.timerAnnDisp = new System.Windows.Forms.Timer(this.components);
             this.timerChatScoreboard = new System.Windows.Forms.Timer(this.components);
-            this.tbxAnnCalendar = new System.Windows.Forms.RichTextBox();
-            this.tbxAnnCR = new System.Windows.Forms.RichTextBox();
-            this.tbxAnnScore = new System.Windows.Forms.RichTextBox();
-            this.tbxAnnCom = new System.Windows.Forms.RichTextBox();
             this.tabControl.SuspendLayout();
             this.tabCalendar.SuspendLayout();
             this.panelCalendarObject.SuspendLayout();
@@ -128,7 +128,7 @@
             this.tabCalendar.Controls.Add(this.lblAnnCalendar);
             this.tabCalendar.Controls.Add(this.btnAnnCalendar);
             this.tabCalendar.Location = new System.Drawing.Point(4, 29);
-            this.tabCalendar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabCalendar.Margin = new System.Windows.Forms.Padding(4);
             this.tabCalendar.Name = "tabCalendar";
             this.tabCalendar.Size = new System.Drawing.Size(1564, 795);
             this.tabCalendar.TabIndex = 2;
@@ -162,7 +162,7 @@
             this.btnOpenCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnOpenCalendar.ForeColor = System.Drawing.Color.White;
             this.btnOpenCalendar.Location = new System.Drawing.Point(11, 391);
-            this.btnOpenCalendar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOpenCalendar.Margin = new System.Windows.Forms.Padding(4);
             this.btnOpenCalendar.Name = "btnOpenCalendar";
             this.btnOpenCalendar.Size = new System.Drawing.Size(331, 80);
             this.btnOpenCalendar.TabIndex = 17;
@@ -213,7 +213,7 @@
             this.lbxCalendarChores.FormattingEnabled = true;
             this.lbxCalendarChores.ItemHeight = 31;
             this.lbxCalendarChores.Location = new System.Drawing.Point(485, 100);
-            this.lbxCalendarChores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbxCalendarChores.Margin = new System.Windows.Forms.Padding(4);
             this.lbxCalendarChores.Name = "lbxCalendarChores";
             this.lbxCalendarChores.Size = new System.Drawing.Size(360, 190);
             this.lbxCalendarChores.TabIndex = 12;
@@ -224,7 +224,7 @@
             this.lbxCalendarDays.FormattingEnabled = true;
             this.lbxCalendarDays.ItemHeight = 31;
             this.lbxCalendarDays.Location = new System.Drawing.Point(11, 100);
-            this.lbxCalendarDays.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbxCalendarDays.Margin = new System.Windows.Forms.Padding(4);
             this.lbxCalendarDays.Name = "lbxCalendarDays";
             this.lbxCalendarDays.Size = new System.Drawing.Size(340, 190);
             this.lbxCalendarDays.TabIndex = 11;
@@ -240,7 +240,7 @@
             this.btnCalendarSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCalendarSelect.ForeColor = System.Drawing.Color.White;
             this.btnCalendarSelect.Location = new System.Drawing.Point(515, 391);
-            this.btnCalendarSelect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCalendarSelect.Margin = new System.Windows.Forms.Padding(4);
             this.btnCalendarSelect.Name = "btnCalendarSelect";
             this.btnCalendarSelect.Size = new System.Drawing.Size(331, 80);
             this.btnCalendarSelect.TabIndex = 13;
@@ -258,7 +258,7 @@
             this.btnCalendarLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCalendarLogout.ForeColor = System.Drawing.Color.White;
             this.btnCalendarLogout.Location = new System.Drawing.Point(21, 710);
-            this.btnCalendarLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCalendarLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnCalendarLogout.Name = "btnCalendarLogout";
             this.btnCalendarLogout.Size = new System.Drawing.Size(165, 68);
             this.btnCalendarLogout.TabIndex = 24;
@@ -271,11 +271,22 @@
             this.panelAnnCalendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
             this.panelAnnCalendar.Controls.Add(this.tbxAnnCalendar);
             this.panelAnnCalendar.Location = new System.Drawing.Point(1065, 100);
-            this.panelAnnCalendar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelAnnCalendar.Margin = new System.Windows.Forms.Padding(4);
             this.panelAnnCalendar.Name = "panelAnnCalendar";
             this.panelAnnCalendar.Size = new System.Drawing.Size(484, 681);
             this.panelAnnCalendar.TabIndex = 9;
             this.panelAnnCalendar.Visible = false;
+            // 
+            // tbxAnnCalendar
+            // 
+            this.tbxAnnCalendar.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.tbxAnnCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbxAnnCalendar.Location = new System.Drawing.Point(20, 19);
+            this.tbxAnnCalendar.Name = "tbxAnnCalendar";
+            this.tbxAnnCalendar.ReadOnly = true;
+            this.tbxAnnCalendar.Size = new System.Drawing.Size(449, 643);
+            this.tbxAnnCalendar.TabIndex = 0;
+            this.tbxAnnCalendar.Text = "";
             // 
             // pbxCalendarLegend
             // 
@@ -310,7 +321,7 @@
             this.btnAnnCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAnnCalendar.ForeColor = System.Drawing.Color.White;
             this.btnAnnCalendar.Location = new System.Drawing.Point(1315, 26);
-            this.btnAnnCalendar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAnnCalendar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAnnCalendar.Name = "btnAnnCalendar";
             this.btnAnnCalendar.Size = new System.Drawing.Size(235, 68);
             this.btnAnnCalendar.TabIndex = 8;
@@ -356,7 +367,7 @@
             // 
             this.tbxChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxChat.Location = new System.Drawing.Point(12, 103);
-            this.tbxChat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxChat.Margin = new System.Windows.Forms.Padding(4);
             this.tbxChat.Multiline = true;
             this.tbxChat.Name = "tbxChat";
             this.tbxChat.ReadOnly = true;
@@ -370,7 +381,7 @@
             this.lbxOnlineUsers.FormattingEnabled = true;
             this.lbxOnlineUsers.ItemHeight = 25;
             this.lbxOnlineUsers.Location = new System.Drawing.Point(779, 103);
-            this.lbxOnlineUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbxOnlineUsers.Margin = new System.Windows.Forms.Padding(4);
             this.lbxOnlineUsers.Name = "lbxOnlineUsers";
             this.lbxOnlineUsers.Size = new System.Drawing.Size(225, 104);
             this.lbxOnlineUsers.TabIndex = 2;
@@ -398,7 +409,7 @@
             this.btnChatSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnChatSend.ForeColor = System.Drawing.Color.White;
             this.btnChatSend.Location = new System.Drawing.Point(587, 518);
-            this.btnChatSend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChatSend.Margin = new System.Windows.Forms.Padding(4);
             this.btnChatSend.Name = "btnChatSend";
             this.btnChatSend.Size = new System.Drawing.Size(184, 53);
             this.btnChatSend.TabIndex = 8;
@@ -410,7 +421,8 @@
             // 
             this.tbxChatMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxChatMsg.Location = new System.Drawing.Point(12, 529);
-            this.tbxChatMsg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxChatMsg.Margin = new System.Windows.Forms.Padding(4);
+            this.tbxChatMsg.MaxLength = 200;
             this.tbxChatMsg.Name = "tbxChatMsg";
             this.tbxChatMsg.Size = new System.Drawing.Size(552, 34);
             this.tbxChatMsg.TabIndex = 9;
@@ -426,7 +438,7 @@
             this.btnChatLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnChatLogout.ForeColor = System.Drawing.Color.White;
             this.btnChatLogout.Location = new System.Drawing.Point(21, 710);
-            this.btnChatLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChatLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnChatLogout.Name = "btnChatLogout";
             this.btnChatLogout.Size = new System.Drawing.Size(165, 68);
             this.btnChatLogout.TabIndex = 23;
@@ -450,11 +462,22 @@
             this.panelAnnChat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
             this.panelAnnChat.Controls.Add(this.tbxAnnCR);
             this.panelAnnChat.Location = new System.Drawing.Point(1065, 100);
-            this.panelAnnChat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelAnnChat.Margin = new System.Windows.Forms.Padding(4);
             this.panelAnnChat.Name = "panelAnnChat";
             this.panelAnnChat.Size = new System.Drawing.Size(484, 681);
             this.panelAnnChat.TabIndex = 7;
             this.panelAnnChat.Visible = false;
+            // 
+            // tbxAnnCR
+            // 
+            this.tbxAnnCR.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.tbxAnnCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbxAnnCR.Location = new System.Drawing.Point(18, 19);
+            this.tbxAnnCR.Name = "tbxAnnCR";
+            this.tbxAnnCR.ReadOnly = true;
+            this.tbxAnnCR.Size = new System.Drawing.Size(449, 643);
+            this.tbxAnnCR.TabIndex = 1;
+            this.tbxAnnCR.Text = "";
             // 
             // btn
             // 
@@ -466,7 +489,7 @@
             this.btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn.ForeColor = System.Drawing.Color.White;
             this.btn.Location = new System.Drawing.Point(1315, 26);
-            this.btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn.Margin = new System.Windows.Forms.Padding(4);
             this.btn.Name = "btn";
             this.btn.Size = new System.Drawing.Size(235, 68);
             this.btn.TabIndex = 5;
@@ -497,7 +520,7 @@
             this.tabGrading.Controls.Add(this.btnAnnScore);
             this.tabGrading.Controls.Add(this.pbxScoreboardLegend);
             this.tabGrading.Location = new System.Drawing.Point(4, 29);
-            this.tabGrading.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabGrading.Margin = new System.Windows.Forms.Padding(4);
             this.tabGrading.Name = "tabGrading";
             this.tabGrading.Size = new System.Drawing.Size(1564, 795);
             this.tabGrading.TabIndex = 3;
@@ -534,7 +557,7 @@
             this.lbxScoreboard.FormattingEnabled = true;
             this.lbxScoreboard.ItemHeight = 36;
             this.lbxScoreboard.Location = new System.Drawing.Point(27, 148);
-            this.lbxScoreboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbxScoreboard.Margin = new System.Windows.Forms.Padding(4);
             this.lbxScoreboard.Name = "lbxScoreboard";
             this.lbxScoreboard.Size = new System.Drawing.Size(564, 292);
             this.lbxScoreboard.TabIndex = 11;
@@ -549,7 +572,7 @@
             this.btnScoreboardLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnScoreboardLogout.ForeColor = System.Drawing.Color.White;
             this.btnScoreboardLogout.Location = new System.Drawing.Point(21, 710);
-            this.btnScoreboardLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnScoreboardLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnScoreboardLogout.Name = "btnScoreboardLogout";
             this.btnScoreboardLogout.Size = new System.Drawing.Size(165, 68);
             this.btnScoreboardLogout.TabIndex = 22;
@@ -573,11 +596,22 @@
             this.panelAnnScore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
             this.panelAnnScore.Controls.Add(this.tbxAnnScore);
             this.panelAnnScore.Location = new System.Drawing.Point(1065, 100);
-            this.panelAnnScore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelAnnScore.Margin = new System.Windows.Forms.Padding(4);
             this.panelAnnScore.Name = "panelAnnScore";
             this.panelAnnScore.Size = new System.Drawing.Size(484, 681);
             this.panelAnnScore.TabIndex = 9;
             this.panelAnnScore.Visible = false;
+            // 
+            // tbxAnnScore
+            // 
+            this.tbxAnnScore.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.tbxAnnScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbxAnnScore.Location = new System.Drawing.Point(18, 19);
+            this.tbxAnnScore.Name = "tbxAnnScore";
+            this.tbxAnnScore.ReadOnly = true;
+            this.tbxAnnScore.Size = new System.Drawing.Size(449, 643);
+            this.tbxAnnScore.TabIndex = 1;
+            this.tbxAnnScore.Text = "";
             // 
             // btnAnnScore
             // 
@@ -589,7 +623,7 @@
             this.btnAnnScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAnnScore.ForeColor = System.Drawing.Color.White;
             this.btnAnnScore.Location = new System.Drawing.Point(1303, 26);
-            this.btnAnnScore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAnnScore.Margin = new System.Windows.Forms.Padding(4);
             this.btnAnnScore.Name = "btnAnnScore";
             this.btnAnnScore.Size = new System.Drawing.Size(245, 68);
             this.btnAnnScore.TabIndex = 8;
@@ -663,7 +697,7 @@
             this.btnSendMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSendMail.ForeColor = System.Drawing.Color.White;
             this.btnSendMail.Location = new System.Drawing.Point(201, 486);
-            this.btnSendMail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSendMail.Margin = new System.Windows.Forms.Padding(4);
             this.btnSendMail.Name = "btnSendMail";
             this.btnSendMail.Size = new System.Drawing.Size(260, 70);
             this.btnSendMail.TabIndex = 3;
@@ -693,7 +727,7 @@
             this.btnComplaintLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnComplaintLogout.ForeColor = System.Drawing.Color.White;
             this.btnComplaintLogout.Location = new System.Drawing.Point(21, 710);
-            this.btnComplaintLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnComplaintLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnComplaintLogout.Name = "btnComplaintLogout";
             this.btnComplaintLogout.Size = new System.Drawing.Size(165, 68);
             this.btnComplaintLogout.TabIndex = 21;
@@ -706,11 +740,22 @@
             this.panelAnnComplaints.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(33)))), ((int)(((byte)(37)))));
             this.panelAnnComplaints.Controls.Add(this.tbxAnnCom);
             this.panelAnnComplaints.Location = new System.Drawing.Point(1065, 100);
-            this.panelAnnComplaints.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelAnnComplaints.Margin = new System.Windows.Forms.Padding(4);
             this.panelAnnComplaints.Name = "panelAnnComplaints";
             this.panelAnnComplaints.Size = new System.Drawing.Size(484, 681);
             this.panelAnnComplaints.TabIndex = 5;
             this.panelAnnComplaints.Visible = false;
+            // 
+            // tbxAnnCom
+            // 
+            this.tbxAnnCom.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.tbxAnnCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbxAnnCom.Location = new System.Drawing.Point(21, 19);
+            this.tbxAnnCom.Name = "tbxAnnCom";
+            this.tbxAnnCom.ReadOnly = true;
+            this.tbxAnnCom.Size = new System.Drawing.Size(449, 643);
+            this.tbxAnnCom.TabIndex = 29;
+            this.tbxAnnCom.Text = "";
             // 
             // btnAnnComplaints
             // 
@@ -722,7 +767,7 @@
             this.btnAnnComplaints.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAnnComplaints.ForeColor = System.Drawing.Color.White;
             this.btnAnnComplaints.Location = new System.Drawing.Point(1307, 26);
-            this.btnAnnComplaints.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAnnComplaints.Margin = new System.Windows.Forms.Padding(4);
             this.btnAnnComplaints.Name = "btnAnnComplaints";
             this.btnAnnComplaints.Size = new System.Drawing.Size(243, 68);
             this.btnAnnComplaints.TabIndex = 4;
@@ -769,50 +814,6 @@
             // 
             this.timerChatScoreboard.Interval = 1000;
             this.timerChatScoreboard.Tick += new System.EventHandler(this.TimerScoreboard_Tick);
-            // 
-            // tbxAnnCalendar
-            // 
-            this.tbxAnnCalendar.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
-            this.tbxAnnCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxAnnCalendar.Location = new System.Drawing.Point(20, 19);
-            this.tbxAnnCalendar.Name = "tbxAnnCalendar";
-            this.tbxAnnCalendar.ReadOnly = true;
-            this.tbxAnnCalendar.Size = new System.Drawing.Size(449, 643);
-            this.tbxAnnCalendar.TabIndex = 0;
-            this.tbxAnnCalendar.Text = "";
-            // 
-            // tbxAnnCR
-            // 
-            this.tbxAnnCR.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
-            this.tbxAnnCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxAnnCR.Location = new System.Drawing.Point(18, 19);
-            this.tbxAnnCR.Name = "tbxAnnCR";
-            this.tbxAnnCR.ReadOnly = true;
-            this.tbxAnnCR.Size = new System.Drawing.Size(449, 643);
-            this.tbxAnnCR.TabIndex = 1;
-            this.tbxAnnCR.Text = "";
-            // 
-            // tbxAnnScore
-            // 
-            this.tbxAnnScore.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
-            this.tbxAnnScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxAnnScore.Location = new System.Drawing.Point(18, 19);
-            this.tbxAnnScore.Name = "tbxAnnScore";
-            this.tbxAnnScore.ReadOnly = true;
-            this.tbxAnnScore.Size = new System.Drawing.Size(449, 643);
-            this.tbxAnnScore.TabIndex = 1;
-            this.tbxAnnScore.Text = "";
-            // 
-            // tbxAnnCom
-            // 
-            this.tbxAnnCom.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
-            this.tbxAnnCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxAnnCom.Location = new System.Drawing.Point(21, 19);
-            this.tbxAnnCom.Name = "tbxAnnCom";
-            this.tbxAnnCom.ReadOnly = true;
-            this.tbxAnnCom.Size = new System.Drawing.Size(449, 643);
-            this.tbxAnnCom.TabIndex = 29;
-            this.tbxAnnCom.Text = "";
             // 
             // UserInterfaceForm
             // 
