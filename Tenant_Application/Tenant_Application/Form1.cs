@@ -52,7 +52,7 @@ namespace Tenant_Application
                     {
                         if (a.Online != 1)
                         {
-
+                            //Login as landlord
                             if (a.Admin == 1)
                             {
                                 LandLordForm landlordInterface = new LandLordForm(a.id, this, a.Name);
@@ -60,15 +60,12 @@ namespace Tenant_Application
                                 this.Hide();
 
                             }
-                            else if (a.Admin == 0)
+                            //Login as tenant
+                            else
                             {
                                 UserInterfaceForm userInterface = new UserInterfaceForm(a.id, a.EmailAddress, a.Password, a.Name, this);
                                 userInterface.Show();
                                 this.Hide();
-                            }
-                            else
-                            {
-                                Helper.MsgBoxInformation("The Username and Password combination is wrong!");
                             }
                         }
                         else
@@ -77,7 +74,7 @@ namespace Tenant_Application
                         }
                     }
                     else {
-                        Helper.MsgBoxWarning("This account does not exist!");
+                        Helper.MsgBoxWarning("This account does not exist! OR The Username and Password combination is wrong");
                     }
                 }
                 catch (Exception ex)
@@ -86,8 +83,6 @@ namespace Tenant_Application
                 }
             }
         }
-
-        //Custom Messageboxes
 
  
 

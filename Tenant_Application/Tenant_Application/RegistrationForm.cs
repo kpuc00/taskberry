@@ -68,18 +68,20 @@ namespace Tenant_Application
 
         private void TbxRegUsername_TextChanged(object sender, EventArgs e)
         {
-            List<Account> accounts = db.GetAccountData();
+            List<Account> accounts = db.GetAccountData(); //GEt the account info
             string temp = ""; //Stores the taken Username from the textbox, so when it searches the other account objects - it doesn't get skipped
             if (!string.IsNullOrWhiteSpace(tbxRegUsername.Text) && tbxRegUsername.Text.Length >= 4 && tbxRegUsername.Text.Length <= 25)
             {
+                //Loops through the existing accounts to see if the username already exists
                 for (int i = 0; i < accounts.Count; i++)
                 {
 
-                    if (accounts[i].Username.ToLower() == tbxRegUsername.Text.ToLower())
+                    if (accounts[i].Username.ToLower() == tbxRegUsername.Text.ToLower()) //If it does
                     {
-                        tbxRegUsername.BackColor = Color.IndianRed;
-                        lblStatusUsername.Visible = true;
-                        lblStatusUsername.Text = "Username is taken";
+                        tbxRegUsername.BackColor = Color.IndianRed; //Textbx colour red
+                        //Show label with information
+                        lblStatusUsername.Visible = true; 
+                        lblStatusUsername.Text = "Username is taken"; 
                         temp = tbxRegUsername.Text.ToLower();
                     }
                     else if (temp != tbxRegUsername.Text.ToLower()) //Makes sure that the program doesn't skip an already checked account
@@ -93,7 +95,7 @@ namespace Tenant_Application
             else
             {
                 lblStatusUsername.Visible = true;
-                lblStatusUsername.Text = "Between 4-25 characters";
+                lblStatusUsername.Text = "Between 4-25 characters"; 
                 tbxRegUsername.BackColor = Color.IndianRed;
             }
         }
@@ -101,6 +103,8 @@ namespace Tenant_Application
         private void TbxRegPassword_TextChanged(object sender, EventArgs e)
         {
             List<Account> accounts = db.GetAccountData();
+
+            //Checks if password taken
             if (!string.IsNullOrWhiteSpace(tbxRegPassword.Text) && tbxRegPassword.Text.Length >= 4 && tbxRegPassword.Text.Length <= 25)
             {
                 tbxRegPassword.BackColor = Color.LightGreen;
@@ -119,14 +123,16 @@ namespace Tenant_Application
         {
             List<Account> accounts = db.GetAccountData();
             string temp = ""; //Stores the taken Email from the textbox, so when it searches the other account objects - it doesn't get skipped
-            if (!string.IsNullOrWhiteSpace(tbxRegEmail.Text) && tbxRegEmail.Text.Length >= 8)
+            //Checks to add new email
+            if (!string.IsNullOrWhiteSpace(tbxRegEmail.Text) && tbxRegEmail.Text.Length >= 8) //Text must exist
             {
-                if (tbxRegEmail.Text.EndsWith("@gmail.com"))
+                if (tbxRegEmail.Text.EndsWith("@gmail.com")) //Must end with "@gmail.com"
                 {
+                    //Loops through existing accounts
                     for (int i = 0; i < accounts.Count; i++)
                     {
-
-                        if (accounts[i].EmailAddress.ToLower() == tbxRegEmail.Text.ToLower())
+                        //Checks if email taken
+                        if (accounts[i].EmailAddress.ToLower() == tbxRegEmail.Text.ToLower()) 
                         {
                             tbxRegEmail.BackColor = Color.IndianRed;
                             lblStatusEmail.Visible = true;
@@ -162,23 +168,35 @@ namespace Tenant_Application
             string temp = ""; //Stores the taken Name from the textbox, so when it searches the other account objects - it doesn't get skipped
             if (!string.IsNullOrWhiteSpace(tbxRegName.Text) && tbxRegName.Text.Length >= 4 && tbxRegName.Text.Length <= 25)
             {
-                for (int i = 0; i < accounts.Count; i++)
+                if(!tbxRegName.Text.StartsWith("0") && !tbxRegName.Text.StartsWith("1") && !tbxRegName.Text.StartsWith("2") &&
+                    !tbxRegName.Text.StartsWith("3") && !tbxRegName.Text.StartsWith("4") && !tbxRegName.Text.StartsWith("5") &&
+                    !tbxRegName.Text.StartsWith("6") && !tbxRegName.Text.StartsWith("7") && !tbxRegName.Text.StartsWith("8") &&
+                    !tbxRegName.Text.StartsWith("9")) {
+                    //Loops through existing acounts
+                    for (int i = 0; i < accounts.Count; i++)
+                    {
+                        //Checks if name is taken
+                        if (accounts[i].Name.ToLower() == tbxRegName.Text.ToLower())
+                        {
+                            tbxRegName.BackColor = Color.IndianRed;
+                            lblStatusName.Visible = true;
+                            lblStatusName.Text = "Name is taken";
+                            temp = tbxRegName.Text.ToLower();
+                        }
+                        else if (temp != tbxRegName.Text.ToLower())
+                        {
+                            tbxRegName.BackColor = Color.LightGreen;
+                            lblStatusName.Text = "Name is taken";
+                            lblStatusName.Visible = false;
+                        }
+                    }
+
+                }
+                else
                 {
-
-                    if (accounts[i].Name.ToLower() == tbxRegName.Text.ToLower())
-                    {
-                        tbxRegName.BackColor = Color.IndianRed;
-                        lblStatusName.Visible = true;
-                        lblStatusName.Text = "Name is taken";
-                        temp = tbxRegName.Text.ToLower();
-                    }
-                    else if (temp != tbxRegName.Text.ToLower())
-                    {
-                        tbxRegName.BackColor = Color.LightGreen;
-                        lblStatusName.Text = "Name is taken";
-                        lblStatusName.Visible = false;
-                    }
-
+                    lblStatusName.Visible = true;
+                    lblStatusName.Text = "Can't start with a digit";
+                    tbxRegName.BackColor = Color.IndianRed;
                 }
             }
             else

@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calendar.Designer.cs">
+      <DependentUpon>Calendar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Database\Account.cs" />
     <Compile Include="Button_WOC.cs">
       <SubType>Component</SubType>
@@ -121,6 +127,9 @@
     <Compile Include="UserInterface.Designer.cs">
       <DependentUpon>UserInterface.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Calendar.resx">
+      <DependentUpon>Calendar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +158,7 @@
     <EmbeddedResource Include="UserInterface.resx">
       <DependentUpon>UserInterface.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

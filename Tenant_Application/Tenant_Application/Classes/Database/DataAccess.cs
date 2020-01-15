@@ -11,6 +11,7 @@ namespace Tenant_Application
 {
     public class DataAccess
     {
+        //Establish connection with database start
         private static DataType ExecuteQueryWithArgs<DataType>(string query, object arguments)
 
         {
@@ -21,6 +22,8 @@ namespace Tenant_Application
                 return output;
             }
         }
+        //Establish connection with database end
+
         private static List<DataType> ExecuteQueryWithArgsInList<DataType>(string query, object arguments)
 
         {
@@ -32,6 +35,7 @@ namespace Tenant_Application
             }
         }
 
+        //Add announcement
         public void AddAnnouncement(string testing)
         {
             var args = new { Testing = testing };
@@ -40,6 +44,7 @@ namespace Tenant_Application
             ExecuteQueryWithArgs<object>(query, args);
         }
 
+        //Get announcements
         public List<Announcement> GetAnnouncements()
         {
             var query = "dbo.Announcement_GetAnnouncement";
@@ -47,6 +52,7 @@ namespace Tenant_Application
             return ExecuteQueryWithArgsInList<Announcement>(query, null);
         }
 
+        //Change points
         public void ChangePoints(int point, int id)
         {
             var args = new { Point = point, Id = id };
@@ -55,6 +61,7 @@ namespace Tenant_Application
             ExecuteQueryWithArgs<object>(query, args);
         }
 
+        //Modify account
         public void ModifyAccount(int id, string username, string password, string email, string name, int admin)
         {
             var args = new { Id= id, Username = username, Password = password, Email = email, Name = name, Admin = admin};
@@ -63,6 +70,7 @@ namespace Tenant_Application
             ExecuteQueryWithArgs<object>(query, args);
         }
 
+        //Delete account
         public void DeleteAccount(int id)
         {
             var args = new { Id = id };
@@ -70,6 +78,7 @@ namespace Tenant_Application
 
             ExecuteQueryWithArgs<object>(query, args);
         }
+
         //Use this method for accessing the account info and replace the previous ones
         public List<Account> GetAccountData()
         {
@@ -79,6 +88,7 @@ namespace Tenant_Application
             
         }
 
+        //Add an acoount
         public void AddAccount(string username, string password, string email, string name, int admin)
         {
             var args = new { Username = username, Password = password, EmailAddress = email, Name = name, Admin = admin };
@@ -87,18 +97,21 @@ namespace Tenant_Application
             ExecuteQueryWithArgs<object>(query, args);
         }
 
+        //Get all the chores for the days
         public List<CalendarDays> GetCalendar()
         {
             var query = "dbo.Calendar_GetAll";
             return ExecuteQueryWithArgsInList<CalendarDays>(query, null);
         }
 
+        //Get the messages sent 
         public List<ChatDB> GetChat()
         {
             var query = "dbo.Chat_GetAll";
             return ExecuteQueryWithArgsInList<ChatDB>(query, null);
         }
 
+        //Sends the message
         public void SendChat(string message, int accountId)
         {
             var args = new { Message = message, AccountId = accountId };
@@ -107,15 +120,15 @@ namespace Tenant_Application
         }
 
         //0's a chore that has been selected (Points need to be assigned to that person's ID)
-        public void UpdateCalendarChores(string day, string chore)
+        public void UpdateCalendarChores(string day, string chore, string name)
         {
-            var args = new { Day = day, Chore = chore};
-            var query = "dbo.Calendar_UpdateCalendar @Day, @Chore";
+            var args = new { Day = day, Chore = chore, Name = name};
+            var query = "dbo.Calendar_UpdateCalendar @Day, @Chore, @Name";
 
             ExecuteQueryWithArgs<object>(query, args);
         }
 
-
+        //Set the users on/offline
         public void SetOnline(int id, int online)
         {
             var args = new { Id = id, Online = online };
@@ -124,6 +137,7 @@ namespace Tenant_Application
             ExecuteQueryWithArgs<object>(query, args);
         }
 
+        //Manually reset the calendar
         public void ResetCalendar()
         {
             var query = "dbo.Calendar_ResetCalendar";
