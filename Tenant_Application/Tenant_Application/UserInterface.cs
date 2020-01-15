@@ -189,7 +189,8 @@ namespace Tenant_Application
                 string storeText = "";
                 foreach (Announcement a in listAnn)
                 {
-                    storeText = a.Date + "-"  + a.Testing + "\t" + Environment.NewLine;
+                    string s = formatAnn(a.Testing);
+                    storeText = a.Date + "-"  + s + "\t" + Environment.NewLine;
                     ListBoxesPopulate(storeText); //Add the announcement to the announcement panel
                 }
             }
