@@ -121,8 +121,12 @@ namespace Tenant_Application
         {
             List<Account> accounts = db.GetAccountData();
             lbxScoreboard.Items.Clear();
-            foreach (Account a in accounts) {
-                lbxScoreboard.Items.Add(Helper.PopulateScoreBoard(a));
+            foreach (Account a in accounts)
+            {
+                if (Helper.PopulateScoreBoard(a) != null)
+                {
+                    lbxScoreboard.Items.Add(Helper.PopulateScoreBoard(a));
+                }
             }
         }
 
