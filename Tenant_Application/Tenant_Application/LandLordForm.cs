@@ -226,7 +226,7 @@ namespace Tenant_Application
         {
             foreach (Account a in db.GetAccountData()) {
                 if (a.Admin != 1) {
-                    db.ChangePoints(0, a.id);
+                    db.ChangePoints(0, a.id); //
                 }
             }
             UpdateLbxScore();
