@@ -35,7 +35,7 @@ namespace Tenant_Application
 
         //Only deletes text on first click on form load
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void BtnLogin_Click(object sender, EventArgs e)
         {
             
             if(string.IsNullOrWhiteSpace(tbxUserName.Text) || tbxPassWord.Text.ToLower() == "password" || tbxUserName.Text.ToLower() == "username" || tbxPassWord.Text.ToLower() == "deleted" || tbxUserName.Text.ToLower() == "deleted" || string.IsNullOrWhiteSpace(tbxPassWord.Text))
@@ -101,6 +101,22 @@ namespace Tenant_Application
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void tbxUserName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                BtnLogin_Click(this, new EventArgs());
+            }
+        }
+
+        private void tbxPassWord_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                BtnLogin_Click(this, new EventArgs());
+            }
         }
     }
 }
