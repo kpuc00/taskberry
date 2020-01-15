@@ -41,7 +41,10 @@ namespace Tenant_Application
             lbxScoreBoard.Items.Clear();
             foreach (Account a in accounts)
             {
-                lbxScoreBoard.Items.Add(Helper.PopulateScoreBoard(a));
+                if(Helper.PopulateScoreBoard(a) != null)
+                {
+                    lbxScoreBoard.Items.Add(Helper.PopulateScoreBoard(a));
+                }
             }
         }
 

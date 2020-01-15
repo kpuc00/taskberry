@@ -163,9 +163,10 @@ namespace Tenant_Application
             if (a.Admin != 1) //Check if the account is a tenant
             {
                 val = $"{a.Name} - {a.Point}"; //Add the name and the coresponding points
+                return val;
             }
 
-            return val;
+            return null;
         }
 
         //Custom messageboxes
