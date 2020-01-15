@@ -182,7 +182,7 @@ namespace Tenant_Application
             try
             {
                 List<Announcement> listAnn = db.GetAnnouncements(); //Get all the announcements
-
+                listAnn.Reverse();
                 RstAnnPanel(); //Clear the panel
 
                 //Add the announcements to the announcement panel
@@ -198,24 +198,38 @@ namespace Tenant_Application
                 Helper.MsgBoxWarning(ex.ToString());
             }
         }
+
+        private string formatAnn(string ann) {
+            string[] words = ann.Split(' ');
+            string retVal = "";
+
+            for (int i = 0; i < words.Length; i++) {
+                if (i % 7 == 0) {
+                    retVal += "\n";
+                }
+                retVal += words[i] + " ";
+            }
+            return retVal; 
+        }
+
         /*End Handle Announcement*/
 
         //Adds the announcement on top one of another
         public void ListBoxesPopulate(string text)
         {
-            lbxAnnCalendar.Items.Insert(0, text);
-            lbxAnnCR.Items.Insert(0, text);
-            lbxAnnScore.Items.Insert(0, text);
-            lbxAnnComp.Items.Insert(0, text);
+            tbxAnnCalendar.Text += text;
+            tbxAnnCR.Text += text;
+            tbxAnnScore.Text += text;
+            tbxAnnCom.Text += text;
         }
 
         //Empty the announcement panel
         private void RstAnnPanel()
         {
-            lbxAnnCalendar.Items.Clear();
-            lbxAnnCR.Items.Clear();
-            lbxAnnScore.Items.Clear();
-            lbxAnnComp.Items.Clear();
+            tbxAnnCalendar.Text = "";
+            tbxAnnCR.Text = "";
+            tbxAnnScore.Text = "";
+            tbxAnnCom.Text = "";
         }
 
         //Closes the announcement panel on all tabs
@@ -425,17 +439,19 @@ namespace Tenant_Application
             //You can't directly save msgs inside a list inside an object, a loop maybe
             string previousMsg = ""; //Saves previous messages
             List<ChatDB> chats = db.GetChat();
-
-            if (chats[0].Message != last)
+            if (chats != null)
             {
-                for (int i = chats.Count; i > 0; i--) //It's reversed because i order by descending ID in the db
+                if (chats[0].Message != last)
                 {
-                    previousMsg += $"[{chats[i - 1].Date}] [{chats[i - 1].Name}] \t {chats[i - 1].Message} {Environment.NewLine}";
-                    tbxChat.Text = previousMsg;
+                    for (int i = chats.Count; i > 0; i--) //It's reversed because i order by descending ID in the db
+                    {
+                        previousMsg += $"[{chats[i - 1].Date}] [{chats[i - 1].Name}] \t {chats[i - 1].Message} {Environment.NewLine}";
+                        tbxChat.Text = previousMsg;
+                    }
+                    last = chats[0].Message;
+                    tbxChat.SelectionStart = tbxChat.Text.Length;
+                    tbxChat.ScrollToCaret();
                 }
-                last = chats[0].Message;
-                tbxChat.SelectionStart = tbxChat.Text.Length;
-                tbxChat.ScrollToCaret();
             }
 
             //Alowes to send message only when you have writen text
