@@ -776,6 +776,7 @@
             this.tbxAnnCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxAnnCalendar.Location = new System.Drawing.Point(20, 19);
             this.tbxAnnCalendar.Name = "tbxAnnCalendar";
+            this.tbxAnnCalendar.ReadOnly = true;
             this.tbxAnnCalendar.Size = new System.Drawing.Size(449, 643);
             this.tbxAnnCalendar.TabIndex = 0;
             this.tbxAnnCalendar.Text = "";
@@ -786,6 +787,7 @@
             this.tbxAnnCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxAnnCR.Location = new System.Drawing.Point(18, 19);
             this.tbxAnnCR.Name = "tbxAnnCR";
+            this.tbxAnnCR.ReadOnly = true;
             this.tbxAnnCR.Size = new System.Drawing.Size(449, 643);
             this.tbxAnnCR.TabIndex = 1;
             this.tbxAnnCR.Text = "";
@@ -796,6 +798,7 @@
             this.tbxAnnScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxAnnScore.Location = new System.Drawing.Point(18, 19);
             this.tbxAnnScore.Name = "tbxAnnScore";
+            this.tbxAnnScore.ReadOnly = true;
             this.tbxAnnScore.Size = new System.Drawing.Size(449, 643);
             this.tbxAnnScore.TabIndex = 1;
             this.tbxAnnScore.Text = "";
@@ -806,6 +809,7 @@
             this.tbxAnnCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxAnnCom.Location = new System.Drawing.Point(21, 19);
             this.tbxAnnCom.Name = "tbxAnnCom";
+            this.tbxAnnCom.ReadOnly = true;
             this.tbxAnnCom.Size = new System.Drawing.Size(449, 643);
             this.tbxAnnCom.TabIndex = 29;
             this.tbxAnnCom.Text = "";

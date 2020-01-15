@@ -144,7 +144,7 @@ namespace Tenant_Application
                 lastLength = db.GetAnnouncements().Count; //Gets the new amount of announcements
 
                 //Gets the last announcement in the data base
-                string ann = $"{db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Date} - {db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Testing}"; 
+                string ann = $"{db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Date}: {db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Testing}"; 
 
                 //Show only the 20 first characters
                 if (ann.Length > 20)
@@ -190,7 +190,7 @@ namespace Tenant_Application
                 foreach (Announcement a in listAnn)
                 {
                     string s = formatAnn(a.Testing);
-                    storeText = a.Date + "-"  + s + "\t" + Environment.NewLine;
+                    storeText = a.Date + ": "  + s;
                     ListBoxesPopulate(storeText); //Add the announcement to the announcement panel
                 }
             }
@@ -204,13 +204,17 @@ namespace Tenant_Application
             string[] words = ann.Split(' ');
             string retVal = "";
 
+            if (words[words.Length - 1] == "\n") {
+                words[words.Length - 1] = "";
+            }
+
             for (int i = 0; i < words.Length; i++) {
                 if (i % 7 == 0) {
                     retVal += "\n";
                 }
                 retVal += words[i] + " ";
             }
-            return retVal; 
+            return retVal + "\t" +"\n\n"; 
         }
 
         /*End Handle Announcement*/
