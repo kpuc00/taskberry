@@ -94,7 +94,7 @@ namespace Tenant_Application
             if (!string.IsNullOrWhiteSpace(tbxComplaint.Text))
             {
                 string sucessful = "Thank you for contacting us. We will review your complaint, and get back to you as soon as possible!";
-                Helper.MsgBoxInformation(EmailForward.SendMail(personEmail, personPassword, tbxComplaint.Text, "Complaint", sucessful)); //Forwards this to an object
+                Helper.MsgBoxInformation(EmailForward.SendMail(tbxComplaint.Text, "Complaint", sucessful)); //Forwards this to an object
                 tbxComplaint.Clear();
             }
             else

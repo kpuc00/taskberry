@@ -10,14 +10,14 @@ namespace Tenant_Application
 {
     public static class EmailForward
     {
-        public static string SendMail(string personEmail, string personPassword, string complaint, string subject, string successful)
+        public static string SendMail(string complaint, string subject, string successful)
         {
             // ONLY Gmail accounts that have "Use LESS secure apps" ENABLED will work!!!!!
             try
             {
-                var fromAddress = new MailAddress(personEmail);
+                var fromAddress = new MailAddress("complaintfromtenant@gmail.com");
                 var toAddress = new MailAddress("tenantcomplaints69@gmail.com", "Joseph Stalin");
-                string fromPassword = personPassword;
+                string fromPassword = "Complaint_123";
                 string body = complaint;
 
                 var smtp = new SmtpClient
