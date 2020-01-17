@@ -195,6 +195,9 @@ namespace Tenant_Application
                 modForm.Show();
                 modForm.Focus();
             }
+            else {
+                MessageBox.Show("Select a person!");
+            }
         }
 
         //Opens a form to create a new account
@@ -232,6 +235,24 @@ namespace Tenant_Application
         {
             Calendar calendar = new Calendar();
             calendar.Show();
+        }
+
+        private void btnSetOffline_Click(object sender, EventArgs e)
+        {
+            if (lbxAccInfo.SelectedIndex > -1)
+            {
+                List<Account> accountList = db.GetAccountData();
+                int index = lbxAccInfo.SelectedIndex;
+
+                int id = accountList[index].id;
+
+                db.SetOnline(id, 0);
+
+                MessageBox.Show("Succesfully performed task!");
+            }
+            else {
+                MessageBox.Show("Select a person!");
+            }
         }
     }
 }
