@@ -98,19 +98,6 @@ namespace Tenant_Application
             }
         }
 
-        //Hides or shows announcement panel
-        bool HidePanel(bool panelInfo)
-        {
-            if (panelInfo)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
         //Updates scoreboard listbox: Fetches the data from the DB
         void UpdateLbxScore()
         {
@@ -135,11 +122,12 @@ namespace Tenant_Application
 
             if (db.GetAnnouncements().Count != lastLength) //Checks if new announcement is added
             {
+                var announcements = db.GetAnnouncements();
                 string msg = "";
-                lastLength = db.GetAnnouncements().Count; //Gets the new amount of announcements
+                lastLength = announcements.Count; //Gets the new amount of announcements
 
                 //Gets the last announcement in the data base
-                string ann = $"{db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Date}: {db.GetAnnouncements()[db.GetAnnouncements().Count - 1].Testing}"; 
+                string ann = $"{announcements[announcements.Count - 1].Date}: {announcements[announcements.Count - 1].Testing}"; 
 
                 //Show only the 20 first characters
                 if (ann.Length > 20)
@@ -169,10 +157,10 @@ namespace Tenant_Application
         //Open/Close the announcememnt panel
         private void BtnAnnCalendar_Click(object sender, EventArgs e)
         {
-            panelAnnCalendar.Visible = HidePanel(panelAnnCalendar.Visible);
-            panelAnnChat.Visible = HidePanel(panelAnnChat.Visible);
-            panelAnnComplaints.Visible = HidePanel(panelAnnComplaints.Visible);
-            panelAnnScore.Visible = HidePanel(panelAnnScore.Visible);
+            panelAnnCalendar.Visible = !panelAnnCalendar.Visible;
+            panelAnnChat.Visible = !panelAnnChat.Visible;
+            panelAnnComplaints.Visible = !panelAnnComplaints.Visible;
+            panelAnnScore.Visible = !panelAnnScore.Visible;
 
             try
             {

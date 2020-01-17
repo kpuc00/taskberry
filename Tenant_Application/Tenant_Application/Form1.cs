@@ -77,9 +77,9 @@ namespace Tenant_Application
                         Helper.MsgBoxWarning("This account does not exist! OR The Username and Password combination is wrong");
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.ToString());
+                    Helper.MsgBoxWarning("Please connect with our VPN!");
                 }
             }
         }
@@ -117,6 +117,11 @@ namespace Tenant_Application
             {
                 BtnLogin_Click(this, new EventArgs());
             }
+        }
+
+        private void tbxPassWord_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
