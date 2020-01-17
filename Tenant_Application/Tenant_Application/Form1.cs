@@ -27,11 +27,11 @@ namespace Tenant_Application
             db = new DataAccess();
         }
 
-        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+/*        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             //Closes the whole application and it's thread
             Environment.Exit(-1);
-        }
+        }*/
 
         //Only deletes text on first click on form load
 

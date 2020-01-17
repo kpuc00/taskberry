@@ -48,26 +48,8 @@ namespace Tenant_Application
             return null; //Returns null if no match found meaning the account does not exist
         }
 
-        //Handel the logout of an account from landlord form
-        public static void LogOut(int id, DataAccess db, LandLordForm llf, LoginForm lgf)
-        {
-            //Fancy messagebox with two choices "yes" and "no"
-            DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            //If true logout the account
-            if (logout == DialogResult.Yes)
-            {
-                db.SetOnline(id, 0); //Set offline
-                lgf.Show(); //Open login form
-                //Close current window
-                llf.Hide();
-                llf.Dispose();
-            }
-
-        }
-
-        //Handel the logout of an account from landlord form when close
-        public static bool LogOut(int id, DataAccess db, LandLordForm llf)
+        //Handel the logout of an account from landlord form 
+        public static bool LogOut(int id, DataAccess db, LandLordForm llf, LoginForm lgf)
         {
             bool val = false;
             //Fancy messagebox with two choices "yes" and "no"
@@ -77,6 +59,7 @@ namespace Tenant_Application
             if (logout == DialogResult.Yes)
             {
                 db.SetOnline(id, 0); //Set offline
+                lgf.Show();
                 //Close the current window
                 llf.Hide();
                 llf.Dispose();
@@ -87,25 +70,8 @@ namespace Tenant_Application
             return val;
         }
 
-        //Handel the logout of an account from User interface form
-        public static void LogOut(int id, DataAccess db, UserInterfaceForm uif, LoginForm lgf)
-        { 
-            //Fancy messagebox with two choices "yes" and "no"
-            DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            //If true logout the account
-            if (logout == DialogResult.Yes)
-            {
-                db.SetOnline(id, 0); //Set offline
-                lgf.Show(); //Open login form
-                //Close the current widow
-                uif.Hide();
-                uif.Dispose();
-            }
-        }
-
         //Handel the logout of an account from User interface form when close
-        public static bool LogOut(int id, DataAccess db, UserInterfaceForm uif)
+        public static bool LogOut(int id, DataAccess db, UserInterfaceForm uif, LoginForm lgf)
         {
             bool val = false;
             //Fancy messagebox with two choices "yes" and "no"
@@ -115,9 +81,12 @@ namespace Tenant_Application
             if (logout == DialogResult.Yes)
             {
                 db.SetOnline(id, 0); //Set offline
+                lgf.Show(); //Show login form
                 //Close the current window
                 uif.Hide();
                 uif.Dispose();
+
+                
 
                 val = true;
             }
