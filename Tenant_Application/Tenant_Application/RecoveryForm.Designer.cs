@@ -41,6 +41,7 @@
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(486, 45);
             this.tbxEmail.TabIndex = 0;
+            this.tbxEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxEmail_KeyPress);
             // 
             // lblMain
             // 

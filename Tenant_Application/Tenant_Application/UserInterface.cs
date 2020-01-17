@@ -383,7 +383,7 @@ namespace Tenant_Application
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                Helper.MsgBoxWarning("Please select a chore!");
             }
         }
 

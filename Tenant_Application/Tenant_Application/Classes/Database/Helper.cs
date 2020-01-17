@@ -53,7 +53,7 @@ namespace Tenant_Application
         {
             bool val = false;
             //Fancy messagebox with two choices "yes" and "no"
-            DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult logout = MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             //If true logout the account
             if (logout == DialogResult.Yes)
@@ -75,7 +75,7 @@ namespace Tenant_Application
         {
             bool val = false;
             //Fancy messagebox with two choices "yes" and "no"
-            DialogResult logout = MessageBox.Show("Are u sure u want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult logout = MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             //If true logout the account
             if (logout == DialogResult.Yes)

@@ -68,5 +68,13 @@ namespace Tenant_Application
                 login.Show();
             }
         }
+
+        private void tbxEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                BtnSend_Click(this, new EventArgs());
+            }
+        }
     }
 }
