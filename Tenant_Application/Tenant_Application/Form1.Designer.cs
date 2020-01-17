@@ -59,6 +59,7 @@
             this.tbxUserName.ForeColor = System.Drawing.Color.White;
             this.tbxUserName.Location = new System.Drawing.Point(108, 69);
             this.tbxUserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbxUserName.MaxLength = 50;
             this.tbxUserName.Name = "tbxUserName";
             this.tbxUserName.Size = new System.Drawing.Size(400, 49);
             this.tbxUserName.TabIndex = 0;
@@ -92,10 +93,12 @@
             this.tbxPassWord.ForeColor = System.Drawing.Color.White;
             this.tbxPassWord.Location = new System.Drawing.Point(108, 154);
             this.tbxPassWord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbxPassWord.MaxLength = 50;
             this.tbxPassWord.Name = "tbxPassWord";
             this.tbxPassWord.Size = new System.Drawing.Size(400, 45);
             this.tbxPassWord.TabIndex = 1;
             this.tbxPassWord.Text = "Password";
+            this.tbxPassWord.TextChanged += new System.EventHandler(this.tbxPassWord_TextChanged);
             this.tbxPassWord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxPassWord_KeyPress);
             // 
             // pbxPassword
@@ -103,7 +106,7 @@
             this.pbxPassword.BackColor = System.Drawing.Color.Transparent;
             this.pbxPassword.Image = global::Tenant_Application.Properties.Resources.passwordHideWhite;
             this.pbxPassword.Location = new System.Drawing.Point(515, 144);
-            this.pbxPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbxPassword.Margin = new System.Windows.Forms.Padding(4);
             this.pbxPassword.Name = "pbxPassword";
             this.pbxPassword.Size = new System.Drawing.Size(67, 58);
             this.pbxPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -123,7 +126,7 @@
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(108, 220);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(400, 75);
             this.btnLogin.TabIndex = 2;
@@ -141,7 +144,7 @@
             this.btnForgotten.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnForgotten.ForeColor = System.Drawing.Color.White;
             this.btnForgotten.Location = new System.Drawing.Point(136, 318);
-            this.btnForgotten.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnForgotten.Margin = new System.Windows.Forms.Padding(4);
             this.btnForgotten.Name = "btnForgotten";
             this.btnForgotten.Size = new System.Drawing.Size(349, 48);
             this.btnForgotten.TabIndex = 3;
