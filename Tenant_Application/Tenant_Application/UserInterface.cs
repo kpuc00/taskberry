@@ -210,7 +210,7 @@ namespace Tenant_Application
 
             for (int i = 0; i < words.Length; i++) {
                 if (i % 7 == 0) {
-                    retVal += "\n";
+                    retVal += "\n"; 
                 }
                 retVal += words[i] + " ";
             }
