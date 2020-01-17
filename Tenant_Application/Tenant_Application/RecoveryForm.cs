@@ -63,7 +63,7 @@ namespace Tenant_Application
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
-                login = new LoginForm();
+                login.Show();
                 this.Hide();
                 login.Show();
             }
