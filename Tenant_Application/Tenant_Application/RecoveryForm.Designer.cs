@@ -37,6 +37,7 @@
             // 
             this.tbxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxEmail.Location = new System.Drawing.Point(32, 79);
+            this.tbxEmail.MaxLength = 50;
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(486, 45);
             this.tbxEmail.TabIndex = 0;
@@ -49,7 +50,7 @@
             this.lblMain.ForeColor = System.Drawing.Color.White;
             this.lblMain.Location = new System.Drawing.Point(25, 28);
             this.lblMain.Name = "lblMain";
-            this.lblMain.Size = new System.Drawing.Size(264, 39);
+            this.lblMain.Size = new System.Drawing.Size(254, 38);
             this.lblMain.TabIndex = 1;
             this.lblMain.Text = "Enter your email";
             // 
