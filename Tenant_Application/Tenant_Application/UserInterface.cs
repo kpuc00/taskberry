@@ -66,7 +66,7 @@ namespace Tenant_Application
         void ListWeekdays()
         {
             CalendarDay days = new CalendarDay();
-            foreach (string d in days.ShowDays())
+            foreach (string d in days.DisplayDays())
             {
                 lbxCalendarDays.Items.Add(d);
             }
@@ -127,7 +127,7 @@ namespace Tenant_Application
                 lastLength = announcements.Count; //Gets the new amount of announcements
 
                 //Gets the last announcement in the data base
-                string ann = $"{announcements[announcements.Count - 1].Date}: {announcements[announcements.Count - 1].Testing}"; 
+                string ann = $"{announcements[announcements.Count - 1].Date}: {announcements[announcements.Count - 1].Testing}";
 
                 //Show only the 20 first characters
                 if (ann.Length > 20)
@@ -147,7 +147,8 @@ namespace Tenant_Application
         }
 
         //Populates the pop-up label for announcements acording to the paramenter
-        private void AnnLabelHandling(string text) {
+        private void AnnLabelHandling(string text)
+        {
             lblAnnComplaints.Text = text;
             lblAnnChat.Text = text;
             lblAnnCalendar.Text = text;
@@ -166,14 +167,14 @@ namespace Tenant_Application
             {
                 List<Announcement> listAnn = db.GetAnnouncements(); //Get all the announcements
                 listAnn.Reverse();
-                RstAnnPanel(); //Clear the panel
+                ResetAnnouncementPanel(); //Clear the panel
 
                 //Add the announcements to the announcement panel
                 string storeText = "";
                 foreach (Announcement a in listAnn)
                 {
                     string s = formatAnn(a.Testing);
-                    storeText = a.Date + ": "  + s;
+                    storeText = a.Date + ": " + s;
                     ListBoxesPopulate(storeText); //Add the announcement to the announcement panel
                 }
             }
@@ -183,21 +184,25 @@ namespace Tenant_Application
             }
         }
 
-        private string formatAnn(string ann) {
+        private string formatAnn(string ann)
+        {
             string[] words = ann.Split(' ');
             string retVal = "";
 
-            if (words[words.Length - 1] == "\n") {
+            if (words[words.Length - 1] == "\n")
+            {
                 words[words.Length - 1] = "";
             }
 
-            for (int i = 0; i < words.Length; i++) {
-                if (i % 7 == 0) {
-                    retVal += "\n"; 
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (i % 7 == 0)
+                {
+                    retVal += "\n";
                 }
                 retVal += words[i] + " ";
             }
-            return retVal + "\t" +"\n\n"; 
+            return retVal + "\t" + "\n\n";
         }
 
         /*End Handle Announcement*/
@@ -212,7 +217,7 @@ namespace Tenant_Application
         }
 
         //Empty the announcement panel
-        private void RstAnnPanel()
+        private void ResetAnnouncementPanel()
         {
             tbxAnnCalendar.Text = "";
             tbxAnnCR.Text = "";
@@ -247,87 +252,48 @@ namespace Tenant_Application
         {
             List<CalendarDay> days = db.GetCalendar();
             string item = lbxCalendarDays.SelectedItem.ToString();
+            lbxCalendarChores.Items.Clear();
+
+            void f(Func<CalendarDay, string> getDay)
+            {
+                foreach (CalendarDay a in days)
+                {
+                    string day = getDay(a);
+                    bool flag = false;
+
+                    for (int i = 0; i < 7; i++)
+                        if (day.StartsWith(i.ToString()))
+                            flag = true;
+
+                    if (flag)
+                        lbxCalendarChores.Items.Add(a.Tuesday.Substring(1));
+                }
+            }
 
             try
             {
                 switch (item)
                 {
                     case "Tuesday":
-                        lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDay a in days)
-                        {
-                            if (a.Tuesday.StartsWith("0") || a.Tuesday.StartsWith("1") || a.Tuesday.StartsWith("2") || a.Tuesday.StartsWith("3") ||
-                                a.Tuesday.StartsWith("4") || a.Tuesday.StartsWith("5") || a.Tuesday.StartsWith("6"))
-                            {
-                                lbxCalendarChores.Items.Add(a.Tuesday.Substring(1));
-                            }
-                        }
+                        f(calendarDay => calendarDay.Tuesday);
                         break;
                     case "Wednesday":
-                        lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDay a in days)
-                        {
-                            if (a.Wednesday.StartsWith("0") || a.Wednesday.StartsWith("1") || a.Wednesday.StartsWith("2") || a.Wednesday.StartsWith("3") ||
-                                a.Wednesday.StartsWith("4") || a.Wednesday.StartsWith("5") || a.Wednesday.StartsWith("6"))
-                            {
-                                lbxCalendarChores.Items.Add(a.Wednesday.Substring(1));
-                            }
-                        }
+                        f(calendarDay => calendarDay.Wednesday);
                         break;
                     case "Thursday":
-                        lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDay a in days)
-                        {
-                            if (a.Thursday.StartsWith("0") || a.Thursday.StartsWith("1") || a.Thursday.StartsWith("2") || a.Thursday.StartsWith("3") ||
-                                a.Thursday.StartsWith("4") || a.Thursday.StartsWith("5") || a.Thursday.StartsWith("6"))
-                            {
-                                lbxCalendarChores.Items.Add(a.Thursday.Substring(1));
-                            }
-                        }
+                        f(calendarDay => calendarDay.Thursday);
                         break;
                     case "Friday":
-                        lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDay a in days)
-                        {
-                            if (a.Friday.StartsWith("0") || a.Friday.StartsWith("1") || a.Friday.StartsWith("2") || a.Friday.StartsWith("3") ||
-                                a.Friday.StartsWith("4") || a.Friday.StartsWith("5") || a.Friday.StartsWith("6"))
-                            {
-                                lbxCalendarChores.Items.Add(a.Friday.Substring(1));
-                            }
-                        }
+                        f(calendarDay => calendarDay.Friday);
                         break;
                     case "Saturday":
-                        lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDay a in days)
-                        {
-                            if (a.Saturday.StartsWith("0") || a.Saturday.StartsWith("1") || a.Saturday.StartsWith("2") || a.Saturday.StartsWith("3") ||
-                                a.Saturday.StartsWith("4") || a.Saturday.StartsWith("5") || a.Saturday.StartsWith("6"))
-                            {
-                                lbxCalendarChores.Items.Add(a.Saturday.Substring(1));
-                            }
-                        }
+                        f(calendarDay => calendarDay.Saturday);
                         break;
                     case "Sunday":
-                        lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDay a in days)
-                        {
-                            if (a.Sunday.StartsWith("0") || a.Sunday.StartsWith("1") || a.Sunday.StartsWith("2") || a.Sunday.StartsWith("3") ||
-                                a.Sunday.StartsWith("4") || a.Sunday.StartsWith("5") || a.Sunday.StartsWith("6"))
-                            {
-                                lbxCalendarChores.Items.Add(a.Sunday.Substring(1));
-                            }
-                        }
+                        f(calendarDay => calendarDay.Sunday);
                         break;
                     default:
-                        lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDay day in days)
-                        {
-                            if (day.Monday.StartsWith("0") || day.Monday.StartsWith("1") || day.Monday.StartsWith("2") || day.Monday.StartsWith("3") ||
-                                day.Monday.StartsWith("4") || day.Monday.StartsWith("5") || day.Monday.StartsWith("6"))
-                            {
-                                lbxCalendarChores.Items.Add(day.Monday.Substring(1));
-                            }
-                        }
+                        f(calendarDay => calendarDay.Monday);
                         break;
                 }
             }
@@ -345,7 +311,7 @@ namespace Tenant_Application
             {
                 //In the database - days have a unique Identifier, 0-Monday, 1-Tuesday etc.
                 //thats why whenever the selected item is a day - it needs to send its unique identifier 
-                string  s = lbxCalendarDays.SelectedIndex.ToString();
+                string s = lbxCalendarDays.SelectedIndex.ToString();
                 //Sends
                 string chore = s + lbxCalendarChores.SelectedItem.ToString();
                 db.UpdateCalendarChores(lbxCalendarDays.SelectedItem.ToString(), chore, this.personName);
@@ -381,7 +347,7 @@ namespace Tenant_Application
                 UpdateChoresLbx();
                 UpdateLbxScore();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Helper.MsgBoxWarning("Please select a chore!");
             }
@@ -466,7 +432,7 @@ namespace Tenant_Application
         private void btnOpenCalendar_Click(object sender, EventArgs e)
         {
             Calendar c = new Calendar();
-            Helper.CheckFormOpen(c);
+            Helper.ShowCalendarIfNotOpen(c);
         }
     }
 

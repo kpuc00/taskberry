@@ -20,16 +20,7 @@ namespace Tenant_Application
                 string fromPassword = "Complaint_123";
                 string body = complaint;
 
-                var smtp = new SmtpClient
-                {
-                    //Don't change these settings
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-                };
+                SmtpClient smtp = GetSmtpClient(fromAddress, fromPassword);
                 using (var message = new MailMessage(fromAddress, toAddress)
                 {
                     Subject = subject,
@@ -57,16 +48,7 @@ namespace Tenant_Application
                 string fromPassword = "RealCommunism69";
                 string body = recoveryData;
 
-                var smtp = new SmtpClient
-                {
-                    //Don't change these settings
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-                };
+                var smtp = GetSmtpClient(fromAddress, fromPassword);
                 using (var message = new MailMessage(fromAddress, toAddress)
                 {
                     Subject = subject,
@@ -94,22 +76,14 @@ namespace Tenant_Application
                     string fromPassword = "RealCommunism69";
                     string body = announcement;
 
-                    var smtp = new SmtpClient
-                    {
-                        //Don't change these settings
-                        Host = "smtp.gmail.com",
-                        Port = 587,
-                        EnableSsl = true,
-                        DeliveryMethod = SmtpDeliveryMethod.Network,
-                        UseDefaultCredentials = false,
-                        Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-                    };
+                    var smtp = GetSmtpClient(fromAddress, fromPassword);
                     using (var message = new MailMessage(fromAddress, toAddress)
                     {
                         Subject = subject,
                         Body = body
                     })
                     {
+
                         smtp.Send(message);
                     }
                 }
@@ -120,5 +94,21 @@ namespace Tenant_Application
                 return ex.ToString();
             }
         }
+
+        private static SmtpClient GetSmtpClient(MailAddress fromAddress, string fromPassword)
+        {
+            return new SmtpClient()
+            {
+                //Don't change these settings
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+        }
+
     }
 }

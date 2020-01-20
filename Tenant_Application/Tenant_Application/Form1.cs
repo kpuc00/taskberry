@@ -27,24 +27,29 @@ namespace Tenant_Application
             db = new DataAccess();
         }
 
-/*        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //Closes the whole application and it's thread
-            Environment.Exit(-1);
-        }*/
+        /*        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+                {
+                    //Closes the whole application and it's thread
+                    Environment.Exit(-1);
+                }*/
 
         //Only deletes text on first click on form load
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            
-            if(string.IsNullOrWhiteSpace(tbxUserName.Text) || tbxPassWord.Text.ToLower() == "password" || tbxUserName.Text.ToLower() == "username" || tbxPassWord.Text.ToLower() == "deleted" || tbxUserName.Text.ToLower() == "deleted" || string.IsNullOrWhiteSpace(tbxPassWord.Text))
+
+            string[] invalidCredentials = { "username", "password", "deleted" };
+
+            bool isInvalid(TextBox box) => invalidCredentials.Contains(box.Text.ToLower())
+                                            || string.IsNullOrWhiteSpace(box.Text);
+
+            if (isInvalid(tbxUserName) || isInvalid(tbxPassWord))
             {
                 Helper.MsgBoxWarning("Please, enter your credentials");
             }
             else
             {
-                
+
                 try
                 {
                     Account a = Helper.ReturnAccountInfo(tbxUserName.Text, tbxPassWord.Text, this.db);
@@ -73,7 +78,8 @@ namespace Tenant_Application
                             Helper.MsgBoxInformation("This account is logged in on a different device!");
                         }
                     }
-                    else {
+                    else
+                    {
                         Helper.MsgBoxWarning("This account does not exist! OR The Username and Password combination is wrong");
                     }
                 }
@@ -84,7 +90,7 @@ namespace Tenant_Application
             }
         }
 
- 
+
 
         private void BtnForgotten_Click(object sender, EventArgs e)
         {

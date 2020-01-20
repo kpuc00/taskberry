@@ -53,11 +53,14 @@ namespace Tenant_Application
         {
             try
             {
+                bool isInvalid(TextBox box)
+                {
+                    return string.IsNullOrWhiteSpace(box.Text)
+                          || box.BackColor == Color.IndianRed;
+                }
                 //If the textboxes are blank or red in color
-                if (string.IsNullOrWhiteSpace(tbxRegEmail.Text) || string.IsNullOrWhiteSpace(tbxRegName.Text) ||
-                    string.IsNullOrWhiteSpace(tbxRegPassword.Text) || string.IsNullOrWhiteSpace(tbxRegUsername.Text) ||
-                    tbxRegUsername.BackColor == Color.IndianRed || tbxRegPassword.BackColor == Color.IndianRed ||
-                    tbxRegEmail.BackColor == Color.IndianRed || tbxRegName.BackColor == Color.IndianRed)
+                if (isInvalid(tbxRegEmail) || isInvalid(tbxRegName) ||
+                    isInvalid(tbxRegPassword) || isInvalid(tbxRegUsername))
                 {
                     Helper.MsgBoxWarning("Incorrect information!");
                 }

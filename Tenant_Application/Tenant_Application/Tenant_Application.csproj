@@ -100,7 +100,6 @@
     <Compile Include="LandLordForm.Designer.cs">
       <DependentUpon>LandLordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Database\Points.cs" />
     <Compile Include="ModifyForm.cs">
       <SubType>Form</SubType>
     </Compile>

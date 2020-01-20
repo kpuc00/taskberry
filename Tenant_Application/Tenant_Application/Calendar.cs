@@ -105,7 +105,7 @@ namespace Tenant_Application
                 names.Add(a.Name);
             }
 
-            Dictionary<int, string> b = calendars[id].CheckForNames(names); //Stores 1 week of chores inside a dictionary,
+            Dictionary<int, string> b = calendars[id].CheckNames(names); //Stores 1 week of chores inside a dictionary,
                                                                             //only stores TAKEN chores (with a name)
                                                                             //KEY: <0-6>(0 Monday, 1 Tuesday etc.) | VALUE:<account name>(Aleksandar Todorov)
 

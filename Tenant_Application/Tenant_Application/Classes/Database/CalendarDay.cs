@@ -18,13 +18,13 @@ namespace Tenant_Application
         public string Sunday { get; set; }
 
 
-        public string[] ShowDays()
+        public string[] DisplayDays()
         {
             string[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
             return days;
         }
 
-        public Dictionary<int, string> CheckForNames(List<string> names)
+        public Dictionary<int, string> CheckNames(List<string> names)
         {
             Dictionary<int, string> someName = new Dictionary<int, string>();
 

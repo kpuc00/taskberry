@@ -13,31 +13,36 @@ namespace Tenant_Application
         //Return the data of the specific account trying to log in
         public static Account ReturnAccountInfo(string UserName, string Password, DataAccess db)
         {
-            List<Account> accounts = db.GetAccountData(); //Get data from database
+            return db.GetAccountData().Where(a => a.Username == UserName && a.Password == Password).FirstOrDefault();
+
+
+            //List<Account> accounts = db.GetAccountData(); //Get data from database
 
-            foreach (Account a in accounts) //Iterate through the data
-            {
-                if (a.Username == UserName && a.Password == Password) //Check if the input data equals retrieved data
-                {
-                    return a; //Returns the data of the account when a match has occured
-                }
-            }
-            return null; //Returns null if no match found meaning the account does not exist
+            //foreach (Account a in accounts) //Iterate through the data
+            //{
+            //    if (a.Username == UserName && a.Password == Password) //Check if the input data equals retrieved data
+            //    {
+            //        return a; //Returns the data of the account when a match has occured
+            //    }
+            //}
+            //return null; //Returns null if no match found meaning the account does not exist
         }
 
         //Return the data of the specific account when trying to alter points
         public static Account ReturnAccountInfo(string name, DataAccess db)
         {
-            List<Account> accounts = db.GetAccountData(); //Get data from database
+            return db.GetAccountData().Where(a => name.Contains(a.Name)).FirstOrDefault();
 
-            foreach (Account a in accounts) //Iterate through the data
-            {
-                if (name.Contains(a.Name)) //Check if the input data equals retrieved data
-                {
-                    return a; //Returns the data of the account when a match has occured
-                }
-            }
-            return null; //Returns null if no match found meaning the account does not exist
+            //List<Account> accounts = db.GetAccountData(); //Get data from database
+
+            //foreach (Account a in accounts) //Iterate through the data
+            //{
+            //    if (name.Contains(a.Name)) //Check if the input data equals retrieved data
+            //    {
+            //        return a; //Returns the data of the account when a match has occured
+            //    }
+            //}
+            //return null; //Returns null if no match found meaning the account does not exist
         }
 
         //Handel the logout of an account from landlord form 
@@ -51,14 +56,16 @@ namespace Tenant_Application
             if (logout == DialogResult.Yes)
             {
                 db.SetOnline(id, 0); //Set offline
-                lgf.Show();
-                //Close the current window
-                llf.Hide();
-                llf.Dispose();
+                lgf.Show();
+                //Close the current window
+
+                mf?.Hide(); //if (x) exists, do y, else - don't do y
+                rf?.Hide();
+                llf?.Hide();
+                llf?.Dispose();
 
                 val = true;
             }
-
             return val;
         }
 
@@ -75,11 +82,9 @@ namespace Tenant_Application
                 db.SetOnline(id, 0); //Set offline
                 lgf.Show(); //Show login form
                 //Close the current window
-                uif.Hide();
-                uif.Dispose();
-
-
-
+                uif?.Hide();
+                uif?.Dispose();
+                
                 val = true;
             }
             return val;
@@ -88,16 +93,21 @@ namespace Tenant_Application
         //Get the tenants emails
         public static List<string> AllEmails(DataAccess db)
         {
-            List<Account> accounts = db.GetAccountData(); //Get data of the accounts store in list
-            List<string> emails = new List<string>(); //List ot store the emails
-            foreach (Account a in accounts)
-            {
-                if (a.Admin != 1) //Check if the account is a tenant
-                {
-                    emails.Add(a.EmailAddress); //Add the email to the list
-                }
-            }
-            return emails;
+            return db.GetAccountData().Where(a => a.Admin != 1)
+                .Select(a => a.EmailAddress)
+                .ToList();
+
+            //List<Account> accounts = db.GetAccountData(); //Get data of the accounts store in list
+            //List<string> emails = new List<string>(); //List ot store the emails
+
+            //foreach (Account a in accounts)
+            //{
+            //    if (a.Admin != 1) //Check if the account is a tenant
+            //    {
+            //        emails.Add(a.EmailAddress); //Add the email to the list
+            //    }
+            //}
+            //return emails;
         }
 
         //Handles the showing or hiding of the loggin password
@@ -116,23 +126,18 @@ namespace Tenant_Application
         }
 
         //Populate the scorebords
-        public static string PopulateScoreBoard(Account a)
+        public static string PopulateScoreBoard(Account a) 
+            //=> a.Admin != 1 ? $"{a.Name} - {a.Point}" : null;
         {
-
-            string val = "";
-
             if (a.Admin != 1) //Check if the account is a tenant
-            {
-                val = $"{a.Name} - {a.Point}"; //Add the name and the coresponding points
-                return val;
-            }
-
+                return $"{a.Name} - {a.Point}"; //Add the name and the coresponding points
             return null;
         }
 
-        public static void CheckFormOpen(Calendar c) {
-            if (Application.OpenForms["Calendar"] == null)
-            {
+        public static void ShowCalendarIfNotOpen(Calendar c)
+        {
+            if (Application.OpenForms["Calendar"] == null)
+            {
                 c.Show();
             }
         }

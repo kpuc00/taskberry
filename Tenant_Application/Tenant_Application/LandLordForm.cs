@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+// using static Tenant_Application.Helper;
 
 namespace Tenant_Application
 {
@@ -37,11 +38,15 @@ namespace Tenant_Application
         //Updates the lbx with the latest scores
         public void UpdateLbxScore()
         {
+            //db.GetAccountData().Where(a => a.Admin != 1)
+            //    .ToList().ForEach(a => lbxScoreBoard.Items.Add(Helper.PopulateScoreBoard(a)));
+
             List<Account> accounts = db.GetAccountData();
             lbxScoreBoard.Items.Clear();
+
             foreach (Account a in accounts)
             {
-                if(Helper.PopulateScoreBoard(a) != null)
+                if (a.Admin != 1)
                 {
                     lbxScoreBoard.Items.Add(Helper.PopulateScoreBoard(a));
                 }
@@ -62,20 +67,21 @@ namespace Tenant_Application
         //Sends an announcement to the db // Takes parameters such as date of the pc that sent it and the actual announcement
         private void BtnSend_Click(object sender, EventArgs e)
         {
-            string announcement;
-            if (!String.IsNullOrWhiteSpace(tbxAnnouncement.Text))
+            string announcement = tbxAnnouncement.Text;
+
+            if (!String.IsNullOrWhiteSpace(announcement))
             {
-                announcement = tbxAnnouncement.Text;
                 try
                 {
                     db.AddAnnouncement(announcement);
-                    if(cbxAnnEmails.Checked)
+                    if (cbxAnnEmails.Checked)
                     {
-                        MessageBox.Show(EmailForward.SendAnnToEveryMail(Helper.AllEmails(db), tbxAnnouncement.Text, "Announcement", "Successfully sent announcements"));
+                        MessageBox.Show(EmailForward.SendAnnToEveryMail(Helper.AllEmails(db), announcement, "Announcement", "Successfully sent announcements"));
                     }
                     tbxAnnouncement.Text = "";
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -97,7 +103,8 @@ namespace Tenant_Application
         {
             //personId = (string);
             string name = (string)lbxScoreBoard.SelectedItem; //SelectedAccount
-            if (!string.IsNullOrEmpty(name) && !name.StartsWith("(+)") && !string.IsNullOrWhiteSpace(nudPoints.Text)) {
+            if (!string.IsNullOrEmpty(name) && !name.StartsWith("(+)") && !string.IsNullOrWhiteSpace(nudPoints.Text))
+            {
 
                 Account a = Helper.ReturnAccountInfo(name, this.db);
 
@@ -105,7 +112,8 @@ namespace Tenant_Application
                 try
                 {
                     points += Convert.ToInt32(nudPoints.Text);
-                    if (points < 0) {
+                    if (points < 0)
+                    {
                         points = 0;
                     }
                     db.ChangePoints(points, a.id);
@@ -121,7 +129,7 @@ namespace Tenant_Application
             {
                 Helper.MsgBoxWarning("Select an tenant account and write down points");
             }
-            
+
         }
 
         //Updates the listbox with all accounts
@@ -131,7 +139,7 @@ namespace Tenant_Application
             List<Account> accounts = db.GetAccountData();
             for (int i = 0; i < accounts.Count; i++)
             {
-                if(accounts[i].Admin == 1)
+                if (accounts[i].Admin == 1)
                 {
                     lbxAccInfo.Items.Add($"{accounts[i].IdName} (Landlord)");
                 }
@@ -145,7 +153,7 @@ namespace Tenant_Application
         //Whenever you select the account managment tab
         private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(tabControlLandlord.SelectedIndex == 2)
+            if (tabControlLandlord.SelectedIndex == 2)
             {
                 UpdateAccounts();
             }
@@ -157,10 +165,10 @@ namespace Tenant_Application
             if (lbxAccInfo.SelectedIndex != -1)
             {
                 string info = (string)lbxAccInfo.SelectedItem;
-                if(info.Contains(this.personName))
+                if (info.Contains(this.personName))
                 {
                     Helper.MsgBoxInformation("You can't delete your own account!");
-                    
+
                 }
                 else
                 {
@@ -169,9 +177,9 @@ namespace Tenant_Application
                     {
                         List<Account> accounts = db.GetAccountData();
                         int selectedPersonId = 0;
-                        foreach(Account a in accounts)
+                        foreach (Account a in accounts)
                         {
-                            if(info.Contains(a.Name))
+                            if (info.Contains(a.Name))
                             {
                                 selectedPersonId = a.id;
                             }
@@ -195,7 +203,8 @@ namespace Tenant_Application
                 modForm.Show();
                 modForm.Focus();
             }
-            else {
+            else
+            {
                 MessageBox.Show("Select a person!");
             }
         }
@@ -223,8 +232,10 @@ namespace Tenant_Application
         //Manually resets the points of the tenants to 0
         private void btnResetPoints_Click(object sender, EventArgs e)
         {
-            foreach (Account a in db.GetAccountData()) {
-                if (a.Admin != 1) {
+            foreach (Account a in db.GetAccountData())
+            {
+                if (a.Admin != 1)
+                {
                     db.ChangePoints(0, a.id); //
                 }
             }
@@ -234,7 +245,7 @@ namespace Tenant_Application
         private void button1_Click(object sender, EventArgs e)
         {
             Calendar c = new Calendar();
-            Helper.CheckFormOpen(c);
+            Helper.ShowCalendarIfNotOpen(c);
         }
 
         private void btnSetOffline_Click(object sender, EventArgs e)
@@ -250,7 +261,8 @@ namespace Tenant_Application
 
                 MessageBox.Show("Succesfully performed task!");
             }
-            else {
+            else
+            {
                 MessageBox.Show("Select a person!");
             }
         }
