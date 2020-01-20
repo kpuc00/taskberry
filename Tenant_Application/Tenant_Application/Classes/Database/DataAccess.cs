@@ -15,7 +15,7 @@ namespace Tenant_Application
         private static DataType ExecuteQueryWithArgs<DataType>(string query, object arguments)
 
         {
-            using (IDbConnection connection = new SqlConnection(Helper.ConnectionValue("dbi428024")))
+            using (IDbConnection connection = new SqlConnection(ConnectionHelper.ConnectionValue("dbi428024")))
             {
                 //get the open connection and ask for the type account data and command issue
                 var output = connection.Query<DataType>(query, arguments).FirstOrDefault();
@@ -27,7 +27,7 @@ namespace Tenant_Application
         private static List<DataType> ExecuteQueryWithArgsInList<DataType>(string query, object arguments)
 
         {
-            using (IDbConnection connection = new SqlConnection(Helper.ConnectionValue("dbi428024")))
+            using (IDbConnection connection = new SqlConnection(ConnectionHelper.ConnectionValue("dbi428024")))
             {
                 //get the open connection and ask for the type account data and command issue
                 var output = connection.Query<DataType>(query, arguments).ToList();
@@ -98,17 +98,17 @@ namespace Tenant_Application
         }
 
         //Get all the chores for the days
-        public List<CalendarDays> GetCalendar()
+        public List<CalendarDay> GetCalendar()
         {
             var query = "dbo.Calendar_GetAll";
-            return ExecuteQueryWithArgsInList<CalendarDays>(query, null);
+            return ExecuteQueryWithArgsInList<CalendarDay>(query, null);
         }
 
         //Get the messages sent 
-        public List<ChatDB> GetChat()
+        public List<Chat> GetChat()
         {
             var query = "dbo.Chat_GetAll";
-            return ExecuteQueryWithArgsInList<ChatDB>(query, null);
+            return ExecuteQueryWithArgsInList<Chat>(query, null);
         }
 
         //Sends the message

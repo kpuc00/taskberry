@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tenant_Application
 {
-    public class ChatDB
+    public class Chat
     {
         /* Create a way to store all messages inside a data set (MICHAELB)*/
 

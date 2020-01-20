@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tenant_Application
 {
-    public class CalendarDays
+    public class CalendarDay
     {
         //public List<string> Monday { get; set; } = new List<string>();
         public string Monday { get; set; }
