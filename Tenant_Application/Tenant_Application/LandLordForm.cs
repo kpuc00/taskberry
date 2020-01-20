@@ -233,8 +233,8 @@ namespace Tenant_Application
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Calendar calendar = new Calendar();
-            calendar.Show();
+            Calendar c = new Calendar();
+            Helper.CheckFormOpen(c);
         }
 
         private void btnSetOffline_Click(object sender, EventArgs e)

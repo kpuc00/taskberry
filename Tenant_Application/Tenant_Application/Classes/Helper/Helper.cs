@@ -130,6 +130,13 @@ namespace Tenant_Application
             return null;
         }
 
+        public static void CheckFormOpen(Calendar c) {
+            if (Application.OpenForms["Calendar"] == null)
+            {
+                c.Show();
+            }
+        }
+
         //Custom messageboxes
         public static void MsgBoxWarning(string message)
         {
