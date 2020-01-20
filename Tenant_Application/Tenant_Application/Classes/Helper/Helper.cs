@@ -41,7 +41,7 @@ namespace Tenant_Application
         }
 
         //Handel the logout of an account from landlord form 
-        public static bool LogOut(int id, DataAccess db, LandLordForm llf, LoginForm lgf)
+        public static bool LogOut(int id, DataAccess db, LandLordForm llf, LoginForm lgf, RegistrationForm rf, ModifyForm mf)
         {
             bool val = false;
             //Fancy messagebox with two choices "yes" and "no"
@@ -53,6 +53,14 @@ namespace Tenant_Application
                 db.SetOnline(id, 0); //Set offline
                 lgf.Show();
                 //Close the current window
+                if (mf != null)
+                {
+                    mf.Hide();
+                }
+                if(rf != null)
+                {
+                    rf.Hide();
+                }
                 llf.Hide();
                 llf.Dispose();
 

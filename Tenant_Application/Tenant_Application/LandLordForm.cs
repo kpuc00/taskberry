@@ -30,7 +30,7 @@ namespace Tenant_Application
             this.personName = personName;
             this.loginForm = loginForm;
             db.SetOnline(this.personId, 1);
-
+            regForm = new RegistrationForm(this);
             UpdateLbxScore();
         }
 
@@ -51,7 +51,7 @@ namespace Tenant_Application
         //Closes entire app
         private void LandLordForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            bool close = Helper.LogOut(this.personId, this.db, this, loginForm); //Sets the user as OFFLINE
+            bool close = Helper.LogOut(this.personId, this.db, this, loginForm, regForm, modForm); //Sets the user as OFFLINE
             if (!close)
             {
                 e.Cancel = !close;
@@ -88,7 +88,7 @@ namespace Tenant_Application
         //Logs out of the landlord form and goes back to the login form
         private void BtnAnnouncementLogout_Click(object sender, EventArgs e)
         {
-            Helper.LogOut(this.personId, this.db, this, loginForm);
+            Helper.LogOut(this.personId, this.db, this, loginForm, regForm, modForm);
         }
 
 
@@ -203,7 +203,6 @@ namespace Tenant_Application
         //Opens a form to create a new account
         private void BtnCreateAcc_Click(object sender, EventArgs e)
         {
-            regForm = new RegistrationForm(this);
             regForm.Show();
             regForm.Focus();
         }

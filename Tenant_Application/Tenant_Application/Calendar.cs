@@ -113,10 +113,10 @@ namespace Tenant_Application
             {
                 if (b.ContainsKey(i)) //If it contains the week day key (0 monday, 2 tuesday etc)
                 {
-                    if (b[i].Length > 10) //Just a check to make sure it doesn't go over bounds
+                    if (b[i].Length > 9) //Just a check to make sure it doesn't go over bounds
                     { 
                         temp = b[i]; 
-                        labels[i].Text = temp.Substring(0, 10); //Change this if you want to see more of the name
+                        labels[i].Text = temp.Substring(0, 9); //Change this if you want to see more of the name
                     } 
                     else 
                     { 

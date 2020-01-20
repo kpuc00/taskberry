@@ -46,6 +46,7 @@ namespace Tenant_Application
                     }
                     db.AddAccount(tbxRegUsername.Text, tbxRegPassword.Text, tbxRegEmail.Text, tbxRegName.Text, isAdmin);
                     Helper.MsgBoxInformation("You created a new account");
+                    ResetInformation();
                     llf.UpdateAccounts();
                     llf.UpdateLbxScore();
                 }
@@ -54,6 +55,22 @@ namespace Tenant_Application
             {
                 Helper.MsgBoxWarning(ex.ToString());
             }
+        }
+
+        private void ResetInformation()
+        {
+            tbxRegUsername.Text = "";
+            tbxRegPassword.Text = "";
+            tbxRegEmail.Text = "";
+            tbxRegName.Text = "";
+            tbxRegUsername.BackColor = Color.White;
+            tbxRegPassword.BackColor = Color.White;
+            tbxRegName.BackColor = Color.White;
+            tbxRegEmail.BackColor = Color.White;
+            lblStatusEmail.Visible = false;
+            lblStatusName.Visible = false;
+            lblStatusPassword.Visible = false;
+            lblStatusUsername.Visible = false;
         }
 
         /*This part is only for checking the actual accounts if they already contain this username,
