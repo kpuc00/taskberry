@@ -13,7 +13,7 @@ namespace Tenant_Application
     public partial class Calendar : Form
     {
         DataAccess db = new DataAccess();
-        List<CalendarDays> calendars;
+        List<CalendarDay> calendars;
 
 
         List<Label> labels; //Stores the labels that need to be updated

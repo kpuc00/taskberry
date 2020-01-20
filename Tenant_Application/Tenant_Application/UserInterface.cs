@@ -65,7 +65,7 @@ namespace Tenant_Application
         //Listbox of calendar: Shows the days of the week
         void ListWeekdays()
         {
-            CalendarDays days = new CalendarDays();
+            CalendarDay days = new CalendarDay();
             foreach (string d in days.ShowDays())
             {
                 lbxCalendarDays.Items.Add(d);
@@ -245,7 +245,7 @@ namespace Tenant_Application
         //Pulls calendar information: If a chore is "taken" - it's already been taken by someone; it ain't shown in the lbx
         public void UpdateChoresLbx()
         {
-            List<CalendarDays> days = db.GetCalendar();
+            List<CalendarDay> days = db.GetCalendar();
             string item = lbxCalendarDays.SelectedItem.ToString();
 
             try
@@ -254,7 +254,7 @@ namespace Tenant_Application
                 {
                     case "Tuesday":
                         lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDays a in days)
+                        foreach (CalendarDay a in days)
                         {
                             if (a.Tuesday.StartsWith("0") || a.Tuesday.StartsWith("1") || a.Tuesday.StartsWith("2") || a.Tuesday.StartsWith("3") ||
                                 a.Tuesday.StartsWith("4") || a.Tuesday.StartsWith("5") || a.Tuesday.StartsWith("6"))
@@ -265,7 +265,7 @@ namespace Tenant_Application
                         break;
                     case "Wednesday":
                         lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDays a in days)
+                        foreach (CalendarDay a in days)
                         {
                             if (a.Wednesday.StartsWith("0") || a.Wednesday.StartsWith("1") || a.Wednesday.StartsWith("2") || a.Wednesday.StartsWith("3") ||
                                 a.Wednesday.StartsWith("4") || a.Wednesday.StartsWith("5") || a.Wednesday.StartsWith("6"))
@@ -276,7 +276,7 @@ namespace Tenant_Application
                         break;
                     case "Thursday":
                         lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDays a in days)
+                        foreach (CalendarDay a in days)
                         {
                             if (a.Thursday.StartsWith("0") || a.Thursday.StartsWith("1") || a.Thursday.StartsWith("2") || a.Thursday.StartsWith("3") ||
                                 a.Thursday.StartsWith("4") || a.Thursday.StartsWith("5") || a.Thursday.StartsWith("6"))
@@ -287,7 +287,7 @@ namespace Tenant_Application
                         break;
                     case "Friday":
                         lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDays a in days)
+                        foreach (CalendarDay a in days)
                         {
                             if (a.Friday.StartsWith("0") || a.Friday.StartsWith("1") || a.Friday.StartsWith("2") || a.Friday.StartsWith("3") ||
                                 a.Friday.StartsWith("4") || a.Friday.StartsWith("5") || a.Friday.StartsWith("6"))
@@ -298,7 +298,7 @@ namespace Tenant_Application
                         break;
                     case "Saturday":
                         lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDays a in days)
+                        foreach (CalendarDay a in days)
                         {
                             if (a.Saturday.StartsWith("0") || a.Saturday.StartsWith("1") || a.Saturday.StartsWith("2") || a.Saturday.StartsWith("3") ||
                                 a.Saturday.StartsWith("4") || a.Saturday.StartsWith("5") || a.Saturday.StartsWith("6"))
@@ -309,7 +309,7 @@ namespace Tenant_Application
                         break;
                     case "Sunday":
                         lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDays a in days)
+                        foreach (CalendarDay a in days)
                         {
                             if (a.Sunday.StartsWith("0") || a.Sunday.StartsWith("1") || a.Sunday.StartsWith("2") || a.Sunday.StartsWith("3") ||
                                 a.Sunday.StartsWith("4") || a.Sunday.StartsWith("5") || a.Sunday.StartsWith("6"))
@@ -320,7 +320,7 @@ namespace Tenant_Application
                         break;
                     default:
                         lbxCalendarChores.Items.Clear();
-                        foreach (CalendarDays day in days)
+                        foreach (CalendarDay day in days)
                         {
                             if (day.Monday.StartsWith("0") || day.Monday.StartsWith("1") || day.Monday.StartsWith("2") || day.Monday.StartsWith("3") ||
                                 day.Monday.StartsWith("4") || day.Monday.StartsWith("5") || day.Monday.StartsWith("6"))
@@ -426,7 +426,7 @@ namespace Tenant_Application
             //Have to find a way to save the messages inside a list inside 1 OBJECT, atm there are 20 objects (each msg is an object)
             //You can't directly save msgs inside a list inside an object, a loop maybe
             string previousMsg = ""; //Saves previous messages
-            List<ChatDB> chats = db.GetChat();
+            List<Chat> chats = db.GetChat();
 
             if (chats != null)
             {
