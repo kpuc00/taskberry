@@ -465,8 +465,8 @@ namespace Tenant_Application
 
         private void btnOpenCalendar_Click(object sender, EventArgs e)
         {
-            Calendar calendar = new Calendar();
-            calendar.Show();
+            Calendar c = new Calendar();
+            Helper.CheckFormOpen(c);
         }
     }
 
