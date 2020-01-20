@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
             this.label5 = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
@@ -111,7 +112,7 @@
             // 
             this.tbxRegName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxRegName.Location = new System.Drawing.Point(224, 242);
-            this.tbxRegName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxRegName.Margin = new System.Windows.Forms.Padding(2);
             this.tbxRegName.Name = "tbxRegName";
             this.tbxRegName.Size = new System.Drawing.Size(218, 26);
             this.tbxRegName.TabIndex = 24;
@@ -138,7 +139,7 @@
             // 
             this.tbxRegEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxRegEmail.Location = new System.Drawing.Point(224, 196);
-            this.tbxRegEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxRegEmail.Margin = new System.Windows.Forms.Padding(2);
             this.tbxRegEmail.Name = "tbxRegEmail";
             this.tbxRegEmail.Size = new System.Drawing.Size(218, 26);
             this.tbxRegEmail.TabIndex = 23;
@@ -148,7 +149,7 @@
             // 
             this.tbxRegUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxRegUsername.Location = new System.Drawing.Point(224, 102);
-            this.tbxRegUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxRegUsername.Margin = new System.Windows.Forms.Padding(2);
             this.tbxRegUsername.Name = "tbxRegUsername";
             this.tbxRegUsername.Size = new System.Drawing.Size(218, 26);
             this.tbxRegUsername.TabIndex = 21;
@@ -158,7 +159,7 @@
             // 
             this.tbxRegPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxRegPassword.Location = new System.Drawing.Point(224, 148);
-            this.tbxRegPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxRegPassword.Margin = new System.Windows.Forms.Padding(2);
             this.tbxRegPassword.Name = "tbxRegPassword";
             this.tbxRegPassword.Size = new System.Drawing.Size(218, 26);
             this.tbxRegPassword.TabIndex = 22;
@@ -227,7 +228,7 @@
             this.cbxAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbxAdmin.ForeColor = System.Drawing.Color.White;
             this.cbxAdmin.Location = new System.Drawing.Point(480, 324);
-            this.cbxAdmin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxAdmin.Margin = new System.Windows.Forms.Padding(2);
             this.cbxAdmin.Name = "cbxAdmin";
             this.cbxAdmin.Size = new System.Drawing.Size(241, 35);
             this.cbxAdmin.TabIndex = 51;
@@ -269,7 +270,8 @@
             this.Controls.Add(this.tbxRegEmail);
             this.Controls.Add(this.tbxRegUsername);
             this.Controls.Add(this.tbxRegPassword);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "RegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

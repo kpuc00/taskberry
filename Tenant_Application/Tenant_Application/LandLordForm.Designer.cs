@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LandLordForm));
             this.tabControlLandlord = new System.Windows.Forms.TabControl();
             this.tabScoreBoard = new System.Windows.Forms.TabPage();
             this.panelCalendarObject = new System.Windows.Forms.Panel();
@@ -56,13 +57,13 @@
             this.tabRegistration = new System.Windows.Forms.TabPage();
             this.btnLogoutMng = new System.Windows.Forms.Button();
             this.panelAccMng = new System.Windows.Forms.Panel();
+            this.btnSetOffline = new System.Windows.Forms.Button();
             this.lblAccMng = new System.Windows.Forms.Label();
             this.lbxAccInfo = new System.Windows.Forms.ListBox();
             this.btnCreateAcc = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.timerUpdateAccounts = new System.Windows.Forms.Timer(this.components);
-            this.btnSetOffline = new System.Windows.Forms.Button();
             this.tabControlLandlord.SuspendLayout();
             this.tabScoreBoard.SuspendLayout();
             this.panelCalendarObject.SuspendLayout();
@@ -79,11 +80,11 @@
             this.tabControlLandlord.Controls.Add(this.tabScoreBoard);
             this.tabControlLandlord.Controls.Add(this.tabAnnouncement);
             this.tabControlLandlord.Controls.Add(this.tabRegistration);
-            this.tabControlLandlord.Location = new System.Drawing.Point(8, 7);
-            this.tabControlLandlord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabControlLandlord.Location = new System.Drawing.Point(6, 6);
+            this.tabControlLandlord.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControlLandlord.Name = "tabControlLandlord";
             this.tabControlLandlord.SelectedIndex = 0;
-            this.tabControlLandlord.Size = new System.Drawing.Size(1563, 822);
+            this.tabControlLandlord.Size = new System.Drawing.Size(1172, 668);
             this.tabControlLandlord.TabIndex = 0;
             this.tabControlLandlord.Tag = "";
             this.tabControlLandlord.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
@@ -95,11 +96,11 @@
             this.tabScoreBoard.Controls.Add(this.panelCalendarObject);
             this.tabScoreBoard.Controls.Add(this.pbxCalendarLegend);
             this.tabScoreBoard.Controls.Add(this.btnScoreboardLogout);
-            this.tabScoreBoard.Location = new System.Drawing.Point(4, 25);
-            this.tabScoreBoard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabScoreBoard.Location = new System.Drawing.Point(4, 22);
+            this.tabScoreBoard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabScoreBoard.Name = "tabScoreBoard";
-            this.tabScoreBoard.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabScoreBoard.Size = new System.Drawing.Size(1555, 793);
+            this.tabScoreBoard.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabScoreBoard.Size = new System.Drawing.Size(1164, 642);
             this.tabScoreBoard.TabIndex = 0;
             this.tabScoreBoard.Text = "Scoreboard";
             this.tabScoreBoard.UseVisualStyleBackColor = true;
@@ -120,28 +121,28 @@
             this.panelCalendarObject.Controls.Add(this.btnAddPoint);
             this.panelCalendarObject.Controls.Add(this.lblCalendarMain);
             this.panelCalendarObject.Controls.Add(this.lbxScoreBoard);
-            this.panelCalendarObject.Location = new System.Drawing.Point(41, 21);
-            this.panelCalendarObject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelCalendarObject.Location = new System.Drawing.Point(31, 17);
+            this.panelCalendarObject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelCalendarObject.Name = "panelCalendarObject";
-            this.panelCalendarObject.Size = new System.Drawing.Size(956, 681);
+            this.panelCalendarObject.Size = new System.Drawing.Size(717, 553);
             this.panelCalendarObject.TabIndex = 28;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(641, 114);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(481, 93);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 537);
+            this.panel1.Size = new System.Drawing.Size(2, 436);
             this.panel1.TabIndex = 35;
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(732, 500);
+            this.label2.Location = new System.Drawing.Point(549, 406);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(137, 39);
+            this.label2.Size = new System.Drawing.Size(103, 32);
             this.label2.TabIndex = 34;
             this.label2.Text = "Calendar";
             // 
@@ -154,10 +155,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(687, 543);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(515, 441);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(219, 70);
+            this.button1.Size = new System.Drawing.Size(164, 57);
             this.button1.TabIndex = 33;
             this.button1.Text = "Show Calendar";
             this.button1.UseVisualStyleBackColor = false;
@@ -172,10 +172,9 @@
             this.btnResetPoints.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnResetPoints.ForeColor = System.Drawing.Color.White;
-            this.btnResetPoints.Location = new System.Drawing.Point(687, 203);
-            this.btnResetPoints.Margin = new System.Windows.Forms.Padding(4);
+            this.btnResetPoints.Location = new System.Drawing.Point(515, 165);
             this.btnResetPoints.Name = "btnResetPoints";
-            this.btnResetPoints.Size = new System.Drawing.Size(219, 70);
+            this.btnResetPoints.Size = new System.Drawing.Size(164, 57);
             this.btnResetPoints.TabIndex = 32;
             this.btnResetPoints.Text = "Reset Points";
             this.btnResetPoints.UseVisualStyleBackColor = false;
@@ -185,9 +184,10 @@
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(687, 127);
+            this.label1.Location = new System.Drawing.Point(515, 103);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(203, 73);
+            this.label1.Size = new System.Drawing.Size(152, 59);
             this.label1.TabIndex = 30;
             this.label1.Text = "Monthly Point Reset:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -195,8 +195,7 @@
             // nudPoints
             // 
             this.nudPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudPoints.Location = new System.Drawing.Point(103, 494);
-            this.nudPoints.Margin = new System.Windows.Forms.Padding(4);
+            this.nudPoints.Location = new System.Drawing.Point(77, 401);
             this.nudPoints.Maximum = new decimal(new int[] {
             500,
             0,
@@ -208,7 +207,7 @@
             0,
             -2147483648});
             this.nudPoints.Name = "nudPoints";
-            this.nudPoints.Size = new System.Drawing.Size(384, 41);
+            this.nudPoints.Size = new System.Drawing.Size(288, 35);
             this.nudPoints.TabIndex = 29;
             this.nudPoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -216,9 +215,10 @@
             // 
             this.lblCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblCalendar.ForeColor = System.Drawing.Color.White;
-            this.lblCalendar.Location = new System.Drawing.Point(680, 303);
+            this.lblCalendar.Location = new System.Drawing.Point(510, 246);
+            this.lblCalendar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCalendar.Name = "lblCalendar";
-            this.lblCalendar.Size = new System.Drawing.Size(229, 65);
+            this.lblCalendar.Size = new System.Drawing.Size(172, 53);
             this.lblCalendar.TabIndex = 28;
             this.lblCalendar.Text = "Weekly Calendar Reset:";
             this.lblCalendar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -232,10 +232,9 @@
             this.btnResetCalendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnResetCalendar.ForeColor = System.Drawing.Color.White;
-            this.btnResetCalendar.Location = new System.Drawing.Point(687, 372);
-            this.btnResetCalendar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnResetCalendar.Location = new System.Drawing.Point(515, 302);
             this.btnResetCalendar.Name = "btnResetCalendar";
-            this.btnResetCalendar.Size = new System.Drawing.Size(219, 70);
+            this.btnResetCalendar.Size = new System.Drawing.Size(164, 57);
             this.btnResetCalendar.TabIndex = 27;
             this.btnResetCalendar.Text = "Reset Calendar";
             this.btnResetCalendar.UseVisualStyleBackColor = false;
@@ -246,10 +245,9 @@
             this.lblPointsSet.AutoSize = true;
             this.lblPointsSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblPointsSet.ForeColor = System.Drawing.Color.White;
-            this.lblPointsSet.Location = new System.Drawing.Point(207, 458);
-            this.lblPointsSet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPointsSet.Location = new System.Drawing.Point(155, 372);
             this.lblPointsSet.Name = "lblPointsSet";
-            this.lblPointsSet.Size = new System.Drawing.Size(153, 32);
+            this.lblPointsSet.Size = new System.Drawing.Size(118, 26);
             this.lblPointsSet.TabIndex = 16;
             this.lblPointsSet.Text = "Set Points:";
             // 
@@ -262,10 +260,9 @@
             this.btnAddPoint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAddPoint.ForeColor = System.Drawing.Color.White;
-            this.btnAddPoint.Location = new System.Drawing.Point(148, 543);
-            this.btnAddPoint.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddPoint.Location = new System.Drawing.Point(111, 441);
             this.btnAddPoint.Name = "btnAddPoint";
-            this.btnAddPoint.Size = new System.Drawing.Size(283, 70);
+            this.btnAddPoint.Size = new System.Drawing.Size(212, 57);
             this.btnAddPoint.TabIndex = 26;
             this.btnAddPoint.Text = "Set";
             this.btnAddPoint.UseVisualStyleBackColor = false;
@@ -276,10 +273,9 @@
             this.lblCalendarMain.AutoSize = true;
             this.lblCalendarMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblCalendarMain.ForeColor = System.Drawing.Color.White;
-            this.lblCalendarMain.Location = new System.Drawing.Point(112, 21);
-            this.lblCalendarMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCalendarMain.Location = new System.Drawing.Point(84, 17);
             this.lblCalendarMain.Name = "lblCalendarMain";
-            this.lblCalendarMain.Size = new System.Drawing.Size(686, 54);
+            this.lblCalendarMain.Size = new System.Drawing.Size(548, 42);
             this.lblCalendarMain.TabIndex = 14;
             this.lblCalendarMain.Text = "User calendar and score control";
             // 
@@ -289,21 +285,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbxScoreBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbxScoreBoard.FormattingEnabled = true;
-            this.lbxScoreBoard.ItemHeight = 36;
-            this.lbxScoreBoard.Location = new System.Drawing.Point(60, 114);
-            this.lbxScoreBoard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lbxScoreBoard.ItemHeight = 29;
+            this.lbxScoreBoard.Location = new System.Drawing.Point(45, 93);
+            this.lbxScoreBoard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbxScoreBoard.Name = "lbxScoreBoard";
-            this.lbxScoreBoard.Size = new System.Drawing.Size(473, 256);
+            this.lbxScoreBoard.Size = new System.Drawing.Size(356, 207);
             this.lbxScoreBoard.TabIndex = 0;
             // 
             // pbxCalendarLegend
             // 
             this.pbxCalendarLegend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbxCalendarLegend.Image = global::Tenant_Application.Properties.Resources.legend2;
-            this.pbxCalendarLegend.Location = new System.Drawing.Point(1044, 21);
-            this.pbxCalendarLegend.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbxCalendarLegend.Location = new System.Drawing.Point(783, 17);
+            this.pbxCalendarLegend.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbxCalendarLegend.Name = "pbxCalendarLegend";
-            this.pbxCalendarLegend.Size = new System.Drawing.Size(484, 681);
+            this.pbxCalendarLegend.Size = new System.Drawing.Size(363, 553);
             this.pbxCalendarLegend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxCalendarLegend.TabIndex = 27;
             this.pbxCalendarLegend.TabStop = false;
@@ -317,10 +313,9 @@
             this.btnScoreboardLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnScoreboardLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnScoreboardLogout.ForeColor = System.Drawing.Color.White;
-            this.btnScoreboardLogout.Location = new System.Drawing.Point(41, 708);
-            this.btnScoreboardLogout.Margin = new System.Windows.Forms.Padding(4);
+            this.btnScoreboardLogout.Location = new System.Drawing.Point(31, 575);
             this.btnScoreboardLogout.Name = "btnScoreboardLogout";
-            this.btnScoreboardLogout.Size = new System.Drawing.Size(165, 68);
+            this.btnScoreboardLogout.Size = new System.Drawing.Size(124, 55);
             this.btnScoreboardLogout.TabIndex = 25;
             this.btnScoreboardLogout.Text = "<--   Logout";
             this.btnScoreboardLogout.UseVisualStyleBackColor = false;
@@ -332,11 +327,11 @@
             this.tabAnnouncement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabAnnouncement.Controls.Add(this.panel3);
             this.tabAnnouncement.Controls.Add(this.btnAnnouncementLogout);
-            this.tabAnnouncement.Location = new System.Drawing.Point(4, 25);
-            this.tabAnnouncement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabAnnouncement.Location = new System.Drawing.Point(4, 22);
+            this.tabAnnouncement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabAnnouncement.Name = "tabAnnouncement";
-            this.tabAnnouncement.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabAnnouncement.Size = new System.Drawing.Size(1555, 793);
+            this.tabAnnouncement.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabAnnouncement.Size = new System.Drawing.Size(1164, 642);
             this.tabAnnouncement.TabIndex = 1;
             this.tabAnnouncement.Text = "Announcement";
             this.tabAnnouncement.UseVisualStyleBackColor = true;
@@ -349,10 +344,10 @@
             this.panel3.Controls.Add(this.lblComplaintsMain);
             this.panel3.Controls.Add(this.tbxAnnouncement);
             this.panel3.Controls.Add(this.btnSend);
-            this.panel3.Location = new System.Drawing.Point(340, 100);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(255, 81);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(923, 577);
+            this.panel3.Size = new System.Drawing.Size(692, 469);
             this.panel3.TabIndex = 29;
             // 
             // cbxAnnEmails
@@ -360,10 +355,9 @@
             this.cbxAnnEmails.AutoSize = true;
             this.cbxAnnEmails.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxAnnEmails.ForeColor = System.Drawing.Color.White;
-            this.cbxAnnEmails.Location = new System.Drawing.Point(512, 490);
-            this.cbxAnnEmails.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxAnnEmails.Location = new System.Drawing.Point(384, 398);
             this.cbxAnnEmails.Name = "cbxAnnEmails";
-            this.cbxAnnEmails.Size = new System.Drawing.Size(312, 36);
+            this.cbxAnnEmails.Size = new System.Drawing.Size(263, 33);
             this.cbxAnnEmails.TabIndex = 30;
             this.cbxAnnEmails.Text = "Send email to tenants";
             this.cbxAnnEmails.UseVisualStyleBackColor = true;
@@ -373,10 +367,9 @@
             this.lblComplaintsMain.AutoSize = true;
             this.lblComplaintsMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblComplaintsMain.ForeColor = System.Drawing.Color.White;
-            this.lblComplaintsMain.Location = new System.Drawing.Point(125, 41);
-            this.lblComplaintsMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblComplaintsMain.Location = new System.Drawing.Point(94, 33);
             this.lblComplaintsMain.Name = "lblComplaintsMain";
-            this.lblComplaintsMain.Size = new System.Drawing.Size(655, 54);
+            this.lblComplaintsMain.Size = new System.Drawing.Size(525, 42);
             this.lblComplaintsMain.TabIndex = 18;
             this.lblComplaintsMain.Text = "Enter an announcement below";
             // 
@@ -384,10 +377,10 @@
             // 
             this.tbxAnnouncement.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbxAnnouncement.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxAnnouncement.Location = new System.Drawing.Point(28, 121);
-            this.tbxAnnouncement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbxAnnouncement.Location = new System.Drawing.Point(21, 98);
+            this.tbxAnnouncement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbxAnnouncement.Name = "tbxAnnouncement";
-            this.tbxAnnouncement.Size = new System.Drawing.Size(876, 335);
+            this.tbxAnnouncement.Size = new System.Drawing.Size(658, 273);
             this.tbxAnnouncement.TabIndex = 0;
             this.tbxAnnouncement.Text = "";
             // 
@@ -396,10 +389,10 @@
             this.btnSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(66)))), ((int)(((byte)(120)))));
             this.btnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSend.ForeColor = System.Drawing.Color.White;
-            this.btnSend.Location = new System.Drawing.Point(28, 475);
-            this.btnSend.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSend.Location = new System.Drawing.Point(21, 386);
+            this.btnSend.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(477, 66);
+            this.btnSend.Size = new System.Drawing.Size(358, 54);
             this.btnSend.TabIndex = 1;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = false;
@@ -414,10 +407,9 @@
             this.btnAnnouncementLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnouncementLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAnnouncementLogout.ForeColor = System.Drawing.Color.White;
-            this.btnAnnouncementLogout.Location = new System.Drawing.Point(41, 698);
-            this.btnAnnouncementLogout.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAnnouncementLogout.Location = new System.Drawing.Point(31, 567);
             this.btnAnnouncementLogout.Name = "btnAnnouncementLogout";
-            this.btnAnnouncementLogout.Size = new System.Drawing.Size(165, 68);
+            this.btnAnnouncementLogout.Size = new System.Drawing.Size(124, 55);
             this.btnAnnouncementLogout.TabIndex = 25;
             this.btnAnnouncementLogout.Text = "<--   Logout";
             this.btnAnnouncementLogout.UseVisualStyleBackColor = false;
@@ -429,11 +421,11 @@
             this.tabRegistration.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabRegistration.Controls.Add(this.btnLogoutMng);
             this.tabRegistration.Controls.Add(this.panelAccMng);
-            this.tabRegistration.Location = new System.Drawing.Point(4, 25);
-            this.tabRegistration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabRegistration.Location = new System.Drawing.Point(4, 22);
+            this.tabRegistration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabRegistration.Name = "tabRegistration";
             this.tabRegistration.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabRegistration.Size = new System.Drawing.Size(1555, 793);
+            this.tabRegistration.Size = new System.Drawing.Size(1164, 642);
             this.tabRegistration.TabIndex = 2;
             this.tabRegistration.Text = "Account Managment";
             this.tabRegistration.UseVisualStyleBackColor = true;
@@ -447,10 +439,9 @@
             this.btnLogoutMng.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogoutMng.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnLogoutMng.ForeColor = System.Drawing.Color.White;
-            this.btnLogoutMng.Location = new System.Drawing.Point(41, 698);
-            this.btnLogoutMng.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogoutMng.Location = new System.Drawing.Point(31, 567);
             this.btnLogoutMng.Name = "btnLogoutMng";
-            this.btnLogoutMng.Size = new System.Drawing.Size(165, 68);
+            this.btnLogoutMng.Size = new System.Drawing.Size(124, 55);
             this.btnLogoutMng.TabIndex = 26;
             this.btnLogoutMng.Text = "<--   Logout";
             this.btnLogoutMng.UseVisualStyleBackColor = false;
@@ -466,21 +457,34 @@
             this.panelAccMng.Controls.Add(this.btnCreateAcc);
             this.panelAccMng.Controls.Add(this.btnDelete);
             this.panelAccMng.Controls.Add(this.btnModify);
-            this.panelAccMng.Location = new System.Drawing.Point(291, 41);
-            this.panelAccMng.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelAccMng.Location = new System.Drawing.Point(218, 33);
+            this.panelAccMng.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelAccMng.Name = "panelAccMng";
-            this.panelAccMng.Size = new System.Drawing.Size(1027, 730);
+            this.panelAccMng.Size = new System.Drawing.Size(770, 593);
             this.panelAccMng.TabIndex = 5;
+            // 
+            // btnSetOffline
+            // 
+            this.btnSetOffline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(66)))), ((int)(((byte)(120)))));
+            this.btnSetOffline.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSetOffline.ForeColor = System.Drawing.Color.White;
+            this.btnSetOffline.Location = new System.Drawing.Point(508, 297);
+            this.btnSetOffline.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSetOffline.Name = "btnSetOffline";
+            this.btnSetOffline.Size = new System.Drawing.Size(230, 102);
+            this.btnSetOffline.TabIndex = 20;
+            this.btnSetOffline.Text = "Set Account Offline";
+            this.btnSetOffline.UseVisualStyleBackColor = false;
+            this.btnSetOffline.Click += new System.EventHandler(this.btnSetOffline_Click);
             // 
             // lblAccMng
             // 
             this.lblAccMng.AutoSize = true;
             this.lblAccMng.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblAccMng.ForeColor = System.Drawing.Color.White;
-            this.lblAccMng.Location = new System.Drawing.Point(28, 32);
-            this.lblAccMng.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAccMng.Location = new System.Drawing.Point(21, 26);
             this.lblAccMng.Name = "lblAccMng";
-            this.lblAccMng.Size = new System.Drawing.Size(446, 54);
+            this.lblAccMng.Size = new System.Drawing.Size(357, 42);
             this.lblAccMng.TabIndex = 19;
             this.lblAccMng.Text = "All existing accounts";
             // 
@@ -488,11 +492,11 @@
             // 
             this.lbxAccInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbxAccInfo.FormattingEnabled = true;
-            this.lbxAccInfo.ItemHeight = 36;
-            this.lbxAccInfo.Location = new System.Drawing.Point(37, 98);
-            this.lbxAccInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lbxAccInfo.ItemHeight = 29;
+            this.lbxAccInfo.Location = new System.Drawing.Point(28, 80);
+            this.lbxAccInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbxAccInfo.Name = "lbxAccInfo";
-            this.lbxAccInfo.Size = new System.Drawing.Size(599, 436);
+            this.lbxAccInfo.Size = new System.Drawing.Size(450, 352);
             this.lbxAccInfo.TabIndex = 0;
             // 
             // btnCreateAcc
@@ -500,10 +504,10 @@
             this.btnCreateAcc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(66)))), ((int)(((byte)(120)))));
             this.btnCreateAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCreateAcc.ForeColor = System.Drawing.Color.White;
-            this.btnCreateAcc.Location = new System.Drawing.Point(677, 151);
-            this.btnCreateAcc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCreateAcc.Location = new System.Drawing.Point(508, 123);
+            this.btnCreateAcc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCreateAcc.Name = "btnCreateAcc";
-            this.btnCreateAcc.Size = new System.Drawing.Size(307, 126);
+            this.btnCreateAcc.Size = new System.Drawing.Size(230, 102);
             this.btnCreateAcc.TabIndex = 4;
             this.btnCreateAcc.Text = "Create a new account";
             this.btnCreateAcc.UseVisualStyleBackColor = false;
@@ -514,10 +518,10 @@
             this.btnDelete.BackColor = System.Drawing.Color.Red;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(37, 593);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDelete.Location = new System.Drawing.Point(28, 482);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(257, 78);
+            this.btnDelete.Size = new System.Drawing.Size(193, 63);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete Account";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -528,10 +532,10 @@
             this.btnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(66)))), ((int)(((byte)(120)))));
             this.btnModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnModify.ForeColor = System.Drawing.Color.White;
-            this.btnModify.Location = new System.Drawing.Point(364, 593);
-            this.btnModify.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnModify.Location = new System.Drawing.Point(273, 482);
+            this.btnModify.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(272, 78);
+            this.btnModify.Size = new System.Drawing.Size(204, 63);
             this.btnModify.TabIndex = 3;
             this.btnModify.Text = "Modify Account";
             this.btnModify.UseVisualStyleBackColor = false;
@@ -542,27 +546,14 @@
             this.timerUpdateAccounts.Interval = 10000;
             this.timerUpdateAccounts.Tick += new System.EventHandler(this.TimerUpdateAccounts_Tick);
             // 
-            // btnSetOffline
-            // 
-            this.btnSetOffline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(66)))), ((int)(((byte)(120)))));
-            this.btnSetOffline.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSetOffline.ForeColor = System.Drawing.Color.White;
-            this.btnSetOffline.Location = new System.Drawing.Point(677, 365);
-            this.btnSetOffline.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSetOffline.Name = "btnSetOffline";
-            this.btnSetOffline.Size = new System.Drawing.Size(307, 126);
-            this.btnSetOffline.TabIndex = 20;
-            this.btnSetOffline.Text = "Set Account Offline";
-            this.btnSetOffline.UseVisualStyleBackColor = false;
-            this.btnSetOffline.Click += new System.EventHandler(this.btnSetOffline_Click);
-            // 
             // LandLordForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1571, 846);
+            this.ClientSize = new System.Drawing.Size(1178, 687);
             this.Controls.Add(this.tabControlLandlord);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "LandLordForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

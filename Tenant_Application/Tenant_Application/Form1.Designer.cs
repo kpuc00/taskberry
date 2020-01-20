@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbxUserName = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -45,10 +46,10 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(108, 122);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(81, 99);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(400, 2);
+            this.panel2.Size = new System.Drawing.Size(300, 2);
             this.panel2.TabIndex = 0;
             // 
             // tbxUserName
@@ -57,11 +58,11 @@
             this.tbxUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxUserName.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxUserName.ForeColor = System.Drawing.Color.White;
-            this.tbxUserName.Location = new System.Drawing.Point(108, 69);
-            this.tbxUserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbxUserName.Location = new System.Drawing.Point(81, 56);
+            this.tbxUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbxUserName.MaxLength = 50;
             this.tbxUserName.Name = "tbxUserName";
-            this.tbxUserName.Size = new System.Drawing.Size(400, 49);
+            this.tbxUserName.Size = new System.Drawing.Size(300, 40);
             this.tbxUserName.TabIndex = 0;
             this.tbxUserName.Text = "Username";
             this.tbxUserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxUserName_KeyPress);
@@ -78,10 +79,10 @@
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.tbxUserName);
-            this.panel3.Location = new System.Drawing.Point(500, 354);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(375, 288);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(621, 441);
+            this.panel3.Size = new System.Drawing.Size(466, 358);
             this.panel3.TabIndex = 0;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -91,11 +92,11 @@
             this.tbxPassWord.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxPassWord.Font = new System.Drawing.Font("Calibri", 22F);
             this.tbxPassWord.ForeColor = System.Drawing.Color.White;
-            this.tbxPassWord.Location = new System.Drawing.Point(108, 154);
-            this.tbxPassWord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbxPassWord.Location = new System.Drawing.Point(81, 125);
+            this.tbxPassWord.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbxPassWord.MaxLength = 50;
             this.tbxPassWord.Name = "tbxPassWord";
-            this.tbxPassWord.Size = new System.Drawing.Size(400, 45);
+            this.tbxPassWord.Size = new System.Drawing.Size(300, 36);
             this.tbxPassWord.TabIndex = 1;
             this.tbxPassWord.Text = "Password";
             this.tbxPassWord.TextChanged += new System.EventHandler(this.tbxPassWord_TextChanged);
@@ -105,10 +106,9 @@
             // 
             this.pbxPassword.BackColor = System.Drawing.Color.Transparent;
             this.pbxPassword.Image = global::Tenant_Application.Properties.Resources.passwordHideWhite;
-            this.pbxPassword.Location = new System.Drawing.Point(515, 144);
-            this.pbxPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.pbxPassword.Location = new System.Drawing.Point(386, 117);
             this.pbxPassword.Name = "pbxPassword";
-            this.pbxPassword.Size = new System.Drawing.Size(67, 58);
+            this.pbxPassword.Size = new System.Drawing.Size(50, 47);
             this.pbxPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxPassword.TabIndex = 54;
             this.pbxPassword.TabStop = false;
@@ -125,10 +125,9 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(108, 220);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogin.Location = new System.Drawing.Point(81, 179);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(400, 75);
+            this.btnLogin.Size = new System.Drawing.Size(300, 61);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -143,10 +142,9 @@
             this.btnForgotten.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnForgotten.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnForgotten.ForeColor = System.Drawing.Color.White;
-            this.btnForgotten.Location = new System.Drawing.Point(136, 318);
-            this.btnForgotten.Margin = new System.Windows.Forms.Padding(4);
+            this.btnForgotten.Location = new System.Drawing.Point(102, 258);
             this.btnForgotten.Name = "btnForgotten";
-            this.btnForgotten.Size = new System.Drawing.Size(349, 48);
+            this.btnForgotten.Size = new System.Drawing.Size(262, 39);
             this.btnForgotten.TabIndex = 3;
             this.btnForgotten.Text = "Forgotten password";
             this.btnForgotten.UseVisualStyleBackColor = false;
@@ -155,10 +153,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(108, 203);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(81, 165);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(400, 2);
+            this.panel1.Size = new System.Drawing.Size(300, 2);
             this.panel1.TabIndex = 4;
             // 
             // pbxLogo
@@ -166,25 +164,26 @@
             this.pbxLogo.BackColor = System.Drawing.Color.Transparent;
             this.pbxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbxLogo.Image = global::Tenant_Application.Properties.Resources.logo;
-            this.pbxLogo.Location = new System.Drawing.Point(261, 14);
-            this.pbxLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbxLogo.Location = new System.Drawing.Point(196, 11);
+            this.pbxLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbxLogo.Name = "pbxLogo";
-            this.pbxLogo.Size = new System.Drawing.Size(1067, 369);
+            this.pbxLogo.Size = new System.Drawing.Size(800, 300);
             this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxLogo.TabIndex = 0;
             this.pbxLogo.TabStop = false;
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImage = global::Tenant_Application.Properties.Resources.background1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1579, 838);
+            this.ClientSize = new System.Drawing.Size(1184, 681);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pbxLogo);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

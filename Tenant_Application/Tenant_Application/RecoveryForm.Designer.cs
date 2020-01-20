@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecoveryForm));
             this.tbxEmail = new System.Windows.Forms.TextBox();
             this.lblMain = new System.Windows.Forms.Label();
             this.btnSend = new System.Windows.Forms.Button();
@@ -36,10 +37,11 @@
             // tbxEmail
             // 
             this.tbxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxEmail.Location = new System.Drawing.Point(32, 79);
+            this.tbxEmail.Location = new System.Drawing.Point(24, 64);
+            this.tbxEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbxEmail.MaxLength = 50;
             this.tbxEmail.Name = "tbxEmail";
-            this.tbxEmail.Size = new System.Drawing.Size(486, 45);
+            this.tbxEmail.Size = new System.Drawing.Size(366, 37);
             this.tbxEmail.TabIndex = 0;
             this.tbxEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxEmail_KeyPress);
             // 
@@ -49,9 +51,10 @@
             this.lblMain.BackColor = System.Drawing.Color.Transparent;
             this.lblMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblMain.ForeColor = System.Drawing.Color.White;
-            this.lblMain.Location = new System.Drawing.Point(25, 28);
+            this.lblMain.Location = new System.Drawing.Point(19, 23);
+            this.lblMain.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMain.Name = "lblMain";
-            this.lblMain.Size = new System.Drawing.Size(254, 38);
+            this.lblMain.Size = new System.Drawing.Size(210, 31);
             this.lblMain.TabIndex = 1;
             this.lblMain.Text = "Enter your email";
             // 
@@ -64,10 +67,9 @@
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSend.ForeColor = System.Drawing.Color.White;
-            this.btnSend.Location = new System.Drawing.Point(555, 79);
-            this.btnSend.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSend.Location = new System.Drawing.Point(416, 64);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(205, 45);
+            this.btnSend.Size = new System.Drawing.Size(154, 37);
             this.btnSend.TabIndex = 14;
             this.btnSend.Text = "Send ";
             this.btnSend.UseVisualStyleBackColor = false;
@@ -75,14 +77,16 @@
             // 
             // RecoveryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Tenant_Application.Properties.Resources.panelobject;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 154);
+            this.ClientSize = new System.Drawing.Size(600, 125);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.lblMain);
             this.Controls.Add(this.tbxEmail);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "RecoveryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RecoveryForm";
